@@ -108,3 +108,8 @@ grails.mail.default.from="deukin.contacto@gmail.com"
 //grails.plugins.springsecurity.userLookup.authorityJoinClassName = 'com.deukin.UsuarioRol'
 //grails.plugins.springsecurity.authority.className = 'com.deukin.Rol'
 //grails.plugins.springsecurity.successHandler.defaultTargetUrl = '/home/go'
+
+// Added by the Spring Security Core plugin:
+grails.plugins.springsecurity.userLookup.userDomainClassName = 'com.deukin.Usuario'
+grails.plugins.springsecurity.userLookup.authorityJoinClassName = 'com.deukin.UsuarioRol'
+grails.plugins.springsecurity.authority.className = 'com.deukin.Rol'

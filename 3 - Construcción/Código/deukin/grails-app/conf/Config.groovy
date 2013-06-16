@@ -11,7 +11,7 @@
 //    grails.config.locations << "file:" + System.properties["${appName}.config.location"]
 // }
 
-grails.project.groupId = appName // change this to alter the default package name and Maven publishing destination
+grails.project.groupId = 'com.deukin' // change this to alter the default package name and Maven publishing destination
 grails.mime.file.extensions = true // enables the parsing of file extensions from URLs into the request format
 grails.mime.use.accept.header = false
 grails.mime.types = [
@@ -89,3 +89,16 @@ log4j = {
            'org.hibernate',
            'net.sf.ehcache.hibernate'
 }
+grails {
+	mail {
+	  host = "smtp.gmail.com"
+	  port = 465
+	  username = "deukin.contacto@gmail.com"
+	  password = "deukin123"
+	  props = ["mail.smtp.auth":"true",
+			   "mail.smtp.socketFactory.port":"465",
+			   "mail.smtp.socketFactory.class":"javax.net.ssl.SSLSocketFactory",
+			   "mail.smtp.socketFactory.fallback":"false"]
+	}
+ }
+grails.mail.default.from="deukin.contacto@gmail.com"

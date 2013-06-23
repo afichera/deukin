@@ -103,6 +103,7 @@ grails {
  }
 grails.mail.default.from="deukin.contacto@gmail.com"
 
+//Configuracion de Spring Security
 // Added by the Spring Security Core plugin:
 //grails.plugins.springsecurity.userLookup.userDomainClassName = 'com.deukin.Usuario'
 //grails.plugins.springsecurity.userLookup.authorityJoinClassName = 'com.deukin.UsuarioRol'
@@ -113,3 +114,14 @@ grails.mail.default.from="deukin.contacto@gmail.com"
 grails.plugins.springsecurity.userLookup.userDomainClassName = 'com.deukin.Usuario'
 grails.plugins.springsecurity.userLookup.authorityJoinClassName = 'com.deukin.UsuarioRol'
 grails.plugins.springsecurity.authority.className = 'com.deukin.Rol'
+
+//Configuración de Registro de Auditoria
+stamp{
+	audit{
+		//the created and edited fields should be present or they won't get added during AST
+		createdBy="createdBy" //id who created
+		createdDate="createdDate" // if you want a date stamp that is not the grails default dateCreated
+		editedBy="updatedBy" //id who updated/edited
+		editedDate="editedDate"//use this field instead of the grails default lastUpdate
+	}
+}

@@ -5,11 +5,10 @@ package com.deukin
  * Representa el estado de los recursos.
  */
 enum EstadoRecurso {
-	NUEVO ('NUEVO'),
 	BUENO ('BUENO'),
 	REGULAR ('REGULAR'),
 	MALO ('MALO'),
-	EN_REPARACION ('EN REPARACION')
+	INUTILIZABLE ('INUTILIZABLE')
 
 	String name
 
@@ -19,11 +18,10 @@ enum EstadoRecurso {
 	}
 	static list(){
 		[
-			NUEVO,
 			BUENO,
 			REGULAR,
 			MALO,
-			EN_REPARACION
+			INUTILIZABLE
 		]
 	}
 	public String toString(){

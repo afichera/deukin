@@ -1,7 +1,14 @@
 package com.deukin
 
-class Calificacion {
+import gorm.AuditStamp
 
-    static constraints = {
+@AuditStamp
+class Calificacion {
+	
+	Integer primerParcial
+	Integer segundoParcial
+	Integer notaFinal
+    
+	static constraints = {
     }
 }

@@ -9,6 +9,7 @@ import gorm.AuditStamp
 @AuditStamp
 class CicloLectivo {
 
+	String codigo
 	Date fechaInicio
 	Date fechaFin
 	TipoCicloLectivo tipoCicloLectivo

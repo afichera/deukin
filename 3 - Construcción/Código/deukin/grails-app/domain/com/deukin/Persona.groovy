@@ -10,9 +10,9 @@ class Persona {
 	String nombre
 	String apellido
 	Documento documento
-	Domicilio domicilio
+	Contacto contacto	
 	Curriculum curriculum
-	static hasMany = [telefonos:Telefono]
+	Usuario usuario
 
     static constraints = {
     }

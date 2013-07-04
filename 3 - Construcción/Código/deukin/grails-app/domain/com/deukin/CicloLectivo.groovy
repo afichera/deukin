@@ -2,7 +2,7 @@ package com.deukin
 
 import gorm.AuditStamp
 /**
- * Representa un ciclo de clases, que puede ser cuatrimestral o anual dependiendo su configuracion
+ * Representa un ciclo de clases.
  * @author Ale Mobile
  *
  */
@@ -12,8 +12,8 @@ class CicloLectivo {
 	String codigo
 	Date fechaInicio
 	Date fechaFin
-	TipoCicloLectivo tipoCicloLectivo
-	
+	static hasMany = [periodosAcademicos:PeriodoAcademico]
+		
     static constraints = {
 		
     }

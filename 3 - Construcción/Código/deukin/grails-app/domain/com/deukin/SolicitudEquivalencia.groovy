@@ -4,7 +4,7 @@ import gorm.AuditStamp
 
 @AuditStamp
 class SolicitudEquivalencia {
-
+	//TODO:Hacer
     static constraints = {
     }
 }

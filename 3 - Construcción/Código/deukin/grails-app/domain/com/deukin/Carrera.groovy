@@ -11,8 +11,6 @@ class Carrera {
 	
 	String titulo	
 	//Ver que hacer con la duracion
-	//Ver si la carga Horaria es algo calculado
-	Integer cargaHoraria
 	String condicionIngreso
 	ModalidadAsistencia modalidadAsistencia
 	

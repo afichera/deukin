@@ -9,11 +9,11 @@ import gorm.AuditStamp
  */
 @AuditStamp
 class CronogramaCarrera {
-	
-	static hasMany = [cursos:Curso]
+
+	static hasMany = [cursos:Curso, periodosAcademicos:PeriodoAcademico]
 	static belongsTo = [planEstudio:PlanEstudio]
+	CicloLectivo cicloLectivo
 	
-	
-    static constraints = {
-    }
+	static constraints = {
+	}
 }

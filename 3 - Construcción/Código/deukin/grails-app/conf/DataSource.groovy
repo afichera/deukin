@@ -20,21 +20,21 @@ environments {
 		dataSource {
 			dbCreate = "update" // one of 'create', 'create-drop', 'update', 'validate', ''
 			//            url = "jdbc:h2:mem:devDb;MVCC=TRUE;LOCK_TIMEOUT=10000"
-			url = 'jdbc:postgresql://localhost:5432/deukin_dev_db'
+			url = 'jdbc:postgresql://localhost:5432/deukin_dev'
 		}
 	}
 	test {
 		dataSource {
 			dbCreate = "create"
 			//            url = "jdbc:h2:mem:testDb;MVCC=TRUE;LOCK_TIMEOUT=10000"
-			url = 'jdbc:postgresql://localhost:5432/deukin_test_db'
+			url = 'jdbc:postgresql://localhost:5432/deukin_test'
 		}
 	}
 	production {
 		dataSource {
 			dbCreate = "create"
 			//            url = "jdbc:h2:prodDb;MVCC=TRUE;LOCK_TIMEOUT=10000"
-			url = 'jdbc:postgresql://localhost:5432/deukin_prod_db'
+			url = 'jdbc:postgresql://localhost:5432/deukin_prod'
 			pooled = true
 			properties {
 				maxActive = -1

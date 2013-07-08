@@ -1,13 +1,11 @@
 package com.deukin
 
-import gorm.AuditStamp
-
 /**
  * Representa un Curso especifico para una materia x cronograma y turno de un año x.
  * @author Ale Mobile
  *
  */
-@AuditStamp
+@gorm.AuditStamp
 class Curso {
 
 	//Tengo dudas si el belongsTo se puede aplicar a 2 al mismo tiempo.

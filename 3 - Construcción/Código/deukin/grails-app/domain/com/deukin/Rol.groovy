@@ -1,5 +1,6 @@
 package com.deukin
 
+@gorm.AuditStamp
 class Rol {
 
 	String authority

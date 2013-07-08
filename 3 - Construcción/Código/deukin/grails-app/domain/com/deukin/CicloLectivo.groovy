@@ -1,12 +1,11 @@
 package com.deukin
 
-import gorm.AuditStamp
 /**
  * Representa un ciclo de clases.
  * @author Ale Mobile
  *
  */
-@AuditStamp
+@gorm.AuditStamp
 class CicloLectivo {
 
 	String codigo

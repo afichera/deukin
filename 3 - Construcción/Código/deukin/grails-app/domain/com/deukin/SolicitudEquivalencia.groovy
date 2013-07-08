@@ -1,8 +1,7 @@
 package com.deukin
 
-import gorm.AuditStamp
 
-@AuditStamp
+@gorm.AuditStamp
 class SolicitudEquivalencia {
 	//TODO:Hacer
     static constraints = {

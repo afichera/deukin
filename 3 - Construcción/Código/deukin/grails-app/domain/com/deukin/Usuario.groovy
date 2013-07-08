@@ -1,5 +1,6 @@
 package com.deukin
 
+@gorm.AuditStamp
 class Usuario {
 
 	transient springSecurityService

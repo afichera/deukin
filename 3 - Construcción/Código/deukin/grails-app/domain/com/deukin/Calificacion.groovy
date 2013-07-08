@@ -1,12 +1,11 @@
 package com.deukin
 
-import gorm.AuditStamp
 /**
  * Representa una calificacion para un {@link Alumno} 
  * @author Ale Mobile
  *
  */
-@AuditStamp
+@gorm.AuditStamp
 class Calificacion {
 	
 	Integer primerParcial

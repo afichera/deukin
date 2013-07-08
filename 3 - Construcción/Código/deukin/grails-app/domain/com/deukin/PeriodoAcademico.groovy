@@ -1,13 +1,11 @@
 package com.deukin
 
-import gorm.AuditStamp
-
 /**
  * Representa una unidad de tiempo de cursada ej: Cuatrimestral, BiMestral, Etc.
  * @author Ale Mobile
  *
  */
-@AuditStamp
+@gorm.AuditStamp
 class PeriodoAcademico {
 
 	TipoPeriodoAcademico tipoPeriodoAcademico

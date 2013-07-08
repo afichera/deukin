@@ -1,13 +1,12 @@
 package com.deukin
 
-import gorm.AuditStamp;
 
 /**
  * Representa una Materia de la {@link Institucion}
  * @author Ale Mobile
  *
  */
-@AuditStamp
+@gorm.AuditStamp
 class Materia {
 
 	Integer codigo

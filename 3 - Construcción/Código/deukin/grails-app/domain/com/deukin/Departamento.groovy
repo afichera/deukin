@@ -1,13 +1,11 @@
 package com.deukin
 
-import gorm.AuditStamp
-
 /**
  * Representa a un Departamento dentro de la Insitucion
  * @author Ale Mobile
  *
  */
-@AuditStamp
+@gorm.AuditStamp
 class Departamento {
 	
 	String nombre

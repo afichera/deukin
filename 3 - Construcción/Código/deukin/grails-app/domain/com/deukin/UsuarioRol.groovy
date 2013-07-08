@@ -1,7 +1,7 @@
 package com.deukin
 
 import org.apache.commons.lang.builder.HashCodeBuilder
-
+@gorm.AuditStamp
 class UsuarioRol implements Serializable {
 
 	Usuario usuario

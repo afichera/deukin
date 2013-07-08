@@ -1,12 +1,11 @@
 package com.deukin
 
-import gorm.AuditStamp
 /**
  * Representa el Curriculum de una Persona
  * @author Ale Mobile
  *
  */
-@AuditStamp
+@gorm.AuditStamp
 class Curriculum {
 	
 	String titulo

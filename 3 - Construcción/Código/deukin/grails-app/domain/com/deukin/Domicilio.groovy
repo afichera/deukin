@@ -2,7 +2,7 @@ package com.deukin
 
 import gorm.AuditStamp
 
-@AuditStamp
+@gorm.AuditStamp
 class Domicilio {
 	
 	String calle

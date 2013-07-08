@@ -1,6 +1,5 @@
 package com.deukin
 
-import gorm.AuditStamp
 
 /**
  * Representa los niveles adquiridos para las aptitudes.
@@ -8,13 +7,13 @@ import gorm.AuditStamp
  * @author Ale Mobile
  *
  */
-@AuditStamp
+@gorm.AuditStamp
 class NivelAdquirido {
 	String codigo
 	String descripcion
 	
     static constraints = {
-		unique[codigo]
+		codigo unique: true
 		
     }
 }

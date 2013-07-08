@@ -1,12 +1,12 @@
 package com.deukin
 
-import gorm.AuditStamp
+
 /**
  * Representa un recurso en particular.
  * @author Ale Mobile
  *
  */
-@AuditStamp
+@gorm.AuditStamp
 class Recurso {
 	
 	TipoRecurso tipoRecurso

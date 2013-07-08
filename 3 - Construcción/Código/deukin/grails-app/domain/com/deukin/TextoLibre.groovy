@@ -1,6 +1,5 @@
 package com.deukin
 
-import gorm.AuditStamp
 /**
  * Representa un Texto Libre, el mismo surge de la necesidad de no hacer tan pesado
  * El / los Objetos que lo contengan cuando no requieren su carga. 
@@ -9,7 +8,7 @@ import gorm.AuditStamp
  * @author Ale Mobile
  *
  */
-@AuditStamp
+@gorm.AuditStamp
 class TextoLibre {
 
 	String descripcion

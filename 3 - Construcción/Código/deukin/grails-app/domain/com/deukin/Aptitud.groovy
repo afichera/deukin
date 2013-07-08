@@ -15,5 +15,6 @@ class Aptitud {
 	
 	static constraints = {
     	titulo unique: true
+		descripcion nullable:true
 	}
 }

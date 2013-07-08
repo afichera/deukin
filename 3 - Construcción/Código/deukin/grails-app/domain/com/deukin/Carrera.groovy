@@ -21,5 +21,6 @@ class Carrera {
 	
 	
     static constraints = {
+		
     }
 }

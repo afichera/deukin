@@ -14,7 +14,7 @@ class Departamento {
 	Contacto contacto
 	//TODO: Hacer Clase Autoridad para remplazar por persona con el cargo
 	static hasMany = [carreras:Carrera, autoridades:Persona]
-	static belongsTo = [institucion:Institucion]	
+	static belongsTo = [institucionEducativa:InstitucionEducativa]	
 	
     static constraints = {
     }

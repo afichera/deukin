@@ -10,9 +10,11 @@ class PeriodoAcademico {
 
 	TipoPeriodoAcademico tipoPeriodoAcademico
 	Integer cantidadSemanas	
-	Date fechaInicio
-	Date fechaFin
-	////TODO: Falta agregar lo que tienen que ver con las fechas de inscripcion/etc de las cuatrimestrales/anuales
+	Date fechaInicioPeriodo
+	Date fechaFinPeriodo
+	Date fechaInicioInscripcion
+	Date fechaFinInscripcion
+	
 	static belongsTo = [CicloLectivo]
 	
     static constraints = {

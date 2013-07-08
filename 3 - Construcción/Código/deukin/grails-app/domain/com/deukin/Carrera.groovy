@@ -9,7 +9,7 @@ package com.deukin
 class Carrera {
 	
 	String titulo	
-	//Ver que hacer con la duracion
+	
 	String condicionIngreso
 	ModalidadAsistencia modalidadAsistencia
 	

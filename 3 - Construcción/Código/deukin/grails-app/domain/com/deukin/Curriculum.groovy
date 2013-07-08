@@ -9,7 +9,6 @@ package com.deukin
 class Curriculum {
 	
 	String titulo
-	static belongsTo = [persona:Persona]
 	static hasMany = [educaciones:EducacionAdquirida, experiencias:ExperienciaLaboral, aptitudes:Aptitud]
     
 	static constraints = {

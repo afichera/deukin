@@ -9,8 +9,12 @@ package com.deukin
 @gorm.AuditStamp
 class PlanEstudio {
 
-	//TODO:Ver si la carga Horaria es algo calculado, ver si hay que cambiar el requerimiento.
-	Integer cargaHoraria
+	//La cantidad de Hs del plan es calculada por las materias.
+	Integer cantidadPeriodosAcademicos
+	
+	//Las validaciones son 1) que exista una correlativa cargada, y luego que ademas valide si esta en un cuatri previo.	
+	static hasMany = [asignacionesPeriodosMaterias:AsignacionPeriodoMateria]
+	//tiene que validar que el periodo no este lleno.
 	
     static constraints = {
     }

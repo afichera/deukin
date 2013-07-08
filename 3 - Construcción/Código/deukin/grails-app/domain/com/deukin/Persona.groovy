@@ -1,5 +1,7 @@
 package com.deukin
 
+import grails.persistence.Entity;
+
 /**
  * Representa una Persona
  * @author Ale Mobile
@@ -12,9 +14,15 @@ class Persona {
 	String apellido
 	Documento documento
 	Contacto contacto	
-	Curriculum curriculum
+	static hasMany = [curriculums:Curriculum]
 	Usuario usuario
 
     static constraints = {
+		usuario nullable: true
+		
     }
+	
+	static mapping = {
+		tablePerHierarchy true
+	}
 }

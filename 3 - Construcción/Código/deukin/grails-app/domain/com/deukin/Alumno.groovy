@@ -5,7 +5,6 @@ package com.deukin
  * @author Ale Mobile
  *
  */
-@gorm.AuditStamp
 class Alumno extends Persona {
 
     static constraints = {

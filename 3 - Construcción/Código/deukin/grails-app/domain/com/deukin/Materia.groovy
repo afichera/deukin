@@ -11,13 +11,13 @@ class Materia {
 
 	Integer codigo
 	String nombre
-	Integer cargaHoraria
+	Integer cantidadUnidadesHorarias //es un parametro que indica el tiempo minimo indivisible de una materia y lo multiplica por esto para la carga horaria.
 	Integer cupoMinimoAlumnos
 	Integer cupoMaximoAlumnos
 	TextoLibre contenidoMinimo
 	Integer cantidadDocentesRequeridos
-	//TODO: Tenemos que definir si las coorrelatividades y equivalencias son una coleccion de Materia o ibamos a crear otra cosa que las agrupe.
-	static hasMany = [objetivosGenerales:TextoLibre, objetivosEspecificos:TextoLibre, recursos:Recurso]
+	//Las equivalencias son las que equivalen a esta materia, las coorrelativas son las predecesoras.
+	static hasMany = [objetivosGenerales:TextoLibre, objetivosEspecificos:TextoLibre, recursos:Recurso, materiasCorrelativas:Materia, materiasEquivalentes:Materia]
 	TextoLibre bibliografia
 
 	static constraints = {

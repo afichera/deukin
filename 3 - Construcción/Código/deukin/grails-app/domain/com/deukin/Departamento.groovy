@@ -12,8 +12,8 @@ class Departamento {
 	String vision
 	String mision
 	Contacto contacto
-	//TODO: Hacer Clase Autoridad para remplazar por persona con el cargo
-	static hasMany = [carreras:Carrera, autoridades:Persona]
+
+	static hasMany = [carreras:Carrera, autoridades:Autoridad]
 	static belongsTo = [institucionEducativa:InstitucionEducativa]	
 	
     static constraints = {

@@ -13,7 +13,7 @@ class Curso {
 	static hasMany = [docentes:Docente, recursosFijos:Recurso]
 	Turno turno
 	EspacioFisico espacioFisico
-	
+	EstadoCurso estadoCurso
 	
     static constraints = {
     }

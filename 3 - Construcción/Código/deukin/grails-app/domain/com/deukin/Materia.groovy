@@ -6,7 +6,6 @@ package com.deukin
  * @author Ale Mobile
  *
  */
-@gorm.AuditStamp
 class Materia {
 
 	Integer codigo
@@ -17,7 +16,7 @@ class Materia {
 	TextoLibre contenidoMinimo
 	Integer cantidadDocentesRequeridos
 	//Las equivalencias son las que equivalen a esta materia, las coorrelativas son las predecesoras.
-	static hasMany = [objetivosGenerales:TextoLibre, objetivosEspecificos:TextoLibre, recursos:Recurso, materiasCorrelativas:Materia, materiasEquivalentes:Materia]
+	static hasMany = [objetivosGenerales:TextoLibre, objetivosEspecificos:TextoLibre, tiposRecurso:TipoRecurso, materiasCorrelativas:Materia, materiasEquivalentes:Materia]
 	TextoLibre bibliografia
 
 	static constraints = {

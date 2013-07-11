@@ -1,6 +1,5 @@
 package com.deukin
 
-@gorm.AuditStamp
 class Documento {
 	
 	Long numero

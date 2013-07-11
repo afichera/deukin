@@ -1,13 +1,11 @@
 package com.deukin
 
-import grails.persistence.Entity;
 
 /**
  * Representa una Persona
  * @author Ale Mobile
  *
  */
-@gorm.AuditStamp
 class Persona {
 	
 	String nombre

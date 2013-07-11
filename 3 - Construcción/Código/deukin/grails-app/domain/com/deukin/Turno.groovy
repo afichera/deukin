@@ -1,8 +1,19 @@
 package com.deukin
 
-@gorm.AuditStamp
+import org.jfree.data.time.Hour;
+/**
+ * 
+ * @author Ale Mobile
+ *
+ */
 class Turno {
-	//TODO:HAcer calse "horario"
+	
+	
+	Hour horaSemanaDesde
+	Hour horaSemanaHasta
+	Hour horaSabadoDesde
+	Hour horaSabadoHasta	
+	
     static constraints = {
     }
 }

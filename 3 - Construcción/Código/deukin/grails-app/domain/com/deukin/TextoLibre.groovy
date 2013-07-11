@@ -8,7 +8,6 @@ package com.deukin
  * @author Ale Mobile
  *
  */
-@gorm.AuditStamp
 class TextoLibre {
 
 	String descripcion

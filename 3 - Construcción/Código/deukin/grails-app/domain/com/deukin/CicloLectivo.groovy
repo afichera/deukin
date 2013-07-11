@@ -1,11 +1,12 @@
 package com.deukin
 
+import java.util.Date;
+
 /**
  * Representa un ciclo de clases.
  * @author Ale Mobile
  *
  */
-@gorm.AuditStamp
 class CicloLectivo {
 
 	String codigo
@@ -14,6 +15,6 @@ class CicloLectivo {
 	static hasMany = [periodosAcademicos:PeriodoAcademico]
 		
     static constraints = {
-		
+		codigo(maxSize:50, unique:true)
     }
 }

@@ -1,6 +1,10 @@
 package com.deukin
 
-@gorm.AuditStamp
+/**
+ * 
+ * @author Ale Mobile
+ *
+ */
 class Telefono {
 	
 	String numero

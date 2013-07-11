@@ -1,11 +1,12 @@
 package com.deukin
 
+import java.util.Date;
+
 /**
  * Representa una unidad de tiempo de cursada ej: Cuatrimestral, BiMestral, Etc.
  * @author Ale Mobile
  *
  */
-@gorm.AuditStamp
 class PeriodoAcademico {
 
 	TipoPeriodoAcademico tipoPeriodoAcademico

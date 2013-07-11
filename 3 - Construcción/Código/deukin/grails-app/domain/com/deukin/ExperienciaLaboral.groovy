@@ -1,7 +1,12 @@
 package com.deukin
 
+import java.util.Date;
 
-@gorm.AuditStamp
+/**
+ * 
+ * @author Ale Mobile
+ *
+ */
 class ExperienciaLaboral {
 	
 	String cargo

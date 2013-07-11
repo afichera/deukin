@@ -1,6 +1,12 @@
 package com.deukin
 
-@gorm.AuditStamp
+import java.util.Set;
+
+/**
+ * 
+ * @author Ale Mobile
+ *
+ */
 class Usuario {
 
 	transient springSecurityService

@@ -5,11 +5,9 @@ package com.deukin
  * @author Ale Mobile
  *
  */
-@gorm.AuditStamp
 class Carrera {
 	
-	String titulo	
-	
+	String titulo		
 	String condicionIngreso
 	ModalidadAsistencia modalidadAsistencia
 	
@@ -18,9 +16,8 @@ class Carrera {
 	TextoLibre fundamentacion	
 	TextoLibre perfilDelGraduado
 	TextoLibre descripcion	
-	
-	
-    static constraints = {
 		
+    static constraints = {
+		titulo (unique:true, maxSize:200)		 	
     }
 }

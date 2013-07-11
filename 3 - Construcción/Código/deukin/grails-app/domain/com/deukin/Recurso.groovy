@@ -6,7 +6,6 @@ package com.deukin
  * @author Ale Mobile
  *
  */
-@gorm.AuditStamp
 class Recurso {
 	
 	TipoRecurso tipoRecurso

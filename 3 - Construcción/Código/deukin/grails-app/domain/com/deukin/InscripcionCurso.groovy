@@ -1,5 +1,12 @@
 package com.deukin
 
+import java.util.Date;
+
+/**
+ * Representa una inscripcion a un Curso
+ * @author Ale Mobile
+ *
+ */
 class InscripcionCurso {
 	
 	Alumno alumno
@@ -11,3 +18,4 @@ class InscripcionCurso {
     static constraints = {
     }
 }
+

@@ -7,7 +7,6 @@ package com.deukin
  * @author Ale Mobile
  *
  */
-@gorm.AuditStamp
 class NivelAdquirido {
 	String codigo
 	String descripcion

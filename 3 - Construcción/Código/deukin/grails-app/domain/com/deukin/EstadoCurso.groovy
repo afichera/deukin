@@ -19,6 +19,7 @@ enum EstadoCurso {
 		
 		]
 	}
+	
 	public String toString(){
 		return name
 	}

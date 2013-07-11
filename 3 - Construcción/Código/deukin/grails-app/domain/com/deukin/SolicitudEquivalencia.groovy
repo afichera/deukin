@@ -1,7 +1,11 @@
 package com.deukin
 
 
-@gorm.AuditStamp
+/**
+ * 
+ * @author Ale Mobile
+ *
+ */
 class SolicitudEquivalencia {
 	
 	Materia materiaSolicitada

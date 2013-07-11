@@ -1,5 +1,10 @@
 package com.deukin
 
+/**
+ * 
+ * @author Ale Mobile
+ *
+ */
 class PeriodoDedicacion {
 	
 	Integer anio

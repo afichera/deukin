@@ -5,7 +5,6 @@ package com.deukin
  * @author Ale Mobile
  *
  */
-@gorm.AuditStamp
 class CronogramaCarrera {
 
 	static hasMany = [cursos:Curso, periodosAcademicos:PeriodoAcademico]

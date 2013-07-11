@@ -1,7 +1,11 @@
 package com.deukin
 
 import org.apache.commons.lang.builder.HashCodeBuilder
-@gorm.AuditStamp
+/**
+ * 
+ * @author Ale Mobile
+ *
+ */
 class UsuarioRol implements Serializable {
 
 	Usuario usuario

@@ -6,7 +6,6 @@ package com.deukin
  * @author Ale Mobile
  *
  */
-@gorm.AuditStamp
 class PlanEstudio {
 
 	//La cantidad de Hs del plan es calculada por las materias.

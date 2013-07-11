@@ -5,13 +5,12 @@ package com.deukin
  * @author Ale Mobile
  *
  */
-@gorm.AuditStamp
 class Curriculum {
 	
 	String titulo
 	static hasMany = [educaciones:EducacionAdquirida, experiencias:ExperienciaLaboral, aptitudes:Aptitud]
     
 	static constraints = {
-		
+		titulo(maxSize:200)		
     }
 }

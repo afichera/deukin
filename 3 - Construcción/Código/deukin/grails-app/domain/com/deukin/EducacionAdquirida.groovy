@@ -1,12 +1,13 @@
 package com.deukin
 
+import java.util.Date;
+
 /**
  * Representa un estudio/curso realizado por una @Persona, y 
  * forma parte de un {@link Curriculum}
  * @author Ale Mobile
  *
  */
-@gorm.AuditStamp
 class EducacionAdquirida {
 
 	String titulo

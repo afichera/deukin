@@ -12,12 +12,14 @@ class Persona {
 	String apellido
 	Documento documento
 	Contacto contacto	
-	static hasMany = [curriculums:Curriculum]
+	static hasMany = [curriculums:Curriculum, curriculumsAdjuntos:CurriculumAdjunto]
 	Usuario usuario
+	FotoPerfil fotoPerfil
 
     static constraints = {
 		usuario nullable: true
-		documento(unique:true)		
+		documento unique:true
+		fotoPerfil nullable:true
     }
 	
 	static mapping = {

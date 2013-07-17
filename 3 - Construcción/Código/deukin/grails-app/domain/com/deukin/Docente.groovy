@@ -7,7 +7,10 @@ package com.deukin
 class Docente extends Persona {
 	
 	Curriculum curriculumDocente
+	static belongsTo = [departamento:Departamento]
+	static hasMany = [nombramiento:Nombramiento]
 	
     static constraints = {
+		nombramiento nullable:true
     }
 }

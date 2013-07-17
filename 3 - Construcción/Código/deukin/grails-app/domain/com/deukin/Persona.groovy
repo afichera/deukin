@@ -17,10 +17,10 @@ class Persona {
 
     static constraints = {
 		usuario nullable: true
-		
+		documento(unique:true)		
     }
 	
 	static mapping = {
-		tablePerHierarchy true
+		tablePerHierarchy false
 	}
 }

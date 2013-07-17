@@ -16,5 +16,9 @@ class Departamento {
 	static belongsTo = [institucionEducativa:InstitucionEducativa]	
 	
     static constraints = {
+		nombre(unique:true, maxLength:200)
+		mision(nullable:true)
+		vision(nullable:true)
+		contacto(nullable:true)
     }
 }

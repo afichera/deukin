@@ -12,6 +12,6 @@ class InstitucionEducativa {
 	Contacto contacto
 	//TODO: Ver que atributos faltarían
     static constraints = {
-		
+		nombre(unique:true, maxLength:200)
     }
 }

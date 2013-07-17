@@ -11,5 +11,8 @@ class Domicilio {
 	
 	
     static constraints = {
+		calle(maxLength:200)
+		localidad(maxLenght:100)
+		observaciones(nullable:true)
     }
 }

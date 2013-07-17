@@ -6,5 +6,7 @@ class Autoridad {
 	String cargo
 	
     static constraints = {
+		persona(unique:true)
+		cargo(maxLength:100)
     }
 }

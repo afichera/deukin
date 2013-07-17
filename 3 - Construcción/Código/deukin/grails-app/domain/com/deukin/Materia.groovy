@@ -20,5 +20,8 @@ class Materia {
 	TextoLibre bibliografia
 
 	static constraints = {
+		codigo(unique:true, maxLength:10)
+		nombre maxLength:200
+		bibliografia nullable:true 
 	}
 }

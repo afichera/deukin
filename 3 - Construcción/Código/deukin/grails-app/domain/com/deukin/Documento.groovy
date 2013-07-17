@@ -6,5 +6,6 @@ class Documento {
 	TipoDocumento tipoDocumento
 
     static constraints = {
+		numero(unique:['tipoDocumento'])
     }
 }

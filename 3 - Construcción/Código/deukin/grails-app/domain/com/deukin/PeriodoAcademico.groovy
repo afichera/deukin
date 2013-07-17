@@ -19,5 +19,6 @@ class PeriodoAcademico {
 	static belongsTo = [CicloLectivo]
 	
     static constraints = {
+		
     }
 }

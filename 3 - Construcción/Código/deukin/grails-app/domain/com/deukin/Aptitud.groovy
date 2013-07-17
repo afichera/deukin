@@ -13,7 +13,7 @@ class Aptitud {
     NivelAdquirido nivelAdquirido
 	
 	static constraints = {
-    	titulo unique: true
+    	titulo (unique: true, maxLength:100)
 		descripcion nullable:true
 	}
 }

@@ -8,9 +8,10 @@ class AsignacionPeriodoMateria {
 
 	Materia materia
 	PeriodoAcademico periodo
-	static belongsTo = [planEsutdio:PlanEstudio]
+	static belongsTo = [planEstudio:PlanEstudio]
 
 	static constraints = {
-		//La unicidad son materia, periodo, planEstudio
+		//TODO:La unicidad son materia, periodo, planEstudio
+		materia(unique:['periodo', 'planEstudio'])
 	}
 }

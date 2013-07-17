@@ -11,9 +11,11 @@ import java.util.Date;
 class EducacionAdquirida {
 
 	String titulo
-	Date fecha
+	Date fechaFinalizacion
 	String descripcion
 	
     static constraints = {
+		titulo(maxLength:200)
+		descripcion(nullable:true)
     }
 }

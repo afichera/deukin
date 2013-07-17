@@ -12,5 +12,6 @@ class CronogramaCarrera {
 	CicloLectivo cicloLectivo
 	
 	static constraints = {
+		cicloLectivo(unique:['planEstudio'])
 	}
 }

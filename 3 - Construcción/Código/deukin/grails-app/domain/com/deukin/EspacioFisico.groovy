@@ -6,7 +6,13 @@ package com.deukin
  *
  */
 class EspacioFisico {
-
+	Integer numero
+	String ubicacion
+	String observaciones
+	
     static constraints = {
+		numero(unique:true)
+		ubicacion(maxLength:200)
+		observaciones(nullable:true)
     }
 }

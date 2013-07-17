@@ -8,6 +8,7 @@ package com.deukin
  */
 class SolicitudEquivalencia {
 	
+	Alumno alumno
 	Materia materiaSolicitada
 	String universidadCursada
 	String materiaCursada
@@ -16,5 +17,7 @@ class SolicitudEquivalencia {
 	String comentario
 	
     static constraints = {
+		alumno(unique:['materiaSolicitada', 'materiaCursada'])
+		comentario nullable:true
     }
 }

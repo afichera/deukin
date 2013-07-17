@@ -10,5 +10,6 @@ class Telefono {
 	String numero
 	TipoTelefono tipoTelefono
     static constraints = {
+		numero(maxLength:20)
     }
 }

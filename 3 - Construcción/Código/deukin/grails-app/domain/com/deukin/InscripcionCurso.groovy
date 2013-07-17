@@ -16,6 +16,7 @@ class InscripcionCurso {
 	Calificacion calificacion
 
     static constraints = {
+		curso(unique:['alumno'])
     }
 }
 

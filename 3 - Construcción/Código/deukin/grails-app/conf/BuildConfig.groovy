@@ -12,7 +12,7 @@ grails.project.dependency.resolution = {
         // specify dependency exclusions here; for example, uncomment this to disable ehcache:
         // excludes 'ehcache'
     }
-    log "error" // log level of Ivy resolver, either 'error', 'warn', 'info', 'debug' or 'verbose'
+    log "warn" // log level of Ivy resolver, either 'error', 'warn', 'info', 'debug' or 'verbose'
     checksums true // Whether to verify checksums on resolve
 
     repositories {
@@ -39,8 +39,9 @@ grails.project.dependency.resolution = {
     dependencies {
         // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes eg.
 
-        // runtime 'mysql:mysql-connector-java:5.1.20'
+//         runtime 'mysql:mysql-connector-java:5.1.20'
 		runtime 'postgresql:postgresql:9.1-901.jdbc4'
+//		runtime ":mysql-connectorj:5.1.20" 
     }
 
     plugins {
@@ -62,5 +63,8 @@ grails.project.dependency.resolution = {
         compile ':cache:1.0.0'
 		compile ":mail:1.0.1"
 		compile ":spring-security-core:1.2.7.1"
+		
+		
+		
     }
 }

@@ -116,12 +116,12 @@ grails.plugins.springsecurity.userLookup.authorityJoinClassName = 'com.deukin.Us
 grails.plugins.springsecurity.authority.className = 'com.deukin.Rol'
 
 //Configuración de Registro de Auditoria
-stamp{
-	audit{
-		//the created and edited fields should be present or they won't get added during AST
-		createdBy="creadoPor" //id who created
-		createdDate="fechaCreacion" // if you want a date stamp that is not the grails default dateCreated
-		editedBy="modificadoPor" //id who updated/edited
-		editedDate="fechaModificacion"//use this field instead of the grails default lastUpdate
-	}
-}
+//stamp{
+//	audit{
+//		//the created and edited fields should be present or they won't get added during AST
+//		createdBy="creadoPor" //id who created
+//		createdDate="fechaCreacion" // if you want a date stamp that is not the grails default dateCreated
+//		editedBy="modificadoPor" //id who updated/edited
+//		editedDate="fechaModificacion"//use this field instead of the grails default lastUpdate
+//	}
+//}

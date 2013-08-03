@@ -1,11 +1,20 @@
+//dataSource {
+//	pooled = true
+//	//    driverClassName = "org.h2.Driver"
+//	driverClassName = "org.postgresql.Driver"
+//	//	url = "jdbc:postgresql://localhost:5432/grails"
+//	//    username = "sa"
+//	//    password = ""
+//	//	dialect = "net.sf.hibernate.dialect.PostgreSQLDialect"
+//	username = "postgres"
+//	password = "postgres"
+//}
+
+
 dataSource {
 	pooled = true
-	//    driverClassName = "org.h2.Driver"
+	dbCreate = "update"
 	driverClassName = "org.postgresql.Driver"
-	//	url = "jdbc:postgresql://localhost:5432/grails"
-	//    username = "sa"
-	//    password = ""
-	//	dialect = "net.sf.hibernate.dialect.PostgreSQLDialect"
 	username = "postgres"
 	password = "postgres"
 }
@@ -18,15 +27,17 @@ hibernate {
 environments {
 	development {
 		dataSource {
-			dbCreate = "update" // one of 'create', 'create-drop', 'update', 'validate', ''
+			dbCreate = "create" // one of 'create', 'create-drop', 'update', 'validate', ''
 			//            url = "jdbc:h2:mem:devDb;MVCC=TRUE;LOCK_TIMEOUT=10000"
 			url = 'jdbc:postgresql://localhost:5432/deukin_dev'
+//			url = "jdbc:mysql://localhost:3306/deukin_dev"
 		}
 	}
 	test {
 		dataSource {
 			dbCreate = "create"
 			//            url = "jdbc:h2:mem:testDb;MVCC=TRUE;LOCK_TIMEOUT=10000"
+//			url = "jdbc:mysql://localhost:3306/deukin_test"
 			url = 'jdbc:postgresql://localhost:5432/deukin_test'
 		}
 	}
@@ -34,7 +45,8 @@ environments {
 		dataSource {
 			dbCreate = "create"
 			//            url = "jdbc:h2:prodDb;MVCC=TRUE;LOCK_TIMEOUT=10000"
-			url = 'jdbc:postgresql://localhost:5432/deukin_prod'
+//			url = 'jdbc:postgresql://localhost:5432/deukin_prod'
+			url = "jdbc:mysql://localhost:3306/deukin_prod"
 			pooled = true
 			properties {
 				maxActive = -1

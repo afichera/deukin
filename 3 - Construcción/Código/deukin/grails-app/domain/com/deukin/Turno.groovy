@@ -1,6 +1,6 @@
 package com.deukin
 
-import org.jfree.data.time.Hour
+
 /**
  * 
  * @author Ale Mobile
@@ -9,10 +9,10 @@ import org.jfree.data.time.Hour
 class Turno {
 	
 	String codigo
-	Hour horaSemanaDesde
-	Hour horaSemanaHasta
-	Hour horaSabadoDesde
-	Hour horaSabadoHasta	
+	Integer horaSemanaDesde
+	Integer horaSemanaHasta
+	Integer horaSabadoDesde
+	Integer horaSabadoHasta	
 	
     static constraints = {
 		codigo(unique:true, maxLength:20)

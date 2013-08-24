@@ -118,7 +118,7 @@ class BootStrap {
 
 
 		//Turnos Solo para Test
-		def turnoMañana = Turno.findByCodigo('MAÑANA') ?: new Turno(codigo: 'MAÑANA',
+		def turnoManiana = Turno.findByCodigo('MANIANA') ?: new Turno(codigo: 'MANIANA',
 		horaSemanaDesde: 8, horaSemanaHasta: 12, horaSabadoDesde: 8, horaSabadoHasta: 12
 		).save(failOnError: true)
 

@@ -6,7 +6,8 @@ package com.deukin
  *
  */
 class Alumno extends Persona {
-
+String nombre
+String apellido
     static constraints = {
     }
 }

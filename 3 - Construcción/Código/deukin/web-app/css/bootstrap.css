@@ -3033,6 +3033,11 @@ button.close {
   margin-bottom: 0;
 }
 
+.navbar-form p{
+	color:#ffffff;
+	}
+}
+
 .navbar-nav > li > .dropdown-menu {
   margin-top: 0;
   border-top-right-radius: 0;
@@ -3052,7 +3057,8 @@ button.close {
 
 .navbar-nav > .open > a,
 .navbar-nav > .open > a:hover,
-.navbar-nav > .open > a:focus {
+.navbar-nav > .open > a:focus
+ {
   color: #ffffff;
   background-color: #1a242f;
 }

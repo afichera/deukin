@@ -54,9 +54,12 @@
 					<li><a href="#contact">Estadísticas</a></li>
 				</ul>
 				<form class="navbar-form pull-right">
-					<input class="span2" type="text" placeholder="Email"> <input
-						class="span2" type="password" placeholder="Password">
-					<button type="submit" class="btn">Sign in</button>
+<sec:ifLoggedIn>
+<p>Bienvenido, <sec:username/>. <g:link controller='logout' > Salir</g:link></p>
+</sec:ifLoggedIn>
+<sec:ifNotLoggedIn>
+<g:link controller='login' action='auth' class="btn btn-default">Ingresar</g:link>
+</sec:ifNotLoggedIn>
 				</form>
 			</div>
 			<!--/.nav-collapse -->

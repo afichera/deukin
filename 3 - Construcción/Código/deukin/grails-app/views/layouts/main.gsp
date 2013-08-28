@@ -18,7 +18,7 @@
 	href="${resource(dir: 'images', file: 'apple-touch-icon.png')}">
 <link rel="apple-touch-icon" sizes="114x114"
 	href="${resource(dir: 'images', file: 'apple-touch-icon-retina.png')}">
-
+<link rel="stylesheet" href="${resource(dir: 'css', file: 'style.css')}" type="text/css">
 <!-- Bootstrap core CSS -->
 <link rel="stylesheet" href="${resource(dir: 'css', file: 'bootstrap.css')}" type="text/css">
 <link rel="stylesheet" href="${resource(dir: 'css', file: 'navbar-static-top.css')}" type="text/css">
@@ -35,24 +35,8 @@
 			</button>
 			<a class="navbar-brand" href="${createLink(uri: '/')}"><img
 				src="${resource(dir: 'images', file: 'logo.png')}" alt="Deukin" /></a>
-			<div class="nav-collapse collapse">
-				<ul class="nav navbar-nav">
-					<li class="active"><a href="#about">Académicas</a></li>
-					<li><a href="#contact">Docentes</a></li>
-					<li class="dropdown"><a href="#" class="dropdown-toggle"
-						data-toggle="dropdown">Alumnos <b class="caret"></b></a>
-						<ul class="dropdown-menu">
-							<li><a href="#">Action</a></li>
-							<li><a href="#">Another action</a></li>
-							<li><a href="#">Something else here</a></li>
-							<li class="divider"></li>
-							<li class="nav-header">Nav header</li>
-							<li><a href="#">Separated link</a></li>
-							<li><a href="#">One more separated link</a></li>
-						</ul></li>
-					<li><a href="#contact">Espacios Físicos</a></li>
-					<li><a href="#contact">Estadísticas</a></li>
-				</ul>
+			<div class="nav-collapse collapse navbar-responsive-collapse">
+<g:render template="/layouts/menu"></g:render>
 				<form class="navbar-form pull-right">
 <sec:ifLoggedIn>
 <p>Bienvenido, <sec:username/>. <g:link controller='logout' > Salir</g:link></p>
@@ -73,9 +57,11 @@
 			<div id="spinner" class="spinner" style="display: none;">
 				<g:message code="spinner.alt" default="Loading&hellip;" />
 			</div>
+			</div>
+			</div>
 			<g:javascript library="application" />
 			<r:layoutResources />
-			<script src="assets/js/jquery.js"></script>
-			<script src="js/bootstrap.min.js"></script>
+			<script src="${resource(dir: 'assets/js', file: 'jquery.js')}"></script>
+			<script src="${resource(dir: 'js', file: 'bootstrap.min.js')}"></script>
 </body>
 </html>

@@ -7,7 +7,48 @@
 </head>
 <body>
   <div class="body">
-    	<g:message code="perfiles.home.mensage"/>
+    	<div class="row">
+			<div class="col-lg-4">
+				<div class="panel panel-info">
+					<div class="panel-heading">
+						<h3 class="panel-title">
+							<g:message code="secciones.academicas" />
+						</h3>
+					</div>
+					<ul>
+						<li><g:link controller='proximamente'><g:message code="secciones.academicas.materiasEnCurso" /></g:link></li>
+						<li><g:link controller='proximamente'><g:message code="secciones.academicas.materiasCursadas" /></g:link></li>
+						
+					</ul>
+				</div>
+			</div>
+			<div class="col-lg-4">
+				<div class="panel panel-info">
+					<div class="panel-heading">
+						<h3 class="panel-title">
+							<g:message code="secciones.solicitudes" />
+						</h3>
+					</div>
+					<ul>
+						<li><g:link controller='proximamente'><g:message code="secciones.solicitudes.equivalencias" /></g:link></li>
+					</ul>
+				</div>
+			</div>
+			<div class="col-lg-4">
+				<div class="panel panel-info">
+					<div class="panel-heading">
+						<h3 class="panel-title">
+							<g:message code="secciones.inscripciones" />
+						</h3>
+					</div>
+					<ul>
+						<li><g:link controller='proximamente'><g:message code="secciones.inscripciones.materias" /></g:link></li>
+						<li><g:link controller='proximamente'><g:message code="secciones.inscripciones.finales" /></g:link></li>
+						<li><g:link controller='proximamente'><g:message code="secciones.inscripciones.cursosEspeciales" /></g:link></li>
+					</ul>
+				</div>
+			</div>
+		</div>
   </div>
 </body>
 </html>

@@ -7,7 +7,45 @@
 </head>
 <body>
   <div class="body">
-    	<g:message code="perfiles.home.mensage"/>
+    	<div class="row">
+			<div class="col-lg-4">
+				<div class="panel panel-info">
+					<div class="panel-heading">
+						<h3 class="panel-title">
+							<g:message code="secciones.institucion" />
+						</h3>
+					</div>
+					<ul>
+						<li><g:link controller='proximamente'><g:message code="secciones.institucion.datos" /></g:link></li>
+						<li><g:link controller='proximamente'><g:message code="secciones.institucion.departamentos" /></g:link></li>
+					</ul>
+				</div>
+			</div>
+			<div class="col-lg-4">
+				<div class="panel panel-info">
+					<div class="panel-heading">
+						<h3 class="panel-title">
+							<g:message code="secciones.usuarios" />
+						</h3>
+					</div>
+					<ul>
+						<li><g:link controller='proximamente'><g:message code="secciones.usuarios.usuarios" /></g:link></li>
+					</ul>
+				</div>
+			</div>
+			<div class="col-lg-4">
+				<div class="panel panel-info">
+					<div class="panel-heading">
+						<h3 class="panel-title">
+							<g:message code="secciones.aplicacion" />
+						</h3>
+					</div>
+					<ul>
+						<li><g:link controller='proximamente'><g:message code="secciones.aplicacion.opciones" /></g:link></li>
+					</ul>
+				</div>
+			</div>
+		</div>
   </div>
 </body>
 </html>

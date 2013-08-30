@@ -1,8 +1,12 @@
 import com.deukin.Alumno
+import com.deukin.Carrera
 import com.deukin.Contacto
 import com.deukin.Documento
 import com.deukin.Domicilio
 import com.deukin.EstadoRecurso
+import com.deukin.Materia
+import com.deukin.ModalidadAsistencia
+import com.deukin.PeriodoDedicacion;
 import com.deukin.Recurso
 import com.deukin.Rol
 import com.deukin.Telefono
@@ -172,11 +176,31 @@ class BootStrap {
 		contactoAlumno2.telefonos.add(telefono1Alumno2)
 		contactoAlumno2.telefonos.add(telefono2Alumno2)
 
+		//documentos solo para test
 		def documentoDNIAlumno1 = Documento.findByNumeroAndTipoDocumento(28230014, TipoDocumento.DNI)?:new Documento(numero:28230014, tipoDocumento:TipoDocumento.DNI).save(failOnError:true)
 		def documentoCUILAlumno2 = Documento.findByNumeroAndTipoDocumento(20282300142, TipoDocumento.CUIL)?:new Documento(numero:20282300142, tipoDocumento:TipoDocumento.CUIL).save(failOnError:true)
-
+		//Alumnos solo para test
 		def alumno1 = Alumno.findByDocumento(documentoDNIAlumno1)?:new Alumno(nombre:'Alejandro',apellido:'Fichera',documento:documentoDNIAlumno1, contacto: contactoAlumno1, usuario:alumnoUser1).save(failOnError:true)
 		def alumno2 = Alumno.findByDocumento(documentoCUILAlumno2)?:new Alumno(nombre:'Juan Diego',apellido:'Margenats',documento:documentoCUILAlumno2, contacto: contactoAlumno2, usuario:alumnoAdministrativoUser1).save(failOnError:true)
+	
+		//carreras solo para test
+		def carrera1 = Carrera.findByTitulo('TECNICO UNIVERSITARIO EN DESARROLLO WEB')?:new Carrera(titulo: 'TECNICO UNIVERSITARIO EN DESARROLLO WEB', descripcion:'TECNICATURA UNIVERSITARIA EN DESARROLLO WEB', condicionIngreso: 'SECUNDARIO COMPLETO', modalidadAsistencia: ModalidadAsistencia.PRESENCIAL).save(failOnError:true)
+		def carrera2 = Carrera.findByTitulo('INGENIERIO EN INFORMATICA')?:new Carrera(titulo: 'INGENIERIO EN INFORMATICA', descripcion:'INGENIERIA EN INFORMATICA', condicionIngreso: 'SECUNDARIO COMPLETO', modalidadAsistencia: ModalidadAsistencia.PRESENCIAL).save(failOnError:true)
+		//Materias solo para test
+		def materia1 = Materia.findByCodigo(1)?: new Materia(codigo:1, nombre:'BASE DE DATOS 1', cantidadUnidadesHorarias:40, cupoMinimoAlumnos:20, cupoMaximoAlumnos:30, cantidadDocentesRequeridos:2, contenidoMinimo:'Aca va el contenido minimo...', bibliografia:'Acá va la bibliografia.').save(failOnError:true)
+		def materia2 = Materia.findByCodigo(2)?: new Materia(codigo:2, nombre:'PROGRAMACION BASICA 1', cantidadUnidadesHorarias:80, cupoMinimoAlumnos:30, cupoMaximoAlumnos:40, cantidadDocentesRequeridos:3, contenidoMinimo:'Aca va el contenido minimo...', bibliografia:'Acá va la bibliografia.').save(failOnError:true)
+		def materia3 = Materia.findByCodigo(3)?: new Materia(codigo:3, nombre:'MATEMATICA', cantidadUnidadesHorarias:40, cupoMinimoAlumnos:15, cupoMaximoAlumnos:30, cantidadDocentesRequeridos:1, contenidoMinimo:'Aca va el contenido minimo...', bibliografia:'Acá va la bibliografia.').save(failOnError:true)
+		def materia4 = Materia.findByCodigo(4)?: new Materia(codigo:4, nombre:'PROGRAMACION WEB 1', cantidadUnidadesHorarias:40, cupoMinimoAlumnos:20, cupoMaximoAlumnos:30, cantidadDocentesRequeridos:2, contenidoMinimo:'Aca va el contenido minimo...', bibliografia:'Acá va la bibliografia.').save(failOnError:true)
+		def materia5 = Materia.findByCodigo(5)?: new Materia(codigo:5, nombre:'BASE DE DATOS 2', cantidadUnidadesHorarias:40, cupoMinimoAlumnos:8, cupoMaximoAlumnos:30, cantidadDocentesRequeridos:1, contenidoMinimo:'Aca va el contenido minimo...', bibliografia:'Acá va la bibliografia.').save(failOnError:true)
+		def materia6 = Materia.findByCodigo(6)?: new Materia(codigo:6, nombre:'REDES', cantidadUnidadesHorarias:40, cupoMinimoAlumnos:8, cupoMaximoAlumnos:30, cantidadDocentesRequeridos:2, contenidoMinimo:'Aca va el contenido minimo...', bibliografia:'Acá va la bibliografia.').save(failOnError:true)
+		def materia7 = Materia.findByCodigo(7)?: new Materia(codigo:7, nombre:'PROGRAMACION WEB 2', cantidadUnidadesHorarias:80, cupoMinimoAlumnos:8, cupoMaximoAlumnos:30, cantidadDocentesRequeridos:2, contenidoMinimo:'Aca va el contenido minimo...', bibliografia:'Acá va la bibliografia.').save(failOnError:true)
+		def materia8 = Materia.findByCodigo(8)?: new Materia(codigo:8, nombre:'PROGRAMACION WEB 3', cantidadUnidadesHorarias:80, cupoMinimoAlumnos:8, cupoMaximoAlumnos:30, cantidadDocentesRequeridos:2, contenidoMinimo:'Aca va el contenido minimo...', bibliografia:'Acá va la bibliografia.').save(failOnError:true)
+		
+		//Solo Para Test
+		def periodoDedicacion1 = PeriodoDedicacion.findByAnioAndCuatrimestre(2013, 1)?: new PeriodoDedicacion(anio:2013, cuatrimestre:1).save(failOnError:true)
+		def periodoDedicacion2 = PeriodoDedicacion.findByAnioAndCuatrimestre(2013, 2)?: new PeriodoDedicacion(anio:2013, cuatrimestre:2).save(failOnError:true)
+		
+		
 
 	}
 	def destroy = {

@@ -1,6 +1,6 @@
 package com.deukin
 
-import java.util.Date;
+import java.util.Date
 
 /**
  * Representa un estudio/curso realizado por una @Persona, y 

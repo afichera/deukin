@@ -11,6 +11,7 @@ class PeriodoDedicacion {
 	Integer cuatrimestre
 		 
     static constraints = {
+		anio(unique:['cuatrimestre'])
     }
 	
 }

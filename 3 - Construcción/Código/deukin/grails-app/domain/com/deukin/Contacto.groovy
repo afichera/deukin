@@ -9,7 +9,7 @@ class Contacto {
 	
 	Domicilio domicilio
 	static hasMany = [telefonos:Telefono]
-	
+	static belongsTo = Persona
     static constraints = {
     }
 }

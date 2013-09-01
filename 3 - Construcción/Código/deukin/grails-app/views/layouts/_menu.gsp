@@ -6,15 +6,15 @@
 				class="dropdown-toggle" data-toggle="dropdown"><g:message code="secciones.academicas" /><b class="caret"></b></a>
 			<ul class="dropdown-menu">
 				<sec:ifAnyGranted
-		roles="ROLE_COORDINADOR,ROLE_ADMINISTRATIVO"><li><g:link controller='proximamente'><g:message code="secciones.academicas.carreras" /></g:link></li></sec:ifAnyGranted>
+		roles="ROLE_COORDINADOR,ROLE_ADMINISTRATIVO"><li><g:link controller='carrera'><g:message code="secciones.academicas.carreras" /></g:link></li></sec:ifAnyGranted>
 				<sec:ifAnyGranted
-		roles="ROLE_DOCENTE,ROLE_COORDINADOR,ROLE_ADMINISTRATIVO"><li><g:link controller='proximamente'><g:message code="secciones.academicas.materias" /></g:link></li></sec:ifAnyGranted>
+		roles="ROLE_DOCENTE,ROLE_COORDINADOR,ROLE_ADMINISTRATIVO"><li><g:link controller='materia'><g:message code="secciones.academicas.materias" /></g:link></li></sec:ifAnyGranted>
 				<sec:ifAnyGranted
-		roles="ROLE_DOCENTE,ROLE_COORDINADOR,ROLE_ADMINISTRATIVO"><li><g:link controller='proximamente'><g:message code="secciones.academicas.cursos" /></g:link></li></sec:ifAnyGranted>
+		roles="ROLE_DOCENTE,ROLE_COORDINADOR,ROLE_ADMINISTRATIVO"><li><g:link controller='curso'><g:message code="secciones.academicas.cursos" /></g:link></li></sec:ifAnyGranted>
 				<sec:ifAnyGranted
-		roles="ROLE_COORDINADOR,ROLE_ADMINISTRATIVO"><li><g:link controller='proximamente'><g:message code="secciones.academicas.planesDeEstudio" /></g:link></li></sec:ifAnyGranted>
+		roles="ROLE_COORDINADOR,ROLE_ADMINISTRATIVO"><li><g:link controller='planEstudio'><g:message code="secciones.academicas.planesDeEstudio" /></g:link></li></sec:ifAnyGranted>
 				<sec:ifAnyGranted
-		roles="ROLE_COORDINADOR,ROLE_ADMINISTRATIVO"><li><g:link controller='proximamente'><g:message code="secciones.academicas.cronogramasDeCursos" /></g:link></li></sec:ifAnyGranted>
+		roles="ROLE_COORDINADOR,ROLE_ADMINISTRATIVO"><li><g:link controller='cronogramaCarrera'><g:message code="secciones.academicas.cronogramasDeCursos" /></g:link></li></sec:ifAnyGranted>
 				<sec:ifAnyGranted
 		roles="ROLE_DOCENTE,ROLE_COORDINADOR,ROLE_ADMINISTRATIVO"><li><g:link controller='proximamente'><g:message code="secciones.academicas.finales" /></g:link></li></sec:ifAnyGranted>
 				<sec:ifAnyGranted

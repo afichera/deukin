@@ -16,11 +16,11 @@
 						</h3>
 					</div>
 					<ul>
-						<li><g:link controller='proximamente'><g:message code="secciones.academicas.carreras" /></g:link></li>
-						<li><g:link controller='proximamente'><g:message code="secciones.academicas.materias" /></g:link></li>
-						<li><g:link controller='proximamente'><g:message code="secciones.academicas.cursos" /></g:link></li>
-						<li><g:link controller='proximamente'><g:message code="secciones.academicas.planesDeEstudio" /></g:link></li>
-						<li><g:link controller='proximamente'><g:message code="secciones.academicas.cronogramasDeCursos" /></g:link></li>
+						<li><g:link controller='carrera'><g:message code="secciones.academicas.carreras" /></g:link></li>
+						<li><g:link controller='materia'><g:message code="secciones.academicas.materias" /></g:link></li>
+						<li><g:link controller='curso'><g:message code="secciones.academicas.cursos" /></g:link></li>
+						<li><g:link controller='planEstudio'><g:message code="secciones.academicas.planesDeEstudio" /></g:link></li>
+						<li><g:link controller='cronogramaCarrera'><g:message code="secciones.academicas.cronogramasDeCursos" /></g:link></li>
 						<li><g:link controller='proximamente'><g:message code="secciones.academicas.finales" /></g:link></li>
 						<li><g:link controller='proximamente'><g:message code="secciones.academicas.cursosEspeciales" /></g:link></li>
 					</ul>

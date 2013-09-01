@@ -8,10 +8,8 @@
 		<title><g:message code="default.list.label" args="[entityName]" /></title>
 	</head>
 	<body>
-		<a href="#list-${domainClass.propertyName}" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-		<div class="nav" role="navigation">
-			<ul>
-				<li><a class="home" href="\${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
+		<div class="navbar navbar-inverse" role="navigation">
+			<ul class="nav navbar-nav">
 				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
 			</ul>
 		</div>
@@ -20,7 +18,7 @@
 			<g:if test="\${flash.message}">
 			<div class="message" role="status">\${flash.message}</div>
 			</g:if>
-			<table class"table table-striped table-bordered table-hover">
+			<table class="table table-striped table-bordered table-hover">
 				<thead>
 					<tr>
 					<%  excludedProps = Event.allEvents.toList() << 'id' << 'version'
@@ -32,7 +30,7 @@
 								if (p.isAssociation()) { %>
 						<th><g:message code="${domainClass.propertyName}.${p.name}.label" default="${p.naturalName}" /></th>
 					<%      } else { %>
-						<g:sortableColumn property="${p.name}" title="\${message(code: '${domainClass.propertyName}.${p.name}.label', default: '${p.naturalName}')}" />
+						<g:sortableColumn property="${p.name}" title="\${message(code: '${domainClass.propertyName}.${p.name}.label', default: '${p.naturalName} <span class="glyphicon glyphicon-sort"></span>')}" />
 					<%  }   }   } %>
 					</tr>
 				</thead>

@@ -3,7 +3,7 @@ package com.deukin
 import grails.plugins.springsecurity.Secured
 
 @Secured(['ROLE_COORDINADOR','ROLE_ADMINISTRATIVO'])
-class CarreraController {
+class CronogramaCarreraController {
 
-   static scaffold=true
+    static scaffold=true
 }

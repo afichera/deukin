@@ -22,6 +22,7 @@
 <!-- Bootstrap core CSS -->
 <link rel="stylesheet" href="${resource(dir: 'css', file: 'bootstrap.css')}" type="text/css">
 <link rel="stylesheet" href="${resource(dir: 'css', file: 'navbar-static-top.css')}" type="text/css">
+<link rel="stylesheet" href="${resource(dir: 'css', file: 'bootstrap-glyphicons.css')}" type="text/css">
 <g:layoutHead />
 <r:layoutResources />
 </head>
@@ -42,7 +43,7 @@
 <p>Bienvenido, <sec:username/>. <g:link controller='logout' > Salir</g:link></p>
 </sec:ifLoggedIn>
 <sec:ifNotLoggedIn>
-<g:link controller='login' action='auth' class="btn btn-default">Ingresar</g:link>
+<g:link controller='home' class="btn btn-default">Ingresar</g:link>
 </sec:ifNotLoggedIn>
 				</form>
 			</div>

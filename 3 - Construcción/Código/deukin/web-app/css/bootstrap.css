@@ -1218,6 +1218,10 @@ th {
   text-align: left;
 }
 
+th a{
+	color:#2c3e50;
+}
+
 .table {
   width: 100%;
   margin-bottom: 21px;
@@ -1466,7 +1470,7 @@ input[type="number"]::-webkit-inner-spin-button {
   color: #b4bcc2;
 }
 
-.form-control, input, select {
+.form-control, input[type="text"],input[type="textarea"], select {
   display: block;
   width: 100%;
   height: 43px;
@@ -4088,6 +4092,11 @@ button.close {
 .alert .alert-link {
   font-weight: 500;
   color: #e6e6e6;
+}
+
+.alert li{
+	list-style: none;
+	
 }
 
 .alert .close {

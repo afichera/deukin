@@ -1,6 +1,6 @@
 package com.deukin
 import grails.plugins.springsecurity.Secured
-@Secured(['ROLE_COORDINADOR'])
+@Secured(['ROLE_COORDINADOR','ROLE_ADMINISTRATIVO'])
 
 class AlumnoController {
 

@@ -2,5 +2,5 @@ package com.deukin
 
 class CarreraController {
 
-    def index() { }
+   static scaffold=true
 }

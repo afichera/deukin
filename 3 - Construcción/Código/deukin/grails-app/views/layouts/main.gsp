@@ -34,8 +34,11 @@
 				<span class="icon-bar"></span> <span class="icon-bar"></span> <span
 					class="icon-bar"></span>
 			</button>
+			<sec:ifNotLoggedIn>
 			<a class="navbar-brand" href="${createLink(uri: '/')}"><img
-				src="${resource(dir: 'images', file: 'logo.png')}" alt="Deukin" /></a>
+				src="${resource(dir: 'images', file: 'logo.png')}" alt="Deukin" /></a></sec:ifNotLoggedIn>
+			<sec:ifLoggedIn><g:link controller='home' class="navbar-brand"><img
+				src="${resource(dir: 'images', file: 'logo.png')}" alt="Deukin" /></g:link></sec:ifLoggedIn>	
 			<div class="nav-collapse collapse navbar-responsive-collapse">
 <g:render template="/layouts/menu"></g:render>
 				<form class="navbar-form pull-right">

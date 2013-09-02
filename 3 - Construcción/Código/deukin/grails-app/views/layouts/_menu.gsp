@@ -1,5 +1,4 @@
 <ul class="nav navbar-nav">
-	<sec:ifLoggedIn><li><g:link controller='home'>Mi Inicio</g:link></li></sec:ifLoggedIn>
 	<sec:ifAnyGranted
 		roles="ROLE_ALUMNO,ROLE_DOCENTE,ROLE_COORDINADOR,ROLE_ADMINISTRATIVO">
 		<li class="dropdown"><a href="#"

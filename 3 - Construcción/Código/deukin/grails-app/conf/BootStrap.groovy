@@ -1,12 +1,14 @@
 import com.deukin.Alumno
 import com.deukin.Carrera
 import com.deukin.Contacto
+import com.deukin.Departamento
 import com.deukin.Documento
 import com.deukin.Domicilio
 import com.deukin.EstadoRecurso
+import com.deukin.InstitucionEducativa
 import com.deukin.Materia
 import com.deukin.ModalidadAsistencia
-import com.deukin.PeriodoDedicacion;
+import com.deukin.PeriodoDedicacion
 import com.deukin.Recurso
 import com.deukin.Rol
 import com.deukin.Telefono
@@ -200,7 +202,28 @@ class BootStrap {
 		def periodoDedicacion1 = PeriodoDedicacion.findByAnioAndCuatrimestre(2013, 1)?: new PeriodoDedicacion(anio:2013, cuatrimestre:1).save(failOnError:true)
 		def periodoDedicacion2 = PeriodoDedicacion.findByAnioAndCuatrimestre(2013, 2)?: new PeriodoDedicacion(anio:2013, cuatrimestre:2).save(failOnError:true)
 		
+		//Departamentos solo para Test
 		
+		def telefonoDepartamentoIngenieria= Telefono.findByNumero('01144444444')?: new Telefono(numero: '01144444444', tipoTelefono:TipoTelefono.TRABAJO)
+		def DomicilioDepartamentoIngenieria = new Domicilio(calle: 'Direccion de la unlam', numero: 556, codigoPostal: 1704,localidad: 'San Justo', observaciones: 'De la entrada principal a la izquierda.')
+		def contactoDepartamentoIngenieria = new Contacto(domicilio: DomicilioDepartamentoIngenieria)
+		contactoDepartamentoIngenieria.telefonos = []
+		contactoDepartamentoIngenieria.telefonos.add(telefonoDepartamentoIngenieria)
+		
+		def telefonoInstitucion= Telefono.findByNumero('01155555555')?: new Telefono(numero: '01155555555', tipoTelefono:TipoTelefono.TRABAJO)
+		def DomicilioInstitucion = new Domicilio(calle: 'Direccion de la unlam', numero: 556, codigoPostal: 1704,localidad: 'San Justo', observaciones: '')
+		def contactoInstitucion= new Contacto(domicilio: DomicilioInstitucion)
+		contactoInstitucion.telefonos = []
+		contactoInstitucion.telefonos.add(telefonoInstitucion)
+		contactoInstitucion.save(failOnError:true)
+		
+		def departamentoIngenieria = Departamento.findByNombre('Ingenieria')?: new Departamento(nombre: 'Ingenieria', mision: 'La mision de nuestro departamento es...', vision: 'La visión de nuestro departamenteo es...', contacto: contactoInstitucion)
+		def institucionEducativaUnica = InstitucionEducativa.findByNombre('UNLAM')?: new InstitucionEducativa(contacto: contactoInstitucion, nombre: 'UNLAM').save(failOnError:true)
+		institucionEducativaUnica.departamentos = []
+		institucionEducativaUnica.departamentos.add(departamentoIngenieria)
+		institucionEducativaUnica.save(failOnError:true)
+		
+		//Planes
 
 	}
 	def destroy = {

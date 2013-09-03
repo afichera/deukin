@@ -14,12 +14,13 @@ class Persona {
 	Contacto contacto	
 	static hasMany = [curriculums:Curriculum, curriculumsAdjuntos:CurriculumAdjunto]
 	Usuario usuario
-	FotoPerfil fotoPerfil
+	byte[] fotoPerfil
 
     static constraints = {
 		usuario nullable: true
 		documento unique:true
-		fotoPerfil nullable:true
+		// Limita a 2MB la foto
+		fotoPerfil maxSize: 1024 * 1024 * 2, nullable:true
     }
 	
 	static mapping = {

@@ -13,14 +13,16 @@ class Carrera {
 	
 	//Los objetivos pueden ser varios. Los planes tambien, solo que uno será el Vigente
 	static hasMany = [objetivos:String, planesEstudio:PlanEstudio]
-	def fundamentacion	
-	def perfilDelGraduado
-	def descripcion	
+	String fundamentacion	
+	String perfilDelGraduado
+	String descripcion	
 		
     static constraints = {
 		titulo (unique:true, maxSize:200)	
+		planesEstudio nullable:true
 		fundamentacion nullable:true
 		perfilDelGraduado nullable:true
-		descripcion nullable:true	 	
+		descripcion nullable:true	
+		 	
     }
 }

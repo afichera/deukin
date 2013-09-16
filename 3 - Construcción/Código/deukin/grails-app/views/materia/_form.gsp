@@ -88,6 +88,15 @@
 		
 	</label>
 	
+<ul class="one-to-many">
+<g:each in="${materiaInstance?.objetivosEspecificos?}" var="o">
+    <li><g:link controller="objetivo" action="show" id="${o.id}">${o?.encodeAsHTML()}</g:link></li>
+</g:each>
+<li class="add">
+<g:link controller="objetivo" action="create" params="['materia.id': materiaInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'objetivo.label', default: 'Objetivo')])}</g:link>
+</li>
+</ul>
+
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: materiaInstance, field: 'objetivosGenerales', 'error')} ">
@@ -96,6 +105,15 @@
 		
 	</label>
 	
+<ul class="one-to-many">
+<g:each in="${materiaInstance?.objetivosGenerales?}" var="o">
+    <li><g:link controller="objetivo" action="show" id="${o.id}">${o?.encodeAsHTML()}</g:link></li>
+</g:each>
+<li class="add">
+<g:link controller="objetivo" action="create" params="['materia.id': materiaInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'objetivo.label', default: 'Objetivo')])}</g:link>
+</li>
+</ul>
+
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: materiaInstance, field: 'tiposRecurso', 'error')} ">

@@ -111,7 +111,7 @@
 					<span id="materiasCorrelativas-label" class="property-label"><g:message code="materia.materiasCorrelativas.label" default="Materias Correlativas" /></span>
 					
 						<g:each in="${materiaInstance.materiasCorrelativas}" var="m">
-						<span class="property-value" aria-labelledby="materiasCorrelativas-label"><g:link controller="materia" action="show" id="${m.id}">${m?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="materiasCorrelativas-label"><g:link controller="materia" action="show" id="${m.id}">${m?.codigo} - ${m?.nombre}</g:link></span>
 						</g:each>
 					
 				</li>
@@ -122,7 +122,7 @@
 					<span id="materiasEquivalentes-label" class="property-label"><g:message code="materia.materiasEquivalentes.label" default="Materias Equivalentes" /></span>
 					
 						<g:each in="${materiaInstance.materiasEquivalentes}" var="m">
-						<span class="property-value" aria-labelledby="materiasEquivalentes-label"><g:link controller="materia" action="show" id="${m.id}">${m?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="materiasEquivalentes-label"><g:link controller="materia" action="show" id="${m.id}">${m?.codigo} - ${m?.nombre}</g:link></span>
 						</g:each>
 					
 				</li>
@@ -132,7 +132,9 @@
 				<li class="fieldcontain">
 					<span id="objetivosEspecificos-label" class="property-label"><g:message code="materia.objetivosEspecificos.label" default="Objetivos Especificos" /></span>
 					
-						<span class="property-value" aria-labelledby="objetivosEspecificos-label"><g:fieldValue bean="${materiaInstance}" field="objetivosEspecificos"/></span>
+						<g:each in="${materiaInstance.objetivosEspecificos}" var="o">
+						<span class="property-value" aria-labelledby="objetivosEspecificos-label"><g:link controller="objetivoEspecifico" action="show" id="${o.id}">${o?.descripcion}</g:link></span>
+						</g:each>
 					
 				</li>
 				</g:if>
@@ -141,7 +143,9 @@
 				<li class="fieldcontain">
 					<span id="objetivosGenerales-label" class="property-label"><g:message code="materia.objetivosGenerales.label" default="Objetivos Generales" /></span>
 					
-						<span class="property-value" aria-labelledby="objetivosGenerales-label"><g:fieldValue bean="${materiaInstance}" field="objetivosGenerales"/></span>
+						<g:each in="${materiaInstance.objetivosGenerales}" var="o">
+						<span class="property-value" aria-labelledby="objetivosGenerales-label"><g:link controller="objetivo" action="show" id="${o.id}">${o?.descripcion}</g:link></span>
+						</g:each>
 					
 				</li>
 				</g:if>
@@ -151,7 +155,7 @@
 					<span id="tiposRecurso-label" class="property-label"><g:message code="materia.tiposRecurso.label" default="Tipos Recurso" /></span>
 					
 						<g:each in="${materiaInstance.tiposRecurso}" var="t">
-						<span class="property-value" aria-labelledby="tiposRecurso-label"><g:link controller="tipoRecurso" action="show" id="${t.id}">${t?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="tiposRecurso-label"><g:link controller="tipoRecurso" action="show" id="${t.id}">${t?.descripcion}</g:link></span>
 						</g:each>
 					
 				</li>

@@ -17,7 +17,7 @@ class Materia {
 	String contenidoMinimo
 	Integer cantidadDocentesRequeridos
 	//Las equivalencias son las que equivalen a esta materia, las coorrelativas son las predecesoras.
-	static hasMany = [objetivosGenerales:String, objetivosEspecificos:String, tiposRecurso:TipoRecurso, materiasCorrelativas:Materia, materiasEquivalentes:Materia]
+	static hasMany = [objetivosGenerales:Objetivo, objetivosEspecificos:ObjetivoEspecifico, tiposRecurso:TipoRecurso, materiasCorrelativas:Materia, materiasEquivalentes:Materia]
 	
 
 	static constraints = {

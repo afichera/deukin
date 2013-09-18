@@ -8,7 +8,22 @@ import org.springframework.dao.DataIntegrityViolationException
 class MateriaController {
 
 	static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
-
+	def searchMateriasAJAX = {
+		def queryRegex = "%${params.query}%" //
+		def materias = Materia.findAll { materia -> nombre =~ queryRegex }
+		//Create XML response
+		render(contentType: "text/xml") {
+			results() {
+				materias.each { materia ->
+					result(){
+						name(materia.codigo + ' - ' + materia.nombre)
+						id(materia.id)
+					}
+				}
+			}
+		}
+	}
+	
 	def index() {
 		redirect(action: "list", params: params)
 	}

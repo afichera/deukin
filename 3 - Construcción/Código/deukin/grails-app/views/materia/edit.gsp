@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<resource:autoComplete />
 <meta name="layout" content="main">
 <g:set var="entityName"
 	value="${message(code: 'materia.label', default: 'Materia')}" />

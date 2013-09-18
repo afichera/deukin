@@ -101,7 +101,8 @@
     <li><g:link controller="materia" action="show" id="${m.id}">${m?.encodeAsHTML()}</g:link></li>
 </g:each>
 <li class="add">
-<g:link controller="materia" action="create" params="['materia.id': materiaInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'materia.label', default: 'Materia')])}</g:link>
+ <richui:autoComplete name="buscadorMateriaCorrelativa" action="${createLinkTo('dir': 'materia/searchMateriasAJAX')}" forceSelection="true"/>
+<g:link controller="materia" action="agregarCorrelativa" params="['materia.id': materiaInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'materia.label', default: 'Materia')])}</g:link>
 </li>
 </ul>
 

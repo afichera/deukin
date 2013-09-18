@@ -12,7 +12,7 @@ class Carrera {
 	ModalidadAsistencia modalidadAsistencia
 	
 	//Los objetivos pueden ser varios. Los planes tambien, solo que uno será el Vigente
-	static hasMany = [objetivos:String, planesEstudio:PlanEstudio]
+	static hasMany = [objetivos:String, planesEstudio:PlanEstudio, materias:Materia]
 	String fundamentacion	
 	String perfilDelGraduado
 	String descripcion	

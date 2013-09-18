@@ -61,6 +61,24 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${materiaInstance?.predecesoraCorrelatividad}">
+				<li class="fieldcontain">
+					<span id="predecesoraCorrelatividad-label" class="property-label"><g:message code="materia.predecesoraCorrelatividad.label" default="Predecesora Correlatividad" /></span>
+					
+						<span class="property-value" aria-labelledby="predecesoraCorrelatividad-label"><g:link controller="materia" action="show" id="${materiaInstance?.predecesoraCorrelatividad?.id}">${materiaInstance?.predecesoraCorrelatividad?.encodeAsHTML()}</g:link></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${materiaInstance?.predecesoraEquivalente}">
+				<li class="fieldcontain">
+					<span id="predecesoraEquivalente-label" class="property-label"><g:message code="materia.predecesoraEquivalente.label" default="Predecesora Equivalente" /></span>
+					
+						<span class="property-value" aria-labelledby="predecesoraEquivalente-label"><g:link controller="materia" action="show" id="${materiaInstance?.predecesoraEquivalente?.id}">${materiaInstance?.predecesoraEquivalente?.encodeAsHTML()}</g:link></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${materiaInstance?.cantidadDocentesRequeridos}">
 				<li class="fieldcontain">
 					<span id="cantidadDocentesRequeridos-label" class="property-label"><g:message code="materia.cantidadDocentesRequeridos.label" default="Cantidad Docentes Requeridos" /></span>
@@ -75,6 +93,15 @@
 					<span id="cantidadUnidadesHorarias-label" class="property-label"><g:message code="materia.cantidadUnidadesHorarias.label" default="Cantidad Unidades Horarias" /></span>
 					
 						<span class="property-value" aria-labelledby="cantidadUnidadesHorarias-label"><g:fieldValue bean="${materiaInstance}" field="cantidadUnidadesHorarias"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${materiaInstance?.carrera}">
+				<li class="fieldcontain">
+					<span id="carrera-label" class="property-label"><g:message code="materia.carrera.label" default="Carrera" /></span>
+					
+						<span class="property-value" aria-labelledby="carrera-label"><g:link controller="carrera" action="show" id="${materiaInstance?.carrera?.id}">${materiaInstance?.carrera?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>
@@ -111,7 +138,7 @@
 					<span id="materiasCorrelativas-label" class="property-label"><g:message code="materia.materiasCorrelativas.label" default="Materias Correlativas" /></span>
 					
 						<g:each in="${materiaInstance.materiasCorrelativas}" var="m">
-						<span class="property-value" aria-labelledby="materiasCorrelativas-label"><g:link controller="materia" action="show" id="${m.id}">${m?.codigo} - ${m?.nombre}</g:link></span>
+						<span class="property-value" aria-labelledby="materiasCorrelativas-label"><g:link controller="materia" action="show" id="${m.id}">${m?.encodeAsHTML()}</g:link></span>
 						</g:each>
 					
 				</li>
@@ -122,7 +149,7 @@
 					<span id="materiasEquivalentes-label" class="property-label"><g:message code="materia.materiasEquivalentes.label" default="Materias Equivalentes" /></span>
 					
 						<g:each in="${materiaInstance.materiasEquivalentes}" var="m">
-						<span class="property-value" aria-labelledby="materiasEquivalentes-label"><g:link controller="materia" action="show" id="${m.id}">${m?.codigo} - ${m?.nombre}</g:link></span>
+						<span class="property-value" aria-labelledby="materiasEquivalentes-label"><g:link controller="materia" action="show" id="${m.id}">${m?.encodeAsHTML()}</g:link></span>
 						</g:each>
 					
 				</li>
@@ -133,7 +160,7 @@
 					<span id="objetivosEspecificos-label" class="property-label"><g:message code="materia.objetivosEspecificos.label" default="Objetivos Especificos" /></span>
 					
 						<g:each in="${materiaInstance.objetivosEspecificos}" var="o">
-						<span class="property-value" aria-labelledby="objetivosEspecificos-label"><g:link controller="objetivoEspecifico" action="show" id="${o.id}">${o?.descripcion}</g:link></span>
+						<span class="property-value" aria-labelledby="objetivosEspecificos-label"><g:link controller="objetivoEspecifico" action="show" id="${o.id}">${o?.encodeAsHTML()}</g:link></span>
 						</g:each>
 					
 				</li>
@@ -144,7 +171,7 @@
 					<span id="objetivosGenerales-label" class="property-label"><g:message code="materia.objetivosGenerales.label" default="Objetivos Generales" /></span>
 					
 						<g:each in="${materiaInstance.objetivosGenerales}" var="o">
-						<span class="property-value" aria-labelledby="objetivosGenerales-label"><g:link controller="objetivo" action="show" id="${o.id}">${o?.descripcion}</g:link></span>
+						<span class="property-value" aria-labelledby="objetivosGenerales-label"><g:link controller="objetivo" action="show" id="${o.id}">${o?.encodeAsHTML()}</g:link></span>
 						</g:each>
 					
 				</li>
@@ -155,7 +182,7 @@
 					<span id="tiposRecurso-label" class="property-label"><g:message code="materia.tiposRecurso.label" default="Tipos Recurso" /></span>
 					
 						<g:each in="${materiaInstance.tiposRecurso}" var="t">
-						<span class="property-value" aria-labelledby="tiposRecurso-label"><g:link controller="tipoRecurso" action="show" id="${t.id}">${t?.descripcion}</g:link></span>
+						<span class="property-value" aria-labelledby="tiposRecurso-label"><g:link controller="tipoRecurso" action="show" id="${t.id}">${t?.encodeAsHTML()}</g:link></span>
 						</g:each>
 					
 				</li>

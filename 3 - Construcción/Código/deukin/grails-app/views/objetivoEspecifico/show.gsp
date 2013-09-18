@@ -47,7 +47,7 @@
 				<li class="fieldcontain">
 					<span id="materia-label" class="property-label"><g:message code="objetivoEspecifico.materia.label" default="Materia" /></span>
 					
-						<span class="property-value" aria-labelledby="materia-label"><g:link controller="materia" action="show" id="${objetivoEspecificoInstance?.materia?.id}">${objetivoEspecificoInstance?.materia?.descripcion}</g:link></span>
+						<span class="property-value" aria-labelledby="materia-label"><g:link controller="materia" action="show" id="${objetivoEspecificoInstance?.materia?.id}">${objetivoEspecificoInstance?.materia?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>

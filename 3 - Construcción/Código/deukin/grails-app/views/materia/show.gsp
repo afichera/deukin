@@ -61,24 +61,6 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${materiaInstance?.predecesoraCorrelatividad}">
-				<li class="fieldcontain">
-					<span id="predecesoraCorrelatividad-label" class="property-label"><g:message code="materia.predecesoraCorrelatividad.label" default="Predecesora Correlatividad" /></span>
-					
-						<span class="property-value" aria-labelledby="predecesoraCorrelatividad-label"><g:link controller="materia" action="show" id="${materiaInstance?.predecesoraCorrelatividad?.id}">${materiaInstance?.predecesoraCorrelatividad?.encodeAsHTML()}</g:link></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${materiaInstance?.predecesoraEquivalente}">
-				<li class="fieldcontain">
-					<span id="predecesoraEquivalente-label" class="property-label"><g:message code="materia.predecesoraEquivalente.label" default="Predecesora Equivalente" /></span>
-					
-						<span class="property-value" aria-labelledby="predecesoraEquivalente-label"><g:link controller="materia" action="show" id="${materiaInstance?.predecesoraEquivalente?.id}">${materiaInstance?.predecesoraEquivalente?.encodeAsHTML()}</g:link></span>
-					
-				</li>
-				</g:if>
-			
 				<g:if test="${materiaInstance?.cantidadDocentesRequeridos}">
 				<li class="fieldcontain">
 					<span id="cantidadDocentesRequeridos-label" class="property-label"><g:message code="materia.cantidadDocentesRequeridos.label" default="Cantidad Docentes Requeridos" /></span>
@@ -129,28 +111,6 @@
 					<span id="cupoMinimoAlumnos-label" class="property-label"><g:message code="materia.cupoMinimoAlumnos.label" default="Cupo Minimo Alumnos" /></span>
 					
 						<span class="property-value" aria-labelledby="cupoMinimoAlumnos-label"><g:fieldValue bean="${materiaInstance}" field="cupoMinimoAlumnos"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${materiaInstance?.materiasCorrelativas}">
-				<li class="fieldcontain">
-					<span id="materiasCorrelativas-label" class="property-label"><g:message code="materia.materiasCorrelativas.label" default="Materias Correlativas" /></span>
-					
-						<g:each in="${materiaInstance.materiasCorrelativas}" var="m">
-						<span class="property-value" aria-labelledby="materiasCorrelativas-label"><g:link controller="materia" action="show" id="${m.id}">${m?.encodeAsHTML()}</g:link></span>
-						</g:each>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${materiaInstance?.materiasEquivalentes}">
-				<li class="fieldcontain">
-					<span id="materiasEquivalentes-label" class="property-label"><g:message code="materia.materiasEquivalentes.label" default="Materias Equivalentes" /></span>
-					
-						<g:each in="${materiaInstance.materiasEquivalentes}" var="m">
-						<span class="property-value" aria-labelledby="materiasEquivalentes-label"><g:link controller="materia" action="show" id="${m.id}">${m?.encodeAsHTML()}</g:link></span>
-						</g:each>
 					
 				</li>
 				</g:if>

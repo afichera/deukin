@@ -1,10 +1,10 @@
-<%@ page import="com.deukin.Materia" %>
+<%@ page import="com.deukin.Equivalencia" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta name="layout" content="main">
 <g:set var="entityName"
-	value="${message(code: 'materia.label', default: 'Materia')}" />
+	value="${message(code: 'equivalencia.label', default: 'Equivalencia')}" />
 <title><g:message code="default.create.label"
 		args="[entityName]" /></title>
 </head>
@@ -16,7 +16,7 @@
 				</g:link></li>
 		</ul>
 	</div>
-	<div id="create-materia"
+	<div id="create-equivalencia"
 		class="content scaffold-create" role="main">
 		<h1>
 			<g:message code="default.create.label" args="[entityName]" />
@@ -24,9 +24,9 @@
 		<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
 		</g:if>
-		<g:hasErrors bean="${materiaInstance}">
+		<g:hasErrors bean="${equivalenciaInstance}">
 			<ul class="alert alert-danger" role="alert">
-				<g:eachError bean="${materiaInstance}" var="error">
+				<g:eachError bean="${equivalenciaInstance}" var="error">
 					<li
 						<g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message
 							error="${error}" /></li>

@@ -26,22 +26,6 @@
 	<g:textField name="bibliografia" value="${materiaInstance?.bibliografia}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: materiaInstance, field: 'predecesoraCorrelatividad', 'error')} ">
-	<label for="predecesoraCorrelatividad" class="control-label">
-		<g:message code="materia.predecesoraCorrelatividad.label" default="Predecesora Correlatividad" />
-		
-	</label>
-	<g:select id="predecesoraCorrelatividad" name="predecesoraCorrelatividad.id" from="${com.deukin.Materia.list()}" optionKey="id" value="${materiaInstance?.predecesoraCorrelatividad?.id}" class="many-to-one" noSelection="['null': '']"/>
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: materiaInstance, field: 'predecesoraEquivalente', 'error')} ">
-	<label for="predecesoraEquivalente" class="control-label">
-		<g:message code="materia.predecesoraEquivalente.label" default="Predecesora Equivalente" />
-		
-	</label>
-	<g:select id="predecesoraEquivalente" name="predecesoraEquivalente.id" from="${com.deukin.Materia.list()}" optionKey="id" value="${materiaInstance?.predecesoraEquivalente?.id}" class="many-to-one" noSelection="['null': '']"/>
-</div>
-
 <div class="fieldcontain ${hasErrors(bean: materiaInstance, field: 'cantidadDocentesRequeridos', 'error')} required">
 	<label for="cantidadDocentesRequeridos" class="control-label">
 		<g:message code="materia.cantidadDocentesRequeridos.label" default="Cantidad Docentes Requeridos" />
@@ -88,41 +72,6 @@
 		<span class="required-indicator">*</span>
 	</label>
 	<g:field name="cupoMinimoAlumnos" type="number" value="${materiaInstance.cupoMinimoAlumnos}" required=""/>
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: materiaInstance, field: 'materiasCorrelativas', 'error')} ">
-	<label for="materiasCorrelativas" class="control-label">
-		<g:message code="materia.materiasCorrelativas.label" default="Materias Correlativas" />
-		
-	</label>
-	
-<ul class="one-to-many">
-<g:each in="${materiaInstance?.materiasCorrelativas?}" var="m">
-    <li><g:link controller="materia" action="show" id="${m.id}">${m?.encodeAsHTML()}</g:link></li>
-</g:each>
-<li class="add">
- <richui:autoComplete name="buscadorMateriaCorrelativa" action="${createLinkTo('dir': 'materia/searchMateriasAJAX')}" forceSelection="true"/>
-<g:link controller="materia" action="agregarCorrelativa" params="['materia.id': materiaInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'materia.label', default: 'Materia')])}</g:link>
-</li>
-</ul>
-
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: materiaInstance, field: 'materiasEquivalentes', 'error')} ">
-	<label for="materiasEquivalentes" class="control-label">
-		<g:message code="materia.materiasEquivalentes.label" default="Materias Equivalentes" />
-		
-	</label>
-	
-<ul class="one-to-many">
-<g:each in="${materiaInstance?.materiasEquivalentes?}" var="m">
-    <li><g:link controller="materia" action="show" id="${m.id}">${m?.encodeAsHTML()}</g:link></li>
-</g:each>
-<li class="add">
-<g:link controller="materia" action="create" params="['materia.id': materiaInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'materia.label', default: 'Materia')])}</g:link>
-</li>
-</ul>
-
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: materiaInstance, field: 'objetivosEspecificos', 'error')} ">

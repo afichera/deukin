@@ -28,11 +28,11 @@
 					
 						<g:sortableColumn property="bibliografia" title="${message(code: 'materia.bibliografia.label', default: 'Bibliografia <span class="glyphicon glyphicon-sort"></span>')}" />
 					
-						<th><g:message code="materia.predecesoraCorrelatividad.label" default="Predecesora Correlatividad" /></th>
-					
-						<th><g:message code="materia.predecesoraEquivalente.label" default="Predecesora Equivalente" /></th>
-					
 						<g:sortableColumn property="cantidadDocentesRequeridos" title="${message(code: 'materia.cantidadDocentesRequeridos.label', default: 'Cantidad Docentes Requeridos <span class="glyphicon glyphicon-sort"></span>')}" />
+					
+						<g:sortableColumn property="cantidadUnidadesHorarias" title="${message(code: 'materia.cantidadUnidadesHorarias.label', default: 'Cantidad Unidades Horarias <span class="glyphicon glyphicon-sort"></span>')}" />
+					
+						<th><g:message code="materia.carrera.label" default="Carrera" /></th>
 					
 					</tr>
 				</thead>
@@ -46,11 +46,11 @@
 					
 						<td>${fieldValue(bean: materiaInstance, field: "bibliografia")}</td>
 					
-						<td>${fieldValue(bean: materiaInstance, field: "predecesoraCorrelatividad")}</td>
-					
-						<td>${fieldValue(bean: materiaInstance, field: "predecesoraEquivalente")}</td>
-					
 						<td>${fieldValue(bean: materiaInstance, field: "cantidadDocentesRequeridos")}</td>
+					
+						<td>${fieldValue(bean: materiaInstance, field: "cantidadUnidadesHorarias")}</td>
+					
+						<td>${fieldValue(bean: materiaInstance, field: "carrera")}</td>
 					
 					</tr>
 				</g:each>

@@ -1,10 +1,10 @@
-<%@ page import="com.deukin.Materia" %>
+<%@ page import="com.deukin.Correlatividad" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta name="layout" content="main">
 <g:set var="entityName"
-	value="${message(code: 'materia.label', default: 'Materia')}" />
+	value="${message(code: 'correlatividad.label', default: 'Correlatividad')}" />
 <title><g:message code="default.create.label"
 		args="[entityName]" /></title>
 </head>
@@ -16,7 +16,7 @@
 				</g:link></li>
 		</ul>
 	</div>
-	<div id="create-materia"
+	<div id="create-correlatividad"
 		class="content scaffold-create" role="main">
 		<h1>
 			<g:message code="default.create.label" args="[entityName]" />
@@ -24,9 +24,9 @@
 		<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
 		</g:if>
-		<g:hasErrors bean="${materiaInstance}">
+		<g:hasErrors bean="${correlatividadInstance}">
 			<ul class="alert alert-danger" role="alert">
-				<g:eachError bean="${materiaInstance}" var="error">
+				<g:eachError bean="${correlatividadInstance}" var="error">
 					<li
 						<g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message
 							error="${error}" /></li>

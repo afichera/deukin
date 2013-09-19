@@ -10,6 +10,7 @@ class Carrera {
 	String titulo		
 	String condicionIngreso
 	ModalidadAsistencia modalidadAsistencia
+	Persona coordinador
 	
 	//Los objetivos pueden ser varios. Los planes tambien, solo que uno será el Vigente
 	static hasMany = [objetivos:String, planesEstudio:PlanEstudio, materias:Materia]
@@ -23,6 +24,6 @@ class Carrera {
 		fundamentacion nullable:true
 		perfilDelGraduado nullable:true
 		descripcion nullable:true	
-		 	
+		coordinador nullable:true 	
     }
 }

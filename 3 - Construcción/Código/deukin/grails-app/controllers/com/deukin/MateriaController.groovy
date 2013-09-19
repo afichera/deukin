@@ -4,12 +4,15 @@ import grails.plugins.springsecurity.Secured
 
 import org.springframework.dao.DataIntegrityViolationException
 
-@Secured(['ROLE_COORDINADOR','ROLE_ADMINISTRATIVO','ROLE_DOCENTE'])
+@Secured(['ROLE_COORDINADOR','ROLE_ADMINISTRATIVO'])
 class MateriaController {
-
+	
+	def springSecurityService
+	
 	static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
+	
 	def searchMateriasAJAX = {
-		def queryRegex = "%${params.query}%" //
+		def queryRegex = "%${params.query}%"		
 		def materias = Materia.findAll { materia -> nombre =~ queryRegex }
 		//Create XML response
 		render(contentType: "text/xml") {
@@ -29,8 +32,27 @@ class MateriaController {
 	}
 
 	def list(Integer max) {
+		def authorities =  springSecurityService.principal.authorities
+		def usuario = springSecurityService.principal
+		def filtrarCarrera = false
+		def materias		
+		for (auto in authorities){
+			if(auto.role.equals('ROLE_COORDINADOR') ){
+				filtrarCarrera = true
+			}
+		}		
 		params.max = Math.min(max ?: 10, 100)
-		[materiaInstanceList: Materia.list(params), materiaInstanceTotal: Materia.count()]
+		if(filtrarCarrera){
+			def username = usuario?.getUsername()
+			def usuarioDeukin = Usuario.findByUsername(username)
+			def persona = Persona.findByUsuario(usuarioDeukin)
+			def carreras = Carrera.findAllByCoordinador(persona)
+			materias = Materia.findAllByCarreraInList(carreras)
+			[materiaInstanceList: materias, materiaInstanceTotal: materias.size()]
+		}else{
+			[materiaInstanceList: Materia.list(params), materiaInstanceTotal: Materia.count()]
+		}
+		
 	}
 
 	def create() {

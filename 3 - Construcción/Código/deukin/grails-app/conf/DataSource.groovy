@@ -27,7 +27,7 @@ hibernate {
 environments {
 	development {
 		dataSource {
-			dbCreate = "create" // one of 'create', 'create-drop', 'update', 'validate', ''
+			dbCreate = "update" // one of 'create', 'create-drop', 'update', 'validate', ''
 			//            url = "jdbc:h2:mem:devDb;MVCC=TRUE;LOCK_TIMEOUT=10000"
 			url = 'jdbc:postgresql://localhost:5432/deukin_dev'
 //			url = "jdbc:mysql://localhost:3306/deukin_dev"

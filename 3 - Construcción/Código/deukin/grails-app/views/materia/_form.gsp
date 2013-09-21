@@ -47,7 +47,7 @@
 		<g:message code="materia.carrera.label" default="Carrera" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="carrera" name="carrera.id" from="${com.deukin.Carrera.list()}" optionKey="id" required="" value="${materiaInstance?.carrera?.id}" class="many-to-one"/>
+	<richui:autoComplete name="buscadorMateriaCorrelativa" value="${materiaInstance?.carrera}"  action="${createLinkTo('dir': 'materia/searchCarrerasAJAX')}" forceSelection="true"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: materiaInstance, field: 'contenidoMinimo', 'error')} ">

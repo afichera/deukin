@@ -26,4 +26,8 @@ class Carrera {
 		descripcion nullable:true	
 		coordinador nullable:true 	
     }
+	
+	String toString(){
+		titulo
+	}
 }

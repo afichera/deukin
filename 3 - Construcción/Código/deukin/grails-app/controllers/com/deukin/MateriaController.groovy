@@ -8,6 +8,7 @@ import org.springframework.dao.DataIntegrityViolationException
 class MateriaController {
 	
 	def springSecurityService
+	def materiaService
 	
 	static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 	
@@ -27,6 +28,39 @@ class MateriaController {
 		}
 	}
 	
+	
+	def searchCarrerasAJAX = {
+		def queryRegex = "%${params.query}%"
+		def authorities =  springSecurityService.principal.authorities
+		def usuario = springSecurityService.principal
+		def filtrarCarreras = false
+		def carreras
+		for (auto in authorities){
+			if(auto.role.equals('ROLE_COORDINADOR') ){
+				filtrarCarreras = true
+			}
+		}
+		if(filtrarCarreras){
+			def username = usuario?.getUsername()
+			def usuarioDeukin = Usuario.findByUsername(username)
+			def persona = Persona.findByUsuario(usuarioDeukin)
+			carreras = Carrera.findAllByCoordinadorAndTituloLike(persona, queryRegex)			
+		}else{
+			carreras = Carrera.findAll { carrera -> titulo =~ queryRegex }
+		}
+		
+		render(contentType: "text/xml") {
+			results() {
+				carreras.each { carrera ->
+					result(){
+						name(carrera.titulo)
+						id(carrera)
+					}
+				}
+			}
+		}
+	}
+	
 	def index() {
 		redirect(action: "list", params: params)
 	}
@@ -34,29 +68,18 @@ class MateriaController {
 	def list(Integer max) {
 		def authorities =  springSecurityService.principal.authorities
 		def usuario = springSecurityService.principal
-		def filtrarCarrera = false
-		def materias		
-		for (auto in authorities){
-			if(auto.role.equals('ROLE_COORDINADOR') ){
-				filtrarCarrera = true
-			}
-		}		
-		params.max = Math.min(max ?: 10, 100)
-		if(filtrarCarrera){
-			def username = usuario?.getUsername()
-			def usuarioDeukin = Usuario.findByUsername(username)
-			def persona = Persona.findByUsuario(usuarioDeukin)
-			def carreras = Carrera.findAllByCoordinador(persona)
-			materias = Materia.findAllByCarreraInList(carreras)
-			[materiaInstanceList: materias, materiaInstanceTotal: materias.size()]
-		}else{
-			[materiaInstanceList: Materia.list(params), materiaInstanceTotal: Materia.count()]
-		}
-		
+		materiaService.obtenerMateriasDeCoordinador(authorities, params, max, usuario)		
 	}
+
 
 	def create() {
 		[materiaInstance: new Materia(params)]
+	}
+	
+	def listaCarrerasMostrar(){
+		def authorities =  springSecurityService.principal.authorities
+		def usuario = springSecurityService.principal
+		carreraService.listaCarrerasMostrar(authorities, usuario)		
 	}
 
 	def save() {

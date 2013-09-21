@@ -7,8 +7,9 @@ package com.deukin
 class Parametro {
 	String codigo
 	String valor
+	TipoParametro tipoParametro
 	
-    static constraints = {
+	static constraints = {
 		codigo (unique:true, maxLength:20)
 		valor (maxLength:200)
 		

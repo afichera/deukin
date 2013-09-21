@@ -19,15 +19,14 @@ class Materia {
 	//Las equivalencias son las que equivalen a esta materia, las coorrelativas son las predecesoras.
 	static hasMany = [objetivosGenerales:Objetivo, objetivosEspecificos:ObjetivoEspecifico, tiposRecurso:TipoRecurso]
 	static belongsTo = [carrera:Carrera]
-//	materiasCorrelativas:Materia, materiasEquivalentes:Materia
-//	predecesoraCorrelatividad:Materia, predecesoraEquivalente:Materia,
-//	static mappedBy = [materiasCorrelativas: 'predecesoraCorrelatividad', materiasEquivalentes: 'predecesoraEquivalente']
 	
 	static constraints = {
 		codigo(unique:true, maxLength:10)
 		nombre maxLength:200
 		bibliografia nullable:true
-//		predecesoraCorrelatividad(nullable:true)
-//		predecesoraEquivalente(nullable:true)
+	}
+	
+	String toString(){
+		codigo + ' - ' + nombre
 	}
 }

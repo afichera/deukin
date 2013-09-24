@@ -7,6 +7,7 @@ package com.deukin
  */
 class Carrera {
 	
+	
 	String titulo		
 	String condicionIngreso
 	ModalidadAsistencia modalidadAsistencia
@@ -20,6 +21,7 @@ class Carrera {
 		
     static constraints = {
 		titulo (unique:true, maxSize:200)	
+		
 		planesEstudio nullable:true
 		fundamentacion nullable:true
 		perfilDelGraduado nullable:true

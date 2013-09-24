@@ -91,7 +91,7 @@
 				class="dropdown-toggle" data-toggle="dropdown"><g:message code="secciones.institucion" /><b class="caret"></b></a>
 		<ul class="dropdown-menu">
 			<li><g:link controller='proximamente'><g:message code="secciones.institucion.datos" /></g:link></li>
-			<li><g:link controller='proximamente'><g:message code="secciones.institucion.departamentos" /></g:link></li>
+			<li><g:link controller='departamento'><g:message code="secciones.institucion.departamentos" /></g:link></li>
 		</ul>
 	</li>
 	</sec:ifAnyGranted>

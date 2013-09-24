@@ -16,6 +16,8 @@
 		
 	</label>
 	<g:select name="planesEstudio" from="${com.deukin.PlanEstudio.list()}" multiple="multiple" optionKey="id" size="5" value="${carreraInstance?.planesEstudio*.id}" class="many-to-many"/>
+	<p><g:link controller='planEstudio' action='create' class="btn btn-primary">Nuevo plan</g:link></p>
+	
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: carreraInstance, field: 'fundamentacion', 'error')} ">

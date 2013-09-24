@@ -17,7 +17,7 @@
 					</div>
 					<ul>
 						<li><g:link controller='proximamente'><g:message code="secciones.institucion.datos" /></g:link></li>
-						<li><g:link controller='proximamente'><g:message code="secciones.institucion.departamentos" /></g:link></li>
+						<li><g:link controller='departamento'><g:message code="secciones.institucion.departamentos" /></g:link></li>
 					</ul>
 				</div>
 			</div>

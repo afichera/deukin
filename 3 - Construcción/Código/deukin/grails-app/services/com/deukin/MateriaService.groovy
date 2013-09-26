@@ -1,12 +1,26 @@
 package com.deukin
 
-import java.util.Map;
 
 class MateriaService {
 
+	def carreraService
     def serviceMethod() {
 
     }
+	
+	def obtenerMateriasCandidatasPredecesorasByQueryRegexAndMateriaPrincipal(def queryRegex, Materia materiaPrincipal){
+		def carrera = materiaPrincipal.carrera
+		def materias = carrera.materias
+		def materiasMostrar
+		
+		for (materia in materias) {
+			if(materia.nombre.contains(queryRegex) && materia.id != materiaPrincipal.id){
+				materiasMostrar.add(materia)
+			}
+		}
+		materiasMostrar
+	}
+	
 	
 	public obtenerMateriasDeCoordinador(def authorities, def params, def max, def usuario) {
 		def filtrarCarrera = false

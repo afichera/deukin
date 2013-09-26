@@ -9,45 +9,15 @@ class MateriaController {
 	
 	def springSecurityService
 	def materiaService
+	def usuarioService
+	def carreraService
 	
 	static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
-	
-	def searchMateriasAJAX = {
-		def queryRegex = "%${params.query}%"		
-		def materias = Materia.findAll { materia -> nombre =~ queryRegex }
-		//Create XML response
-		render(contentType: "text/xml") {
-			results() {
-				materias.each { materia ->
-					result(){
-						name(materia.codigo + ' - ' + materia.nombre)
-						id(materia.id)
-					}
-				}
-			}
-		}
-	}
-	
-	
+
 	def searchCarrerasAJAX = {
+		def usuarioLogueado = springSecurityService.principal
 		def queryRegex = "%${params.query}%"
-		def authorities =  springSecurityService.principal.authorities
-		def usuario = springSecurityService.principal
-		def filtrarCarreras = false
-		def carreras
-		for (auto in authorities){
-			if(auto.role.equals('ROLE_COORDINADOR') ){
-				filtrarCarreras = true
-			}
-		}
-		if(filtrarCarreras){
-			def username = usuario?.getUsername()
-			def usuarioDeukin = Usuario.findByUsername(username)
-			def persona = Persona.findByUsuario(usuarioDeukin)
-			carreras = Carrera.findAllByCoordinadorAndTituloLike(persona, queryRegex)			
-		}else{
-			carreras = Carrera.findAll { carrera -> titulo =~ queryRegex }
-		}
+		def carreras = carreraService.getCarrerasLikeParamsAndCoordinadorUser(queryRegex, usuarioLogueado)
 		
 		render(contentType: "text/xml") {
 			results() {
@@ -60,6 +30,8 @@ class MateriaController {
 			}
 		}
 	}
+
+
 	
 	def index() {
 		redirect(action: "list", params: params)

@@ -4,6 +4,8 @@ package com.deukin
 
 class CarreraService {
 
+	def usuarioService
+	
     def serviceMethod() {
 
     }
@@ -26,4 +28,20 @@ class CarreraService {
 			def carreras = Carrera.all			
 		}
 	}
+	
+	def getCarrerasLikeParamsAndCoordinadorUser(def texto, def userLogued){
+		def authorities =  userLogued.authorities
+		def usuarioDeukin = usuarioService.obtenerUsuario(userLogued)
+		def filtrarCarreras = usuarioService.poseeElRol(authorities, 'ROLE_COORDINADOR')
+		def carreras				
+		if(filtrarCarreras){
+			def persona = Persona.findByUsuario(usuarioDeukin)
+			carreras = Carrera.findAllByCoordinadorAndTituloLike(persona, texto)
+		}else{
+			carreras = Carrera.findAll { carrera -> titulo =~ texto }
+		}
+		carreras
+	}
+	
+	
 }

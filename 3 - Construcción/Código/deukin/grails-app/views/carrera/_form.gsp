@@ -16,7 +16,13 @@
 		
 	</label>
 	<g:select name="planesEstudio" from="${com.deukin.PlanEstudio.list()}" multiple="multiple" optionKey="id" size="5" value="${carreraInstance?.planesEstudio*.id}" class="many-to-many"/>
-	<p><g:link controller='planEstudio' action='create' class="btn btn-primary">Nuevo plan</g:link></p>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: carreraInstance, field: 'objetivos', 'error')} ">
+	<label for="objetivos" class="control-label">
+		<g:message code="carrera.objetivos.label" default="Objetivos" />
+		
+	</label>
 	
 </div>
 
@@ -44,6 +50,22 @@
 	<g:textField name="descripcion" value="${carreraInstance?.descripcion}"/>
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: carreraInstance, field: 'coordinador', 'error')} ">
+	<label for="coordinador" class="control-label">
+		<g:message code="carrera.coordinador.label" default="Coordinador" />
+		
+	</label>
+	<g:select id="coordinador" name="coordinador.id" from="${com.deukin.Persona.list()}" optionKey="id" value="${carreraInstance?.coordinador?.id}" class="many-to-one" noSelection="['null': '']"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: carreraInstance, field: 'estado', 'error')} required">
+	<label for="estado" class="control-label">
+		<g:message code="carrera.estado.label" default="Estado" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:select name="estado" from="${com.deukin.EstadoDeCreacion?.values()}" keys="${com.deukin.EstadoDeCreacion.values()*.name()}" required="" value="${carreraInstance?.estado?.name()}"/>
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: carreraInstance, field: 'condicionIngreso', 'error')} ">
 	<label for="condicionIngreso" class="control-label">
 		<g:message code="carrera.condicionIngreso.label" default="Condicion Ingreso" />
@@ -52,19 +74,28 @@
 	<g:textField name="condicionIngreso" value="${carreraInstance?.condicionIngreso}"/>
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: carreraInstance, field: 'materias', 'error')} ">
+	<label for="materias" class="control-label">
+		<g:message code="carrera.materias.label" default="Materias" />
+		
+	</label>
+	
+<ul class="one-to-many">
+<g:each in="${carreraInstance?.materias?}" var="m">
+    <li><g:link controller="materia" action="show" id="${m.id}">${m?.encodeAsHTML()}</g:link></li>
+</g:each>
+<li class="add">
+<g:link controller="materia" action="create" params="['carrera.id': carreraInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'materia.label', default: 'Materia')])}</g:link>
+</li>
+</ul>
+
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: carreraInstance, field: 'modalidadAsistencia', 'error')} required">
 	<label for="modalidadAsistencia" class="control-label">
 		<g:message code="carrera.modalidadAsistencia.label" default="Modalidad Asistencia" />
 		<span class="required-indicator">*</span>
 	</label>
 	<g:select name="modalidadAsistencia" from="${com.deukin.ModalidadAsistencia?.values()}" keys="${com.deukin.ModalidadAsistencia.values()*.name()}" required="" value="${carreraInstance?.modalidadAsistencia?.name()}"/>
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: carreraInstance, field: 'objetivos', 'error')} ">
-	<label for="objetivos" class="control-label">
-		<g:message code="carrera.objetivos.label" default="Objetivos" />
-		
-	</label>
-	
 </div>
 

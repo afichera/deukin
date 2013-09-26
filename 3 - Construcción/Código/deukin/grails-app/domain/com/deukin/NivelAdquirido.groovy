@@ -7,6 +7,7 @@ package com.deukin
  * @author Ale Mobile
  *
  */
+
 class NivelAdquirido {
 	String codigo
 	String descripcion

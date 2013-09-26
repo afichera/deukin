@@ -30,9 +30,9 @@
 					
 						<g:sortableColumn property="descripcion" title="${message(code: 'carrera.descripcion.label', default: 'Descripcion <span class="glyphicon glyphicon-sort"></span>')}" />
 					
-						<g:sortableColumn property="condicionIngreso" title="${message(code: 'carrera.condicionIngreso.label', default: 'Condicion Ingreso <span class="glyphicon glyphicon-sort"></span>')}" />
+						<th><g:message code="carrera.coordinador.label" default="Coordinador" /></th>
 					
-						<g:sortableColumn property="modalidadAsistencia" title="${message(code: 'carrera.modalidadAsistencia.label', default: 'Modalidad Asistencia <span class="glyphicon glyphicon-sort"></span>')}" />
+						<g:sortableColumn property="estado" title="${message(code: 'carrera.estado.label', default: 'Estado <span class="glyphicon glyphicon-sort"></span>')}" />
 					
 					</tr>
 				</thead>
@@ -48,9 +48,9 @@
 					
 						<td>${fieldValue(bean: carreraInstance, field: "descripcion")}</td>
 					
-						<td>${fieldValue(bean: carreraInstance, field: "condicionIngreso")}</td>
+						<td>${fieldValue(bean: carreraInstance, field: "coordinador")}</td>
 					
-						<td>${fieldValue(bean: carreraInstance, field: "modalidadAsistencia")}</td>
+						<td>${fieldValue(bean: carreraInstance, field: "estado")}</td>
 					
 					</tr>
 				</g:each>

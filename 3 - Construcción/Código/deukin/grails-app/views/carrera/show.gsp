@@ -54,6 +54,15 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${carreraInstance?.objetivos}">
+				<li class="fieldcontain">
+					<span id="objetivos-label" class="property-label"><g:message code="carrera.objetivos.label" default="Objetivos" /></span>
+					
+						<span class="property-value" aria-labelledby="objetivos-label"><g:fieldValue bean="${carreraInstance}" field="objetivos"/></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${carreraInstance?.fundamentacion}">
 				<li class="fieldcontain">
 					<span id="fundamentacion-label" class="property-label"><g:message code="carrera.fundamentacion.label" default="Fundamentacion" /></span>
@@ -81,6 +90,24 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${carreraInstance?.coordinador}">
+				<li class="fieldcontain">
+					<span id="coordinador-label" class="property-label"><g:message code="carrera.coordinador.label" default="Coordinador" /></span>
+					
+						<span class="property-value" aria-labelledby="coordinador-label"><g:link controller="persona" action="show" id="${carreraInstance?.coordinador?.id}">${carreraInstance?.coordinador?.encodeAsHTML()}</g:link></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${carreraInstance?.estado}">
+				<li class="fieldcontain">
+					<span id="estado-label" class="property-label"><g:message code="carrera.estado.label" default="Estado" /></span>
+					
+						<span class="property-value" aria-labelledby="estado-label"><g:fieldValue bean="${carreraInstance}" field="estado"/></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${carreraInstance?.condicionIngreso}">
 				<li class="fieldcontain">
 					<span id="condicionIngreso-label" class="property-label"><g:message code="carrera.condicionIngreso.label" default="Condicion Ingreso" /></span>
@@ -90,20 +117,22 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${carreraInstance?.materias}">
+				<li class="fieldcontain">
+					<span id="materias-label" class="property-label"><g:message code="carrera.materias.label" default="Materias" /></span>
+					
+						<g:each in="${carreraInstance.materias}" var="m">
+						<span class="property-value" aria-labelledby="materias-label"><g:link controller="materia" action="show" id="${m.id}">${m?.encodeAsHTML()}</g:link></span>
+						</g:each>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${carreraInstance?.modalidadAsistencia}">
 				<li class="fieldcontain">
 					<span id="modalidadAsistencia-label" class="property-label"><g:message code="carrera.modalidadAsistencia.label" default="Modalidad Asistencia" /></span>
 					
 						<span class="property-value" aria-labelledby="modalidadAsistencia-label"><g:fieldValue bean="${carreraInstance}" field="modalidadAsistencia"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${carreraInstance?.objetivos}">
-				<li class="fieldcontain">
-					<span id="objetivos-label" class="property-label"><g:message code="carrera.objetivos.label" default="Objetivos" /></span>
-					
-						<span class="property-value" aria-labelledby="objetivos-label"><g:fieldValue bean="${carreraInstance}" field="objetivos"/></span>
 					
 				</li>
 				</g:if>

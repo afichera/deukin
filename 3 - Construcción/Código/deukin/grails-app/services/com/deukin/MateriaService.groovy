@@ -11,7 +11,7 @@ class MateriaService {
 		def carrera = materiaPrincipal.carrera
 		def materias = carrera.materias
 		def materiasMostrar = materias
-		materiasMostrar.clear();
+		materiasMostrar.clear()
 		def esCodigo = queryRegex.isInteger()
 		def codigoNumero
 		if(esCodigo){

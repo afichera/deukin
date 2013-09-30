@@ -1,7 +1,5 @@
 package com.deukin
 
-import com.sun.org.apache.bcel.internal.generic.RETURN;
-import com.sun.xml.internal.ws.api.streaming.XMLStreamReaderFactory.Default;
 
 /**
  * Representa una Carrera de la Institucion

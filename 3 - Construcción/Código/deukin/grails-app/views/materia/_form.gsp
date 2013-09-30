@@ -47,7 +47,7 @@
 		<g:message code="materia.carrera.label" default="Carrera" />
 		<span class="required-indicator">*</span>
 	</label>
-	<richui:autoComplete name="buscadorMateriaCorrelativa" value="${materiaInstance?.carrera}"  action="${createLinkTo('dir': 'materia/searchCarrerasAJAX')}" forceSelection="true"/>
+	<richui:autoComplete name="buscadorCarreraMateria" value="${materiaInstance?.carrera}"  action="${createLinkTo('dir': 'materia/searchCarrerasAJAX')}" forceSelection="true"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: materiaInstance, field: 'contenidoMinimo', 'error')} ">

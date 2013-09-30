@@ -42,19 +42,19 @@ class HomeController {
 		switch (tipoUsuario) {
 		case 1:
 			redirect(controller: 'homeAlumno', action: 'index')
-			break;
+			break
 		case 2:
 			redirect(controller: 'homeDocente', action: 'index')
-			break;		
+			break		
 		case 3:
 			redirect(controller: 'homeCoordinador', action: 'index')
-			break;
+			break
 		case 4:
 			redirect(controller: 'homeAdministrativo', action: 'index')
-			break;
+			break
 		case 5:
 			redirect(controller: 'homeAdministradorSistema', action: 'index')
-			break;
+			break
 		
 		}
 		

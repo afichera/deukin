@@ -1,6 +1,6 @@
 package com.deukin
 
-import org.jfree.data.time.Hour;
+import org.jfree.data.time.Hour
 
 /**
  * Representa un Curso especifico para una materia x cronograma y turno de un año x.

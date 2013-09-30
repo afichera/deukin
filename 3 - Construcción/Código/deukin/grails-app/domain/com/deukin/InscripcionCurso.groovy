@@ -1,6 +1,6 @@
 package com.deukin
 
-import java.util.Date;
+import java.util.Date
 
 /**
  * Representa una inscripcion a un Curso

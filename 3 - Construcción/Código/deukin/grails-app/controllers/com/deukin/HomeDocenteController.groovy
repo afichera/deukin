@@ -1,5 +1,5 @@
 package com.deukin
-import grails.plugins.springsecurity.Secured;
+import grails.plugins.springsecurity.Secured
 
 @Secured('ROLE_DOCENTE')
 class HomeDocenteController {

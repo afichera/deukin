@@ -4,7 +4,8 @@ enum EstadoDeCreacion {
 
 	BORRADOR('Borrador'),
 	OFERTADA('Ofertada'),
-	SIN_OFERTAR ('Sin ofertar'),
+	SIN_OFERTAR ('Sin ofertar')
+	
 	String name
 
 	EstadoDeCreacion(String name){

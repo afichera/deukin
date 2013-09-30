@@ -32,27 +32,30 @@ class CorrelatividadController {
 		}
 	}
 	
-//	def searchMateriasPredecesorasAJAX = {
-//		def queryRegex = "%${params.query}%"
-//		def idMateriaPrincipal = params.id 
+	def searchMateriasPredecesorasAJAX = {
+		def queryRegex = "%${params.query}%"		
+		def idMateriaPrincipal = new Long(request.getParameter("MateriaPrincipalId"))
+		 
+		def materiaPrincipal = Materia.get(idMateriaPrincipal)
+		def materas = materiaService.obtenerMateriasCandidatasPredecesorasByQueryRegexAndMateriaPrincipal(queryRegex, materiaPrincipal)
 //		def carreras = materiaService.obtenerMateriasCandidatasPredecesorasByQueryRegexAndMateriaPrincipal
-//		
-//		//TODO: Eliminar de la lista la Materia Principal en la que estamos parados.
-//		
+		
+		//TODO: Eliminar de la lista la Materia Principal en la que estamos parados.
+		
 //		def materias = Materia.findAll { materia -> nombre =~ queryRegex }
-//		
-//		//Create XML response
-//		render(contentType: "text/xml") {
-//			results() {
-//				materias.each { materia ->
-//					result(){
-//						name(materia.codigo + ' - ' + materia.nombre)
-//						id(materia.id)
-//					}
-//				}
-//			}
-//		}
-//	}
+		
+		//Create XML response
+		render(contentType: "text/xml") {
+			results() {
+				materias.each { materia ->
+					result(){
+						name(materia.codigo + ' - ' + materia.nombre)
+						id(materia.id)
+					}
+				}
+			}
+		}
+	}
 	
 
     def list(Integer max) {

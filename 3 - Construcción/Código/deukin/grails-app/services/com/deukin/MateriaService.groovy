@@ -3,25 +3,39 @@ package com.deukin
 
 class MateriaService {
 
-	def carreraService
-    def serviceMethod() {
-
-    }
 	
+	def serviceMethod() {
+	}
+
 	def obtenerMateriasCandidatasPredecesorasByQueryRegexAndMateriaPrincipal(def queryRegex, Materia materiaPrincipal){
 		def carrera = materiaPrincipal.carrera
 		def materias = carrera.materias
-		def materiasMostrar
-		
+		def materiasMostrar = materias
+		materiasMostrar.clear();
+		def esCodigo = queryRegex.isInteger()
+		def codigoNumero
+		if(esCodigo){
+			codigoNumero = new Integer(queryRegex)
+		}
+
+
 		for (materia in materias) {
-			if(materia.nombre.contains(queryRegex) && materia.id != materiaPrincipal.id){
-				materiasMostrar.add(materia)
+			if(esCodigo){
+				if((materia.nombre.contains(queryRegex) || 
+					(materia.codigo.intValue() == codigoNumero.intValue()))
+					 && materia.id != materiaPrincipal.id){
+					 materiasMostrar.add(materia)
+				}
+			}else{
+				if(materia.nombre.contains(queryRegex) && materia.id != materiaPrincipal.id){
+					materiasMostrar.add(materia)
+				}
 			}
 		}
 		materiasMostrar
 	}
-	
-	
+
+
 	public obtenerMateriasDeCoordinador(def authorities, def params, def max, def usuario) {
 		def filtrarCarrera = false
 		def materias
@@ -42,5 +56,4 @@ class MateriaService {
 			[materiaInstanceList: Materia.list(params), materiaInstanceTotal: Materia.count()]
 		}
 	}
-
 }

@@ -5,6 +5,7 @@ package com.deukin
  * @author Ale Mobile
  *
  */
+
 class Departamento {
 	
 	String nombre

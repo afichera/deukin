@@ -15,6 +15,7 @@
 		<g:message code="correlatividad.predecesoras.label" default="Predecesoras" />
 		
 	</label>
-	<g:select name="predecesoras" from="${com.deukin.Materia.list()}" multiple="multiple" optionKey="id" size="5" value="${correlatividadInstance?.predecesoras*.id}" class="many-to-many"/>
+	<richui:autoComplete name="buscadorMateriaPredecesora" value="${correlatividadInstance?.predecesoras*.id}"  action="${createLinkTo('dir': 'correlatividad/searchMateriasPredecesorasAJAX')}" forceSelection="true"/>
+<%--	<g:select name="predecesoras" from="${com.deukin.Materia.list()}" multiple="multiple" optionKey="id" size="5" value="${correlatividadInstance?.predecesoras*.id}" class="many-to-many"/>--%>
 </div>
 

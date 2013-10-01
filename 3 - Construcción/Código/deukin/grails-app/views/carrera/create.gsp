@@ -36,14 +36,14 @@
 		<div class="row">
 			<div class="col-lg-6">
 				<div class="well">
-					<g:form action="save"
+					<g:form action="saveNew"
 						>
 						<fieldset class="form">
-							<g:render template="form" />
+							<g:render template="formCreate" />
 						</fieldset>
 						<fieldset class="buttons">
 							<g:submitButton name="create" class="btn btn-primary"
-								value="${message(code: 'default.button.create.label', default: 'Create')}" />
+								value="${message(code: 'carrera.button.createBorrador.label', default: 'Crear')}" />
 						</fieldset>
 					</g:form>
 				</div>

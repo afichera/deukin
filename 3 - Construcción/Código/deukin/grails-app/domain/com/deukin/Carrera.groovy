@@ -25,26 +25,28 @@ class Carrera {
 	
 		
     static constraints = {
-		titulo unique:true, maxSize:200,validator:{val, obj -> 
-	def estado = obj.properties['estado'] 
-			if (estado==EstadoDeCreacion.BORRADOR) { 
-							true 
-							 }
-			else {
-				if (val=='')
-				false
-				else
-				true
-			}	
-	}
-		
+		titulo unique:true, maxSize:200, blank:false
+		condicionIngreso nullable:true, blank:true
 		planesEstudio nullable:true
 		objetivos nullable:true
 		fundamentacion nullable:true
 		perfilDelGraduado nullable:true
-		descripcion nullable:true	
-		coordinador nullable:true 
+		descripcion nullable:true
+		coordinador nullable:true
 		estado blank:false
+		
+		
+//		validator:{val, obj ->
+//			def estado = obj.properties['objetivos']
+//					if (estado==EstadoDeCreacion.BORRADOR) {
+//									true
+//									 }
+//					else {
+//						if (val)
+//						true
+//						else
+//						false
+//					}	 }
 	}
 	String toString(){
 		titulo

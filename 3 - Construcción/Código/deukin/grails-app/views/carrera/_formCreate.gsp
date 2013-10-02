@@ -21,13 +21,6 @@
 
 
 
-<div class="fieldcontain ${hasErrors(bean: carreraInstance, field: 'coordinador', 'error')} ">
-	<label for="coordinador" class="control-label">
-		<g:message code="carrera.coordinador.label" default="Coordinador" />
-		
-	</label>
-	<g:select id="coordinador" name="coordinador.id" from="${com.deukin.Persona.list()}" optionKey="id" value="${carreraInstance?.coordinador?.id}" class="many-to-one" noSelection="['null': '']"/>
-</div>
 
 <div class="fieldcontain ${hasErrors(bean: carreraInstance, field: 'modalidadAsistencia', 'error')} required">
 	<label for="modalidadAsistencia" class="control-label">

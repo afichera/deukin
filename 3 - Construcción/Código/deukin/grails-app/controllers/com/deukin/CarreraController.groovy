@@ -34,7 +34,9 @@ class CarreraController {
 		
 		def saveNew() {
 			def planEstudioInstance = new  PlanEstudio(identificador:params.nombrePlanDeEstudio,estado: EstadoDeCreacion.BORRADOR)
-			def carreraInstance = new Carrera(titulo: params.titulo, descripcion:null, condicionIngreso: null, modalidadAsistencia: params.modalidadAsistencia, coordinador: params.coordinador, estado: EstadoDeCreacion.BORRADOR)
+			
+			def carreraInstance = new Carrera(titulo: params.titulo, descripcion:null, condicionIngreso: null, modalidadAsistencia: params.modalidadAsistencia, coordinador: null, estado: EstadoDeCreacion.BORRADOR)
+								.addToPlanesEstudio(planEstudioInstance)
 			if (!carreraInstance.save(flush: true)) {
 				render(view: "create", model: [carreraInstance: carreraInstance])
 				return

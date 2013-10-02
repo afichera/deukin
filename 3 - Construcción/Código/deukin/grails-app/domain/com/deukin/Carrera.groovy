@@ -1,6 +1,4 @@
 package com.deukin
-
-
 /**
  * Representa una Carrera de la Institucion
  * @author Ale Mobile
@@ -33,23 +31,23 @@ class Carrera {
 		perfilDelGraduado nullable:true
 		descripcion nullable:true
 		coordinador nullable:true
-		estado blank:false
 		
+	
 		
-//		validator:{val, obj ->
-//			def estado = obj.properties['objetivos']
-//					if (estado==EstadoDeCreacion.BORRADOR) {
-//									true
-//									 }
-//					else {
-//						if (val)
-//						true
-//						else
-//						false
-//					}	 }
+		estado  validator:{val, obj ->
+			
+					if (val==EstadoDeCreacion.BORRADOR||val==EstadoDeCreacion.SIN_OFERTAR) {
+									true
+								 }
+					else {
+						if (obj.properties['condicionIngreso']&&obj.properties['planesEstudio']&&obj.properties['fundamentacion']&&obj.properties['perfilDelGraduado']&&obj.properties['descripcion'])
+						true
+						else
+					false
+					}	 }
 	}
 	String toString(){
 		titulo
 	}
-	
-}
+
+}	

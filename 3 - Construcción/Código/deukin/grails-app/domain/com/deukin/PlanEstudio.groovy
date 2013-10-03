@@ -15,7 +15,7 @@ class PlanEstudio {
 	Integer cantidadPeriodosAcademicos
 	EstadoDeCreacion estado
 	//Las validaciones son 1) que exista una correlativa cargada, y luego que ademas valide si esta en un cuatri previo.	
-	static hasMany = [asignacionesPeriodosMaterias:AsignacionPeriodoMateria]
+	static hasMany = [asignacionesPeriodosMaterias:AsignacionPeriodoMateria, materias:Materia]
 	//tiene que validar que el periodo no este lleno.
 	static belongsTo = [carrera : Carrera]
 
@@ -24,4 +24,9 @@ class PlanEstudio {
 		 cantidadPeriodosAcademicos nullable:true
 		 asignacionesPeriodosMaterias nullable:true
     }
+	
+	String toString(){
+		identificacion
+	}
+	
 }

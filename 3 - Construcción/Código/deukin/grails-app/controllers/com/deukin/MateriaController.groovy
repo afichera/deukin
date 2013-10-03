@@ -10,21 +10,21 @@ class MateriaController {
 	def springSecurityService
 	def materiaService
 	def usuarioService
-	def carreraService
+	def planEstudioService
 	
 	static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
-	def searchCarrerasAJAX = {
+	def searchPlanesEstudioAJAX = {
 		def usuarioLogueado = springSecurityService.principal
 		def queryRegex = "%${params.query}%"
-		def carreras = carreraService.getCarrerasLikeParamsAndCoordinadorUser(queryRegex, usuarioLogueado)
+		def planesEstudio = planEstudioService.getPlanesEstudioLikeParamsAndCoordinadorUser(queryRegex, usuarioLogueado)
 		
 		render(contentType: "text/xml") {
 			results() {
-				carreras.each { carrera ->
+				planesEstudio.each { plan ->
 					result(){
-						name(carrera.titulo)
-						id(carrera)
+						name(plan.identificacion)
+						id(plan)
 					}
 				}
 			}
@@ -51,7 +51,7 @@ class MateriaController {
 	def listaCarrerasMostrar(){
 		def authorities =  springSecurityService.principal.authorities
 		def usuario = springSecurityService.principal
-		carreraService.listaCarrerasMostrar(authorities, usuario)		
+		planEstudioService.listaPlanesEstudioMostrar(authorities, usuario)		
 	}
 
 	def save() {

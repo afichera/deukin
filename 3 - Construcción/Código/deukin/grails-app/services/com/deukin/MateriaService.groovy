@@ -8,18 +8,16 @@ class MateriaService {
 	}
 
 	def obtenerMateriasCandidatasPredecesorasByQueryRegexAndMateriaPrincipal(def queryRegex, Materia materiaPrincipal){
-		def carrera = materiaPrincipal.carrera
-		def materias = carrera.materias
-		def materiasMostrar = materias
-		materiasMostrar.clear()
+		def planEstudio = materiaPrincipal.planEstudio
+		def materiasDelPlan = Materia.findByPlanEstudio(planEstudio)		
+		def materiasMostrar = []			
 		def esCodigo = queryRegex.isInteger()
 		def codigoNumero
 		if(esCodigo){
 			codigoNumero = new Integer(queryRegex)
 		}
 
-
-		for (materia in materias) {
+		for (materia in materiasDelPlan) {
 			if(esCodigo){
 				if((materia.nombre.contains(queryRegex) || 
 					(materia.codigo.intValue() == codigoNumero.intValue()))
@@ -50,7 +48,8 @@ class MateriaService {
 			def usuarioDeukin = Usuario.findByUsername(username)
 			def persona = Persona.findByUsuario(usuarioDeukin)
 			def carreras = Carrera.findAllByCoordinador(persona)
-			materias = Materia.findAllByCarreraInList(carreras)
+			def planesEstudio = PlanEstudio.findAllByCarreraInList(carreras)
+			materias = Materia.findAllByPlanEstudioInList(planesEstudio)
 			[materiaInstanceList: materias, materiaInstanceTotal: materias.size()]
 		}else{
 			[materiaInstanceList: Materia.list(params), materiaInstanceTotal: Materia.count()]

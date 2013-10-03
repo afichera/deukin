@@ -37,7 +37,7 @@ class CorrelatividadController {
 		def idMateriaPrincipal = new Long(request.getParameter("MateriaPrincipalId"))
 		 
 		def materiaPrincipal = Materia.get(idMateriaPrincipal)
-		def materas = materiaService.obtenerMateriasCandidatasPredecesorasByQueryRegexAndMateriaPrincipal(queryRegex, materiaPrincipal)
+		def materias = materiaService.obtenerMateriasCandidatasPredecesorasByQueryRegexAndMateriaPrincipal(queryRegex, materiaPrincipal)
 //		def carreras = materiaService.obtenerMateriasCandidatasPredecesorasByQueryRegexAndMateriaPrincipal
 		
 		//TODO: Eliminar de la lista la Materia Principal en la que estamos parados.

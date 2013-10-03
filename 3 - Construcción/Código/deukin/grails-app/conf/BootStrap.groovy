@@ -11,6 +11,7 @@ import com.deukin.Materia
 import com.deukin.ModalidadAsistencia
 import com.deukin.PeriodoDedicacion
 import com.deukin.Persona;
+import com.deukin.PlanEstudio;
 import com.deukin.Recurso
 import com.deukin.Rol
 import com.deukin.Telefono
@@ -197,16 +198,34 @@ class BootStrap {
 		//carreras solo para test
 		def carrera1 = Carrera.findByTitulo('TECNICO UNIVERSITARIO EN DESARROLLO WEB')?:new Carrera(titulo: 'TECNICO UNIVERSITARIO EN DESARROLLO WEB', descripcion:'TECNICATURA UNIVERSITARIA EN DESARROLLO WEB', condicionIngreso: 'SECUNDARIO COMPLETO', modalidadAsistencia: ModalidadAsistencia.PRESENCIAL, coordinador: personaCoordinador1, estado: EstadoDeCreacion.BORRADOR).save(failOnError:true)
 		def carrera2 = Carrera.findByTitulo('INGENIERIO EN INFORMATICA')?:new Carrera(titulo: 'INGENIERIO EN INFORMATICA', descripcion:'INGENIERIA EN INFORMATICA', condicionIngreso: 'SECUNDARIO COMPLETO', modalidadAsistencia: ModalidadAsistencia.PRESENCIAL, estado: EstadoDeCreacion.BORRADOR).save(failOnError:true)
+		
+		
+		//Planes de Estudio
+		def planEstudio1 = PlanEstudio.findByIdentificacion('TEC_DESA_2011')?:new PlanEstudio(identificacion: 'TEC_DESA_2011', carrera:carrera1, estado: EstadoDeCreacion.OFERTADA, cantidadPeriodosAcademicos: 5).save(failOnError:true)
+		def planEstudio2 = PlanEstudio.findByIdentificacion('TEC_DESA_2014')?:new PlanEstudio(identificacion: 'TEC_DESA_2014', carrera:carrera1, estado: EstadoDeCreacion.SIN_OFERTAR, cantidadPeriodosAcademicos: 5).save(failOnError:true)
+		def planEstudio3 = PlanEstudio.findByIdentificacion('ING_INF_1997')?:new PlanEstudio(identificacion: 'ING_INF_1997', carrera:carrera2, estado: EstadoDeCreacion.OFERTADA, cantidadPeriodosAcademicos: 10).save(failOnError:true)
+		def planEstudio4 = PlanEstudio.findByIdentificacion('ING_INF_2010')?:new PlanEstudio(identificacion: 'ING_INF_2010', carrera:carrera2, estado: EstadoDeCreacion.OFERTADA, cantidadPeriodosAcademicos: 10).save(failOnError:true)
+		
+		
 		//Materias solo para test
-		def materia1 = Materia.findByCodigo(1)?: new Materia(codigo:1, nombre:'BASE DE DATOS 1', cantidadUnidadesHorarias:40, cupoMinimoAlumnos:20, cupoMaximoAlumnos:30, cantidadDocentesRequeridos:2, contenidoMinimo:'Aca va el contenido minimo...', bibliografia:'Acá va la bibliografia.', carrera:carrera1).save(failOnError:true)
-		def materia2 = Materia.findByCodigo(2)?: new Materia(codigo:2, nombre:'PROGRAMACION BASICA 1', cantidadUnidadesHorarias:80, cupoMinimoAlumnos:30, cupoMaximoAlumnos:40, cantidadDocentesRequeridos:3, contenidoMinimo:'Aca va el contenido minimo...', bibliografia:'Acá va la bibliografia.',carrera:carrera1).save(failOnError:true)
-		def materia3 = Materia.findByCodigo(3)?: new Materia(codigo:3, nombre:'MATEMATICA', cantidadUnidadesHorarias:40, cupoMinimoAlumnos:15, cupoMaximoAlumnos:30, cantidadDocentesRequeridos:1, contenidoMinimo:'Aca va el contenido minimo...', bibliografia:'Acá va la bibliografia.',carrera:carrera1).save(failOnError:true)
-		def materia4 = Materia.findByCodigo(4)?: new Materia(codigo:4, nombre:'PROGRAMACION WEB 1', cantidadUnidadesHorarias:40, cupoMinimoAlumnos:20, cupoMaximoAlumnos:30, cantidadDocentesRequeridos:2, contenidoMinimo:'Aca va el contenido minimo...', bibliografia:'Acá va la bibliografia.',carrera:carrera1).save(failOnError:true)
-		def materia5 = Materia.findByCodigo(5)?: new Materia(codigo:5, nombre:'BASE DE DATOS 2', cantidadUnidadesHorarias:40, cupoMinimoAlumnos:8, cupoMaximoAlumnos:30, cantidadDocentesRequeridos:1, contenidoMinimo:'Aca va el contenido minimo...', bibliografia:'Acá va la bibliografia.',carrera:carrera1).save(failOnError:true)
-		def materia6 = Materia.findByCodigo(6)?: new Materia(codigo:6, nombre:'REDES', cantidadUnidadesHorarias:40, cupoMinimoAlumnos:8, cupoMaximoAlumnos:30, cantidadDocentesRequeridos:2, contenidoMinimo:'Aca va el contenido minimo...', bibliografia:'Acá va la bibliografia.',carrera:carrera1).save(failOnError:true)
-		def materia7 = Materia.findByCodigo(7)?: new Materia(codigo:7, nombre:'PROGRAMACION WEB 2', cantidadUnidadesHorarias:80, cupoMinimoAlumnos:8, cupoMaximoAlumnos:30, cantidadDocentesRequeridos:2, contenidoMinimo:'Aca va el contenido minimo...', bibliografia:'Acá va la bibliografia.',carrera:carrera1).save(failOnError:true)
-		def materia8 = Materia.findByCodigo(8)?: new Materia(codigo:8, nombre:'PROGRAMACION WEB 3', cantidadUnidadesHorarias:80, cupoMinimoAlumnos:8, cupoMaximoAlumnos:30, cantidadDocentesRequeridos:2, contenidoMinimo:'Aca va el contenido minimo...', bibliografia:'Acá va la bibliografia.',carrera:carrera1).save(failOnError:true)
+		def materia1 = Materia.findByCodigo(101)?: new Materia(codigo:101, nombre:'BASE DE DATOS 1', cantidadUnidadesHorarias:40, cupoMinimoAlumnos:20, cupoMaximoAlumnos:30, cantidadDocentesRequeridos:2, contenidoMinimo:'Aca va el contenido minimo...', bibliografia:'Acá va la bibliografia.', planEstudio:planEstudio1).save(failOnError:true)
+		def materia2 = Materia.findByCodigo(102)?: new Materia(codigo:102, nombre:'PROGRAMACION BASICA 1', cantidadUnidadesHorarias:80, cupoMinimoAlumnos:30, cupoMaximoAlumnos:40, cantidadDocentesRequeridos:3, contenidoMinimo:'Aca va el contenido minimo...', bibliografia:'Acá va la bibliografia.',planEstudio:planEstudio1).save(failOnError:true)
+		def materia3 = Materia.findByCodigo(103)?: new Materia(codigo:103, nombre:'MATEMATICA', cantidadUnidadesHorarias:40, cupoMinimoAlumnos:15, cupoMaximoAlumnos:30, cantidadDocentesRequeridos:1, contenidoMinimo:'Aca va el contenido minimo...', bibliografia:'Acá va la bibliografia.',planEstudio:planEstudio1).save(failOnError:true)
+		def materia4 = Materia.findByCodigo(104)?: new Materia(codigo:104, nombre:'PROGRAMACION WEB 1', cantidadUnidadesHorarias:40, cupoMinimoAlumnos:20, cupoMaximoAlumnos:30, cantidadDocentesRequeridos:2, contenidoMinimo:'Aca va el contenido minimo...', bibliografia:'Acá va la bibliografia.',planEstudio:planEstudio1).save(failOnError:true)
+		def materia5 = Materia.findByCodigo(105)?: new Materia(codigo:105, nombre:'BASE DE DATOS 2', cantidadUnidadesHorarias:40, cupoMinimoAlumnos:8, cupoMaximoAlumnos:30, cantidadDocentesRequeridos:1, contenidoMinimo:'Aca va el contenido minimo...', bibliografia:'Acá va la bibliografia.',planEstudio:planEstudio1).save(failOnError:true)
+		def materia6 = Materia.findByCodigo(106)?: new Materia(codigo:106, nombre:'REDES', cantidadUnidadesHorarias:40, cupoMinimoAlumnos:8, cupoMaximoAlumnos:30, cantidadDocentesRequeridos:2, contenidoMinimo:'Aca va el contenido minimo...', bibliografia:'Acá va la bibliografia.',planEstudio:planEstudio1).save(failOnError:true)
+		def materia7 = Materia.findByCodigo(107)?: new Materia(codigo:107, nombre:'PROGRAMACION WEB 2', cantidadUnidadesHorarias:80, cupoMinimoAlumnos:8, cupoMaximoAlumnos:30, cantidadDocentesRequeridos:2, contenidoMinimo:'Aca va el contenido minimo...', bibliografia:'Acá va la bibliografia.',planEstudio:planEstudio1).save(failOnError:true)
+		def materia8 = Materia.findByCodigo(108)?: new Materia(codigo:108, nombre:'PROGRAMACION WEB 3', cantidadUnidadesHorarias:80, cupoMinimoAlumnos:8, cupoMaximoAlumnos:30, cantidadDocentesRequeridos:2, contenidoMinimo:'Aca va el contenido minimo...', bibliografia:'Acá va la bibliografia.',planEstudio:planEstudio1).save(failOnError:true)
 
+		def materia11 = Materia.findByCodigo(201)?: new Materia(codigo:201, nombre:'BASE DE DATOS 1', cantidadUnidadesHorarias:80, cupoMinimoAlumnos:20, cupoMaximoAlumnos:32, cantidadDocentesRequeridos:2, contenidoMinimo:'Aca va el contenido minimo...', bibliografia:'Acá va la bibliografia.', planEstudio:planEstudio2).save(failOnError:true)
+		def materia12 = Materia.findByCodigo(202)?: new Materia(codigo:202, nombre:'PROGRAMACION BASICA 1', cantidadUnidadesHorarias:80, cupoMinimoAlumnos:30, cupoMaximoAlumnos:20, cantidadDocentesRequeridos:3, contenidoMinimo:'Aca va el contenido minimo...', bibliografia:'Acá va la bibliografia.',planEstudio:planEstudio2).save(failOnError:true)
+		def materia13 = Materia.findByCodigo(203)?: new Materia(codigo:203, nombre:'MATEMATICA', cantidadUnidadesHorarias:40, cupoMinimoAlumnos:15, cupoMaximoAlumnos:30, cantidadDocentesRequeridos:1, contenidoMinimo:'Aca va el contenido minimo...', bibliografia:'Acá va la bibliografia.',planEstudio:planEstudio2).save(failOnError:true)
+		def materia14 = Materia.findByCodigo(204)?: new Materia(codigo:204, nombre:'PROGRAMACION WEB 1', cantidadUnidadesHorarias:40, cupoMinimoAlumnos:10, cupoMaximoAlumnos:30, cantidadDocentesRequeridos:2, contenidoMinimo:'Aca va el contenido minimo...', bibliografia:'Acá va la bibliografia.',planEstudio:planEstudio2).save(failOnError:true)
+		def materia15 = Materia.findByCodigo(205)?: new Materia(codigo:205, nombre:'BASE DE DATOS 2', cantidadUnidadesHorarias:40, cupoMinimoAlumnos:8, cupoMaximoAlumnos:30, cantidadDocentesRequeridos:1, contenidoMinimo:'Aca va el contenido minimo...', bibliografia:'Acá va la bibliografia.',planEstudio:planEstudio2).save(failOnError:true)
+		def materia16 = Materia.findByCodigo(206)?: new Materia(codigo:206, nombre:'REDES', cantidadUnidadesHorarias:40, cupoMinimoAlumnos:8, cupoMaximoAlumnos:30, cantidadDocentesRequeridos:2, contenidoMinimo:'Aca va el contenido minimo...', bibliografia:'Acá va la bibliografia.',planEstudio:planEstudio2).save(failOnError:true)
+		def materia17 = Materia.findByCodigo(207)?: new Materia(codigo:207, nombre:'PROGRAMACION WEB 2', cantidadUnidadesHorarias:80, cupoMinimoAlumnos:8, cupoMaximoAlumnos:30, cantidadDocentesRequeridos:2, contenidoMinimo:'Aca va el contenido minimo...', bibliografia:'Acá va la bibliografia.',planEstudio:planEstudio2).save(failOnError:true)
+		def materia18 = Materia.findByCodigo(208)?: new Materia(codigo:208, nombre:'PROGRAMACION WEB 3', cantidadUnidadesHorarias:80, cupoMinimoAlumnos:8, cupoMaximoAlumnos:30, cantidadDocentesRequeridos:2, contenidoMinimo:'Aca va el contenido minimo...', bibliografia:'Acá va la bibliografia.',planEstudio:planEstudio2).save(failOnError:true)
+		
 		//Solo Para Test
 		def periodoDedicacion1 = PeriodoDedicacion.findByAnioAndCuatrimestre(2013, 1)?: new PeriodoDedicacion(anio:2013, cuatrimestre:1).save(failOnError:true)
 		def periodoDedicacion2 = PeriodoDedicacion.findByAnioAndCuatrimestre(2013, 2)?: new PeriodoDedicacion(anio:2013, cuatrimestre:2).save(failOnError:true)
@@ -231,8 +250,6 @@ class BootStrap {
 		institucionEducativaUnica.departamentos = []
 		institucionEducativaUnica.departamentos.add(departamentoIngenieria)
 		institucionEducativaUnica.save(failOnError:true)
-
-		//Planes
 
 	}
 	def destroy = {

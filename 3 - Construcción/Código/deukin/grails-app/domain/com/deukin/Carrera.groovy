@@ -18,7 +18,7 @@ class Carrera {
 	String descripcion
 	EstadoDeCreacion estado
 	//Los objetivos pueden ser varios. Los planes tambien, solo que uno será el Vigente
-	static hasMany = [objetivos:String, planesEstudio:PlanEstudio]
+	static hasMany = [objetivos:String, planesEstudio:PlanEstudio, materias:Materia]
 	
 	
 		

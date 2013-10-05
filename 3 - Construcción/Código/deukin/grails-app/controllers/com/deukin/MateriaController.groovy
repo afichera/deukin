@@ -9,10 +9,30 @@ class MateriaController {
 	
 	def springSecurityService
 	def materiaService
+	def carreraService
 	def usuarioService
 	def planEstudioService
 	
 	static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
+	
+	def searchCarrerasAutocomplete = {
+		def usuarioLogueado = springSecurityService.principal
+		def queryRegex = "%${params.query}%"
+		def carreras = carreraService.findCarrerasLikeParamasAndCoordinadorUser(queryRegex, usuarioLogueado)
+
+		render(contentType: "text/xml") {
+			results() {
+				carreras.each { carrera ->
+					result(){
+						name(carrera.titulo)
+						id(carrera)
+					}
+				}
+			}
+		}
+
+				
+	}
 
 	def searchPlanesEstudioAJAX = {
 		def usuarioLogueado = springSecurityService.principal
@@ -51,7 +71,7 @@ class MateriaController {
 	def listaCarrerasMostrar(){
 		def authorities =  springSecurityService.principal.authorities
 		def usuario = springSecurityService.principal
-		planEstudioService.listaPlanesEstudioMostrar(authorities, usuario)		
+		carreraService.listaCarrerasMostrar(authorities, usuario)		
 	}
 
 	def save() {

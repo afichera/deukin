@@ -25,27 +25,5 @@ class PlanEstudioService {
 			carreras = Carrera.findAll { carrera -> titulo =~ texto }
 		}
 		planes = PlanEstudio.findAllByCarreraInList(carreras)
-	}
-	
-	def listaPlanesEstudioMostrar(String authorities, usuario){
-		def filtrarPlanes = false
-		def materias
-		def planesMostrar = []
-		for (auto in authorities){
-			if(auto.role.equals('ROLE_COORDINADOR') ){
-				filtrarPlanes= true
-			}
-		}
-		if(filtrarPlanes){
-			def username = usuario?.getUsername()
-			def usuarioDeukin = Usuario.findByUsername(username)
-			def persona = Persona.findByUsuario(usuarioDeukin)
-			def carreras = Carrera.findAllByCoordinador(persona)
-			planesMostrar = PlanEstudio.findAllByCarrerasInList(carreras)
-			
-		}else{
-			planesMostrar = PlanEstudio.all
-		}
-		
-	}
+	}	
 }

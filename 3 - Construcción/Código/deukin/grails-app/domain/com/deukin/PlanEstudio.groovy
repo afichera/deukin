@@ -1,7 +1,5 @@
 package com.deukin
 
-import com.sun.beans.decoder.TrueElementHandler;
-
 
 /**
  * Representa un plan de estudio para una {@link Carrera}
@@ -15,7 +13,7 @@ class PlanEstudio {
 	Integer cantidadPeriodosAcademicos
 	EstadoDeCreacion estado
 	//Las validaciones son 1) que exista una correlativa cargada, y luego que ademas valide si esta en un cuatri previo.	
-	static hasMany = [asignacionesPeriodosMaterias:AsignacionPeriodoMateria, materias:Materia]
+	static hasMany = [asignacionesPeriodosMaterias:AsignacionPeriodoMateria]
 	//tiene que validar que el periodo no este lleno.
 	static belongsTo = [carrera : Carrera]
 

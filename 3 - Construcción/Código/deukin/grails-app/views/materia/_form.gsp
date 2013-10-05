@@ -42,12 +42,13 @@
 	<g:field name="cantidadUnidadesHorarias" type="number" value="${materiaInstance.cantidadUnidadesHorarias}" required=""/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: materiaInstance, field: 'planEstudio', 'error')} required">
-	<label for="planEstudio" class="control-label">
-		<g:message code="materia.planEstudio.label" default="PlanEstudio" />
+<div class="fieldcontain ${hasErrors(bean: materiaInstance, field: 'carrera', 'error')} required">
+	<label for="carrera" class="control-label">
+		<g:message code="materia.carrera.label" default="Carrera" />
 		<span class="required-indicator">*</span>
 	</label>
-	<richui:autoComplete name="buscadorPlanEstudioMateria" value="${materiaInstance?.planEstudio}"  action="${createLinkTo('dir': 'materia/searchPlanesEstudioAJAX')}" forceSelection="true"/>
+	<richui:autoComplete name="searchCarreras" value="${materiaInstance?.carrera}" minQueryLength="2"  
+		action="${createLinkTo('dir': 'materia/searchCarrerasAutocomplete')}" forceSelection="true"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: materiaInstance, field: 'contenidoMinimo', 'error')} ">

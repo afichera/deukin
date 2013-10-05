@@ -29,7 +29,19 @@ class CarreraService {
 		}
 	}
 	
-
+	def findCarrerasLikeParamasAndCoordinadorUser(queryRegex, usuarioLogueado){		
+		def authorities =  usuarioLogueado.authorities
+		def usuarioDeukin = usuarioService.obtenerUsuario(usuarioLogueado)
+		def filtrarCarreras = usuarioService.poseeElRol(authorities, 'ROLE_COORDINADOR')
+		def carreras = []
+		if(filtrarCarreras){
+			def persona = Persona.findByUsuario(usuarioDeukin)
+			carreras = Carrera.findAllByCoordinadorAndTituloLike(persona, queryRegex)
+		}else{
+			carreras = Carrera.findAll { carrera -> titulo =~ queryRegex }
+		}
+		carreras
+	}
 	
 	
 }

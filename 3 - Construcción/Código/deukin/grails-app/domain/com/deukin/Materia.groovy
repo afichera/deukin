@@ -18,7 +18,7 @@ class Materia {
 	Integer cantidadDocentesRequeridos
 	//Las equivalencias son las que equivalen a esta materia, las coorrelativas son las predecesoras.
 	static hasMany = [objetivosGenerales:Objetivo, objetivosEspecificos:ObjetivoEspecifico, tiposRecurso:TipoRecurso]
-	static belongsTo = [planEstudio:PlanEstudio]
+	static belongsTo =[carrera:Carrera]
 	
 	static constraints = {
 		codigo(unique:true, maxLength:10)

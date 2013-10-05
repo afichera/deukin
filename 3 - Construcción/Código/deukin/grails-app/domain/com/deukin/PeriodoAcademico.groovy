@@ -21,4 +21,6 @@ class PeriodoAcademico {
     static constraints = {
 		
     }
+	
+	
 }

@@ -13,6 +13,12 @@
 				<sec:ifAnyGranted
 		roles="ROLE_COORDINADOR,ROLE_ADMINISTRATIVO"><li><g:link controller='planEstudio'><g:message code="secciones.academicas.planesDeEstudio" /></g:link></li></sec:ifAnyGranted>
 				<sec:ifAnyGranted
+		roles="ROLE_COORDINADOR"><li><g:link controller='correlatividad'><g:message code="secciones.academicas.correlatividades" /></g:link></li></sec:ifAnyGranted>
+				<sec:ifAnyGranted
+		roles="ROLE_COORDINADOR"><li><g:link controller='equivalencia'><g:message code="secciones.academicas.equivalencias" /></g:link></li></sec:ifAnyGranted>
+		
+		
+				<sec:ifAnyGranted
 		roles="ROLE_COORDINADOR,ROLE_ADMINISTRATIVO"><li><g:link controller='cronogramaCarrera'><g:message code="secciones.academicas.cronogramasDeCursos" /></g:link></li></sec:ifAnyGranted>
 				<sec:ifAnyGranted
 		roles="ROLE_DOCENTE,ROLE_COORDINADOR,ROLE_ADMINISTRATIVO"><li><g:link controller='proximamente'><g:message code="secciones.academicas.finales" /></g:link></li></sec:ifAnyGranted>

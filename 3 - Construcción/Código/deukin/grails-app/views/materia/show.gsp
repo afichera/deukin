@@ -79,11 +79,11 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${materiaInstance?.planEstudio}">
+				<g:if test="${materiaInstance?.carrera}">
 				<li class="fieldcontain">
-					<span id="planEstudio-label" class="property-label"><g:message code="materia.planEstudio.label" default="PlanEstudio" /></span>
+					<span id="planEstudio-label" class="property-label"><g:message code="materia.carrera.label" default="Carrera" /></span>
 					
-						<span class="property-value" aria-labelledby="planEstudio-label"><g:link controller="planEstudio" action="show" id="${materiaInstance?.planEstudio?.id}">${materiaInstance?.planEstudio?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="planEstudio-label"><g:link controller="planEstudio" action="show" id="${materiaInstance?.carrera?.id}">${materiaInstance?.carrera?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>

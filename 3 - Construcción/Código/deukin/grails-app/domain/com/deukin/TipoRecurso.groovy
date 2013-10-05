@@ -12,4 +12,8 @@ class TipoRecurso {
     static constraints = {
 		descripcion nullable:false, unique:true 
     }
+	
+	String toString(){
+		descripcion
+	}
 }

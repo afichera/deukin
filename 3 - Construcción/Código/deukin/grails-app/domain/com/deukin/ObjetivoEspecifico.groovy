@@ -6,4 +6,8 @@ class ObjetivoEspecifico {
     static constraints = {
 		descripcion nullable:false
     }
+	
+	String toString(){
+		descripcion
+	}
 }

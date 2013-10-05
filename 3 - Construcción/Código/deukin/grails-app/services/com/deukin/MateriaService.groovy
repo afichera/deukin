@@ -48,7 +48,7 @@ class MateriaService {
 			def usuarioDeukin = Usuario.findByUsername(username)
 			def persona = Persona.findByUsuario(usuarioDeukin)
 			def carreras = Carrera.findAllByCoordinador(persona)			
-			materias = Materia.findAllByCarreraInList(planesEstudio)
+			materias = Materia.findAllByCarreraInList(carreras)
 			[materiaInstanceList: materias, materiaInstanceTotal: materias.size()]
 		}else{
 			[materiaInstanceList: Materia.list(params), materiaInstanceTotal: Materia.count()]

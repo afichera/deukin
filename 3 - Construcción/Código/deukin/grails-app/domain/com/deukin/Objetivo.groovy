@@ -9,4 +9,8 @@ class Objetivo {
 	static belongsTo = [materia:Materia]
     static constraints = {
     }
+	
+	String toString(){
+		descripcion
+	}
 }

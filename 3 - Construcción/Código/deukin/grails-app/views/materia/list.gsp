@@ -32,7 +32,7 @@
 					
 						<g:sortableColumn property="cantidadUnidadesHorarias" title="${message(code: 'materia.cantidadUnidadesHorarias.label', default: 'Cantidad Unidades Horarias <span class="glyphicon glyphicon-sort"></span>')}" />
 					
-						<th><g:message code="materia.planEstudio.label" default="PlanEstudio" /></th>
+						<th><g:message code="materia.carrera.label" default="Carrera" /></th>
 					
 					</tr>
 				</thead>
@@ -50,7 +50,7 @@
 					
 						<td>${fieldValue(bean: materiaInstance, field: "cantidadUnidadesHorarias")}</td>
 					
-						<td>${fieldValue(bean: materiaInstance, field: "planEstudio")}</td>
+						<td>${fieldValue(bean: materiaInstance, field: "carrera")}</td>
 					
 					</tr>
 				</g:each>

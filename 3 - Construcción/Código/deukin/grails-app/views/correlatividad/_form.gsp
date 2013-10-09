@@ -2,20 +2,19 @@
 
 
 
-<div class="fieldcontain ${hasErrors(bean: correlatividadInstance, field: 'materia', 'error')} required">
-	<label for="materia" class="control-label">
-		<g:message code="correlatividad.materia.label" default="Materia" />
+<div class="fieldcontain ${hasErrors(bean: correlatividadInstance, field: 'materiaPrincipal', 'error')} required">
+	<label for="materiaPrincipal" class="control-label">
+		<g:message code="correlatividad.materiaPrincipal.label" default="Materia Principal" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="materia" name="materia.id" from="${com.deukin.Materia.list()}" optionKey="id" required="" value="${correlatividadInstance?.materia?.id}" class="many-to-one"/>
+	<g:select id="materiaPrincipal" name="materiaPrincipal.id" from="${com.deukin.Materia.list()}" optionKey="id" required="" value="${correlatividadInstance?.materiaPrincipal?.id}" class="many-to-one"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: correlatividadInstance, field: 'predecesoras', 'error')} ">
-	<label for="predecesoras" class="control-label">
-		<g:message code="correlatividad.predecesoras.label" default="Predecesoras" />
-		
+<div class="fieldcontain ${hasErrors(bean: correlatividadInstance, field: 'materiaPredecesora', 'error')} required">
+	<label for="materiaPredecesora" class="control-label">
+		<g:message code="correlatividad.materiaPredecesora.label" default="Materia Predecesora" />
+		<span class="required-indicator">*</span>
 	</label>
-	<richui:autoComplete name="buscadorMateriaPredecesora" value="${correlatividadInstance?.predecesoras*.id}"  action="${createLinkTo('dir': 'correlatividad/searchMateriasPredecesorasAJAX')}" forceSelection="true"/>
-<%--	<g:select name="predecesoras" from="${com.deukin.Materia.list()}" multiple="multiple" optionKey="id" size="5" value="${correlatividadInstance?.predecesoras*.id}" class="many-to-many"/>--%>
+	<g:select id="materiaPredecesora" name="materiaPredecesora.id" from="${com.deukin.Materia.list()}" optionKey="id" required="" value="${correlatividadInstance?.materiaPredecesora?.id}" class="many-to-one"/>
 </div>
 

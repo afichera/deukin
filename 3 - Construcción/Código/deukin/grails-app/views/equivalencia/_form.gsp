@@ -2,19 +2,19 @@
 
 
 
-<div class="fieldcontain ${hasErrors(bean: equivalenciaInstance, field: 'materia', 'error')} ">
-	<label for="materia" class="control-label">
-		<g:message code="equivalencia.materia.label" default="Materia" />
-		
+<div class="fieldcontain ${hasErrors(bean: equivalenciaInstance, field: 'materiaPrincipal', 'error')} required">
+	<label for="materiaPrincipal" class="control-label">
+		<g:message code="equivalencia.materiaPrincipal.label" default="Materia Principal" />
+		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="materia" name="materia.id" from="${com.deukin.Materia.list()}" optionKey="id" value="${equivalenciaInstance?.materia?.id}" class="many-to-one" noSelection="['null': '']"/>
+	<g:select id="materiaPrincipal" name="materiaPrincipal.id" from="${com.deukin.Materia.list()}" optionKey="id" required="" value="${equivalenciaInstance?.materiaPrincipal?.id}" class="many-to-one"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: equivalenciaInstance, field: 'equivalentes', 'error')} ">
-	<label for="equivalentes" class="control-label">
-		<g:message code="equivalencia.equivalentes.label" default="Equivalentes" />
-		
+<div class="fieldcontain ${hasErrors(bean: equivalenciaInstance, field: 'materiaEquivalente', 'error')} required">
+	<label for="materiaEquivalente" class="control-label">
+		<g:message code="equivalencia.materiaEquivalente.label" default="Materia Equivalente" />
+		<span class="required-indicator">*</span>
 	</label>
-	<g:select name="equivalentes" from="${com.deukin.Materia.list()}" multiple="multiple" optionKey="id" size="5" value="${equivalenciaInstance?.equivalentes*.id}" class="many-to-many"/>
+	<g:select id="materiaEquivalente" name="materiaEquivalente.id" from="${com.deukin.Materia.list()}" optionKey="id" required="" value="${equivalenciaInstance?.materiaEquivalente?.id}" class="many-to-one"/>
 </div>
 

@@ -7,10 +7,14 @@ package com.deukin
  */
 class Equivalencia {
 
-	Materia materia
-	static hasMany = [equivalentes:Materia]
+	Materia materiaPrincipal
+	Materia materiaEquivalente
 	
     static constraints = {
-		materia(unique:true, nullable:true)
+		materiaPrincipal(unique:['materiaEquivalente'],nullable:false)
     }
+	
+	String toString(){
+		'Materia: '+materiaPrincipal.toString()+' tiene como equivalente a: '+materiaEquivalente.toString()
+	}
 }

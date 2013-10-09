@@ -22,7 +22,9 @@
 				<thead>
 					<tr>
 					
-						<th><g:message code="correlatividad.materia.label" default="Materia" /></th>
+						<th><g:message code="correlatividad.materiaPrincipal.label" default="Materia Principal" /></th>
+					
+						<th><g:message code="correlatividad.materiaPredecesora.label" default="Materia Predecesora" /></th>
 					
 					</tr>
 				</thead>
@@ -30,7 +32,9 @@
 				<g:each in="${correlatividadInstanceList}" status="i" var="correlatividadInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${correlatividadInstance.id}">${fieldValue(bean: correlatividadInstance, field: "materia")}</g:link></td>
+						<td><g:link action="show" id="${correlatividadInstance.id}">${fieldValue(bean: correlatividadInstance, field: "materiaPrincipal")}</g:link></td>
+					
+						<td>${fieldValue(bean: correlatividadInstance, field: "materiaPredecesora")}</td>
 					
 					</tr>
 				</g:each>

@@ -34,22 +34,20 @@
 				<div class="well">
 					<ol class="property-list equivalencia">
 						
-				<g:if test="${equivalenciaInstance?.materia}">
+				<g:if test="${equivalenciaInstance?.materiaPrincipal}">
 				<li class="fieldcontain">
-					<span id="materia-label" class="property-label"><g:message code="equivalencia.materia.label" default="Materia" /></span>
+					<span id="materiaPrincipal-label" class="property-label"><g:message code="equivalencia.materiaPrincipal.label" default="Materia Principal" /></span>
 					
-						<span class="property-value" aria-labelledby="materia-label"><g:link controller="materia" action="show" id="${equivalenciaInstance?.materia?.id}">${equivalenciaInstance?.materia?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="materiaPrincipal-label"><g:link controller="materia" action="show" id="${equivalenciaInstance?.materiaPrincipal?.id}">${equivalenciaInstance?.materiaPrincipal?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>
 			
-				<g:if test="${equivalenciaInstance?.equivalentes}">
+				<g:if test="${equivalenciaInstance?.materiaEquivalente}">
 				<li class="fieldcontain">
-					<span id="equivalentes-label" class="property-label"><g:message code="equivalencia.equivalentes.label" default="Equivalentes" /></span>
+					<span id="materiaEquivalente-label" class="property-label"><g:message code="equivalencia.materiaEquivalente.label" default="Materia Equivalente" /></span>
 					
-						<g:each in="${equivalenciaInstance.equivalentes}" var="e">
-						<span class="property-value" aria-labelledby="equivalentes-label"><g:link controller="materia" action="show" id="${e.id}">${e?.encodeAsHTML()}</g:link></span>
-						</g:each>
+						<span class="property-value" aria-labelledby="materiaEquivalente-label"><g:link controller="materia" action="show" id="${equivalenciaInstance?.materiaEquivalente?.id}">${equivalenciaInstance?.materiaEquivalente?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>

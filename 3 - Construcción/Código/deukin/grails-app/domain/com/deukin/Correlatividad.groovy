@@ -5,9 +5,10 @@ package com.deukin
  *
  */
 class Correlatividad {
-	Materia materia
-	static hasMany = [predecesoras:Materia]
+	Materia materiaPrincipal
+	Materia materiaPredecesora
     static constraints = {
-		materia (unique:true, nullable:false)
+		materiaPrincipal(unique:['materiaPredecesora'],nullable:false) 
+	
     }
 }

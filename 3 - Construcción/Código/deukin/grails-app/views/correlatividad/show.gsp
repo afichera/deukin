@@ -34,22 +34,20 @@
 				<div class="well">
 					<ol class="property-list correlatividad">
 						
-				<g:if test="${correlatividadInstance?.materia}">
+				<g:if test="${correlatividadInstance?.materiaPrincipal}">
 				<li class="fieldcontain">
-					<span id="materia-label" class="property-label"><g:message code="correlatividad.materia.label" default="Materia" /></span>
+					<span id="materiaPrincipal-label" class="property-label"><g:message code="correlatividad.materiaPrincipal.label" default="Materia Principal" /></span>
 					
-						<span class="property-value" aria-labelledby="materia-label"><g:link controller="materia" action="show" id="${correlatividadInstance?.materia?.id}">${correlatividadInstance?.materia?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="materiaPrincipal-label"><g:link controller="materia" action="show" id="${correlatividadInstance?.materiaPrincipal?.id}">${correlatividadInstance?.materiaPrincipal?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>
 			
-				<g:if test="${correlatividadInstance?.predecesoras}">
+				<g:if test="${correlatividadInstance?.materiaPredecesora}">
 				<li class="fieldcontain">
-					<span id="predecesoras-label" class="property-label"><g:message code="correlatividad.predecesoras.label" default="Predecesoras" /></span>
+					<span id="materiaPredecesora-label" class="property-label"><g:message code="correlatividad.materiaPredecesora.label" default="Materia Predecesora" /></span>
 					
-						<g:each in="${correlatividadInstance.predecesoras}" var="p">
-						<span class="property-value" aria-labelledby="predecesoras-label"><g:link controller="materia" action="show" id="${p.id}">${p?.encodeAsHTML()}</g:link></span>
-						</g:each>
+						<span class="property-value" aria-labelledby="materiaPredecesora-label"><g:link controller="materia" action="show" id="${correlatividadInstance?.materiaPredecesora?.id}">${correlatividadInstance?.materiaPredecesora?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>

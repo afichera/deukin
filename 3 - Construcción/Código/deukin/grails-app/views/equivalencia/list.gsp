@@ -22,7 +22,9 @@
 				<thead>
 					<tr>
 					
-						<th><g:message code="equivalencia.materia.label" default="Materia" /></th>
+						<th><g:message code="equivalencia.materiaPrincipal.label" default="Materia Principal" /></th>
+					
+						<th><g:message code="equivalencia.materiaEquivalente.label" default="Materia Equivalente" /></th>
 					
 					</tr>
 				</thead>
@@ -30,7 +32,9 @@
 				<g:each in="${equivalenciaInstanceList}" status="i" var="equivalenciaInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${equivalenciaInstance.id}">${fieldValue(bean: equivalenciaInstance, field: "materia")}</g:link></td>
+						<td><g:link action="show" id="${equivalenciaInstance.id}">${fieldValue(bean: equivalenciaInstance, field: "materiaPrincipal")}</g:link></td>
+					
+						<td>${fieldValue(bean: equivalenciaInstance, field: "materiaEquivalente")}</td>
 					
 					</tr>
 				</g:each>

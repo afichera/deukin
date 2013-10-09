@@ -15,7 +15,16 @@
 		<g:message code="carrera.planesEstudio.label" default="Planes Estudio" />
 		
 	</label>
-	<g:select name="planesEstudio" from="${com.deukin.PlanEstudio.list()}" multiple="multiple" optionKey="id" size="5" value="${carreraInstance?.planesEstudio*.id}" class="many-to-many"/>
+	<g:if test="${carreraInstance?.planesEstudio}">
+				<ul class="one-to-many">
+					
+					
+						<g:each in="${carreraInstance.planesEstudio}" var="p">
+						<li class="property-value" aria-labelledby="planesEstudio-label"><g:link controller="planEstudio" action="show" id="${p.id}">${p?.encodeAsHTML()}</g:link></li>
+						</g:each>
+					</ul>
+				
+				</g:if>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: carreraInstance, field: 'objetivos', 'error')} ">
@@ -23,7 +32,16 @@
 		<g:message code="carrera.objetivos.label" default="Objetivos" />
 		
 	</label>
-	
+		<g:if test="${carreraInstance?.objetivos}">
+				<ul class="one-to-many">
+					
+					
+						<g:each in="${carreraInstance.objetivos}" var="o">
+						<li class="property-value" aria-labelledby="objetivos-label"><g:link controller="objetivo" action="show" id="${o.id}">${o?.encodeAsHTML()}</g:link></li>
+						</g:each>
+					</ul>
+				
+				</g:if>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: carreraInstance, field: 'fundamentacion', 'error')} ">

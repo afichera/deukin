@@ -37,7 +37,7 @@
 					
 					
 						<g:each in="${carreraInstance.objetivos}" var="o">
-						<li class="property-value" aria-labelledby="objetivos-label"><g:link controller="objetivo" action="show" id="${o.id}">${o?.encodeAsHTML()}</g:link></li>
+						<li class="property-value" aria-labelledby="objetivos-label"><g:link controller="objetivoCarrera" action="edit" id="${o.id}">${o?.encodeAsHTML()}</g:link></li>
 						</g:each>
 					</ul>
 				

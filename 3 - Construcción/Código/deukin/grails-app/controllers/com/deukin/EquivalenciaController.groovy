@@ -6,7 +6,8 @@ import org.springframework.dao.DataIntegrityViolationException
 
 @Secured(['ROLE_COORDINADOR'])
 class EquivalenciaController {
-
+	def springSecurityService
+	def materiaService
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
     def index() {
@@ -102,4 +103,41 @@ class EquivalenciaController {
             redirect(action: "show", id: id)
         }
     }
+	
+	def searchMateriasCoordinador =  {
+		def queryRegex = "${params.query}"
+		def authorities =  springSecurityService.principal.authorities
+		def usuario = springSecurityService.principal
+		def materias = materiaService.obtenerMateriasDeCoordinadorLikeQueryRegex(authorities, usuario, queryRegex)
+		
+		render(contentType: "text/xml") {
+			results() {
+				materias.each { materia ->
+					result(){
+						name(materia.codigo.toString() + ' - '+ materia.nombre)
+						id(materia.id)
+					}
+				}
+			}
+		}
+
+	}
+	
+	def searchMaterias=  {
+		def queryRegex = "${params.query}"
+		def materias = materiaService.obtenerMateriasLikeQueryRegex(queryRegex)
+		
+		render(contentType: "text/xml") {
+			results() {
+				materias.each { materia ->
+					result(){
+						name(materia.codigo.toString() + ' - '+ materia.nombre)
+						id(materia.id)
+					}
+				}
+			}
+		}
+
+	}
+
 }

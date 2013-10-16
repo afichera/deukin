@@ -2,6 +2,16 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script type="text/javascript">
+    function eligeMateriaPredecesora(materiaId){
+      document.getElementById('materiaPredecesora.id').value = materiaId;
+    }
+
+    function eligeMateriaPrincipal(materiaId){
+        document.getElementById('materiaPrincipal.id').value = materiaId;
+    }
+</script>
+<resource:autoComplete />
 <meta name="layout" content="main">
 <g:set var="entityName"
 	value="${message(code: 'correlatividad.label', default: 'Correlatividad')}" />

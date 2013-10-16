@@ -24,8 +24,8 @@ class MateriaController {
 			results() {
 				carreras.each { carrera ->
 					result(){
-						name(carrera.titulo)
-						id(carrera)
+						name(carrera.titulo)						
+						id(carrera.id)
 					}
 				}
 			}
@@ -37,7 +37,9 @@ class MateriaController {
 	def searchPlanesEstudioAJAX = {
 		def usuarioLogueado = springSecurityService.principal
 		def queryRegex = "%${params.query}%"
-		def planesEstudio = planEstudioService.getPlanesEstudioLikeParamsAndCoordinadorUser(queryRegex, usuarioLogueado)
+		def planesEstudio = planEstudioService.getPlanesEstudioLikeParamsAndCoordinadorUser(queryRegex,
+
+usuarioLogueado)
 		
 		render(contentType: "text/xml") {
 			results() {
@@ -60,7 +62,8 @@ class MateriaController {
 	def list(Integer max) {
 		def authorities =  springSecurityService.principal.authorities
 		def usuario = springSecurityService.principal
-		materiaService.obtenerMateriasDeCoordinador(authorities, params, max, usuario)		
+		def materias = materiaService.obtenerMateriasDeCoordinador(authorities, params, max, usuario)
+		[materiaInstanceList:materias, materiaInstanceTotal: materias.size()]
 	}
 
 
@@ -71,7 +74,7 @@ class MateriaController {
 	def listaCarrerasMostrar(){
 		def authorities =  springSecurityService.principal.authorities
 		def usuario = springSecurityService.principal
-		carreraService.listaCarrerasMostrar(authorities, usuario)		
+		carreraService.listaCarrerasMostrar(authorities, usuario)
 	}
 
 	def save() {

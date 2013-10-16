@@ -8,7 +8,6 @@ class Correlatividad {
 	Materia materiaPrincipal
 	Materia materiaPredecesora
     static constraints = {
-		materiaPrincipal(unique:['materiaPredecesora'],nullable:false) 
-	
+		materiaPrincipal(unique:'materiaPredecesora')	
     }
 }

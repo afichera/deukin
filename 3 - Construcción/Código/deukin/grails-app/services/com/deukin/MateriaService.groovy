@@ -1,5 +1,7 @@
 package com.deukin
 
+import javassist.bytecode.stackmap.BasicBlock.Catch;
+
 
 class MateriaService {
 
@@ -49,9 +51,49 @@ class MateriaService {
 			def persona = Persona.findByUsuario(usuarioDeukin)
 			def carreras = Carrera.findAllByCoordinador(persona)			
 			materias = Materia.findAllByCarreraInList(carreras)
-			[materiaInstanceList: materias, materiaInstanceTotal: materias.size()]
 		}else{
-			[materiaInstanceList: Materia.list(params), materiaInstanceTotal: Materia.count()]
+			materias = Materia.list(params)
 		}
 	}
+	
+	public obtenerMateriasDeCoordinadorLikeQueryRegex(def authorities, def usuario, def queryRegex) {
+		def filtrarCarrera = false
+		def materias
+		def materiasResultantes = []
+		for (auto in authorities){
+			if(auto.role.equals('ROLE_COORDINADOR') ){
+				filtrarCarrera = true
+			}
+		}
+		if(filtrarCarrera){
+			def username = usuario?.getUsername()
+			def usuarioDeukin = Usuario.findByUsername(username)
+			def persona = Persona.findByUsuario(usuarioDeukin)
+			def carreras = Carrera.findAllByCoordinador(persona)
+			materias = Materia.findAllByCarreraInList(carreras)						
+		}else{		
+			materias = Materia.list()			
+		}
+		
+		for (materia in materias) {
+			if(materia.nombre.toUpperCase().contains(queryRegex.toUpperCase()) || materia.codigo.toString().toUpperCase().contains(queryRegex.toUpperCase())){
+				materiasResultantes.add(materia)
+			}
+		}
+		materiasResultantes
+	}
+	
+	def obtenerMateriasLikeQueryRegex(def queryRegex){
+		def materias		
+		def materiasResultantes = []
+		materias = Materia.list()
+		for (materia in materias) {
+			if(materia.nombre.toUpperCase().contains(queryRegex.toUpperCase()) || materia.codigo.toString().toUpperCase().contains(queryRegex.toUpperCase())){
+				materiasResultantes.add(materia)
+			}
+		}
+		materiasResultantes
+		
+	}
+
 }

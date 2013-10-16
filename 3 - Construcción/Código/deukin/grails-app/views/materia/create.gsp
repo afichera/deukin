@@ -2,6 +2,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script type="text/javascript">
+    function eligeCarrera(carreraId){
+      document.getElementById('carrera.id').value = carreraId;
+  }
+</script>
 <resource:autoComplete />
 <meta name="layout" content="main">
 <g:set var="entityName"

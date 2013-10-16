@@ -3,11 +3,17 @@
 <html>
 <head>
 <resource:autoComplete />
+<script type="text/javascript">
+    function eligeCarrera(carreraId){
+      document.getElementById('carrera.id').value = carreraId;
+  }
+</script>
 <meta name="layout" content="main">
 <g:set var="entityName"
 	value="${message(code: 'materia.label', default: 'Materia')}" />
 <title><g:message code="default.edit.label" args="[entityName]" /></title>
 </head>
+
 <body>
 	<div class="navbar navbar-inverse" role="navigation">
 		<ul class="nav navbar-nav">

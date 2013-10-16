@@ -47,8 +47,10 @@
 		<g:message code="materia.carrera.label" default="Carrera" />
 		<span class="required-indicator">*</span>
 	</label>
-	<richui:autoComplete name="searchCarreras" value="${materiaInstance?.carrera}" minQueryLength="2"  
+	<g:hiddenField id ="carrera.id" name ="carrera.id" value=""/>
+	<richui:autoComplete name="carreraTitulo" minQueryLength="2" onItemSelect="eligeCarrera(id)" value="${materiaInstance?.carrera}"
 		action="${createLinkTo('dir': 'materia/searchCarrerasAutocomplete')}" forceSelection="true"/>
+<%--	<g:select id="carrera" name="carrera.id" from="${com.deukin.Carrera.list()}" optionKey="id" required="" value="${materiaInstance?.carrera?.id}" class="many-to-one"/>--%>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: materiaInstance, field: 'contenidoMinimo', 'error')} ">

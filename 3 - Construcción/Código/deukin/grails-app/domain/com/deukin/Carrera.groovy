@@ -46,8 +46,8 @@ class Carrera {
 					false
 					}	 }
 	}
+	
 	String toString(){
 		titulo
 	}
-
 }	

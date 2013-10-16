@@ -1,22 +1,47 @@
 package com.deukin
 
-import grails.plugins.springsecurity.Secured;
+import grails.plugins.springsecurity.Secured
 
 import org.springframework.dao.DataIntegrityViolationException
-
 @Secured(['ROLE_COORDINADOR'])
 class CorrelatividadController {
+	def springSecurityService
+	def materiaService
+	static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
-    static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
+	def index() {
+		redirect(action: "list", params: params)
+	}
 
-    def index() {
-        redirect(action: "list", params: params)
-    }
+	def list(Integer max) {
+		params.max = Math.min(max ?: 10, 100)
+		def authorities =  springSecurityService.principal.authorities
+		def usuario = springSecurityService.principal
+		def materias = materiaService.obtenerMateriasDeCoordinador(authorities, params, max, usuario)
+		def correlatividadesFiltradas = Correlatividad.findAllByMateriaPrincipalInList(materias)
+		
+		
+		[correlatividadInstanceList: correlatividadesFiltradas, correlatividadInstanceTotal: correlatividadesFiltradas.size()]
+	}
+	
+	def searchMateriasCoordinador =  {
+		def queryRegex = "${params.query}"
+		def authorities =  springSecurityService.principal.authorities
+		def usuario = springSecurityService.principal
+		def materias = materiaService.obtenerMateriasDeCoordinadorLikeQueryRegex(authorities, usuario, queryRegex)
+		
+		render(contentType: "text/xml") {
+			results() {
+				materias.each { materia ->
+					result(){
+						name(materia.codigo.toString() + ' - '+ materia.nombre)
+						id(materia.id)
+					}
+				}
+			}
+		}
 
-    def list(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-        [correlatividadInstanceList: Correlatividad.list(params), correlatividadInstanceTotal: Correlatividad.count()]
-    }
+	}
 
     def create() {
         [correlatividadInstance: new Correlatividad(params)]

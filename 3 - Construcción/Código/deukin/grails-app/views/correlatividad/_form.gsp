@@ -7,7 +7,9 @@
 		<g:message code="correlatividad.materiaPrincipal.label" default="Materia Principal" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="materiaPrincipal" name="materiaPrincipal.id" from="${com.deukin.Materia.list()}" optionKey="id" required="" value="${correlatividadInstance?.materiaPrincipal?.id}" class="many-to-one"/>
+	<g:hiddenField id ="materiaPrincipal.id" name ="materiaPrincipal.id" value=""/>
+	<richui:autoComplete name="materiaPrincipalNombre" minQueryLength="2" onItemSelect="eligeMateriaPrincipal(id)" value="${correlatividadInstance?.materiaPrincipal}"
+		action="${createLinkTo('dir': 'correlatividad/searchMateriasCoordinador')}" forceSelection="true"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: correlatividadInstance, field: 'materiaPredecesora', 'error')} required">
@@ -15,6 +17,8 @@
 		<g:message code="correlatividad.materiaPredecesora.label" default="Materia Predecesora" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="materiaPredecesora" name="materiaPredecesora.id" from="${com.deukin.Materia.list()}" optionKey="id" required="" value="${correlatividadInstance?.materiaPredecesora?.id}" class="many-to-one"/>
+	<g:hiddenField id ="materiaPredecesora.id" name ="materiaPredecesora.id" value=""/>
+	<richui:autoComplete name="materiaPredecesoraNombre" minQueryLength="2" onItemSelect="eligeMateriaPredecesora(id)" value="${correlatividadInstance?.materiaPredecesora}"
+		action="${createLinkTo('dir': 'correlatividad/searchMateriasCoordinador')}" forceSelection="true"/>
 </div>
 

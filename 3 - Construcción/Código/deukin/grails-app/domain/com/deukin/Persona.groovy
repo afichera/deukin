@@ -22,8 +22,12 @@ class Persona {
 		// Limita a 2MB la foto
 		fotoPerfil maxSize: 1024 * 1024 * 2, nullable:true
     }
-	
+	String toString(){
+		apellido + ', ' + nombre
+		}
 	static mapping = {
 		tablePerHierarchy false
 	}
+	
+	
 }

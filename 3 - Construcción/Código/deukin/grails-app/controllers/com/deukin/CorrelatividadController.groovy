@@ -2,11 +2,14 @@ package com.deukin
 
 import grails.plugins.springsecurity.Secured
 
+import org.apache.commons.lang.exception.ExceptionUtils
 import org.springframework.dao.DataIntegrityViolationException
 @Secured(['ROLE_COORDINADOR'])
 class CorrelatividadController {
 	def springSecurityService
 	def materiaService
+	def correlatividadService
+	
 	static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
 	def index() {
@@ -49,13 +52,25 @@ class CorrelatividadController {
 
     def save() {
         def correlatividadInstance = new Correlatividad(params)
-        if (!correlatividadInstance.save(flush: true)) {
-            render(view: "create", model: [correlatividadInstance: correlatividadInstance])
-            return
-        }
+			def esValida
+		try{
+			esValida = correlatividadService.validarCorrelatividad(correlatividadInstance)
+			if(esValida){
+				if (!correlatividadInstance.save(flush: true)) {
+					render(view: "create", model: [correlatividadInstance: correlatividadInstance])
+					return
+				}
+				flash.message = message(code: 'default.created.message', args: [message(code: 'correlatividad.label', default: 'Correlatividad'), correlatividadInstance.id])
+				redirect(action: "show", id: correlatividadInstance.id)
+			}
 
-        flash.message = message(code: 'default.created.message', args: [message(code: 'correlatividad.label', default: 'Correlatividad'), correlatividadInstance.id])
-        redirect(action: "show", id: correlatividadInstance.id)
+		}catch(Exception ex){
+			String eMessage = ExceptionUtils.getRootCauseMessage(ex)
+			flash.message = eMessage
+			render(view: "create", model: [correlatividadInstance: correlatividadInstance])
+			
+		}
+
     }
 
     def show(Long id) {

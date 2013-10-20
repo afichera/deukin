@@ -74,6 +74,9 @@
 		
 	</label>
 	<g:select id="coordinador" name="coordinador.id" from="${com.deukin.Persona.list()}" optionKey="id" value="${carreraInstance?.coordinador?.id}" class="many-to-one" noSelection="['null': '']"/>
+	<g:hiddenField id ="materiaPrincipal.id" name ="materiaPrincipal.id" value=""/>
+	<richui:autoComplete name="coordinadorNombre" minQueryLength="2" onItemSelect="eligeCoordinador(id)" value="${carreraInstance?.coordinador}"
+		action="${createLinkTo('dir': 'correlatividad/searchCoordinadorCoordinador')}" forceSelection="true"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: carreraInstance, field: 'estado', 'error')} required">

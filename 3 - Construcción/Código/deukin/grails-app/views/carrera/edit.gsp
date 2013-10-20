@@ -2,6 +2,15 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+<script type="text/javascript">
+    function eligeCoordinador(personaId){
+      document.getElementById('coordinador.id').value = personaId;
+    }
+
+</script>
+<resource:autoComplete />
+
 <meta name="layout" content="main">
 <g:set var="entityName"
 	value="${message(code: 'carrera.label', default: 'Carrera')}" />

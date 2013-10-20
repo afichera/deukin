@@ -117,4 +117,23 @@ class CarreraController {
 			}
 
 }
+		
+		def searchCoordinadorCoordinador =  {
+			def queryRegex = "${params.query}"
+			def authorities =  springSecurityService.principal.authorities
+			def usuario = springSecurityService.principal
+			def coordinadores = carreraService.obtenerCoordinadorLikeQueryRegex(authorities, usuario, queryRegex)
+			
+			render(contentType: "text/xml") {
+				results() {
+					personas.each { persona ->
+						result(){
+							name(persona.toString())
+							id(persona.id)
+						}
+					}
+				}
+			}
+	
+		}
 }

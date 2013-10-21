@@ -14,6 +14,7 @@
 dataSource {
 	pooled = true
 	dbCreate = "update"
+//	dbCreate = "create-drop"
 	driverClassName = "org.postgresql.Driver"
 	username = "postgres"
 	password = "postgres"

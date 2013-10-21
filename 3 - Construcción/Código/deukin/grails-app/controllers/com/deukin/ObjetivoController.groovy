@@ -27,7 +27,7 @@ class ObjetivoController {
         }
 
         flash.message = message(code: 'default.created.message', args: [message(code: 'objetivo.label', default: 'Objetivo'), objetivoInstance.id])
-        redirect(action: "show", id: objetivoInstance.id)
+        redirect(controller:"materia", action: "show", id: objetivoInstance.materia.id)
     }
 
     def show(Long id) {
@@ -78,7 +78,7 @@ class ObjetivoController {
         }
 
         flash.message = message(code: 'default.updated.message', args: [message(code: 'objetivo.label', default: 'Objetivo'), objetivoInstance.id])
-        redirect(action: "show", id: objetivoInstance.id)
+        redirect(controller:"materia", action: "show", id: objetivoInstance.materia.id)
     }
 
     def delete(Long id) {

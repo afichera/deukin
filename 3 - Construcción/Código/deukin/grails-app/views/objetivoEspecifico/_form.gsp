@@ -13,8 +13,8 @@
 <div class="fieldcontain ${hasErrors(bean: objetivoEspecificoInstance, field: 'materia', 'error')} required">
 	<label for="materia" class="control-label">
 		<g:message code="objetivoEspecifico.materia.label" default="Materia" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:select id="materia" name="materia.id" from="${com.deukin.Materia.list()}" optionKey="id" required="" value="${objetivoEspecificoInstance?.materia?.id}" class="many-to-one"/>
+		
+	</label>: ${objetivoEspecificoInstance?.materia?.toString()}
+	<g:hiddenField id="materia" name="materia.id" optionKey="id" required="" value="${objetivoEspecificoInstance?.materia?.id}" class="many-to-one"/>
 </div>
 

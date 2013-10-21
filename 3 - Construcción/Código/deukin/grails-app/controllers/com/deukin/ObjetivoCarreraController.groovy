@@ -16,6 +16,7 @@ class ObjetivoCarreraController {
     }
 
     def create() {
+	
         [objetivoCarreraInstance: new ObjetivoCarrera(params)]
     }
 
@@ -27,7 +28,7 @@ class ObjetivoCarreraController {
         }
 
         flash.message = message(code: 'default.created.message', args: [message(code: 'objetivoCarrera.label', default: 'ObjetivoCarrera'), objetivoCarreraInstance.id])
-        redirect(action: "show", id: objetivoCarreraInstance.id)
+        redirect(controller:"carrera", action: "show", id: objetivoCarreraInstance.carrera.id)
     }
 
     def show(Long id) {
@@ -78,7 +79,7 @@ class ObjetivoCarreraController {
         }
 
         flash.message = message(code: 'default.updated.message', args: [message(code: 'objetivoCarrera.label', default: 'ObjetivoCarrera'), objetivoCarreraInstance.id])
-        redirect(action: "show", id: objetivoCarreraInstance.id)
+        redirect(controller:"carrera", action: "show", id: objetivoCarreraInstance.carrera.id)
     }
 
     def delete(Long id) {

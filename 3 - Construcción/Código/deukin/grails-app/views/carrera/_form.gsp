@@ -39,9 +39,15 @@
 						<g:each in="${carreraInstance.objetivos}" var="o">
 						<li class="property-value" aria-labelledby="objetivos-label"><g:link controller="objetivoCarrera" action="edit" id="${o.id}">${o?.encodeAsHTML()}</g:link></li>
 						</g:each>
+				
+					<li class="add">
+<g:link class=" btn btn-primary btn-small" controller="objetivoCarrera" action="create" params="['carrera.id': carreraInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'objetivoCarrera.label', default: 'ObjetivoCarrera')])}</g:link>
+</li>
 					</ul>
 				
 				</g:if>
+	
+
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: carreraInstance, field: 'fundamentacion', 'error')} ">
@@ -106,7 +112,7 @@
     <li><g:link controller="materia" action="show" id="${m.id}">${m?.encodeAsHTML()}</g:link></li>
 </g:each>
 <li class="add">
-<g:link controller="materia" action="create" params="['carrera.id': carreraInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'materia.label', default: 'Materia')])}</g:link>
+<g:link class=" btn btn-primary btn-small" controller="materia" action="create" params="['carrera.id': carreraInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'materia.label', default: 'Materia')])}</g:link>
 </li>
 </ul>
 

@@ -4,15 +4,15 @@ package com.deukin
  * @author Ale Mobile
  *
  */
-class InscripcionInstitucion {
+class InscripcionInstitucion implements Serializable {
 	
-	String nombreUsuario
-	String password
+	UsuarioRegistro usuarioRegistro
 	String nombre
 	String apellido
 	Long documentoNumero
 	TipoDocumento tipoDocumento
-	
+	Date fechaNacimiento
+	String sexo
 	String calle
 	Integer calleNumero
 	String localidad
@@ -21,7 +21,7 @@ class InscripcionInstitucion {
 	
 	String telefonoNumero
 	TipoTelefono tipoTelefono
-	Carrera carrera
+
 		
 	Date fechaInscripcion
 	Date fechaBaja	
@@ -35,12 +35,7 @@ class InscripcionInstitucion {
 		calle blank:false
 		localidad blank:false
 		observaciones nullable:true
-		telefonoNumero blank:false
-		nombreUsuario blank: false, unique: true
-		password blank: false
+		telefonoNumero blank:false		
     }
 	
-	static mapping = {
-		password column: '`password`'
-	}
 }

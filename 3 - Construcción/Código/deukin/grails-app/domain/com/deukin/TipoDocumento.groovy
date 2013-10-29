@@ -1,6 +1,6 @@
 package com.deukin
 
-enum TipoDocumento {
+enum TipoDocumento implements Serializable {
 	DNI ('DNI'),
 	CI ('CI'),
 	CUIL ('CUIL'),

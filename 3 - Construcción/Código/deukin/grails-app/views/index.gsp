@@ -33,7 +33,7 @@
 			<div class="panel">	
 			<h2>Ingresar a la institución</h2>
 			<p>Complete el siguiente formulario para poder ingresar a nuestra institución:</p>
-			<g:link controller='proximamente' class="btn btn-primary btn-large">Realizar inscripción</g:link>
+			<g:link controller='inscripcionInstitucion' class="btn btn-primary btn-large">Realizar inscripción</g:link>
 			</div>
 			</div>
 		</div>

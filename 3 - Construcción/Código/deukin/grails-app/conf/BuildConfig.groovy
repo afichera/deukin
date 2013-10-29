@@ -35,6 +35,7 @@ grails.project.dependency.resolution = {
 		mavenRepo "http://repository.springsource.com/maven/bundles/external"
 		mavenRepo "http://repository.springsource.com/maven/libraries/release"
 		mavenRepo "http://repository.springsource.com/maven/libraries/external"
+
     }
     dependencies {
         // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes eg.
@@ -42,6 +43,8 @@ grails.project.dependency.resolution = {
 //         runtime 'mysql:mysql-connector-java:5.1.20'
 		runtime 'postgresql:postgresql:9.1-901.jdbc4'
 //		runtime ":mysql-connectorj:5.1.20" 
+//		compile ":quartz:1.0-RC13"
+//		compile ":asynchronous-mail:1.0-RC6"
     }
 
     plugins {
@@ -64,7 +67,8 @@ grails.project.dependency.resolution = {
 		compile ":mail:1.0.1"
 		compile ":spring-security-core:1.2.7.1"
 		compile ":richui:0.8"
-		
-		
+		compile ":quartz:1.0-RC13"
+		compile ":asynchronous-mail:1.0-RC6"
+		compile ':webflow:2.0.8.1'
     }
 }

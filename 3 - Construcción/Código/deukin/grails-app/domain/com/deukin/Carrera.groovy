@@ -4,7 +4,7 @@ package com.deukin
  * @author Ale Mobile
  *
  */
-class Carrera {
+class Carrera implements Serializable {
 	
 	
 	String titulo		

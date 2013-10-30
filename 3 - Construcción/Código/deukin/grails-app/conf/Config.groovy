@@ -76,6 +76,8 @@ log4j = {
     //appenders {
     //    console name:'stdout', layout:pattern(conversionPattern: '%c{2} %m%n')
     //}
+	trace 'grails.app.jobs.grails.plugin.asyncmail', 'grails.app.services.grails.plugin.asyncmail'
+	
 
     error  'org.codehaus.groovy.grails.web.servlet',        // controllers
            'org.codehaus.groovy.grails.web.pages',          // GSP
@@ -98,9 +100,12 @@ grails {
 	  props = [ "mail.smtp.auth":"true",
                        "mail.smtp.socketFactory.port":"465",
                        "mail.smtp.socketFactory.class":"javax.net.ssl.SSLSocketFactory",
-                       "mail.smtp.socketFactory.fallback":"false"  ]
+                       "mail.smtp.socketFactory.fallback":"false",
+					   "mail.debug": "true"]
+	  
 	}
  }
+
 grails.mail.default.from="deukin.contacto@gmail.com"
 
 //Configuracion de Spring Security

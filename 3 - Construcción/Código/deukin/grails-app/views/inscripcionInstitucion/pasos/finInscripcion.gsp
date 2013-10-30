@@ -8,6 +8,8 @@
 <body>
   <div class="body">
   <g:message code="inscripcionInstitución.finInscripcion" default="Inscripción a la institución realizada correctamente."/>
+  <br>
+  <g:message code="inscripcionInstitución.finInscripcion.verificarMail" default="Ud Recibirá un mail con la información necesaria para completar el registro."/>
   </div>
 </body>
 </html>

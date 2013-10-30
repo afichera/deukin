@@ -184,7 +184,7 @@
 			</div>
 			
 			<p>
-				<g:submitButton name="siguiente"
+				<g:submitButton name="siguiente" class="btn btn-primary"
 					value="${message(code: 'inscripcionInstitucion.botones.siguiente', default: 'Siguiente')}" />
 			</p>
 		</g:form>

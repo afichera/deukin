@@ -2,14 +2,15 @@ package com.deukin
 
 class InscripcionInstitucionController {
 
-    def inscripcionInstitucionService
+	def inscripcionInstitucionService
+	def correoElectronicoService 
 
 	static scaffold = true
 
 	def index() {
 		redirect(action: "pasos")
 	}
-	
+
 	InscripcionInstitucion inscripcion = new InscripcionInstitucion()
 	def pasosFlow = {
 
@@ -17,7 +18,7 @@ class InscripcionInstitucionController {
 			action {
 				InscripcionInstitucion flow.inscripcion = new InscripcionInstitucion()
 				flow.inscripcion.usuarioRegistro = new UsuarioRegistro()
-				[inscripcion: flow.inscripcion]				
+				[inscripcion: flow.inscripcion]
 			}
 			on("success").to("datosMinimos")
 			on(Exception).to("errorInscripcion")
@@ -30,15 +31,13 @@ class InscripcionInstitucionController {
 				flow.inscripcion.apellido = params.apellido
 				flow.inscripcion.fechaNacimiento = params.fechaNacimiento
 				flow.inscripcion.sexo = params.sexo
-				flow.inscripcion.documentoNumero = new Long(params.documentoNumero)								
+				flow.inscripcion.documentoNumero = new Long(params.documentoNumero)
 				flow.inscripcion.tipoDocumento = params.tipoDocumento
 
-				
+
 				flow.inscripcion.usuarioRegistro.username = params.usuarioRegistro.username
 				flow.inscripcion.usuarioRegistro.password = params.usuarioRegistro.password
 				flow.inscripcion.usuarioRegistro.password2 = params.usuarioRegistro.password2
-			
-			
 			}.to "datosContacto"
 		}
 
@@ -63,7 +62,7 @@ class InscripcionInstitucionController {
 				flow.inscripcion.calleNumero = new Integer(params.calleNumero)
 				flow.inscripcion.localidad = params.localidad
 				flow.inscripcion.codigoPostal = new Integer(params.codigoPostal)
-				flow.inscripcion.observaciones = params.observaciones				
+				flow.inscripcion.observaciones = params.observaciones
 				flow.inscripcion.telefonoNumero = params.telefonoNumero
 				flow.inscripcion.tipoTelefono = params.tipoTelefono
 			}.to "inscribir"
@@ -78,18 +77,19 @@ class InscripcionInstitucionController {
 
 				inscripcion = inscripcionInstitucionService.inscribir(inscripcion)
 
-				if (inscripcion.estadoInscripcionInstitucion.equals(EstadoInscripcionInstitucion.PENDIENTE_CONFIRMACION_PRESENCIAL))
-					return success()
-				else
+				if (inscripcion.estadoInscripcionInstitucion.equals(EstadoInscripcionInstitucion.PENDIENTE_CONFIRMACION_PRESENCIAL)){
+					correoElectronicoService.enviarMailBienvenida(inscripcion)
+						return success()
+				}else{
 					return errorInscripcion()
+				}
 			}
 
-			on("success").to("finInscripcion")
+			on("success").to("finInscripcion")			
 			on("errorInscripcion").to("errorInscripcion")
 		}
 
 		errorInscripcion()
 		finInscripcion()
 	}
-	
 }

@@ -1,13 +1,13 @@
-<%@ page contentType="text/html;charset=UTF-8" %>
+<%@ page contentType="text/html;charset=UTF-8"%>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
-<meta name="layout" content="main"/>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<meta name="layout" content="main" />
 <title>Deukin</title>
 </head>
 <body>
-  <div class="body">
-    	<div class="row">
+	<div class="body">
+		<div class="row">
 			<div class="col-lg-4">
 				<div class="panel panel-info">
 					<div class="panel-heading">
@@ -16,8 +16,12 @@
 						</h3>
 					</div>
 					<ul>
-						<li><g:link controller='proximamente'><g:message code="secciones.institucion.datos" /></g:link></li>
-						<li><g:link controller='departamento'><g:message code="secciones.institucion.departamentos" /></g:link></li>
+						<li><g:link controller='proximamente'>
+								<g:message code="secciones.institucion.datos" />
+							</g:link></li>
+						<li><g:link controller='departamento'>
+								<g:message code="secciones.institucion.departamentos" />
+							</g:link></li>
 					</ul>
 				</div>
 			</div>
@@ -29,7 +33,9 @@
 						</h3>
 					</div>
 					<ul>
-						<li><g:link controller='proximamente'><g:message code="secciones.usuarios.usuarios" /></g:link></li>
+						<li><g:link controller='proximamente'>
+								<g:message code="secciones.usuarios.usuarios" />
+							</g:link></li>
 					</ul>
 				</div>
 			</div>
@@ -41,11 +47,30 @@
 						</h3>
 					</div>
 					<ul>
-						<li><g:link controller='proximamente'><g:message code="secciones.aplicacion.opciones" /></g:link></li>
+						<li><g:link controller='proximamente'>
+								<g:message code="secciones.aplicacion.opciones" />
+							</g:link></li>
 					</ul>
 				</div>
 			</div>
 		</div>
-  </div>
+	</div>
+	<div class="row">
+		<div class="col-lg-4">
+			<div class="panel panel-info">
+				<div class="panel-heading">
+					<h3 class="panel-title">
+						<g:message code="secciones.alumnos" />
+					</h3>
+				</div>
+				<ul>
+					<li><g:link controller='inscripcionInstitucion'
+							action="indexAdmin">
+							<g:message code="secciones.inscripciones.institucion" />
+						</g:link></li>
+				</ul>
+			</div>
+		</div>
+	</div>
 </body>
 </html>

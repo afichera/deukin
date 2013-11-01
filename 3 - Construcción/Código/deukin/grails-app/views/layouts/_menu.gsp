@@ -54,10 +54,20 @@
 	</li>
 	</sec:ifAnyGranted>
 	<sec:ifAnyGranted
-		roles="ROLE_COORDINADOR,ROLE_ADMINISTRATIVO">
+		roles="ROLE_COORDINADOR,ROLE_ADMINISTRATIVO,ROLE_ADMINISTRADOR_SISTEMA">
 	<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><g:message code="secciones.alumnos" /><b class="caret"></b></a>
 		<ul class="dropdown-menu">
-			<li><g:link controller='alumno'><g:message code="secciones.alumnos.alumnos" /></g:link></li>
+			<sec:ifAnyGranted
+				roles="ROLE_COORDINADOR,ROLE_ADMINISTRATIVO">
+				<li><g:link controller='alumno'><g:message code="secciones.alumnos.alumnos" /></g:link></li>
+			</sec:ifAnyGranted>
+			<sec:ifAnyGranted
+				roles="ROLE_ADMINISTRATIVO,ROLE_ADMINISTRADOR_SISTEMA">
+			<li><g:link controller='inscripcionInstitucion' action="indexAdmin"><g:message code="secciones.inscripciones.institucion" /></g:link></li>
+			</sec:ifAnyGranted>
+			
+			
+			
 			</ul>
 	</sec:ifAnyGranted>
 	<sec:ifAnyGranted
@@ -85,6 +95,7 @@
 	<li class="dropdown"><a href="#"
 				class="dropdown-toggle" data-toggle="dropdown"><g:message code="secciones.inscripciones" /><b class="caret"></b></a>
 		<ul class="dropdown-menu">
+			
 			<li><g:link controller='proximamente'><g:message code="secciones.inscripciones.materias" /></g:link></li>
 			<li><g:link controller='proximamente'><g:message code="secciones.inscripciones.finales" /></g:link></li>
 			<li><g:link controller='proximamente'><g:message code="secciones.inscripciones.cursosEspeciales" /></g:link></li>

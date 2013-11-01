@@ -31,10 +31,9 @@ class InscripcionInstitucionService {
 				if(usuarioDeukinExistente == null){
 					
 					inscripcion.usuarioRegistro = inscripcion.usuarioRegistro.save(failOnError:true)
-					inscripcion = inscripcion.save(failOnError:true)
-					inscripcion
+					inscripcion = inscripcion.save(failOnError:true)					
 					log.info("Se realizó una nueva inscripción en el sistema. id:"+inscripcion.id)
-					
+					inscripcion
 				}else{
 					throw new BusinessException("El nombre de usuario elegido ya está en uso, por favor indique un nuevo nombre de usuario.")
 				}

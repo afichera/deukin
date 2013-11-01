@@ -71,7 +71,7 @@
 						<li><g:link controller='proximamente'>
 								<g:message code="secciones.docentes.docentes" />
 							</g:link></li>
-						
+
 					</ul>
 				</div>
 			</div>
@@ -88,6 +88,10 @@
 					<ul>
 						<li><g:link controller='proximamente'>
 								<g:message code="secciones.alumnos.alumnos" />
+							</g:link></li>
+						<li><g:link controller='inscripcionInstitucion'
+								action="indexAdmin">
+								<g:message code="secciones.inscripciones.institucion" />
 							</g:link></li>
 					</ul>
 				</div>

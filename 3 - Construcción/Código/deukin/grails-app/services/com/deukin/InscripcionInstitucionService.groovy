@@ -1,8 +1,5 @@
 package com.deukin
 
-import javassist.bytecode.stackmap.BasicBlock.Catch;
-
-import org.junit.After;
 import org.springframework.transaction.annotation.Transactional
 
 import com.deukin.exceptions.BusinessException
@@ -12,7 +9,6 @@ class InscripcionInstitucionService {
 	def mailService
 	def usuarioService
 	
-	def asynchronousMailService
 	
 	def serviceMethod() {
 	}
@@ -38,6 +34,7 @@ class InscripcionInstitucionService {
 					inscripcion = inscripcion.save(failOnError:true)
 					inscripcion
 					log.info("Se realizó una nueva inscripción en el sistema. id:"+inscripcion.id)
+					
 				}else{
 					throw new BusinessException("El nombre de usuario elegido ya está en uso, por favor indique un nuevo nombre de usuario.")
 				}
@@ -54,6 +51,7 @@ class InscripcionInstitucionService {
 	def confirmarInscripcion(InscripcionInstitucion inscripcion){
 		Documento documento = Documento.findByNumeroAndTipoDocumento(inscripcion.documentoNumero, inscripcion.tipoDocumento)
 		Usuario usuario = Usuario.findByUsername(inscripcion.usuarioRegistro.username)
+		Alumno alumno
 		if(documento == null){
 			if(usuario == null){
 				try{
@@ -64,15 +62,16 @@ class InscripcionInstitucionService {
 					contacto.telefonos = []
 					contacto.telefonos.add(telefono)
 					usuario = usuarioService.crear(inscripcion.usuarioRegistro.username, inscripcion.usuarioRegistro.password, "ROLE_ALUMNO")					
-					Alumno alumno = new Alumno(usuario:usuario, documento:documento, contacto:contacto, nombre:inscripcion.nombre, apellido: inscripcion.apellido).save(failOnError:true)
+					alumno = new Alumno(usuario:usuario, documento:documento, contacto:contacto, nombre:inscripcion.nombre, apellido: inscripcion.apellido).save(failOnError:true)
 					inscripcion.estadoInscripcionInstitucion = EstadoInscripcionInstitucion.CONFIRMADA
 					inscripcion.save()					
 					log.info("Se realizó la activación del alumno "+alumno.apellido+" "+alumno.nombre+" id: "+alumno.id)
+					alumno
 				}catch(Exception e){
 					log.error("Falló al activar el alumno. Causa: ")
 					log.error(e.stackTrace)
 					throw new BusinessException("No se pudo activar el registro del alumno. "+e.message)
-				}
+				}	
 
 			}else{
 				throw new BusinessException("El nombre de usuario: "+inscripcion.usuarioRegistro.username+", utilizado en la inscripción ya existe en nuestro sistema.")
@@ -81,6 +80,17 @@ class InscripcionInstitucionService {
 			throw new BusinessException("El documento "+documento.tipoDocumento.toString()+" "+documento.numero+" ya se encuentra activo en nuestro sistema.")
 		}
 		
+	}
+	
+	def rechazarInscripcion(InscripcionInstitucion inscripcion){
+		if(inscripcion.estadoInscripcionInstitucion == EstadoInscripcionInstitucion.PENDIENTE_CONFIRMACION_PRESENCIAL){
+			inscripcion.estadoInscripcionInstitucion = EstadoInscripcionInstitucion.RECHAZADA
+			inscripcion.fechaBaja = new Date()
+			inscripcion.save(failOnError:true)			
+			log.info("Se rechazó la inscripción con id: "+inscripcion.id+".")
+		}else{
+			throw new BusinessException("No se puede rechazar la inscripción porque tiene estado: "+inscripcion.estadoInscripcionInstitucion.toString()+".")
+		}		
 	}
 	
 

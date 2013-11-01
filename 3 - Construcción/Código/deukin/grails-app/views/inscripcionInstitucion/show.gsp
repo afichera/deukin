@@ -191,10 +191,16 @@
 					<g:form>
 						<fieldset class="buttons">
 							<g:hiddenField name="id" value="${inscripcionInstitucionInstance?.id}" />
+							<g:actionSubmit class="btn btn-info" action="confirmarInscripcion"
+								value="${message(code: 'default.button.confirmarInscripcion.label', default: 'Confirmar')}"
+								onclick="return confirm('${message(code: 'default.button.confirmarInscripcion.confirm.message', default: '¿Esta seguro de querer activar el registro a la institución del alumno?')}');" />
+															
+							
 							<g:link class="btn btn-info" action="edit"
 								id="${inscripcionInstitucionInstance?.id}">
 								<g:message code="default.button.edit.label" default="Edit" />
 							</g:link>
+							
 							<g:actionSubmit class="btn btn-danger" action="delete"
 								value="${message(code: 'default.button.delete.label', default: 'Delete')}"
 								onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />

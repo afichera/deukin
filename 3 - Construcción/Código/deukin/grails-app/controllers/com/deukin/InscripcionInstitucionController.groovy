@@ -8,6 +8,9 @@ class InscripcionInstitucionController {
 
 	def inscripcionInstitucionService
 	def correoElectronicoService
+	def springSecurityService
+	def usuarioService
+
 	InscripcionInstitucion inscripcion = new InscripcionInstitucion()
 	
 	static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
@@ -20,15 +23,58 @@ class InscripcionInstitucionController {
 	def index() {
 		redirect(action: "pasos")
 	}
+	
+	@Secured(['ROLE_ADMINISTRADOR_SISTEMA', 'ROLE_ADMINISTRATIVO'])
 	def list(Integer max) {
+		//aca hay que ver, si es un Admin debo traer todo, si es Administrativo solo lo pendiente.
+		def authorities =  springSecurityService.principal.authorities
+		def listaInscripciones
+		def cantidad = 0
 		params.max = Math.min(max ?: 10, 100)
-		[inscripcionInstitucionInstanceList: InscripcionInstitucion.list(params), inscripcionInstitucionInstanceTotal: InscripcionInstitucion.count()]
+		
+		if(usuarioService.poseeElRol(authorities, 'ROLE_ADMINISTRADOR_SISTEMA')){
+			listaInscripciones = InscripcionInstitucion.list(params)			
+		}else{		
+			listaInscripciones = InscripcionInstitucion.findAllByEstadoInscripcionInstitucion(EstadoInscripcionInstitucion.PENDIENTE_CONFIRMACION_PRESENCIAL, params) 
+		}
+		
+		if(listaInscripciones!=null && !listaInscripciones.isEmpty()){
+			cantidad = listaInscripciones.size()
+		}		
+		[inscripcionInstitucionInstanceList: listaInscripciones, inscripcionInstitucionInstanceTotal: cantidad]
 	}
-
+	
+	@Secured(['ROLE_ADMINISTRADOR_SISTEMA', 'ROLE_ADMINISTRATIVO'])
+	def confirmarInscripcion(Long id){
+		def inscripcionInstitucionInstance = InscripcionInstitucion.get(id)
+		def alumno
+		if(!inscripcionInstitucionInstance){
+			flash.message = message(code: 'default.not.found.message', args: [
+				message(code: 'inscripcionInstitucion.label', default: 'InscripcionInstitucion'),
+				id
+			])
+			redirect(action: "list")
+			return
+		}
+		try{
+			alumno = inscripcionInstitucionService.confirmarInscripcion(inscripcionInstitucionInstance)
+			correoElectronicoService.enviarMailActivacionAlumno(alumno)
+			redirect(action: "list")
+			return
+		}catch(Exception ex){
+			flash.message = ex.message			
+			redirect(action: "list")
+			return
+		}
+		
+		
+	}
+	
+	@Secured(['ROLE_ADMINISTRADOR_SISTEMA', 'ROLE_ADMINISTRATIVO'])
 	def create() {
 		[inscripcionInstitucionInstance: new InscripcionInstitucion(params)]
 	}
-
+	@Secured(['ROLE_ADMINISTRADOR_SISTEMA', 'ROLE_ADMINISTRATIVO'])
 	def save() {
 		def inscripcionInstitucionInstance = new InscripcionInstitucion(params)
 		if (!inscripcionInstitucionInstance.save(flush: true)) {
@@ -42,7 +88,7 @@ class InscripcionInstitucionController {
 		])
 		redirect(action: "show", id: inscripcionInstitucionInstance.id)
 	}
-
+	@Secured(['ROLE_ADMINISTRADOR_SISTEMA', 'ROLE_ADMINISTRATIVO'])
 	def show(Long id) {
 		def inscripcionInstitucionInstance = InscripcionInstitucion.get(id)
 		if (!inscripcionInstitucionInstance) {
@@ -56,7 +102,7 @@ class InscripcionInstitucionController {
 
 		[inscripcionInstitucionInstance: inscripcionInstitucionInstance]
 	}
-
+	@Secured(['ROLE_ADMINISTRADOR_SISTEMA', 'ROLE_ADMINISTRATIVO'])
 	def edit(Long id) {
 		def inscripcionInstitucionInstance = InscripcionInstitucion.get(id)
 		if (!inscripcionInstitucionInstance) {
@@ -70,7 +116,7 @@ class InscripcionInstitucionController {
 
 		[inscripcionInstitucionInstance: inscripcionInstitucionInstance]
 	}
-
+	@Secured(['ROLE_ADMINISTRADOR_SISTEMA', 'ROLE_ADMINISTRATIVO'])
 	def update(Long id, Long version) {
 		def inscripcionInstitucionInstance = InscripcionInstitucion.get(id)
 		if (!inscripcionInstitucionInstance) {
@@ -106,7 +152,7 @@ class InscripcionInstitucionController {
 		])
 		redirect(action: "show", id: inscripcionInstitucionInstance.id)
 	}
-
+	@Secured(['ROLE_ADMINISTRADOR_SISTEMA'])
 	def delete(Long id) {
 		def inscripcionInstitucionInstance = InscripcionInstitucion.get(id)
 		if (!inscripcionInstitucionInstance) {

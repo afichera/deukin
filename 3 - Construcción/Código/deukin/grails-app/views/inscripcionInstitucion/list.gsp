@@ -4,13 +4,13 @@
 <html>
 	<head>
 		<meta name="layout" content="main">
-		<g:set var="entityName" value="${message(code: 'inscripcionInstitucion.label', default: 'InscripcionInstitucion')}" />
+		<g:set var="entityName" value="${message(code: 'inscripcionInstitucion.label', default: 'Inscripcion a la Institucion')}" />
 		<title><g:message code="default.list.label" args="[entityName]" /></title>
 	</head>
 	<body>
 		<div class="navbar navbar-inverse" role="navigation">
 			<ul class="nav navbar-nav">
-				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
+				<li><g:link class="create" action="index"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
 			</ul>
 		</div>
 		<div id="list-inscripcionInstitucion" class="content scaffold-list" role="main">
@@ -22,17 +22,22 @@
 				<thead>
 					<tr>
 					
+						<g:sortableColumn property="tipoDocumento" title="${message(code: 'inscripcionInstitucion.tipoDocumento.label', default: 'Tipo Doc. <span class="glyphicon glyphicon-sort"></span>')}" />
+					
 						<g:sortableColumn property="documentoNumero" title="${message(code: 'inscripcionInstitucion.documentoNumero.label', default: 'Documento Numero <span class="glyphicon glyphicon-sort"></span>')}" />
-					
-						<g:sortableColumn property="fechaBaja" title="${message(code: 'inscripcionInstitucion.fechaBaja.label', default: 'Fecha Baja <span class="glyphicon glyphicon-sort"></span>')}" />
-					
-						<g:sortableColumn property="nombre" title="${message(code: 'inscripcionInstitucion.nombre.label', default: 'Nombre <span class="glyphicon glyphicon-sort"></span>')}" />
 					
 						<g:sortableColumn property="apellido" title="${message(code: 'inscripcionInstitucion.apellido.label', default: 'Apellido <span class="glyphicon glyphicon-sort"></span>')}" />
 					
-						<g:sortableColumn property="calle" title="${message(code: 'inscripcionInstitucion.calle.label', default: 'Calle <span class="glyphicon glyphicon-sort"></span>')}" />
+						<g:sortableColumn property="nombre" title="${message(code: 'inscripcionInstitucion.nombre.label', default: 'Nombre <span class="glyphicon glyphicon-sort"></span>')}" />
+						
+						<g:sortableColumn property="usuarioRegistro.username" title="${message(code: 'inscripcionInstitucion.usuarioRegistro.label', default: 'Usuario <span class="glyphicon glyphicon-sort"></span>')}" />
 					
-						<g:sortableColumn property="localidad" title="${message(code: 'inscripcionInstitucion.localidad.label', default: 'Localidad <span class="glyphicon glyphicon-sort"></span>')}" />
+						<g:sortableColumn property="fechaInscripcion" title="${message(code: 'inscripcionInstitucion.fechaBaja.label', default: 'Fecha <span class="glyphicon glyphicon-sort"></span>')}" />
+
+						<sec:ifAnyGranted
+							roles="ROLE_ADMINISTRADOR_SISTEMA">
+							<g:sortableColumn property="estadoInscripcionInstitucion" title="${message(code: 'inscripcionInstitucion.estadoInscripcionInstitucion.label', default: 'Estado <span class="glyphicon glyphicon-sort"></span>')}" />
+						</sec:ifAnyGranted>					
 					
 					</tr>
 				</thead>
@@ -40,18 +45,23 @@
 				<g:each in="${inscripcionInstitucionInstanceList}" status="i" var="inscripcionInstitucionInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
+						<td>${fieldValue(bean: inscripcionInstitucionInstance, field: "tipoDocumento")}</td>
+						
 						<td><g:link action="show" id="${inscripcionInstitucionInstance.id}">${fieldValue(bean: inscripcionInstitucionInstance, field: "documentoNumero")}</g:link></td>
-					
-						<td><g:formatDate date="${inscripcionInstitucionInstance.fechaBaja}" /></td>
-					
-						<td>${fieldValue(bean: inscripcionInstitucionInstance, field: "nombre")}</td>
 					
 						<td>${fieldValue(bean: inscripcionInstitucionInstance, field: "apellido")}</td>
 					
-						<td>${fieldValue(bean: inscripcionInstitucionInstance, field: "calle")}</td>
+						<td>${fieldValue(bean: inscripcionInstitucionInstance, field: "nombre")}</td>
 					
-						<td>${fieldValue(bean: inscripcionInstitucionInstance, field: "localidad")}</td>
+						<td>${fieldValue(bean: inscripcionInstitucionInstance, field: "usuarioRegistro.username")}</td>
 					
+						<td><g:formatDate date="${inscripcionInstitucionInstance.fechaInscripcion}" /></td>
+
+						<sec:ifAnyGranted
+							roles="ROLE_ADMINISTRADOR_SISTEMA">
+							<td>${fieldValue(bean: inscripcionInstitucionInstance, field: "estadoInscripcionInstitucion")}</td>
+						</sec:ifAnyGranted>
+						
 					</tr>
 				</g:each>
 				</tbody>

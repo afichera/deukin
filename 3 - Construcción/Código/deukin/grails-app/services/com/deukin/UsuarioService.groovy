@@ -25,6 +25,11 @@ class UsuarioService {
 		usuarioDeukin
 	}
 	
+	def obtenerUsuarioByUserName(def userName) {		
+		def usuarioDeukin = Usuario.findByUsername(userName)
+		usuarioDeukin
+	}
+	
 	def poseeElRol(def authorities, def rolBuscado){
 		def flag = false
 		for (auto in authorities){

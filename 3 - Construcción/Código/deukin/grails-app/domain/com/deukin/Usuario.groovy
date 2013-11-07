@@ -19,8 +19,8 @@ class Usuario {
 	boolean passwordExpired
 
 	static constraints = {
-		username blank: false, unique: true
-		password blank: false
+		username blank: false, unique: true, maxSize:50
+		password blank: false, maxSize:20
 	}
 
 	static mapping = {

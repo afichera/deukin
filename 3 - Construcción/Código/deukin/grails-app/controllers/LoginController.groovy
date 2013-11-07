@@ -1,9 +1,10 @@
 import grails.converters.JSON
+import groovy.text.SimpleTemplateEngine
 
 import javax.servlet.http.HttpServletResponse
 
 import org.codehaus.groovy.grails.plugins.springsecurity.SpringSecurityUtils
-
+import org.codehaus.groovy.grails.plugins.springsecurity.ui.RegistrationCode
 import org.springframework.security.authentication.AccountExpiredException
 import org.springframework.security.authentication.CredentialsExpiredException
 import org.springframework.security.authentication.DisabledException
@@ -23,6 +24,10 @@ class LoginController {
 	 * Dependency injection for the springSecurityService.
 	 */
 	def springSecurityService
+	
+	def asynchronousMailService
+	
+	def usuarioService
 
 	/**
 	 * Default action; redirects to 'defaultTargetUrl' if logged in, /login/auth otherwise.
@@ -131,4 +136,60 @@ class LoginController {
 	def ajaxDenied = {
 		render([error: 'access denied'] as JSON)
 	}
+	
+	def recuperarPassword = {
+		render(view: "/login/forgotPassword" )
+	}
+	
+	def forgotPassword = {
+		
+				if (!request.post) {
+					// show the form
+					return
+				}
+		
+				String username = params.username
+				if (!username) {
+					flash.error = message(code: 'spring.security.ui.forgotPassword.username.missing')
+					redirect action: 'forgotPassword'
+					return
+				}
+		
+				
+				def user = usuarioService.obtenerUsuarioByUserName(username)
+				if (!user) {
+					flash.error = message(code: 'spring.security.ui.forgotPassword.user.notFound')
+					redirect action: 'forgotPassword'
+					return
+				}
+		
+				def registrationCode = new RegistrationCode(username: username)
+				registrationCode.save(flush: true)
+		
+				String url = generateLink('resetPassword', [t: registrationCode.token])
+		
+				def conf = SpringSecurityUtils.securityConfig
+				def body = conf.ui.forgotPassword.emailBody
+				if (body.contains('$')) {
+					body = evaluate(body, [user: user, url: url])
+				}
+				asynchronousMailService.sendMail {
+					to user.username
+					subject conf.ui.forgotPassword.emailSubject
+					html body.toString()
+				}
+		
+				[emailSent: true]
+			}
+	
+	protected String generateLink(String action, linkParams) {
+		createLink(base: "$request.scheme://$request.serverName:$request.serverPort$request.contextPath",
+				controller: 'register', action: action,
+				params: linkParams)
+	}
+	
+	protected String evaluate(s, binding) {
+		new SimpleTemplateEngine().createTemplate(s).make(binding)
+	}
+		
 }

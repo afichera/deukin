@@ -135,7 +135,7 @@
 					<g:message code="inscripcionInstitucion.campos.email"
 						default="Email" /> <span class="required-indicator">*</span>
 				</label>
-				<g:textField name="usuarioRegistro.username"
+				<g:textField name="usuarioRegistro.username" size="50" type="email"
 					value="${inscripcion?.usuarioRegistro?.username}" />
 
 				<br />
@@ -153,7 +153,7 @@
 					<g:message code="inscripcionInstitucion.campos.password"
 						default="Password" /> <span class="required-indicator">*</span>
 				</label>
-				<g:passwordField name="usuarioRegistro.password"
+				<g:passwordField name="usuarioRegistro.password" size="20" 
 					value="${inscripcion?.usuarioRegistro?.password}" />
 
 				<br />
@@ -171,7 +171,7 @@
 					<g:message code="inscripcionInstitucion.campos.repitaPassword"
 						default="Repita Password" /> <span class="required-indicator">*</span>
 				</label>
-				<g:passwordField name="usuarioRegistro.password2"
+				<g:passwordField name="usuarioRegistro.password2" size="20"
 					value="${inscripcion?.usuarioRegistro?.password2}" />
 				<br />
 				<g:hasErrors bean="${inscripcion}" field="usuarioRegistro.password2">

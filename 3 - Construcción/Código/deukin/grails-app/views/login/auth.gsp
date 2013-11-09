@@ -41,7 +41,7 @@
 					<span
 						class="forgot-link"> <g:link controller='login'
 							action='recuperarPassword'>
-							<g:message code='spring.security.ui.login.forgotPassword' />
+							<g:message code='spring.security.ui.login.forgotPassword' default="Olvidó el password?" />
 						</g:link>
 					</span>
 

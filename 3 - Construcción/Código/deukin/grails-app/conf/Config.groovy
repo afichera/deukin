@@ -121,6 +121,8 @@ grails.plugins.springsecurity.userLookup.userDomainClassName = 'com.deukin.Usuar
 grails.plugins.springsecurity.userLookup.authorityJoinClassName = 'com.deukin.UsuarioRol'
 grails.plugins.springsecurity.authority.className = 'com.deukin.Rol'
 
+
+
 //Configuración de Registro de Auditoria
 //stamp{
 //	audit{

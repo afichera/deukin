@@ -24,9 +24,9 @@ class LoginController {
 	 * Dependency injection for the springSecurityService.
 	 */
 	def springSecurityService
-	
+
 	def asynchronousMailService
-	
+
 	def usuarioService
 
 	/**
@@ -56,7 +56,7 @@ class LoginController {
 		String view = 'auth'
 		String postUrl = "${request.contextPath}${config.apf.filterProcessesUrl}"
 		render view: view, model: [postUrl: postUrl,
-		                           rememberMeParameter: config.rememberMe.parameter]
+			rememberMeParameter: config.rememberMe.parameter]
 	}
 
 	/**
@@ -72,7 +72,7 @@ class LoginController {
 	 */
 	def denied = {
 		if (springSecurityService.isLoggedIn() &&
-				authenticationTrustResolver.isRememberMe(SCH.context?.authentication)) {
+		authenticationTrustResolver.isRememberMe(SCH.context?.authentication)) {
 			// have cookie but the page is guarded with IS_AUTHENTICATED_FULLY
 			redirect action: 'full', params: params
 		}
@@ -84,8 +84,8 @@ class LoginController {
 	def full = {
 		def config = SpringSecurityUtils.securityConfig
 		render view: 'auth', params: params,
-			model: [hasCookie: authenticationTrustResolver.isRememberMe(SCH.context?.authentication),
-			        postUrl: "${request.contextPath}${config.apf.filterProcessesUrl}"]
+		model: [hasCookie: authenticationTrustResolver.isRememberMe(SCH.context?.authentication),
+			postUrl: "${request.contextPath}${config.apf.filterProcessesUrl}"]
 	}
 
 	/**
@@ -136,60 +136,65 @@ class LoginController {
 	def ajaxDenied = {
 		render([error: 'access denied'] as JSON)
 	}
-	
-	def recuperarPassword = {
-		render(view: "/login/forgotPassword" )
-	}
-	
+
+	def recuperarPassword = { render(view: "/login/forgotPassword" ) }
+
 	def forgotPassword = {
-		
-				if (!request.post) {
-					// show the form
-					return
-				}
-		
-				String username = params.username
-				if (!username) {
-					flash.error = message(code: 'spring.security.ui.forgotPassword.username.missing')
-					redirect action: 'forgotPassword'
-					return
-				}
-		
-				
-				def user = usuarioService.obtenerUsuarioByUserName(username)
-				if (!user) {
-					flash.error = message(code: 'spring.security.ui.forgotPassword.user.notFound')
-					redirect action: 'forgotPassword'
-					return
-				}
-		
-				def registrationCode = new RegistrationCode(username: username)
-				registrationCode.save(flush: true)
-		
-				String url = generateLink('resetPassword', [t: registrationCode.token])
-		
-				def conf = SpringSecurityUtils.securityConfig
-				def body = conf.ui.forgotPassword.emailBody
-				if (body.contains('$')) {
-					body = evaluate(body, [user: user, url: url])
-				}
-				asynchronousMailService.sendMail {
-					to user.username
-					subject conf.ui.forgotPassword.emailSubject
-					html body.toString()
-				}
-		
-				[emailSent: true]
-			}
-	
+
+		if (!request.post) {
+			// show the form
+			return
+		}
+
+		String username = params.username
+		if (!username) {
+			flash.error = message(code: 'spring.security.ui.forgotPassword.username.missing')
+			redirect action: 'forgotPassword'
+			return
+		}
+
+
+		def user = usuarioService.obtenerUsuarioByUserName(username)
+		if (!user) {
+			flash.error = message(code: 'spring.security.ui.forgotPassword.user.notFound')
+			redirect action: 'forgotPassword'
+			return
+		}
+
+		def registrationCode = new RegistrationCode(username: username)
+		registrationCode.save(flush: true)
+
+		String url = generateLink('resetPassword', [t: registrationCode.token])
+
+		def conf = SpringSecurityUtils.securityConfig
+		def body = '''\
+Hola $user.username,<br/>
+<br/>
+Usted (o alguien en su lugar) solicit&oacute; restear el password de su cuenta de Deukin.<br/>
+<br/>
+Si usted no lo ha solicitado, entonces simplemente ignore este email; no se realizar&aacute;n cambios.<br/>
+<br/>
+Si usted lo solicit&oacute;, haga clic <a href="$url">aqu&iacute;</a> para resetear su password.
+'''
+		if (body.contains('$')) {
+			body = evaluate(body, [user: user, url: url])
+		}
+		asynchronousMailService.sendMail {
+			to user.username
+			subject conf.ui.forgotPassword.emailSubject
+			html body.toString()
+		}
+
+		[emailSent: true]
+	}
+
 	protected String generateLink(String action, linkParams) {
 		createLink(base: "$request.scheme://$request.serverName:$request.serverPort$request.contextPath",
-				controller: 'register', action: action,
-				params: linkParams)
+		controller: 'register', action: action,
+		params: linkParams)
 	}
-	
+
 	protected String evaluate(s, binding) {
 		new SimpleTemplateEngine().createTemplate(s).make(binding)
 	}
-		
 }

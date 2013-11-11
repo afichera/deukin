@@ -4,14 +4,14 @@ import com.deukin.Contacto
 import com.deukin.Departamento
 import com.deukin.Documento
 import com.deukin.Domicilio
-import com.deukin.EstadoRecurso
 import com.deukin.EstadoDeCreacion
+import com.deukin.EstadoRecurso
 import com.deukin.InstitucionEducativa
 import com.deukin.Materia
 import com.deukin.ModalidadAsistencia
 import com.deukin.PeriodoDedicacion
-import com.deukin.Persona;
-import com.deukin.PlanEstudio;
+import com.deukin.Persona
+import com.deukin.PlanEstudio
 import com.deukin.Recurso
 import com.deukin.Rol
 import com.deukin.Telefono
@@ -36,9 +36,9 @@ class BootStrap {
 
 		//		Usuarios
 		//		Admin default
-		def adminUser = Usuario.findByUsername('admin') ?: new Usuario(
-				username: 'admin',
-				password: 'admin',
+		def adminUser = Usuario.findByUsername('admin@deukin.com') ?: new Usuario(
+				username: 'admin@deukin.com',
+				password: '123456',
 				enabled: true).save(failOnError: true)
 
 		if (!adminUser.authorities.contains(admininstradorSistemaRol)) {
@@ -47,9 +47,9 @@ class BootStrap {
 
 		//Usuarios Simples solo para Test
 		//Usuario Alumno Solo para pruebas
-		def alumnoUser1 = Usuario.findByUsername('alumno1') ?: new Usuario(
-				username: 'alumno1',
-				password: 'alumno1',
+		def alumnoUser1 = Usuario.findByUsername('alumno1@deukin.com') ?: new Usuario(
+				username: 'alumno1@deukin.com',
+				password: '123456',
 				enabled: true).save(failOnError: true)
 
 		if (!alumnoUser1.authorities.contains(alumnoRol)) {
@@ -57,9 +57,9 @@ class BootStrap {
 		}
 
 		//Usuario Docente Solo para pruebas
-		def docenteUser1 = Usuario.findByUsername('docente1') ?: new Usuario(
-				username: 'docente1',
-				password: 'docente1',
+		def docenteUser1 = Usuario.findByUsername('docente1@deukin.com') ?: new Usuario(
+				username: 'docente1@deukin.com',
+				password: '123456',
 				enabled: true).save(failOnError: true)
 
 		if (!docenteUser1.authorities.contains(docenteRol)) {
@@ -68,9 +68,9 @@ class BootStrap {
 
 
 		//Usuario Coordinador Solo para pruebas
-		def usuarioCoordinador1 = Usuario.findByUsername('coordinador1') ?: new Usuario(
-				username: 'coordinador1',
-				password: 'coordinador1',
+		def usuarioCoordinador1 = Usuario.findByUsername('coordinador1@deukin.com') ?: new Usuario(
+				username: 'coordinador1@deukin.com',
+				password: '123456',
 				enabled: true).save(failOnError: true)
 
 		if (!usuarioCoordinador1.authorities.contains(coordinadorRol)) {
@@ -79,9 +79,9 @@ class BootStrap {
 		
 
 		//Usuario Administrativo Solo para pruebas
-		def usuarioAdministrativo1 = Usuario.findByUsername('administrativo1') ?: new Usuario(
-				username: 'administrativo1',
-				password: 'administrativo1',
+		def usuarioAdministrativo1 = Usuario.findByUsername('administrativo1@deukin.com') ?: new Usuario(
+				username: 'administrativo1@deukin.com',
+				password: '123456',
 				enabled: true).save(failOnError: true)
 
 		if (!usuarioAdministrativo1.authorities.contains(administrativoRol)) {
@@ -90,9 +90,9 @@ class BootStrap {
 
 		//Usuarios Combinados solo para Test
 		//Usuario Alumno y Docente Solo para pruebas
-		def alumnoDocenteUser1 = Usuario.findByUsername('alumnoDocente1') ?: new Usuario(
-				username: 'alumnoDocente1',
-				password: 'alumnoDocente1',
+		def alumnoDocenteUser1 = Usuario.findByUsername('alumnoDocente1@deukin.com') ?: new Usuario(
+				username: 'alumnoDocente1@deukin.com',
+				password: '123456',
 				enabled: true).save(failOnError: true)
 
 		if (!alumnoDocenteUser1.authorities.contains(alumnoRol)) {
@@ -104,9 +104,9 @@ class BootStrap {
 		}
 
 		//Usuario Docente y Coordinador Solo para pruebas
-		def docenteCoordinadorUser1 = Usuario.findByUsername('docenteCoordinador1') ?: new Usuario(
-				username: 'docenteCoordinador1',
-				password: 'docenteCoordinador1',
+		def docenteCoordinadorUser1 = Usuario.findByUsername('docenteCoordinador1@deukin.com') ?: new Usuario(
+				username: 'docenteCoordinador1@deukin.com',
+				password: '123456',
 				enabled: true).save(failOnError: true)
 
 		if (!docenteCoordinadorUser1.authorities.contains(docenteRol)) {
@@ -118,9 +118,9 @@ class BootStrap {
 		}
 
 		//Usuario Alumno y Administrativo Solo para pruebas
-		def alumnoAdministrativoUser1 = Usuario.findByUsername('alumnoAdministrativo1') ?: new Usuario(
-				username: 'alumnoAdministrativo1',
-				password: 'alumnoAdministrativo1',
+		def alumnoAdministrativoUser1 = Usuario.findByUsername('alumnoAdministrativo1@deukin.com') ?: new Usuario(
+				username: 'alumnoAdministrativo1@deukin.com',
+				password: '123456',
 				enabled: true).save(failOnError: true)
 
 		if (!alumnoAdministrativoUser1.authorities.contains(alumnoRol)) {

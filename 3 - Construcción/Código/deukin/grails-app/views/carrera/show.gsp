@@ -1,6 +1,6 @@
 
 
-<%@ page import="com.deukin.Carrera" %>
+<%@ page import="com.deukin.Carrera"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,123 +21,204 @@
 		</ul>
 	</div>
 
-	<div id="show-carrera"
-		class="content scaffold-show" role="main">
+	<div id="show-carrera" class="content scaffold-show" role="main">
 		<h1>
-			<g:message code="default.show.label" args="[entityName]" />
+			<g:if test="${carreraInstance?.titulo}">
+				<g:fieldValue bean="${carreraInstance}" field="titulo" />
+			</g:if>
 		</h1>
 		<g:if test="${flash.message}">
-			<div class="message" role="status">${flash.message}</div>
+			<div class="message" role="status">
+				${flash.message}
+			</div>
 		</g:if>
 		<div class="row">
-			<div class="col-lg-6">
+			<div class="col-lg-12 col-md-12 col-sx-12 lista-propiedades">
 				<div class="well">
-					<ol class="property-list carrera">
-						
-				<g:if test="${carreraInstance?.titulo}">
-				<li class="fieldcontain">
-					<span id="titulo-label" class="property-label"><g:message code="carrera.titulo.label" default="Titulo" /></span>
+					<div class="row">
+						<g:if test="${carreraInstance?.estado}">
+							<label id="estado-label" class="col-lg-2 control-label"><g:message
+									code="carrera.estado.label" default="Estado" />:</label>
+							<div class=" col-lg-10"
+								aria-labelledby="estado-label">
+								<g:fieldValue bean="${carreraInstance}" field="estado" />
+							</div>
+						</g:if>
+					</div>
+					<g:if test="${carreraInstance?.modalidadAsistencia}">
+						<div class="row">
+							<label id="modalidadAsistencia-label"
+								class="col-lg-2 control-label property-label"><g:message
+									code="carrera.modalidadAsistencia.label"
+									default="Modalidad Asistencia" />:</label>
+							<div class="  col-lg-10 "
+								aria-labelledby="modalidadAsistencia-label">
+								<g:fieldValue bean="${carreraInstance}"
+									field="modalidadAsistencia" />
+							</div>
+						</div>
+					</g:if>
+
+
+					<g:if test="${carreraInstance?.condicionIngreso}">
+						<div class="row">
+							<label id="condicionIngreso-label"
+								class="col-lg-2 control-label property-label"><g:message
+									code="carrera.condicionIngreso.label"
+									default="Condicion Ingreso" /></label>
+							<div class=" col-lg-10 "
+								aria-labelledby="condicionIngreso-label">
+								<g:fieldValue bean="${carreraInstance}" field="condicionIngreso" />
+							</div>
+						</div>
+					</g:if>
+
+					<g:if test="${carreraInstance?.fundamentacion}">
+						<div class="row">
+							<label id="fundamentacion-label"
+								class="col-lg-2 control-label property-label"><g:message
+									code="carrera.fundamentacion.label" default="Fundamentacion" />:
+							</label>
+
+							<div class="  col-lg-10 "
+								aria-labelledby="fundamentacion-label">
+								<g:fieldValue bean="${carreraInstance}" field="fundamentacion" />
+							</div>
+						</div>
+					</g:if>
+
+					<g:if test="${carreraInstance?.objetivos}">
+						<div class="row">
+							<label id="objetivos-label"
+								class="col-lg-2 control-label property-label"><g:message
+									code="carrera.objetivos.label" default="Objetivos" />:</label>
+							<div class=" col-lg-10 ">
+								<ul>
+									<g:each in="${carreraInstance.objetivos}" var="o">
+										<li><span class=""
+											aria-labelledby="objetivos-label"> ${o?.encodeAsHTML()}
+										</span></li>
+									</g:each>
+								</ul>
+							</div>
+						</div>
+					</g:if>
+
+					<g:if test="${carreraInstance?.perfilDelGraduado}">
+						<div class="row">
+							<label id="perfilDelGraduado-label"
+								class="col-lg-2 control-label property-label"><g:message
+									code="carrera.perfilDelGraduado.label"
+									default="Perfil Del Graduado" />: </label>
+							<div class=" col-lg-10 "
+								aria-labelledby="perfilDelGraduado-label">
+								<g:fieldValue bean="${carreraInstance}"
+									field="perfilDelGraduado" />
+							</div>
+						</div>
+					</g:if>
+					<g:if test="${carreraInstance?.descripcion}">
+						<div class="row">
+							<label class="col-lg-2 control-label "><g:message
+									code="carrera.descripcion.label" default="Descripcion" />: </label>
+							<div class=" col-lg-10 "
+								aria-labelledby="descripcion-label">
+								<g:fieldValue bean="${carreraInstance}" field="descripcion" />
+							</div>
+						</div>
+					</g:if>
+
+					<g:if test="${carreraInstance?.coordinador}">
+						<div class="row">
+							<label id="coordinador-label"
+								class="col-lg-2 control-label property-label"><g:message
+									code="carrera.coordinador.label" default="Coordinador" />:</label>
+							<div class=" col-lg-10 "
+								aria-labelledby="coordinador-label">
+								<g:link controller="persona" action="show"
+									id="${carreraInstance?.coordinador?.id}">
+									${carreraInstance?.coordinador?.encodeAsHTML()}
+								</g:link>
+							</div>
+						</div>
+					</g:if>
+
+					<g:if test="${carreraInstance?.planesEstudio}">
+						<div class="row">
+							<label id="planesEstudio-label"
+								class="col-lg-2 control-label property-label"><g:message
+									code="carrera.planesEstudio.label" default="Planes Estudio" />:</label>
+							<div class=" col-lg-10 ">
+								<ul>
+									<g:each in="${carreraInstance.planesEstudio}" var="p">
+										<li><span class=""
+											aria-labelledby="planesEstudio-label"><g:link
+													controller="planEstudio" action="show" id="${p.id}">
+													${p?.encodeAsHTML()}
+												</g:link></span></li>
+									</g:each>
+								</ul>
+							</div>
+						</div>
+
+					</g:if>
+
+
+
+
+
+
+
+
+
+					<g:if test="${carreraInstance?.materias}">
+						<div class="row">
+							<label id="materias-label"
+								class="col-lg-2 control-label property-label"><g:message
+									code="carrera.materias.label" default="Materias" /></label>
+							<div class=" col-lg-10 ">
+
+							
+							
+										<table class="table table-striped table-bordered table-hover">
+				<thead>
+					<tr>
 					
-						<span class="property-value" aria-labelledby="titulo-label"><g:fieldValue bean="${carreraInstance}" field="titulo"/></span>
+						<th>${message(code: 'materia.codigo.label', default: 'Codigo')}</th>
 					
-				</li>
-				</g:if>
-			
-				<g:if test="${carreraInstance?.planesEstudio}">
-				<li class="fieldcontain">
-					<span id="planesEstudio-label" class="property-label"><g:message code="carrera.planesEstudio.label" default="Planes Estudio" /></span>
+						<th>${message(code: 'materia.nombre.label', default: 'Nombre')}</th>
 					
-						<g:each in="${carreraInstance.planesEstudio}" var="p">
-						<span class="property-value" aria-labelledby="planesEstudio-label"><g:link controller="planEstudio" action="show" id="${p.id}">${p?.encodeAsHTML()}</g:link></span>
-						</g:each>
+							
+						<th>${message(code: 'materia.cantidadDocentesRequeridos.label', default: 'Cantidad Docentes Requeridos')}</th>
 					
-				</li>
-				</g:if>
-			
-				<g:if test="${carreraInstance?.objetivos}">
-				<li class="fieldcontain">
-					<span id="objetivos-label" class="property-label"><g:message code="carrera.objetivos.label" default="Objetivos" /></span>
+						<th>${message(code: 'materia.cantidadUnidadesHorarias.label', default: 'Cantidad Unidades Horarias')}</th>
+
 					
-						<span class="property-value" aria-labelledby="objetivos-label"><g:fieldValue bean="${carreraInstance}" field="objetivos"/></span>
+					</tr>
+				</thead>
+				<tbody>
+				<g:each in="${carreraInstance.materias.sort{a,b-> a.codigo.compareTo(b.codigo)}}" status="i"  var="m" >
+					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-				</li>
-				</g:if>
-			
-				<g:if test="${carreraInstance?.fundamentacion}">
-				<li class="fieldcontain">
-					<span id="fundamentacion-label" class="property-label"><g:message code="carrera.fundamentacion.label" default="Fundamentacion" /></span>
+						<td><g:link controller="materia" action="show" id="${m.id}">${fieldValue(bean: m, field: "codigo")}</g:link></td>
 					
-						<span class="property-value" aria-labelledby="fundamentacion-label"><g:fieldValue bean="${carreraInstance}" field="fundamentacion"/></span>
+						<td>${fieldValue(bean: m, field: "nombre")}</td>
 					
-				</li>
-				</g:if>
-			
-				<g:if test="${carreraInstance?.perfilDelGraduado}">
-				<li class="fieldcontain">
-					<span id="perfilDelGraduado-label" class="property-label"><g:message code="carrera.perfilDelGraduado.label" default="Perfil Del Graduado" /></span>
+						<td>${fieldValue(bean: m, field: "cantidadDocentesRequeridos")}</td>
 					
-						<span class="property-value" aria-labelledby="perfilDelGraduado-label"><g:fieldValue bean="${carreraInstance}" field="perfilDelGraduado"/></span>
+						<td>${fieldValue(bean: m, field: "cantidadUnidadesHorarias")}</td>
+
 					
-				</li>
-				</g:if>
-			
-				<g:if test="${carreraInstance?.descripcion}">
-				<li class="fieldcontain">
-					<span id="descripcion-label" class="property-label"><g:message code="carrera.descripcion.label" default="Descripcion" /></span>
-					
-						<span class="property-value" aria-labelledby="descripcion-label"><g:fieldValue bean="${carreraInstance}" field="descripcion"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${carreraInstance?.coordinador}">
-				<li class="fieldcontain">
-					<span id="coordinador-label" class="property-label"><g:message code="carrera.coordinador.label" default="Coordinador" /></span>
-					
-						<span class="property-value" aria-labelledby="coordinador-label"><g:link controller="persona" action="show" id="${carreraInstance?.coordinador?.id}">${carreraInstance?.coordinador?.encodeAsHTML()}</g:link></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${carreraInstance?.estado}">
-				<li class="fieldcontain">
-					<span id="estado-label" class="property-label"><g:message code="carrera.estado.label" default="Estado" /></span>
-					
-						<span class="property-value" aria-labelledby="estado-label"><g:fieldValue bean="${carreraInstance}" field="estado"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${carreraInstance?.condicionIngreso}">
-				<li class="fieldcontain">
-					<span id="condicionIngreso-label" class="property-label"><g:message code="carrera.condicionIngreso.label" default="Condicion Ingreso" /></span>
-					
-						<span class="property-value" aria-labelledby="condicionIngreso-label"><g:fieldValue bean="${carreraInstance}" field="condicionIngreso"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${carreraInstance?.materias}">
-				<li class="fieldcontain">
-					<span id="materias-label" class="property-label"><g:message code="carrera.materias.label" default="Materias" /></span>
-					
-						<g:each in="${carreraInstance.materias}" var="m">
-						<span class="property-value" aria-labelledby="materias-label"><g:link controller="materia" action="show" id="${m.id}">${m?.encodeAsHTML()}</g:link></span>
-						</g:each>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${carreraInstance?.modalidadAsistencia}">
-				<li class="fieldcontain">
-					<span id="modalidadAsistencia-label" class="property-label"><g:message code="carrera.modalidadAsistencia.label" default="Modalidad Asistencia" /></span>
-					
-						<span class="property-value" aria-labelledby="modalidadAsistencia-label"><g:fieldValue bean="${carreraInstance}" field="modalidadAsistencia"/></span>
-					
-				</li>
-				</g:if>
-			
-					</ol>
+					</tr>
+				</g:each>
+				</tbody>
+			</table>
+						</div></div>
+					</g:if>
+
+
+
+
 					<g:form>
 						<fieldset class="buttons">
 							<g:hiddenField name="id" value="${carreraInstance?.id}" />

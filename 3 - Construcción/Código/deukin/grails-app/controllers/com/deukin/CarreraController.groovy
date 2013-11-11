@@ -4,7 +4,7 @@ import grails.plugins.springsecurity.Secured
 
 import org.springframework.dao.DataIntegrityViolationException
 
-@Secured(['ROLE_COORDINADOR','ROLE_ADMINISTRATIVO'])
+//@Secured(['ROLE_COORDINADOR','ROLE_ADMINISTRATIVO'])
 class CarreraController {
 	static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 	

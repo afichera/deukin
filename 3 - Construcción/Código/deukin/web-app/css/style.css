@@ -41,3 +41,14 @@
 	
 }
 
+.lista-propiedades .row {
+	
+	border-bottom: 1px solid #e5e5e5;
+	margin-bottom:10px;
+}
+.lista-propiedades ul{
+	margin-left:0;
+padding-left:0;
+	
+}
+

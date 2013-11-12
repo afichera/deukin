@@ -20,10 +20,10 @@
 	<div class="navbar navbar-inverse" role="navigation">
 		<ul class="nav navbar-nav">
 			<li><g:link class="list" action="list">
-					<g:message code="default.list.label" args="[entityName]" />
+					<g:message code="carrera.list.label" />
 				</g:link></li>
 			<li><g:link class="create" action="create">
-					<g:message code="default.new.label" args="[entityName]" />
+					<g:message code="carrera.new.label" />
 				</g:link></li>
 		</ul>
 	</div>
@@ -33,7 +33,7 @@
 			<g:message code="default.edit.label" args="[entityName]" />
 		</h1>
 		<g:if test="${flash.message}">
-			<div class="message" role="status">${flash.message}</div>
+			<div class="message alert alert-info" role="status">${flash.message}</div>
 		</g:if>
 		<g:hasErrors bean="${carreraInstance}">
 			<ul class="alert alert-danger" role="alert">
@@ -42,10 +42,10 @@
 						<g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message
 							error="${error}" /></li>
 				</g:eachError>
-			</ul>
+			</ul> 
 		</g:hasErrors>
 		<div class="row">
-			<div class="col-lg-6">
+			<div class="col-lg-12 col-md-12 col-sx-12 lista-propiedades">
 				<div class="well">
 					<g:form method="post"
 						>

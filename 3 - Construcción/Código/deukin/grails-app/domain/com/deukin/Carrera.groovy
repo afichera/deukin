@@ -40,7 +40,7 @@ class Carrera implements Serializable {
 									true
 								 }
 					else {
-						if (obj.properties['condicionIngreso']&&obj.properties['planesEstudio']&&obj.properties['fundamentacion']&&obj.properties['perfilDelGraduado']&&obj.properties['descripcion'])
+						if (obj.properties['condicionIngreso']&&obj.properties['planesEstudio']&&obj.properties['fundamentacion']&&obj.properties['perfilDelGraduado']&&obj.properties['descripcion']&&obj.properties['objetivos']&&obj.properties['coordinador'])
 						true
 						else
 					false

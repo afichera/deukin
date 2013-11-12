@@ -2,31 +2,37 @@
 
 
 
-<div class="fieldcontain ${hasErrors(bean: carreraInstance, field: 'titulo', 'error')} ">
-	<label for="titulo" class="control-label">
-		<g:message code="carrera.titulo.label" default="Titulo" />
+<div class="fieldcontain ${hasErrors(bean: carreraInstance, field: 'titulo', 'error')} row">
+	<label for="titulo" class=" col-lg-3 control-label">
+		<g:message code="carrera.titulo.label" default="Titulo" />: 
 		
 	</label>
+	<div class="col-lg-9">
 	<g:textField name="titulo" maxlength="200" value="${carreraInstance?.titulo}"/>
+	</div>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: carreraInstance, field: 'planesEstudio', 'error')} ">
-	<label for="nuevoPlanEstudio" class="control-label">
+<div class="fieldcontain ${hasErrors(bean: carreraInstance, field: 'planesEstudio', 'error')}row ">
+	<label for="nuevoPlanEstudio" class=" col-lg-3 control-label">
 		<g:message code="carrera.planesEstudio.nuevo.label" default="Nombre del nuevo Plan de Estudio" />
-		
+		: 
 	</label>
+	<div class="col-lg-9">
 	<g:textField name="nombrePlanDeEstudio" maxlength="200"/>
+	</div>
 </div>
 
 
 
 
 
-<div class="fieldcontain ${hasErrors(bean: carreraInstance, field: 'modalidadAsistencia', 'error')} required">
-	<label for="modalidadAsistencia" class="control-label">
+<div class="fieldcontain ${hasErrors(bean: carreraInstance, field: 'modalidadAsistencia', 'error')} required row">
+	<label for="modalidadAsistencia" class=" col-lg-3 control-label">
 		<g:message code="carrera.modalidadAsistencia.label" default="Modalidad Asistencia" />
-		<span class="required-indicator">*</span>
+		: 
 	</label>
+	<div class="col-lg-9">
 	<g:select name="modalidadAsistencia" from="${com.deukin.ModalidadAsistencia?.values()}" keys="${com.deukin.ModalidadAsistencia.values()*.name()}" required="" value="${carreraInstance?.modalidadAsistencia?.name()}"/>
+	</div>
 </div>
 

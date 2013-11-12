@@ -4,7 +4,7 @@ import grails.plugins.springsecurity.Secured
 
 import org.springframework.dao.DataIntegrityViolationException
 
-//@Secured(['ROLE_COORDINADOR','ROLE_ADMINISTRATIVO'])
+@Secured(['ROLE_COORDINADOR','ROLE_ADMINISTRATIVO'])
 class CarreraController {
 	static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 	
@@ -33,10 +33,10 @@ class CarreraController {
 		}
 		
 		def saveNew() {
-			def planEstudioInstance = new  PlanEstudio(identificador:params.nombrePlanDeEstudio,estado: EstadoDeCreacion.BORRADOR)
+			def planEstudioInstance = new  PlanEstudio(identificacion:params.nombrePlanDeEstudio,estado: EstadoDeCreacion.BORRADOR, cantidadPeriodosAcademicos:null,asignacionesPeriodosMaterias:null)
 			
 			def carreraInstance = new Carrera(titulo: params.titulo, descripcion:null, condicionIngreso: null, modalidadAsistencia: params.modalidadAsistencia, coordinador: null, estado: EstadoDeCreacion.BORRADOR)
-								.addToPlanesEstudio(planEstudioInstance)
+									.addToPlanesEstudio(planEstudioInstance)
 			if (!carreraInstance.save(flush: true)) {
 				render(view: "create", model: [carreraInstance: carreraInstance])
 				return

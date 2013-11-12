@@ -18,7 +18,7 @@ class PlanEstudio {
 	static belongsTo = [carrera : Carrera]
 
     static constraints = {
-		 identificacion unique:true, nullable:true
+		 identificacion unique:true, nullable:false, blank:false
 		 cantidadPeriodosAcademicos nullable:true
 		 asignacionesPeriodosMaterias nullable:true
     }

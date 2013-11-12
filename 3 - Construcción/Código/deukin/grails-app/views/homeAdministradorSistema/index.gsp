@@ -33,7 +33,7 @@
 						</h3>
 					</div>
 					<ul>
-						<li><g:link controller='proximamente'>
+						<li><g:link controller='usuario'>
 								<g:message code="secciones.usuarios.usuarios" />
 							</g:link></li>
 					</ul>

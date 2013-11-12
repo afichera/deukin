@@ -39,5 +39,15 @@ class UsuarioService {
 		}
 		flag
 	}
-
+	
+	def obtenerUsuariosPorRol(def rolBuscado){
+		def usuarios = []
+		def rol = Rol.findByAuthority(rolBuscado)
+		if(!rol){
+			throw new BusinessException("El rol "+rolBuscado+" no existe en el sistema. Contactese con el administrador.")
+		}
+		usuarios = UsuarioRol.findAllByRol(rol).usuario
+		usuarios
+		
+	}
 }

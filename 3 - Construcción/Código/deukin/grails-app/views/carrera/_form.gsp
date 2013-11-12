@@ -90,10 +90,10 @@
 		
 	</label>
 	<div class="col-lg-10">
-	<g:select class="form-control"  id="coordinador" name="coordinador.id" from="${com.deukin.Persona.list()}" optionKey="id" value="${carreraInstance?.coordinador?.id}" class="many-to-one" noSelection="['null': '']"/>
+<%--	<g:select class="form-control"  id="coordinador" name="coordinador.id" from="${com.deukin.Persona.list()}" optionKey="id" value="${carreraInstance?.coordinador?.id}" class="many-to-one" noSelection="['null': '']"/>--%>
 	<g:hiddenField id ="materiaPrincipal.id" name ="materiaPrincipal.id" value=""/>
 	<richui:autoComplete class="form-control"  name="coordinadorNombre" minQueryLength="2" onItemSelect="eligeCoordinador(id)" value="${carreraInstance?.coordinador}"
-		action="${createLinkTo('dir': 'correlatividad/searchCoordinadorCoordinador')}" forceSelection="true"/>
+		action="${createLinkTo('dir': 'carrera/searchCoordinadores')}" forceSelection="true"/>
 		</div>
 </div>
 

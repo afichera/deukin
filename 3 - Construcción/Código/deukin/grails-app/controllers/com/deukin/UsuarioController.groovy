@@ -50,8 +50,10 @@ class UsuarioController {
             return
         }
 		
-		if(usuarioLogueado != usuarioInstance){
-			render(view: "/noAutorizado" )
+		if(!usuarioService.poseeElRol(springSecurityService.principal.authorities, 'ROLE_ADMINISTRADOR_SISTEMA')){
+			if(usuarioLogueado != usuarioInstance){
+				render(view: "/noAutorizado" )
+			}
 		}
 
         [usuarioInstance: usuarioInstance]

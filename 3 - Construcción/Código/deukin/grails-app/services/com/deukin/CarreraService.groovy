@@ -44,4 +44,22 @@ class CarreraService {
 	}
 	
 	
+	def obtenerCoordinadoresLikeQueryRegex(def queryRegex){
+		def coordinadores
+		def coordinadoresFiltro = []
+		def usuariosRol = []
+		usuariosRol = usuarioService.obtenerUsuariosPorRol('ROLE_COORDINADOR')		
+		coordinadores = Persona.findAllByUsuarioInList(usuariosRol)
+		
+		for (coordinador in coordinadores) {
+			if(coordinador.toString().toUpperCase().contains(queryRegex.toUpperCase())){
+				coordinadoresFiltro.add(coordinador)
+			}
+		}
+		coordinadoresFiltro
+		
+	}
+
+	
+	
 }

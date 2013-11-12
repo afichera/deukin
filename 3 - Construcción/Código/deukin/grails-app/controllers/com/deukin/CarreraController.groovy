@@ -7,6 +7,7 @@ import org.springframework.dao.DataIntegrityViolationException
 @Secured(['ROLE_COORDINADOR','ROLE_ADMINISTRATIVO'])
 class CarreraController {
 	static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
+	def carreraService
 	
 		def index() {
 			redirect(action: "list", params: params)
@@ -118,22 +119,19 @@ class CarreraController {
 
 }
 		
-		def searchCoordinadorCoordinador =  {
+		def searchCoordinadores =  {
 			def queryRegex = "${params.query}"
-			def authorities =  springSecurityService.principal.authorities
-			def usuario = springSecurityService.principal
-			def coordinadores = carreraService.obtenerCoordinadorLikeQueryRegex(authorities, usuario, queryRegex)
-			
+			def coordinadores = carreraService.obtenerCoordinadoresLikeQueryRegex(queryRegex)			
 			render(contentType: "text/xml") {
 				results() {
-					personas.each { persona ->
+					coordinadores.each { persona ->
 						result(){
 							name(persona.toString())
 							id(persona.id)
 						}
 					}
 				}
-			}
+			}			
 	
 		}
 }

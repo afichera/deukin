@@ -117,7 +117,7 @@
 	<li class="dropdown"><a href="#"
 				class="dropdown-toggle" data-toggle="dropdown"><g:message code="secciones.usuarios" /><b class="caret"></b></a>
 		<ul class="dropdown-menu">
-			<li><g:link controller='proximamente'><g:message code="secciones.usuarios.usuarios" /></g:link></li>
+			<li><g:link controller='usuario'><g:message code="secciones.usuarios.usuarios" /></g:link></li>
 		</ul>
 	</li>
 	</sec:ifAnyGranted>

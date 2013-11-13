@@ -12,5 +12,6 @@ class Docente extends Persona {
 	
     static constraints = {
 		nombramiento nullable:true
+		curriculumDocente nullable:true
     }
 }

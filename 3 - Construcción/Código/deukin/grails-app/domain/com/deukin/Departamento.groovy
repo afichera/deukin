@@ -14,7 +14,7 @@ class Departamento {
 	Contacto contacto
 
 	static hasMany = [carreras:Carrera, autoridades:Autoridad, docentes:Docente]
-	static belongsTo = [institucionEducativa:InstitucionEducativa]	
+	
 	
     static constraints = {
 		nombre(unique:true, maxLength:200)

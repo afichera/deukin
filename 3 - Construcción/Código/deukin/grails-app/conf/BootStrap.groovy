@@ -2,6 +2,7 @@ import com.deukin.Alumno
 import com.deukin.Carrera
 import com.deukin.Contacto
 import com.deukin.Departamento
+import com.deukin.Docente
 import com.deukin.Documento
 import com.deukin.Domicilio
 import com.deukin.EstadoDeCreacion
@@ -166,10 +167,13 @@ class BootStrap {
 		def telefono1Alumno2 = Telefono.findByNumero('1500000000')?: new Telefono(numero: '1500000000', tipoTelefono:TipoTelefono.MOVIL)
 		def telefono2Alumno2 = Telefono.findByNumero('44444444')?: new Telefono(numero: '44444444', tipoTelefono:TipoTelefono.CASA)
 		def telefono1Coordinador1 = Telefono.findByNumero('1555555555')?: new Telefono(numero: '1555555555', tipoTelefono:TipoTelefono.MOVIL)
+		def telefono1Docente1 = Telefono.findByNumero('444499990000')?: new Telefono(numero: '444499990000', tipoTelefono:TipoTelefono.MOVIL)
+		
 		
 		def DomicilioAlumno1 = new Domicilio(calle: 'Martin Irigoyen', numero: 556, codigoPostal: 1712,localidad: 'Castelar', observaciones: 'Triplex del Medio.')
 		def DomicilioAlumno2 = new Domicilio(calle: 'Luis Maria Drago', numero: 2519, codigoPostal: 1712,localidad: 'Castelar')
 		def DomicilioCoordinador1 = new Domicilio(calle: 'Acá va la calle', numero: 5555, codigoPostal: 1100,localidad: 'Capital Federal', observaciones: '')
+		def domicilioDocente1 = new Domicilio(calle: 'Rivadavia', numero: 5677, codigoPostal: 5400,localidad: 'Capital Federal', observaciones: 'tocar timbre del medio')
 		
 		def contactoAlumno1 = new Contacto(domicilio: DomicilioAlumno1)
 		contactoAlumno1.telefonos = []
@@ -185,6 +189,10 @@ class BootStrap {
 		contactoCoordinador1.telefonos = []
 		contactoCoordinador1.telefonos.add(telefono1Coordinador1)
 		
+		def contactoDocente1 = new Contacto(domicilio: domicilioDocente1)
+		contactoDocente1.telefonos = []
+		contactoDocente1.telefonos.add(telefono1Docente1)
+		
 
 		//documentos solo para test
 		def documentoDNIAlumno1 = Documento.findByNumeroAndTipoDocumento(28230014, TipoDocumento.DNI)?:new Documento(numero:28230014, tipoDocumento:TipoDocumento.DNI).save(failOnError:true)
@@ -194,6 +202,12 @@ class BootStrap {
 		def alumno1 = Alumno.findByDocumento(documentoDNIAlumno1)?:new Alumno(nombre:'Alejandro',apellido:'Fichera',documento:documentoDNIAlumno1, contacto: contactoAlumno1, usuario:alumnoUser1).save(failOnError:true)
 		def alumno2 = Alumno.findByDocumento(documentoCUILAlumno2)?:new Alumno(nombre:'Juan Diego',apellido:'Margenats',documento:documentoCUILAlumno2, contacto: contactoAlumno2, usuario:alumnoAdministrativoUser1).save(failOnError:true)
 		def personaCoordinador1 = Persona.findByUsuario(usuarioCoordinador1) ?: new Persona(apellido: 'GIOIA',nombre: 'CINTHIA', usuario: usuarioCoordinador1, documento: documentoDNICoordinador1, contacto: contactoCoordinador1).save(failOnError:true)
+		
+		
+		def documentoDNIdocente1= Documento.findByNumeroAndTipoDocumento(21111111, TipoDocumento.DNI)?:new Documento(numero:21111111, tipoDocumento:TipoDocumento.DNI).save(failOnError:true)
+		
+		
+		
 		
 		//carreras solo para test
 		def carrera1 = Carrera.findByTitulo('TECNICO UNIVERSITARIO EN DESARROLLO WEB')?:new Carrera(titulo: 'TECNICO UNIVERSITARIO EN DESARROLLO WEB', descripcion:'TECNICATURA UNIVERSITARIA EN DESARROLLO WEB', condicionIngreso: 'SECUNDARIO COMPLETO', modalidadAsistencia: ModalidadAsistencia.PRESENCIAL, coordinador: personaCoordinador1, estado: EstadoDeCreacion.BORRADOR).save(failOnError:true)
@@ -245,12 +259,15 @@ class BootStrap {
 		contactoInstitucion.telefonos.add(telefonoInstitucion)
 		contactoInstitucion.save(failOnError:true)
 
-		def departamentoIngenieria = Departamento.findByNombre('Ingenieria')?: new Departamento(nombre: 'Ingenieria', mision: 'La mision de nuestro departamento es...', vision: 'La visión de nuestro departamenteo es...', contacto: contactoInstitucion)
+		def departamentoIngenieria = Departamento.findByNombre('Ingenieria')?: new Departamento(nombre: 'Ingenieria', mision: 'La mision de nuestro departamento es...', vision: 'La visión de nuestro departamenteo es...', contacto: contactoInstitucion).save(failOnError:true)
 		def institucionEducativaUnica = InstitucionEducativa.findByNombre('UNLAM')?: new InstitucionEducativa(contacto: contactoInstitucion, nombre: 'UNLAM').save(failOnError:true)
 		institucionEducativaUnica.departamentos = []
 		institucionEducativaUnica.departamentos.add(departamentoIngenieria)
-		institucionEducativaUnica.save(failOnError:true)
-
+		institucionEducativaUnica = institucionEducativaUnica.save(failOnError:true)
+		
+				
+		//Docentes
+		def docente1 = Docente.findByUsuario(docenteUser1) ?: new Docente(apellido:'Fernandez',nombre: 'Juan', usuario: docenteUser1, documento: documentoDNIdocente1, contacto: contactoDocente1, departamento: departamentoIngenieria).save(failOnError:true)
 	}
 	def destroy = {
 	}

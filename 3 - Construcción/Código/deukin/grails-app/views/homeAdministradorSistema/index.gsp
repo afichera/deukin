@@ -64,6 +64,10 @@
 					</h3>
 				</div>
 				<ul>
+					<li><g:link controller='alumno'>
+							<g:message code="secciones.alumnos.alumnos" />
+						</g:link>
+					</li>
 					<li><g:link controller='inscripcionInstitucion'
 							action="indexAdmin">
 							<g:message code="secciones.inscripciones.institucion" />

@@ -7,15 +7,45 @@ import org.springframework.dao.DataIntegrityViolationException
 @Secured(['ROLE_ADMINISTRADOR_SISTEMA', 'ROLE_ALUMNO', 'ROLE_ADMINISTRATIVO', 'ROLE_DOCENTE', 'ROLE_COORDINADOR'])
 class AlumnoController {
 
+	def springSecurityService
+	def usuarioService
+	def alumnoService
+	def personaService
+	
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
-
-    def index() {
+	
+	def index() {
         redirect(action: "list", params: params)
     }
 
+	@Secured(['ROLE_ADMINISTRADOR_SISTEMA', 'ROLE_ADMINISTRATIVO', 'ROLE_DOCENTE', 'ROLE_COORDINADOR'])
     def list(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-        [alumnoInstanceList: Alumno.list(params), alumnoInstanceTotal: Alumno.count()]
+		def authorities =  springSecurityService.principal.authorities
+		def listaAlumnos
+		def cantidad = 0
+		
+		params.max = Math.min(max ?: 10, 100)
+		
+		
+		if(usuarioService.poseeElRol(authorities, 'ROLE_ADMINISTRADOR_SISTEMA')){
+			listaAlumnos = Alumno.list(params)
+		}else if(usuarioService.poseeElRol(authorities, 'ROLE_ADMINISTRATIVO')){
+			listaAlumnos = Alumno.list(params)
+		}else if(usuarioService.poseeElRol(authorities, 'ROLE_COORDINADOR')){			
+			def coordinador = personaService.findByUser(springSecurityService.principal)
+			listaAlumnos = alumnoService.findAllAlumnosByCoordinadorACargo(coordinador, params) 
+		}else if(usuarioService.poseeElRol(authorities, 'ROLE_DOCENTE')){
+			def docente = personaService.findByUser(springSecurityService.principal)
+			listaAlumnos = alumnoService.findAllAlumnosByDocente(docente, params)
+		}
+
+		if(listaAlumnos !=null && !listaAlumnos.isEmpty()){
+			cantidad = listaAlumnos.size()
+		}
+
+		[alumnoInstanceList: listaAlumnos, alumnoInstanceTotal: cantidad]
+
+		
     }
 
     def create() {

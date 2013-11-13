@@ -72,5 +72,6 @@ grails.project.dependency.resolution = {
 		compile ":quartz:1.0-RC13"
 		compile ":asynchronous-mail:1.0-RC6"
 		compile ':webflow:2.0.8.1'
+		compile ":rendering:0.4.4"
     }
 }

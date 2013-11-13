@@ -1,12 +1,13 @@
 
 <%@ page import="com.deukin.Alumno" %>
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html>
 	<head>
 		<meta name="layout" content="main">
 		<g:set var="entityName" value="${message(code: 'alumno.label', default: 'Alumno')}" />
 		<title><g:message code="default.list.label" args="[entityName]" /></title>
-	</head>
+		</head>
 	<body>
 		<div class="navbar navbar-inverse" role="navigation">
 			<ul class="nav navbar-nav">
@@ -40,7 +41,10 @@
 				<g:each in="${alumnoInstanceList}" status="i" var="alumnoInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 						<g:if test="${alumnoInstance?.fotoPerfil}">
-							<td><g:link action="show" id="${alumnoInstance.id}">${fieldValue(bean: alumnoInstance, field: "fotoPerfil")}</g:link> </td>
+							<td><g:link action="show" id="${alumnoInstance.id}">
+									<rendering:inlinePng bytes="${alumnoInstance.fotoPerfil}" width="50" />
+									
+								</g:link> </td>
 						</g:if>
 						<g:if test="${alumnoInstance?.fotoPerfil == null}">
 							<td><g:link action="show" id="${alumnoInstance.id}"><img height="50" width="50" src="${resource(dir: 'images', file: 'buddyicon.jpg')}"  alt="Grails"/></g:link></td>

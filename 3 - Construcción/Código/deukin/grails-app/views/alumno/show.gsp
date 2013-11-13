@@ -1,7 +1,8 @@
 
 
 <%@ page import="com.deukin.Alumno" %>
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html>
 <head>
 <meta name="layout" content="main">
@@ -54,10 +55,18 @@
 			
 				<g:if test="${alumnoInstance?.fotoPerfil}">
 				<li class="fieldcontain">
-					<span id="fotoPerfil-label" class="property-label"><g:message code="alumno.fotoPerfil.label" default="Foto Perfil" /></span>
-					
+					<rendering:inlinePng bytes="${alumnoInstance.fotoPerfil}" height="100"/>
 				</li>
 				</g:if>
+				
+				<g:if test="${alumnoInstance?.fotoPerfil == null}">
+				<li class="fieldcontain">
+					<span id="fotoPerfil-label" class="property-label"><g:message code="alumno.fotoPerfil.label" default="Foto Perfil" /></span>
+					<img height="100" width="100" src="${resource(dir: 'images', file: 'buddyicon.jpg')}"  alt="Grails"/>
+				</li>
+				</g:if>
+				
+				
 			
 				<g:if test="${alumnoInstance?.apellido}">
 				<li class="fieldcontain">

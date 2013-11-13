@@ -22,35 +22,34 @@
 				<thead>
 					<tr>
 					
+						<th><g:message code="alumno.fotoPerfil.label" default="Foto" /></th>
+						
+						<g:sortableColumn property="apellido" title="${message(code: 'alumno.apellido.label', default: 'Apellido <span class="glyphicon glyphicon-sort"></span>')}" />
+						<g:sortableColumn property="nombre" title="${message(code: 'alumno.nombre.label', default: 'Nombre <span class="glyphicon glyphicon-sort"></span>')}" />						
 						<th><g:message code="alumno.usuario.label" default="Usuario" /></th>
 					
-						<th><g:message code="alumno.documento.label" default="Documento" /></th>
+						<th><g:message code="alumno.documento.tipoDocumento.label" default="Documento" /></th>
+										
+						<th><g:message code="alumno.documento.numero.label" default="Número" /></th>
 					
-						<g:sortableColumn property="fotoPerfil" title="${message(code: 'alumno.fotoPerfil.label', default: 'Foto Perfil <span class="glyphicon glyphicon-sort"></span>')}" />
-					
-						<g:sortableColumn property="apellido" title="${message(code: 'alumno.apellido.label', default: 'Apellido <span class="glyphicon glyphicon-sort"></span>')}" />
-					
-						<th><g:message code="alumno.contacto.label" default="Contacto" /></th>
-					
-						<g:sortableColumn property="nombre" title="${message(code: 'alumno.nombre.label', default: 'Nombre <span class="glyphicon glyphicon-sort"></span>')}" />
+						
 					
 					</tr>
 				</thead>
 				<tbody>
 				<g:each in="${alumnoInstanceList}" status="i" var="alumnoInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-					
-						<td><g:link action="show" id="${alumnoInstance.id}">${fieldValue(bean: alumnoInstance, field: "usuario")}</g:link></td>
-					
-						<td>${fieldValue(bean: alumnoInstance, field: "documento")}</td>
-					
-						<td>${fieldValue(bean: alumnoInstance, field: "fotoPerfil")}</td>
-					
+						<g:if test="${alumnoInstance?.fotoPerfil}">
+							<td><g:link action="show" id="${alumnoInstance.id}">${fieldValue(bean: alumnoInstance, field: "fotoPerfil")}</g:link> </td>
+						</g:if>
+						<g:if test="${alumnoInstance?.fotoPerfil == null}">
+							<td><g:link action="show" id="${alumnoInstance.id}"><img height="50" width="50" src="${resource(dir: 'images', file: 'buddyicon.jpg')}"  alt="Grails"/></g:link></td>
+						</g:if>
 						<td>${fieldValue(bean: alumnoInstance, field: "apellido")}</td>
-					
-						<td>${fieldValue(bean: alumnoInstance, field: "contacto")}</td>
-					
 						<td>${fieldValue(bean: alumnoInstance, field: "nombre")}</td>
+						<td> <a href="mailto:${fieldValue(bean: alumnoInstance, field: "usuario.username")}">${fieldValue(bean: alumnoInstance, field: "usuario.username")}</a> </td>
+						<td>${fieldValue(bean: alumnoInstance, field: "documento.tipoDocumento")}</td>					
+						<td>${fieldValue(bean: alumnoInstance, field: "documento.numero")}</td>
 					
 					</tr>
 				</g:each>

@@ -3,6 +3,7 @@ package com.deukin
 import grails.plugins.springsecurity.Secured
 
 import org.springframework.dao.DataIntegrityViolationException
+
 @Secured(['ROLE_ADMINISTRADOR_SISTEMA'])
 class UsuarioRolController {
 

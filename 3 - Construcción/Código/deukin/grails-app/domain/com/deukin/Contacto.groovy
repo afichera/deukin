@@ -12,4 +12,5 @@ class Contacto {
 	static belongsTo = [Persona, Departamento]
     static constraints = {
     }
+	
 }

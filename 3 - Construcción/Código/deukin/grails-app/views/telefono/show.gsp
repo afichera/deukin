@@ -43,6 +43,15 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${telefonoInstance?.contacto}">
+				<li class="fieldcontain">
+					<span id="contacto-label" class="property-label"><g:message code="telefono.contacto.label" default="Contacto" /></span>
+					
+						<span class="property-value" aria-labelledby="contacto-label"><g:link controller="contacto" action="show" id="${telefonoInstance?.contacto?.id}">${telefonoInstance?.contacto?.encodeAsHTML()}</g:link></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${telefonoInstance?.tipoTelefono}">
 				<li class="fieldcontain">
 					<span id="tipoTelefono-label" class="property-label"><g:message code="telefono.tipoTelefono.label" default="Tipo Telefono" /></span>

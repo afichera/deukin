@@ -9,7 +9,7 @@ class Telefono {
 	
 	String numero
 	TipoTelefono tipoTelefono
-	static belongsTo = Contacto
+	static belongsTo = [contacto:Contacto]
     static constraints = {
 		numero(maxLength:20)
     }

@@ -1,11 +1,7 @@
 package com.deukin
 
-import grails.plugins.springsecurity.Secured
-
 import org.springframework.dao.DataIntegrityViolationException
 
-
-@Secured('IS_AUTHENTICATED_REMEMBERED')
 class TelefonoController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]

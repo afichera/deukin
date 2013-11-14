@@ -9,7 +9,7 @@ class Domicilio {
 	Integer codigoPostal
 	String observaciones
 	
-	static belongsTo = Contacto
+	static belongsTo = [contacto:Contacto]
 	
     static constraints = {
 		calle(maxLength:200)

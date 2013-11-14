@@ -35,6 +35,28 @@
 				<div class="well">
 					<ol class="property-list contacto">
 
+<%--						<g:if test="${contactoInstance?.domicilio}">--%>
+<%--							<li class="fieldcontain"><span id="domicilio-label"--%>
+<%--								class="property-label"><g:message--%>
+<%--										code="contacto.domicilio.label" default="Domicilio" /></span> <span--%>
+<%--								class="property-value" aria-labelledby="domicilio-label"><g:link--%>
+<%--										controller="domicilio" action="show"--%>
+<%--										id="${contactoInstance?.domicilio?.id}">--%>
+<%--										${contactoInstance?.domicilio?.encodeAsHTML()}--%>
+<%--									</g:link></span></li>--%>
+<%--						</g:if>--%>
+<%----%>
+<%--						<g:if test="${contactoInstance?.telefonos}">--%>
+<%--							<li class="fieldcontain"><span id="telefonos-label"--%>
+<%--								class="property-label"><g:message--%>
+<%--										code="contacto.telefonos.label" default="Telefonos" /></span> <g:each--%>
+<%--									in="${contactoInstance.telefonos}" var="t">--%>
+<%--									<span class="property-value" aria-labelledby="telefonos-label"><g:link--%>
+<%--											controller="telefono" action="show" id="${t.id}">--%>
+<%--											${t?.encodeAsHTML()}--%>
+<%--										</g:link></span>--%>
+<%--								</g:each></li>--%>
+<%--						</g:if>--%>
 
 
 						<g:if test="${contactoInstance?.domicilio}">
@@ -103,9 +125,8 @@
 								<g:if test="${telefonoInstance?.tipoTelefono}">
 									<li class="fieldcontain"><span id="tipoTelefono-label"
 										class="property-label"><g:message
-												code="telefono.tipoTelefono.label" default="Tipo" /></span>
-										<span class="property-value"
-										aria-labelledby="tipoTelefono-label"><g:fieldValue
+												code="telefono.tipoTelefono.label" default="Tipo" /></span> <span
+										class="property-value" aria-labelledby="tipoTelefono-label"><g:fieldValue
 												bean="${telefonoInstance}" field="tipoTelefono" /></span></li>
 								</g:if>
 
@@ -120,6 +141,8 @@
 
 							</g:each>
 						</g:if>
+
+
 
 					</ol>
 					<g:form>

@@ -24,6 +24,8 @@
 					
 						<g:sortableColumn property="numero" title="${message(code: 'telefono.numero.label', default: 'Numero <span class="glyphicon glyphicon-sort"></span>')}" />
 					
+						<th><g:message code="telefono.contacto.label" default="Contacto" /></th>
+					
 						<g:sortableColumn property="tipoTelefono" title="${message(code: 'telefono.tipoTelefono.label', default: 'Tipo Telefono <span class="glyphicon glyphicon-sort"></span>')}" />
 					
 					</tr>
@@ -33,6 +35,8 @@
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
 						<td><g:link action="show" id="${telefonoInstance.id}">${fieldValue(bean: telefonoInstance, field: "numero")}</g:link></td>
+					
+						<td>${fieldValue(bean: telefonoInstance, field: "contacto")}</td>
 					
 						<td>${fieldValue(bean: telefonoInstance, field: "tipoTelefono")}</td>
 					

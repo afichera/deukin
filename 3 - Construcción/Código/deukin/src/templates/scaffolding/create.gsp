@@ -34,7 +34,7 @@
 			</ul>
 		</g:hasErrors>
 		<div class="row">
-			<div class="col-lg-6">
+			<div class="col-lg-12 col-md-12 col-sx-12 lista-propiedades">
 				<div class="well">
 					<g:form action="save"
 						<%= multiPart ? ' enctype="multipart/form-data"' : '' %>>

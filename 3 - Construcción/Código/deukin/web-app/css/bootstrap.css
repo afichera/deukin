@@ -3456,14 +3456,15 @@ button.close {
   padding-left: 0;
   margin: 21px 0;
   border-radius: 4px;
+ 
 }
 
 .pagination > li {
   display: inline;
 }
 
-.pagination > li > a,
-.pagination > li > span {
+.pagination >  a,
+.pagination >  span {
   float: left;
   padding: 4px 12px;
   line-height: 1.428571429;
@@ -3474,14 +3475,16 @@ button.close {
 }
 
 .pagination > li:first-child > a,
-.pagination > li:first-child > span {
+.pagination > li:first-child > span,
+.pagination .prevLink {
   border-left-width: 1px;
   border-bottom-left-radius: 4px;
   border-top-left-radius: 4px;
 }
 
 .pagination > li:last-child > a,
-.pagination > li:last-child > span {
+.pagination > li:last-child > span,
+.pagination .nextLink {
   border-top-right-radius: 4px;
   border-bottom-right-radius: 4px;
 }

@@ -1,6 +1,4 @@
-
-
-<%@ page import="com.deukin.Materia" %>
+<%@ page import="com.deukin.Materia"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,142 +11,212 @@
 	<div class="navbar navbar-inverse" role="navigation">
 		<ul class="nav navbar-nav">
 			<li><g:link class="list" action="list">
-					<g:message code="default.list.label" args="[entityName]" />
+					<g:message code="materia.list.label" />
 				</g:link></li>
 			<li><g:link class="create" action="create">
-					<g:message code="default.new.label" args="[entityName]" />
+					<g:message code="materia.create.label" />
 				</g:link></li>
 		</ul>
 	</div>
 
-	<div id="show-materia"
-		class="content scaffold-show" role="main">
+	<div id="show-materia" class="content scaffold-show" role="main">
 		<h1>
-			<g:message code="default.show.label" args="[entityName]" />
+			Materia:
+			<g:if test="${materiaInstance?.nombre}">
+				<g:fieldValue bean="${materiaInstance}" field="nombre" />
+			</g:if>
 		</h1>
 		<g:if test="${flash.message}">
-			<div class="message" role="status">${flash.message}</div>
+			<div class="message" role="status">
+				${flash.message}
+			</div>
 		</g:if>
 		<div class="row">
-			<div class="col-lg-6">
+			<div class="col-lg-12 col-md-12 col-sx-12 lista-propiedades">
 				<div class="well">
-					<ol class="property-list materia">
-						
-				<g:if test="${materiaInstance?.codigo}">
-				<li class="fieldcontain">
-					<span id="codigo-label" class="property-label"><g:message code="materia.codigo.label" default="Codigo" /></span>
-					
-						<span class="property-value" aria-labelledby="codigo-label"><g:fieldValue bean="${materiaInstance}" field="codigo"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${materiaInstance?.nombre}">
-				<li class="fieldcontain">
-					<span id="nombre-label" class="property-label"><g:message code="materia.nombre.label" default="Nombre" /></span>
-					
-						<span class="property-value" aria-labelledby="nombre-label"><g:fieldValue bean="${materiaInstance}" field="nombre"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${materiaInstance?.bibliografia}">
-				<li class="fieldcontain">
-					<span id="bibliografia-label" class="property-label"><g:message code="materia.bibliografia.label" default="Bibliografia" /></span>
-					
-						<span class="property-value" aria-labelledby="bibliografia-label"><g:fieldValue bean="${materiaInstance}" field="bibliografia"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${materiaInstance?.cantidadDocentesRequeridos}">
-				<li class="fieldcontain">
-					<span id="cantidadDocentesRequeridos-label" class="property-label"><g:message code="materia.cantidadDocentesRequeridos.label" default="Cantidad Docentes Requeridos" /></span>
-					
-						<span class="property-value" aria-labelledby="cantidadDocentesRequeridos-label"><g:fieldValue bean="${materiaInstance}" field="cantidadDocentesRequeridos"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${materiaInstance?.cantidadUnidadesHorarias}">
-				<li class="fieldcontain">
-					<span id="cantidadUnidadesHorarias-label" class="property-label"><g:message code="materia.cantidadUnidadesHorarias.label" default="Cantidad Unidades Horarias" /></span>
-					
-						<span class="property-value" aria-labelledby="cantidadUnidadesHorarias-label"><g:fieldValue bean="${materiaInstance}" field="cantidadUnidadesHorarias"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${materiaInstance?.carrera}">
-				<li class="fieldcontain">
-					<span id="carrera-label" class="property-label"><g:message code="materia.carrera.label" default="Carrera" /></span>
-					
-						<span class="property-value" aria-labelledby="carrera-label"><g:link controller="carrera" action="show" id="${materiaInstance?.carrera?.id}">${materiaInstance?.carrera?.encodeAsHTML()}</g:link></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${materiaInstance?.contenidoMinimo}">
-				<li class="fieldcontain">
-					<span id="contenidoMinimo-label" class="property-label"><g:message code="materia.contenidoMinimo.label" default="Contenido Minimo" /></span>
-					
-						<span class="property-value" aria-labelledby="contenidoMinimo-label"><g:fieldValue bean="${materiaInstance}" field="contenidoMinimo"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${materiaInstance?.cupoMaximoAlumnos}">
-				<li class="fieldcontain">
-					<span id="cupoMaximoAlumnos-label" class="property-label"><g:message code="materia.cupoMaximoAlumnos.label" default="Cupo Maximo Alumnos" /></span>
-					
-						<span class="property-value" aria-labelledby="cupoMaximoAlumnos-label"><g:fieldValue bean="${materiaInstance}" field="cupoMaximoAlumnos"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${materiaInstance?.cupoMinimoAlumnos}">
-				<li class="fieldcontain">
-					<span id="cupoMinimoAlumnos-label" class="property-label"><g:message code="materia.cupoMinimoAlumnos.label" default="Cupo Minimo Alumnos" /></span>
-					
-						<span class="property-value" aria-labelledby="cupoMinimoAlumnos-label"><g:fieldValue bean="${materiaInstance}" field="cupoMinimoAlumnos"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${materiaInstance?.objetivosEspecificos}">
-				<li class="fieldcontain">
-					<span id="objetivosEspecificos-label" class="property-label"><g:message code="materia.objetivosEspecificos.label" default="Objetivos Especificos" /></span>
-					
-						<g:each in="${materiaInstance.objetivosEspecificos}" var="o">
-						<span class="property-value" aria-labelledby="objetivosEspecificos-label"><g:link controller="objetivoEspecifico" action="show" id="${o.id}">${o?.encodeAsHTML()}</g:link></span>
-						</g:each>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${materiaInstance?.objetivosGenerales}">
-				<li class="fieldcontain">
-					<span id="objetivosGenerales-label" class="property-label"><g:message code="materia.objetivosGenerales.label" default="Objetivos Generales" /></span>
-					
-						<g:each in="${materiaInstance.objetivosGenerales}" var="o">
-						<span class="property-value" aria-labelledby="objetivosGenerales-label"><g:link controller="objetivo" action="show" id="${o.id}">${o?.encodeAsHTML()}</g:link></span>
-						</g:each>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${materiaInstance?.tiposRecurso}">
-				<li class="fieldcontain">
-					<span id="tiposRecurso-label" class="property-label"><g:message code="materia.tiposRecurso.label" default="Tipos Recurso" /></span>
-					
-						<g:each in="${materiaInstance.tiposRecurso}" var="t">
-						<span class="property-value" aria-labelledby="tiposRecurso-label"><g:link controller="tipoRecurso" action="show" id="${t.id}">${t?.encodeAsHTML()}</g:link></span>
-						</g:each>
-					
-				</li>
-				</g:if>
-			
-					</ol>
+
+					<div class="row">
+
+
+						<label id="codigo-label" class="property-label col-lg-3"><g:message
+								code="materia.codigo.label" default="Codigo" />: </label>
+						<div class="col-lg-9">
+							<g:if test="${materiaInstance?.codigo}">
+								<g:fieldValue bean="${materiaInstance}" field="codigo" />
+
+
+							</g:if>
+						</div>
+					</div>
+
+					<div class="row">
+
+
+						<label id="bibliografia-label" class="property-label col-lg-3"><g:message
+								code="materia.bibliografia.label" default="Bibliografia" />: </label>
+						<div class="col-lg-9">
+							<g:if test="${materiaInstance?.bibliografia}">
+								<g:fieldValue bean="${materiaInstance}" field="bibliografia" />
+
+
+							</g:if>
+						</div>
+					</div>
+					<div class="row">
+
+
+						<label id="cantidadDocentesRequeridos-label"
+							class="property-label col-lg-3"><g:message
+								code="materia.cantidadDocentesRequeridos.label"
+								default="Cantidad Docentes Requeridos" />: </label>
+						<div class="col-lg-9">
+							<g:if test="${materiaInstance?.cantidadDocentesRequeridos}">
+								<g:fieldValue bean="${materiaInstance}"
+									field="cantidadDocentesRequeridos" />
+
+
+							</g:if>
+						</div>
+					</div>
+					<div class="row">
+
+
+						<label id="cantidadUnidadesHorarias-label"
+							class="property-label col-lg-3"><g:message
+								code="materia.cantidadUnidadesHorarias.label"
+								default="Cantidad Unidades Horarias" />: </label>
+						<div class="col-lg-9">
+							<g:if test="${materiaInstance?.cantidadUnidadesHorarias}">
+								<g:fieldValue bean="${materiaInstance}"
+									field="cantidadUnidadesHorarias" />
+
+
+							</g:if>
+						</div>
+					</div>
+					<div class="row">
+
+
+						<label id="carrera-label" class="property-label col-lg-3"><g:message
+								code="materia.carrera.label" default="Carrera" />: </label>
+						<div class="col-lg-9">
+							<g:if test="${materiaInstance?.carrera}">
+								<g:link controller="carrera" action="show"
+									id="${materiaInstance?.carrera?.id}">
+									${materiaInstance?.carrera?.encodeAsHTML()}
+								</g:link>
+
+
+							</g:if>
+						</div>
+					</div>
+					<div class="row">
+
+
+						<label id="contenidoMinimo-label" class="property-label col-lg-3"><g:message
+								code="materia.contenidoMinimo.label" default="Contenido Minimo" />:
+						</label>
+						<div class="col-lg-9">
+							<g:if test="${materiaInstance?.contenidoMinimo}">
+								<g:fieldValue bean="${materiaInstance}" field="contenidoMinimo" />
+
+
+							</g:if>
+						</div>
+					</div>
+					<div class="row">
+
+
+						<label id="cupoMaximoAlumnos-label"
+							class="property-label col-lg-3"><g:message
+								code="materia.cupoMaximoAlumnos.label"
+								default="Cupo Maximo Alumnos" />: </label>
+						<div class="col-lg-9">
+							<g:if test="${materiaInstance?.cupoMaximoAlumnos}">
+								<g:fieldValue bean="${materiaInstance}"
+									field="cupoMaximoAlumnos" />
+
+							</g:if>
+						</div>
+					</div>
+					<div class="row">
+
+
+						<label id="cupoMinimoAlumnos-label"
+							class="property-label col-lg-3"><g:message
+								code="materia.cupoMinimoAlumnos.label"
+								default="Cupo Minimo Alumnos" />: </label>
+						<div class="col-lg-9">
+							<g:if test="${materiaInstance?.cupoMinimoAlumnos}">
+								<g:fieldValue bean="${materiaInstance}"
+									field="cupoMinimoAlumnos" />
+
+
+							</g:if>
+						</div>
+					</div>
+					<div class="row">
+
+
+						<label id="objetivosEspecificos-label"
+							class="property-label col-lg-3"><g:message
+								code="materia.objetivosEspecificos.label"
+								default="Objetivos Especificos" />: </label>
+						<div class="col-lg-9">
+							<g:if test="${materiaInstance?.objetivosEspecificos}">
+								<g:each in="${materiaInstance.objetivosEspecificos}" var="o">
+									<span class="property-value"
+										aria-labelledby="objetivosEspecificos-label"><g:link
+											controller="objetivoEspecifico" action="show" id="${o.id}">
+											${o?.encodeAsHTML()}
+										</g:link></span>
+								</g:each>
+
+
+							</g:if>
+						</div>
+					</div>
+					<div class="row">
+
+
+						<label id="objetivosGenerales-label"
+							class="property-label col-lg-3"><g:message
+								code="materia.objetivosGenerales.label"
+								default="Objetivos Generales" />: </label>
+						<div class="col-lg-9">
+							<g:if test="${materiaInstance?.objetivosGenerales}">
+								<g:each in="${materiaInstance.objetivosGenerales}" var="o">
+									<span class="property-value"
+										aria-labelledby="objetivosGenerales-label"><g:link
+											controller="objetivo" action="show" id="${o.id}">
+											${o?.encodeAsHTML()}
+										</g:link></span>
+								</g:each>
+
+
+							</g:if>
+						</div>
+					</div>
+					<div class="row">
+
+
+						<label id="tiposRecurso-label" class="property-label col-lg-3"><g:message
+								code="materia.tiposRecurso.label" default="Tipos Recurso" />: </label>
+						<div class="col-lg-9">
+							<g:if test="${materiaInstance?.tiposRecurso}">
+								<g:each in="${materiaInstance.tiposRecurso}" var="t">
+									<span class="property-value"
+										aria-labelledby="tiposRecurso-label"><g:link
+											controller="tipoRecurso" action="show" id="${t.id}">
+											${t?.encodeAsHTML()}
+										</g:link></span>
+								</g:each>
+
+
+							</g:if>
+						</div>
+
+					</div>
 					<g:form>
 						<fieldset class="buttons">
 							<g:hiddenField name="id" value="${materiaInstance?.id}" />

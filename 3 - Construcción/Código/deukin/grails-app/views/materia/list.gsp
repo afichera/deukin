@@ -10,7 +10,7 @@
 	<body>
 		<div class="navbar navbar-inverse" role="navigation">
 			<ul class="nav navbar-nav">
-				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
+				<li><g:link class="create" action="create"><g:message code="materia.create.label"/></g:link></li>
 			</ul>
 		</div>
 		<div id="list-materia" class="content scaffold-list" role="main">

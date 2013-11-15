@@ -30,7 +30,7 @@
 			<div class="message" role="status">\${flash.message}</div>
 		</g:if>
 		<div class="row">
-			<div class="col-lg-6">
+			<div class="col-lg-12 col-md-12 col-sx-12 lista-propiedades">
 				<div class="well">
 					<ol class="property-list ${domainClass.propertyName}">
 						<%  excludedProps = Event.allEvents.toList() << 'id' << 'version'

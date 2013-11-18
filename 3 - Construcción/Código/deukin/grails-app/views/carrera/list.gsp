@@ -22,17 +22,17 @@
 				<thead>
 					<tr>
 					
-						<g:sortableColumn property="titulo" title="${message(code: 'carrera.titulo.label', default: 'Titulo <span class="glyphicon glyphicon-sort"></span>')}" />
+						<g:sortableColumn property="titulo" title="${message(code: 'carrera.titulo.label', default: 'Título')}" defaultOrder="true"/>
 					
-						<g:sortableColumn property="fundamentacion" title="${message(code: 'carrera.fundamentacion.label', default: 'Fundamentacion <span class="glyphicon glyphicon-sort"></span>')}" />
+						<g:sortableColumn property="fundamentacion" title="${message(code: 'carrera.fundamentacion.label', default: 'Fundamentación')}" />
 					
-						<g:sortableColumn property="perfilDelGraduado" title="${message(code: 'carrera.perfilDelGraduado.label', default: 'Perfil Del Graduado <span class="glyphicon glyphicon-sort"></span>')}" />
+						<g:sortableColumn property="perfilDelGraduado" title="${message(code: 'carrera.perfilDelGraduado.label', default: 'Perfil Del Graduado')}" />
 					
-						<g:sortableColumn property="descripcion" title="${message(code: 'carrera.descripcion.label', default: 'Descripcion <span class="glyphicon glyphicon-sort"></span>')}" />
+						<g:sortableColumn property="descripcion" title="${message(code: 'carrera.descripcion.label', default: 'Descripción')}" />
 					
-						<th><g:message code="carrera.coordinador.label" default="Coordinador" /></th>
-					
-						<g:sortableColumn property="estado" title="${message(code: 'carrera.estado.label', default: 'Estado <span class="glyphicon glyphicon-sort"></span>')}" />
+						<g:sortableColumn property="coordinador" title="${message(code: 'carrera.coordinador.label', default: 'Coordinador')}" />
+						
+						<g:sortableColumn property="estado" title="${message(code: 'carrera.estado.label', default: 'Estado')}" />
 					
 					</tr>
 				</thead>

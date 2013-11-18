@@ -104,7 +104,9 @@
 								<ul>
 									<g:each in="${carreraInstance.objetivos}" var="o">
 										<li><span class="" aria-labelledby="objetivos-label">
-												${o?.encodeAsHTML()}
+										<g:link
+											controller="objetivoCarrera" action="edit" id="${o.id}">
+												${o?.encodeAsHTML()}</g:link>
 										</span></li>
 									</g:each>
 								</ul>

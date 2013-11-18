@@ -8,6 +8,7 @@ class Objetivo {
 	String descripcion
 	static belongsTo = [materia:Materia]
     static constraints = {
+		descripcion blank:false;
     }
 	
 	String toString(){

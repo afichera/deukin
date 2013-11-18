@@ -76,23 +76,7 @@
 	</label>
 <div class=" col-lg-9 ">	<g:field  class="form-control" name="cupoMinimoAlumnos" type="number" value="${materiaInstance.cupoMinimoAlumnos}" required=""/></div>
 </div>
-
-<div class="fieldcontain ${hasErrors(bean: materiaInstance, field: 'objetivosEspecificos', 'error')}  row">
-	<label for="objetivosEspecificos" class="control-label col-lg-3">
-		<g:message code="materia.objetivosEspecificos.label" default="Objetivos Especificos" />: 
-		
-	</label>
-	
-<div class=" col-lg-9 "><ul class="one-to-many">
-<g:each in="${materiaInstance?.objetivosEspecificos?}" var="o">
-    <li><g:link controller="objetivoEspecifico" action="show" id="${o.id}">${o?.encodeAsHTML()}</g:link></li>
-</g:each>
-<li class="add">
-<g:link class=" btn btn-primary btn-small" controller="objetivoEspecifico" action="create" params="['materia.id': materiaInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'objetivoEspecifico.label', default: 'ObjetivoEspecifico')])}</g:link>
-</li>
-</ul>
-</div>
-</div>
+<g:if test="${materiaInstance?.id}">
 
 <div class="fieldcontain ${hasErrors(bean: materiaInstance, field: 'objetivosGenerales', 'error')}  row">
 	<label for="objetivosGenerales" class="control-label col-lg-3">
@@ -104,13 +88,26 @@
 <g:each in="${materiaInstance?.objetivosGenerales?}" var="o">
     <li><g:link controller="objetivo" action="show" id="${o.id}">${o?.encodeAsHTML()}</g:link></li>
 </g:each>
-<li class="add">
-<g:link class=" btn btn-primary btn-small" controller="objetivo" action="create" params="['materia.id': materiaInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'objetivo.label', default: 'Objetivo')])}</g:link>
-</li>
+</ul>
+</div>
+</div>
+<div class="fieldcontain ${hasErrors(bean: materiaInstance, field: 'objetivosEspecificos', 'error')}  row">
+	<label for="objetivosEspecificos" class="control-label col-lg-3">
+		<g:message code="materia.objetivosEspecificos.label" default="Objetivos Especificos" />: 
+
+	</label>
+
+	
+<div class=" col-lg-9 "><ul class="one-to-many">
+<g:each in="${materiaInstance?.objetivosEspecificos?}" var="o">
+    <li><g:link controller="objetivoEspecifico" action="show" id="${o.id}">${o?.encodeAsHTML()}</g:link></li>
+</g:each>
 </ul>
 </div>
 </div>
 
+
+</g:if>
 <div class="fieldcontain ${hasErrors(bean: materiaInstance, field: 'tiposRecurso', 'error')}  row">
 	<label for="tiposRecurso" class="control-label col-lg-3">
 		<g:message code="materia.tiposRecurso.label" default="Tipos Recurso" />: 

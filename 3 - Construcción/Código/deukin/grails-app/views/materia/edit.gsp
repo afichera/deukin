@@ -57,10 +57,9 @@
 						<fieldset class="buttons">
 							<g:actionSubmit class="save" action="update" class="btn btn-success"
 								value="${message(code: 'default.button.update.label', default: 'Update')}" />
-							<g:actionSubmit class="btn btn-danger" action="delete"
-								value="${message(code: 'default.button.delete.label', default: 'Delete')}"
-								formnovalidate=""
-								onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+							
+						<g:link class="btn btn-default" controller="materia" action="show" id="${materiaInstance?.id}">		
+					<g:message code="cancelar" default="Cancelar" /></g:link>
 						</fieldset>
 					</g:form>
 				</div>

@@ -86,14 +86,14 @@ class ObjetivoCarreraController {
         def objetivoCarreraInstance = ObjetivoCarrera.get(id)
         if (!objetivoCarreraInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'objetivoCarrera.label', default: 'ObjetivoCarrera'), id])
-            redirect(action: "list")
+            redirect(controller:"carrera", action: "show", id: objetivoCarreraInstance.carrera.id)
             return
         }
 
         try {
             objetivoCarreraInstance.delete(flush: true)
             flash.message = message(code: 'default.deleted.message', args: [message(code: 'objetivoCarrera.label', default: 'ObjetivoCarrera'), id])
-            redirect(action: "list")
+            redirect(controller:"carrera", action: "show", id: objetivoCarreraInstance.carrera.id)
         }
         catch (DataIntegrityViolationException e) {
             flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'objetivoCarrera.label', default: 'ObjetivoCarrera'), id])

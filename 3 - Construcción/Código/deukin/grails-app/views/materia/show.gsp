@@ -27,7 +27,7 @@
 			</g:if>
 		</h1>
 		<g:if test="${flash.message}">
-			<div class="message" role="status">
+			<div class="message alert alert-info" role="status">
 				${flash.message}
 			</div>
 		</g:if>
@@ -155,48 +155,69 @@
 							</g:if>
 						</div>
 					</div>
-					<div class="row">
 
 
-						<label id="objetivosEspecificos-label"
-							class="property-label col-lg-3"><g:message
-								code="materia.objetivosEspecificos.label"
-								default="Objetivos Especificos" />: </label>
-						<div class="col-lg-9">
-							<g:if test="${materiaInstance?.objetivosEspecificos}">
-								<g:each in="${materiaInstance.objetivosEspecificos}" var="o">
-									<span class="property-value"
-										aria-labelledby="objetivosEspecificos-label"><g:link
-											controller="objetivoEspecifico" action="show" id="${o.id}">
-											${o?.encodeAsHTML()}
-										</g:link></span>
-								</g:each>
 
-
-							</g:if>
-						</div>
-					</div>
 					<div class="row">
 
 
 						<label id="objetivosGenerales-label"
 							class="property-label col-lg-3"><g:message
 								code="materia.objetivosGenerales.label"
-								default="Objetivos Generales" />: </label>
+								default="Objetivos Generales" />: <g:link controller="objetivo"
+								action="create" params="['materia.id': materiaInstance?.id]">
+								<span class="glyphicon glyphicon-plus"
+									title="${message(code: 'default.add.label', args: [message(code: 'Objetivo.label', default: 'Objetivo General')])}"></span>
+							</g:link></label>
 						<div class="col-lg-9">
 							<g:if test="${materiaInstance?.objetivosGenerales}">
-								<g:each in="${materiaInstance.objetivosGenerales}" var="o">
-									<span class="property-value"
-										aria-labelledby="objetivosGenerales-label"><g:link
-											controller="objetivo" action="show" id="${o.id}">
-											${o?.encodeAsHTML()}
-										</g:link></span>
-								</g:each>
+								<ul>
+									<g:each in="${materiaInstance.objetivosGenerales}" var="og">
+										<li><span class="property-value"
+											aria-labelledby="objetivosGenerales-label"><g:link
+													controller="objetivo" action="edit" id="${og.id}">
+													${og?.encodeAsHTML()}
+												</g:link></span></li>
+									</g:each>
+
+								</ul>
+							</g:if>
+						</div>
+					</div>
+
+					<div class="row">
+
+
+						<label id="objetivosEspecificos-label"
+							class="property-label col-lg-3"><g:message
+								code="materia.objetivosEspecificos.label"
+								default="Objetivos Especificos" />: <g:link
+								controller="objetivoEspecifico" action="create"
+								params="['materia.id': materiaInstance?.id]">
+								<span class="glyphicon glyphicon-plus"
+									title="${message(code: 'default.add.label', args: [message(code: 'ObjetivoEspecifico.label', default: 'Objetivo Específico')])}"></span>
+							</g:link></label>
+						<div class="col-lg-9">
+							<g:if test="${materiaInstance?.objetivosEspecificos}">
+								<ul>
+									<g:each in="${materiaInstance.objetivosEspecificos}" var="o">
+										<li><span class="property-value"
+											aria-labelledby="objetivosEspecificos-label"><g:link
+													controller="objetivoEspecifico" action="edit" id="${o.id}">
+													${o?.encodeAsHTML()}
+												</g:link></span>
+										</li>
+									</g:each>
+								</ul>
+								
+
+
 
 
 							</g:if>
 						</div>
 					</div>
+
 					<div class="row">
 
 

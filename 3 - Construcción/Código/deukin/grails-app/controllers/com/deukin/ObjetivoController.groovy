@@ -85,14 +85,14 @@ class ObjetivoController {
         def objetivoInstance = Objetivo.get(id)
         if (!objetivoInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'objetivo.label', default: 'Objetivo'), id])
-            redirect(action: "list")
+            redirect(controller:"materia", action: "show", id: objetivoInstance.materia.id)
             return
         }
 
         try {
             objetivoInstance.delete(flush: true)
             flash.message = message(code: 'default.deleted.message', args: [message(code: 'objetivo.label', default: 'Objetivo'), id])
-            redirect(action: "list")
+            redirect(controller:"materia", action: "show", id: objetivoInstance.materia.id)
         }
         catch (DataIntegrityViolationException e) {
             flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'objetivo.label', default: 'Objetivo'), id])

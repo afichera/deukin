@@ -11,29 +11,34 @@ class AlumnoController {
 	def usuarioService
 	def alumnoService
 	def personaService
-	
-    static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
-	
-	def index() {
-        redirect(action: "list", params: params)
-    }
 
-	@Secured(['ROLE_ADMINISTRADOR_SISTEMA', 'ROLE_ADMINISTRATIVO', 'ROLE_DOCENTE', 'ROLE_COORDINADOR'])
-    def list(Integer max) {
+	static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
+
+	def index() {
+		redirect(action: "list", params: params)
+	}
+
+	@Secured([
+		'ROLE_ADMINISTRADOR_SISTEMA',
+		'ROLE_ADMINISTRATIVO',
+		'ROLE_DOCENTE',
+		'ROLE_COORDINADOR'
+	])
+	def list(Integer max) {
 		def authorities =  springSecurityService.principal.authorities
 		def listaAlumnos
 		def cantidad = 0
-		
+
 		params.max = Math.min(max ?: 10, 100)
-		
-		
+
+
 		if(usuarioService.poseeElRol(authorities, 'ROLE_ADMINISTRADOR_SISTEMA')){
 			listaAlumnos = Alumno.list(params)
 		}else if(usuarioService.poseeElRol(authorities, 'ROLE_ADMINISTRATIVO')){
 			listaAlumnos = Alumno.list(params)
-		}else if(usuarioService.poseeElRol(authorities, 'ROLE_COORDINADOR')){			
+		}else if(usuarioService.poseeElRol(authorities, 'ROLE_COORDINADOR')){
 			def coordinador = personaService.findByUser(springSecurityService.principal)
-			listaAlumnos = alumnoService.findAllAlumnosByCoordinadorACargo(coordinador, params) 
+			listaAlumnos = alumnoService.findAllAlumnosByCoordinadorACargo(coordinador, params)
 		}else if(usuarioService.poseeElRol(authorities, 'ROLE_DOCENTE')){
 			def docente = personaService.findByUser(springSecurityService.principal)
 			listaAlumnos = alumnoService.findAllAlumnosByDocente(docente, params)
@@ -44,93 +49,142 @@ class AlumnoController {
 		}
 
 		[alumnoInstanceList: listaAlumnos, alumnoInstanceTotal: cantidad]
+	}
 
-		
-    }
+	def create() {
+		[alumnoInstance: new Alumno(params)]
+	}
 
-    def create() {
-        [alumnoInstance: new Alumno(params)]
-    }
+	def save() {
+		def alumnoInstance = new Alumno(params)
+		if (!alumnoInstance.save(flush: true)) {
+			render(view: "create", model: [alumnoInstance: alumnoInstance])
+			return
+		}
 
-    def save() {
-        def alumnoInstance = new Alumno(params)
-        if (!alumnoInstance.save(flush: true)) {
-            render(view: "create", model: [alumnoInstance: alumnoInstance])
-            return
-        }
+		flash.message = message(code: 'default.created.message', args: [
+			message(code: 'alumno.label', default: 'Alumno'),
+			alumnoInstance.id
+		])
+		redirect(action: "show", id: alumnoInstance.id)
+	}
 
-        flash.message = message(code: 'default.created.message', args: [message(code: 'alumno.label', default: 'Alumno'), alumnoInstance.id])
-        redirect(action: "show", id: alumnoInstance.id)
-    }
+	def show(Long id) {
+		def alumnoInstance = Alumno.get(id)
+		if (!alumnoInstance) {
+			flash.message = message(code: 'default.not.found.message', args: [
+				message(code: 'alumno.label', default: 'Alumno'),
+				id
+			])
+			redirect(action: "list")
+			return
+		}
 
-    def show(Long id) {
-        def alumnoInstance = Alumno.get(id)
-        if (!alumnoInstance) {
-            flash.message = message(code: 'default.not.found.message', args: [message(code: 'alumno.label', default: 'Alumno'), id])
-            redirect(action: "list")
-            return
-        }
+		[alumnoInstance: alumnoInstance]
+	}
 
-        [alumnoInstance: alumnoInstance]
-    }
+	def edit(Long id) {
+		def alumnoInstance = Alumno.get(id)
+		if (!alumnoInstance) {
+			flash.message = message(code: 'default.not.found.message', args: [
+				message(code: 'alumno.label', default: 'Alumno'),
+				id
+			])
+			redirect(action: "list")
+			return
+		}
 
-    def edit(Long id) {
-        def alumnoInstance = Alumno.get(id)
-        if (!alumnoInstance) {
-            flash.message = message(code: 'default.not.found.message', args: [message(code: 'alumno.label', default: 'Alumno'), id])
-            redirect(action: "list")
-            return
-        }
+		[alumnoInstance: alumnoInstance]
+	}
 
-        [alumnoInstance: alumnoInstance]
-    }
+	def update(Long id, Long version) {
+		def alumnoInstance = Alumno.get(id)
+		if (!alumnoInstance) {
+			flash.message = message(code: 'default.not.found.message', args: [
+				message(code: 'alumno.label', default: 'Alumno'),
+				id
+			])
+			redirect(action: "list")
+			return
+		}
 
-    def update(Long id, Long version) {
-        def alumnoInstance = Alumno.get(id)
-        if (!alumnoInstance) {
-            flash.message = message(code: 'default.not.found.message', args: [message(code: 'alumno.label', default: 'Alumno'), id])
-            redirect(action: "list")
-            return
-        }
+		if (version != null) {
+			if (alumnoInstance.version > version) {
+				alumnoInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
+						[
+							message(code: 'alumno.label', default: 'Alumno')] as Object[],
+						"Another user has updated this Alumno while you were editing")
+				render(view: "edit", model: [alumnoInstance: alumnoInstance])
+				return
+			}
+		}
 
-        if (version != null) {
-            if (alumnoInstance.version > version) {
-                alumnoInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
-                          [message(code: 'alumno.label', default: 'Alumno')] as Object[],
-                          "Another user has updated this Alumno while you were editing")
-                render(view: "edit", model: [alumnoInstance: alumnoInstance])
-                return
-            }
-        }
+		def fotoPerfilAnterior = alumnoInstance.fotoPerfil
 
-        alumnoInstance.properties = params
+		alumnoInstance.properties = params
 
-        if (!alumnoInstance.save(flush: true)) {
-            render(view: "edit", model: [alumnoInstance: alumnoInstance])
-            return
-        }
+		//esto evita que se nulee la foto de perfil al actualizar si ya tenia.
+		if(alumnoInstance.fotoPerfil == null){
+			alumnoInstance.fotoPerfil = fotoPerfilAnterior
+		}
 
-        flash.message = message(code: 'default.updated.message', args: [message(code: 'alumno.label', default: 'Alumno'), alumnoInstance.id])
-        redirect(action: "show", id: alumnoInstance.id)
-    }
+		if (!alumnoInstance.save(flush: true)) {
+			render(view: "edit", model: [alumnoInstance: alumnoInstance])
+			return
+		}
 
-    def delete(Long id) {
-        def alumnoInstance = Alumno.get(id)
-        if (!alumnoInstance) {
-            flash.message = message(code: 'default.not.found.message', args: [message(code: 'alumno.label', default: 'Alumno'), id])
-            redirect(action: "list")
-            return
-        }
+		flash.message = message(code: 'default.updated.message', args: [
+			message(code: 'alumno.label', default: 'Alumno'),
+			alumnoInstance.id
+		])
+		redirect(action: "show", id: alumnoInstance.id)
+	}
 
-        try {
-            alumnoInstance.delete(flush: true)
-            flash.message = message(code: 'default.deleted.message', args: [message(code: 'alumno.label', default: 'Alumno'), id])
-            redirect(action: "list")
-        }
-        catch (DataIntegrityViolationException e) {
-            flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'alumno.label', default: 'Alumno'), id])
-            redirect(action: "show", id: id)
-        }
-    }
+
+	def eliminarFotoPerfil(Long id) {
+		def alumnoInstance = Alumno.get(id)
+		if (!alumnoInstance) {
+			flash.message = message(code: 'default.not.found.message', args: [
+				message(code: 'alumno.label', default: 'Alumno'),
+				id
+			])
+			redirect(action: "list")
+			return
+		}
+
+		alumnoInstance.fotoPerfil = null
+
+		render(view: "edit", model: [alumnoInstance: alumnoInstance])
+		return
+	}
+
+
+	def delete(Long id) {
+		def alumnoInstance = Alumno.get(id)
+		if (!alumnoInstance) {
+			flash.message = message(code: 'default.not.found.message', args: [
+				message(code: 'alumno.label', default: 'Alumno'),
+				id
+			])
+			redirect(action: "list")
+			return
+		}
+
+		try {
+			alumnoInstance.delete(flush: true)
+			flash.message = message(code: 'default.deleted.message', args: [
+				message(code: 'alumno.label', default: 'Alumno'),
+				id
+			])
+			redirect(action: "list")
+		}
+		catch (DataIntegrityViolationException e) {
+			flash.message = message(code: 'default.not.deleted.message', args: [
+				message(code: 'alumno.label', default: 'Alumno'),
+				id
+			])
+			redirect(action: "show", id: id)
+		}
+	}
 
 }

@@ -29,5 +29,4 @@ class Persona {
 		tablePerHierarchy false
 	}
 	
-	
 }

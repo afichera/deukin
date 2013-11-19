@@ -116,7 +116,7 @@
 		in="${alumnoInstance.curriculums}" var="c">
 		<span class="property-value" aria-labelledby="curriculums-label"><g:link
 			controller="curriculum" action="show" id="${c.id}">
-			${c?.encodeAsHTML()}
+			${c?.nombreArchivo()}
 		</g:link></span>
 	</g:each>
 

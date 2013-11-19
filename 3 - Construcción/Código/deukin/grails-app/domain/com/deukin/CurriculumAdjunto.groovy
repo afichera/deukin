@@ -12,4 +12,12 @@ class CurriculumAdjunto {
 		// Limita a 2MB el Curriculum Adjunto
 		archivo maxSize: 1024 * 1024 * 2
 	}
+	
+	def nomberArchivo(){
+		def nombreArchivo = '' 
+		if(archivo){
+			nombreArchivo = archivo.name
+		}
+		nombreArchivo
+	}
 }

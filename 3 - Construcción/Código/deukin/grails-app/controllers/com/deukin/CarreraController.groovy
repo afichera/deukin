@@ -55,8 +55,8 @@ class CarreraController {
 				redirect(action: "list")
 				return
 			}
-	
-			[carreraInstance: carreraInstance]
+			def correlatividades = carreraService.obtenerCorrelatividades(carreraInstance)
+			[carreraInstance: carreraInstance, correlatividades:correlatividades]
 		}
 	
 		def edit(Long id) {

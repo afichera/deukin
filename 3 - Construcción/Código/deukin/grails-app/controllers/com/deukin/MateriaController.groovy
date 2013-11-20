@@ -4,6 +4,8 @@ import grails.plugins.springsecurity.Secured
 
 import org.springframework.dao.DataIntegrityViolationException
 
+import com.sun.xml.internal.ws.api.streaming.XMLStreamReaderFactory.Default;
+
 @Secured(['ROLE_COORDINADOR','ROLE_ADMINISTRATIVO'])
 class MateriaController {
 	
@@ -101,8 +103,10 @@ usuarioLogueado)
 			redirect(action: "list")
 			return
 		}
+		
+		def equivalencias = Equivalencia.list(fetch: [materiaPrincipal: materiaInstance])
 
-		[materiaInstance: materiaInstance]
+		[materiaInstance: materiaInstance, equivalencias:equivalencias]
 	}
 
 	def edit(Long id) {

@@ -238,6 +238,29 @@
 						</div>
 
 					</div>
+					
+					
+										<div class="row">
+
+
+						<label id="equivalencia-label" class="property-label col-lg-3"><g:message
+								code="materia.equivalencias.label" default="Equivalencias" />: </label>
+						<div class="col-lg-9">
+							<g:each in="${equivalencias}" status="i" var="equivalenciaInstance">
+					
+								
+									
+											${fieldValue(bean: equivalenciaInstance, field: "materiaEquivalente")}
+										
+								</g:each>
+
+
+							
+						</div>
+
+					</div>
+					
+					
 					<g:form>
 						<fieldset class="buttons">
 							<g:hiddenField name="id" value="${materiaInstance?.id}" />

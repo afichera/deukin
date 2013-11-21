@@ -4,6 +4,8 @@ import grails.plugins.springsecurity.Secured
 
 import org.springframework.dao.DataIntegrityViolationException
 
+import com.deukin.exceptions.BusinessException
+
 @Secured(['ROLE_ADMINISTRADOR_SISTEMA', 'ROLE_ALUMNO', 'ROLE_ADMINISTRATIVO', 'ROLE_DOCENTE', 'ROLE_COORDINADOR'])
 class AlumnoController {
 
@@ -99,6 +101,8 @@ class AlumnoController {
 
 	def update(Long id, Long version) {
 		def alumnoInstance = Alumno.get(id)
+		def documentoAux
+		def alumnosAux = []
 		if (!alumnoInstance) {
 			flash.message = message(code: 'default.not.found.message', args: [
 				message(code: 'alumno.label', default: 'Alumno'),
@@ -119,13 +123,27 @@ class AlumnoController {
 			}
 		}
 
-		def fotoPerfilAnterior = alumnoInstance.fotoPerfil
-
-		alumnoInstance.properties = params
-
-		//esto evita que se nulee la foto de perfil al actualizar si ya tenia.
-		if(alumnoInstance.fotoPerfil == null){
-			alumnoInstance.fotoPerfil = fotoPerfilAnterior
+//		def fotoPerfilAnterior = alumnoInstance.fotoPerfil
+//
+//		alumnoInstance.properties = params
+//
+//		//esto evita que se nulee la foto de perfil al actualizar si ya tenia.
+//		if(alumnoInstance.fotoPerfil == null){
+//			alumnoInstance.fotoPerfil = fotoPerfilAnterior
+//		}
+		
+		def esAdministrador = usuarioService.poseeElRol(springSecurityService.principal.authorities,'ROLE_ADMINISTRADOR_SISTEMA')
+		if(esAdministrador){
+			//Tengo que buscar que no exista otro alumno con el mismo Doc y tipo
+			documentoAux = alumnoInstance.documento
+			if(documentoAux){
+				alumnosAux = Alumno.findAllByDocumento(documentoAux)
+				if(alumnosAux!=null && alumnosAux.size()>1){
+					throw new BusinessException("El tipo y numero de documento ya existe en nuestro sistema.")
+				}
+				
+			}
+		
 		}
 
 		if (!alumnoInstance.save(flush: true)) {

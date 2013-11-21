@@ -7,7 +7,7 @@
 <meta name="layout" content="main">
 <g:set var="entityName"
 	value="${message(code: 'contacto.label', default: 'Contacto')}" />
-<title><g:message code="default.show.label" args="[entityName]" /></title>
+<title><g:message code="default.datosDe.label" args="[entityName]" /></title>
 </head>
 <body>
 	<div class="navbar navbar-inverse" role="navigation">
@@ -152,9 +152,6 @@
 								id="${contactoInstance?.id}">
 								<g:message code="default.button.edit.label" default="Edit" />
 							</g:link>
-							<g:actionSubmit class="btn btn-danger" action="delete"
-								value="${message(code: 'default.button.delete.label', default: 'Delete')}"
-								onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
 						</fieldset>
 					</g:form>
 				</div>

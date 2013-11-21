@@ -6,16 +6,14 @@
 	<head>
 		<meta name="layout" content="main">
 		<g:set var="entityName" value="${message(code: 'alumno.label', default: 'Alumno')}" />
-		<title><g:message code="default.list.label" args="[entityName]" /></title>
+		<title><g:message code="default.list.de.label" args="[entityName]" /></title>
 		</head>
 	<body>
 		<div class="navbar navbar-inverse" role="navigation">
-			<ul class="nav navbar-nav">
-				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
-			</ul>
+
 		</div>
 		<div id="list-alumno" class="content scaffold-list" role="main">
-			<h1><g:message code="default.list.label" args="[entityName]" /></h1>
+			<h1><g:message code="default.list.de.label" args="[entityName]" /></h1>
 			<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
@@ -53,7 +51,7 @@
 						<td>${fieldValue(bean: alumnoInstance, field: "nombre")}</td>
 						<td> <a href="mailto:${fieldValue(bean: alumnoInstance, field: "usuario.username")}">${fieldValue(bean: alumnoInstance, field: "usuario.username")}</a> </td>
 						<td>${fieldValue(bean: alumnoInstance, field: "documento.tipoDocumento")}</td>					
-						<td>${fieldValue(bean: alumnoInstance, field: "documento.numero")}</td>
+						<td>${alumnoInstance?.documento?.numeroAsText()}</td>
 					
 					</tr>
 				</g:each>

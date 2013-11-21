@@ -58,7 +58,7 @@
 	<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><g:message code="secciones.alumnos" /><b class="caret"></b></a>
 		<ul class="dropdown-menu">
 			<sec:ifAnyGranted
-				roles="ROLE_COORDINADOR,ROLE_ADMINISTRATIVO">
+				roles="ROLE_COORDINADOR,ROLE_ADMINISTRATIVO, ROLE_ADMINISTRADOR_SISTEMA">
 				<li><g:link controller='alumno'><g:message code="secciones.alumnos.alumnos" /></g:link></li>
 			</sec:ifAnyGranted>
 			<sec:ifAnyGranted

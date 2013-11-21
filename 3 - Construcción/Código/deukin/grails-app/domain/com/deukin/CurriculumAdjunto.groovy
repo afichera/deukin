@@ -6,18 +6,12 @@ package com.deukin
  */
 class CurriculumAdjunto {
 	byte[] archivo
+	String nombreArchivo
+	String tipoArchivo
 	static belongsTo = [persona:Persona]
 
 	static constraints = {
 		// Limita a 2MB el Curriculum Adjunto
 		archivo maxSize: 1024 * 1024 * 2
-	}
-	
-	def nomberArchivo(){
-		def nombreArchivo = '' 
-		if(archivo){
-			nombreArchivo = archivo.name
-		}
-		nombreArchivo
-	}
+	}	
 }

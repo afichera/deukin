@@ -1,10 +1,10 @@
-<%@ page import="com.deukin.Alumno" %>
+<%@ page import="com.deukin.TipoRecurso" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta name="layout" content="main">
 <g:set var="entityName"
-	value="${message(code: 'alumno.label', default: 'Alumno')}" />
+	value="${message(code: 'tipoRecurso.label', default: 'TipoRecurso')}" />
 <title><g:message code="default.edit.label" args="[entityName]" /></title>
 </head>
 <body>
@@ -18,7 +18,7 @@
 				</g:link></li>
 		</ul>
 	</div>
-	<div id="edit-alumno"
+	<div id="edit-tipoRecurso"
 		class="content scaffold-edit" role="main">
 		<h1>
 			<g:message code="default.edit.label" args="[entityName]" />
@@ -26,9 +26,9 @@
 		<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
 		</g:if>
-		<g:hasErrors bean="${alumnoInstance}">
+		<g:hasErrors bean="${tipoRecursoInstance}">
 			<ul class="alert alert-danger" role="alert">
-				<g:eachError bean="${alumnoInstance}" var="error">
+				<g:eachError bean="${tipoRecursoInstance}" var="error">
 					<li
 						<g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message
 							error="${error}" /></li>
@@ -36,18 +36,22 @@
 			</ul>
 		</g:hasErrors>
 		<div class="row">
-			<div class="col-lg-6">
+			<div class="col-lg-12 col-md-12 col-sx-12 lista-propiedades">
 				<div class="well">
 					<g:form method="post"
-						 enctype="multipart/form-data">
-						<g:hiddenField name="id" value="${alumnoInstance?.id}" />
-						<g:hiddenField name="version" value="${alumnoInstance?.version}" />
+						>
+						<g:hiddenField name="id" value="${tipoRecursoInstance?.id}" />
+						<g:hiddenField name="version" value="${tipoRecursoInstance?.version}" />
 						<fieldset class="form">
 							<g:render template="form" />
 						</fieldset>
 						<fieldset class="buttons">
 							<g:actionSubmit class="save" action="update" class="btn btn-success"
 								value="${message(code: 'default.button.update.label', default: 'Update')}" />
+							<g:actionSubmit class="btn btn-danger" action="delete"
+								value="${message(code: 'default.button.delete.label', default: 'Delete')}"
+								formnovalidate=""
+								onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
 						</fieldset>
 					</g:form>
 				</div>

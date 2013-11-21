@@ -7,7 +7,7 @@
 <meta name="layout" content="main">
 <g:set var="entityName"
 	value="${message(code: 'telefono.label', default: 'Telefono')}" />
-<title><g:message code="default.show.label" args="[entityName]" /></title>
+<title><g:message code="default.datosDe.label" args="[entityName]" /></title>
 </head>
 <body>
 	<div class="navbar navbar-inverse" role="navigation">

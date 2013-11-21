@@ -37,10 +37,19 @@
 			code="documento.tipoDocumento.label" default="Tipo Documento" /> <span
 		class="required-indicator">*</span>
 	</label>
-	<g:select name="documento.tipoDocumento"
-		from="${com.deukin.TipoDocumento?.values()}"
-		keys="${com.deukin.TipoDocumento.values()*.name()}" required="true"
-		value="${alumnoInstance?.documento?.tipoDocumento?.name()}" />
+	<sec:ifAnyGranted roles="ROLE_ADMINISTRADOR_SISTEMA">
+		<g:select name="documento.tipoDocumento"
+			from="${com.deukin.TipoDocumento?.values()}"
+			keys="${com.deukin.TipoDocumento.values()*.name()}" required="true"
+			value="${alumnoInstance?.documento?.tipoDocumento?.name()}" />
+	</sec:ifAnyGranted>
+	<sec:ifAnyGranted roles="ROLE_ALUMNO">
+		<g:select name="documento.tipoDocumento" disabled="true"
+			from="${com.deukin.TipoDocumento?.values()}"
+			keys="${com.deukin.TipoDocumento.values()*.name()}" required="true"
+			value="${alumnoInstance?.documento?.tipoDocumento?.name()}" />
+	</sec:ifAnyGranted>
+
 </div>
 
 
@@ -50,8 +59,16 @@
 			code="documento.numero.label" default="Numero" /> <span
 		class="required-indicator">*</span>
 	</label>
+	<sec:ifAnyGranted roles="ROLE_ADMINISTRADOR_SISTEMA">
 	<g:field name="documento.numero" type="number"
 		value="${alumnoInstance?.documento?.numero}" required="true" />
+	
+	</sec:ifAnyGranted>
+	<sec:ifAnyGranted roles="ROLE_ALUMNO">
+	<g:field name="documento.numero" type="number" disabled="true"
+		value="${alumnoInstance?.documento?.numero}" required="true" />
+	
+	</sec:ifAnyGranted>
 
 </div>
 
@@ -64,9 +81,8 @@
 	<g:if test="${alumnoInstance?.fotoPerfil}">
 		<li class="fieldcontain"><rendering:inlinePng
 				bytes="${alumnoInstance.fotoPerfil}" height="200" /></li>
-		<g:link
-				controller="alumno" action="eliminarFotoPerfil"
-				id="${alumnoInstance?.id}">Quitar
+		<g:link controller="alumno" action="eliminarFotoPerfil"
+			id="${alumnoInstance?.id}">Quitar
 		</g:link>
 	</g:if>
 
@@ -74,12 +90,10 @@
 
 	<g:if test="${alumnoInstance?.fotoPerfil == null}">
 		<li class="fieldcontain"><span id="fotoPerfil-label"
-			class="property-label"><g:message
-					code="alumno.fotoPerfil.label" default="Foto Perfil" /></span> <img
-			height="200" src="${resource(dir: 'images', file: 'buddyicon.jpg')}"
-			alt="Grails" /></li>
+			class="property-label"></span> <img height="200"
+			src="${resource(dir: 'images', file: 'buddyicon.jpg')}" alt="Grails" /></li>
 	</g:if>
-	<input type="file" id="fotoPerfil" name="fotoPerfil" }"/>
+	<input type="file" id="fotoPerfil" name="fotoPerfil" />
 </div>
 
 <div
@@ -105,7 +119,7 @@
 		<g:each in="${alumnoInstance?.curriculumsAdjuntos?}" var="c">
 			<li><g:link controller="curriculumAdjunto" action="show"
 					id="${c.id}">
-					${c?.nombreArchivo()}
+					${c?.nombreArchivo}
 				</g:link></li>
 		</g:each>
 		<li class="add"><g:link controller="curriculumAdjunto"

@@ -8,23 +8,22 @@
 <meta name="layout" content="main">
 <g:set var="entityName"
 	value="${message(code: 'alumno.label', default: 'Alumno')}" />
-<title><g:message code="default.show.label" args="[entityName]" /></title>
+<title><g:message code="default.datosDe.label" args="[entityName]" /></title>
 </head>
 <body>
 <div class="navbar navbar-inverse" role="navigation">
 <ul class="nav navbar-nav">
+<sec:ifAnyGranted roles="ROLE_ADMINISTRADOR_SISTEMA,ROLE_COORDINADOR,ROLE_DOCENTE">
 <li><g:link class="list" action="list">
-	<g:message code="default.list.label" args="[entityName]" />
+	<g:message code="default.list.de.label" args="[entityName]" />
 </g:link></li>
-<li><g:link class="create" action="create">
-	<g:message code="default.new.label" args="[entityName]" />
-</g:link></li>
+</sec:ifAnyGranted>
 </ul>
 </div>
 
 <div id="show-alumno" class="content scaffold-show" role="main">
 <h1>
-<g:message code="default.show.label" args="[entityName]" />
+<g:message code="default.datosDe.label" args="[entityName]" />
 </h1>
 <g:if test="${flash.message}">
 	<div class="message" role="status">
@@ -91,7 +90,7 @@
 		aria-labelledby="documento-label"><g:link
 		controller="documento" action="show"
 		id="${alumnoInstance?.documento?.id}">
-		${alumnoInstance?.documento?.tipoDocumento} - ${alumnoInstance?.documento?.numero}
+		${alumnoInstance?.documento?.tipoDocumento} - ${alumnoInstance?.documento?.numeroAsText()}
 	</g:link></span>
 
 	</li>
@@ -116,7 +115,7 @@
 		in="${alumnoInstance.curriculums}" var="c">
 		<span class="property-value" aria-labelledby="curriculums-label"><g:link
 			controller="curriculum" action="show" id="${c.id}">
-			${c?.nombreArchivo()}
+			${c?.nombreArchivo}
 		</g:link></span>
 	</g:each>
 
@@ -132,7 +131,7 @@
 		<span class="property-value"
 			aria-labelledby="curriculumsAdjuntos-label"><g:link
 			controller="curriculumAdjunto" action="show" id="${c.id}">
-			${c?.encodeAsHTML()}
+			${c?.nombreArchivo}
 		</g:link></span>
 	</g:each>
 
@@ -148,9 +147,11 @@
 	<g:link class="btn btn-info" action="edit" id="${alumnoInstance?.id}">
 		<g:message code="default.button.edit.label" default="Edit" />
 	</g:link>
+	<sec:ifAnyGranted roles="ROLE_ADMINISTRADOR_SISTEMA">
 	<g:actionSubmit class="btn btn-danger" action="delete"
 		value="${message(code: 'default.button.delete.label', default: 'Delete')}"
-		onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+		onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />	
+	</sec:ifAnyGranted>
 	</fieldset>
 </g:form>
 </div>

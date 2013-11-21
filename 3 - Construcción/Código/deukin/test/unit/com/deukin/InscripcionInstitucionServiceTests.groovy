@@ -52,8 +52,8 @@ class InscripcionInstitucionServiceTests {
 	
 		
 	private InscripcionInstitucion obtenerInscripcionMock() {
-		def inscripcionInstitucion = new InscripcionInstitucion();
-		inscripcionInstitucion.usuarioRegistro = new UsuarioRegistro();
+		def inscripcionInstitucion = new InscripcionInstitucion()
+		inscripcionInstitucion.usuarioRegistro = new UsuarioRegistro()
 		inscripcionInstitucion.usuarioRegistro.username = "usuariotest"
 		inscripcionInstitucion.usuarioRegistro.password = "passwordtest"
 		inscripcionInstitucion.usuarioRegistro.password2 = "passwordtest"

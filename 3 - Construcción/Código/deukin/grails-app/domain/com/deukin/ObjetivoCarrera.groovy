@@ -9,7 +9,7 @@ class ObjetivoCarrera {
 	static belongsTo = [carrera:Carrera]
 
     static constraints = {
-		descripcion blank:false; 
+		descripcion blank:false
     }
 	String toString(){
 		descripcion

@@ -104,9 +104,10 @@ usuarioLogueado)
 			return
 		}
 		
-		def equivalencias = Equivalencia.list(fetch: [materiaPrincipal: materiaInstance])
+		def equivalencias = materiaService.obtenerEquivalentes(materiaInstance)
+		def predecesoras = materiaService.obtenerPredecesoras(materiaInstance)
 
-		[materiaInstance: materiaInstance, equivalencias:equivalencias]
+		[materiaInstance: materiaInstance, equivalencias:equivalencias, predecesoras:predecesoras]
 	}
 
 	def edit(Long id) {

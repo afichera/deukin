@@ -1,5 +1,6 @@
 
 
+<%@page import="com.deukin.MateriaService"%>
 <%@ page import="com.deukin.Carrera"%>
 <!DOCTYPE html>
 <html>
@@ -235,6 +236,9 @@
 												${message(code: 'materia.cantidadUnidadesHorarias.label', default: 'Cantidad Unidades Horarias')}
 											</th>
 
+											<th>
+												${message(code: 'materia.correlativas.label', default: 'Correlativas')}
+											</th>
 
 										</tr>
 									</thead>
@@ -259,6 +263,22 @@
 
 												<td>
 													${fieldValue(bean: m, field: "cantidadUnidadesHorarias")}
+												</td>
+												<td>
+																			<g:if test="${correlatividades}">
+
+								
+									<g:each in="${correlatividades}" status="y" var="c">
+									<g:if test="${c?.materiaPrincipal?.id==m?.id}">
+										<g:link controller="materia" action="show"
+												id="${c.id}">
+												${c?.materiaPredecesora?.encodeAsHTML()}<br/>
+											</g:link>
+											</g:if>
+									</g:each>
+								
+							</g:if>	
+												
 												</td>
 
 

@@ -1,5 +1,7 @@
 package com.deukin
 
+import com.sun.xml.internal.ws.api.streaming.XMLStreamReaderFactory.Default;
+
 import javassist.bytecode.stackmap.BasicBlock.Catch;
 
 
@@ -94,6 +96,29 @@ class MateriaService {
 		}
 		materiasResultantes
 		
+	}
+	
+	def obtenerEquivalentes(Materia materiaPrincipal) {
+		def equivalencias = Equivalencia.findAllByMateriaPrincipalOrMateriaEquivalente(materiaPrincipal,materiaPrincipal)
+		def materiasEquivalentes =[]
+		for (equivalenciaInstance in equivalencias) {
+			if (materiaPrincipal == equivalenciaInstance.materiaPrincipal) {
+			materiasEquivalentes.add(equivalenciaInstance.materiaEquivalente)
+			}
+			else
+			materiasEquivalentes.add(equivalenciaInstance.materiaPrincipal)
+		}
+		materiasEquivalentes
+	}
+	
+	def obtenerPredecesoras(Materia materiaPrincipal) {
+		def correlatividades = Correlatividad.findAllByMateriaPrincipal(materiaPrincipal)
+		def predecesoras = []
+		for (correlatividadInstance in correlatividades)
+		{
+			predecesoras.add(correlatividadInstance.materiaPredecesora)
+		}
+		predecesoras
 	}
 
 }

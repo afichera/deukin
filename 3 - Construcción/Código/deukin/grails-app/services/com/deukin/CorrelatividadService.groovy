@@ -30,18 +30,20 @@ class CorrelatividadService {
 			if(!materiaPrincipal.carrera.equals(materiaPredecesora.carrera)){
 				throw new BusinessException('Las materias seleccionadas son de diferentes carreras.')
 			}
+	
 			
-			if(asignacionPeriodoMateriaPrincipal == null){
-				throw new BusinessException('La materia principal no se encuentra asignada a un plan de estudio.')
-			}
-			
-			if(asignacionPeriodoMateriaPredecesora == null){
-				throw new BusinessException('La materia predecesora no se encuentra asignada a un plan de estudio.')
-			}
-			
-			if(!asignacionPeriodoMateriaPrincipal.planEstudio.equals(asignacionPeriodoMateriaPredecesora.planEstudio)){
-				throw new BusinessException('Las materias deben pertenecer al mismo Plan de Estudio.')
-			}
+		//Comento esta parte hasta que esté el tema de los planes de estudio.			
+//			if(asignacionPeriodoMateriaPrincipal == null){
+//				throw new BusinessException('La materia principal no se encuentra asignada a un plan de estudio.')
+//			}
+//			
+//			if(asignacionPeriodoMateriaPredecesora == null){
+//				throw new BusinessException('La materia predecesora no se encuentra asignada a un plan de estudio.')
+//			}
+//			
+//			if(!asignacionPeriodoMateriaPrincipal.planEstudio.equals(asignacionPeriodoMateriaPredecesora.planEstudio)){
+//				throw new BusinessException('Las materias deben pertenecer al mismo Plan de Estudio.')
+//			}
 			
 			
 			//Luego en Predecesoras si existen con la principal que viene por parametro

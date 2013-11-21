@@ -205,11 +205,10 @@
 											aria-labelledby="objetivosEspecificos-label"><g:link
 													controller="objetivoEspecifico" action="edit" id="${o.id}">
 													${o?.encodeAsHTML()}
-												</g:link></span>
-										</li>
+												</g:link></span></li>
 									</g:each>
 								</ul>
-								
+
 
 
 
@@ -238,29 +237,99 @@
 						</div>
 
 					</div>
-					
-					
-										<div class="row">
+					<div class="row">
+
+						<label id="predecesoras-label" class="property-label col-lg-3"><g:message
+								code="materia.predecesoras.label"
+								default="Materias de las que es correlativa" />: 
+								
+								<g:link
+								controller="correlatividad" action="create"
+								params="['materiaPrincipal.id': materiaInstance?.id]">
+								<span class="glyphicon glyphicon-plus"
+									title="${message(code: 'default.add.label', args: [message(code: 'correlatividad.label', default: 'Correlatividad')])}"></span>
+							</g:link>
+								</label>
+						<div class="col-lg-9">
+							<g:if test="${predecesoras}">
+
+								<ul>
+									<g:each in="${predecesoras}" status="i" var="pr">
+
+										<li><g:link controller="materia" action="show"
+												id="${pr.id}">
+												${pr?.encodeAsHTML()}
+											</g:link></li>
+									</g:each>
+								</ul>
+							</g:if>
+
+						</div>
+					</div>
+
+					<div class="row">
 
 
 						<label id="equivalencia-label" class="property-label col-lg-3"><g:message
-								code="materia.equivalencias.label" default="Equivalencias" />: </label>
-						<div class="col-lg-9">
-							<g:each in="${equivalencias}" status="i" var="equivalenciaInstance">
-					
+								code="materia.equivalencias.label" default="Equivalencias" />:
 								
-									
-											${fieldValue(bean: equivalenciaInstance, field: "materiaEquivalente")}
-										
-								</g:each>
+								<g:link
+								controller="equivalencia" action="create"
+								params="['materiaPrincipal.id': materiaInstance?.id]">
+								<span class="glyphicon glyphicon-plus"
+									title="${message(code: 'default.add.label', args: [message(code: 'equivalencia.label', default: 'Equivalencia')])}"></span>
+							</g:link>
+						</label>
+						<div class="col-lg-9">
+							<g:if test="${equivalencias}">
+								<table class="table table-striped table-bordered table-hover">
+									<thead>
+										<tr>
+
+											<th>
+												${message(code: 'materia.codigo.label', default: 'Codigo')}
+											</th>
+
+											<th>
+												${message(code: 'materia.nombre.label', default: 'Nombre')}
+											</th>
 
 
-							
+											<th>
+												${message(code: 'materia.carrera.label', default: 'Carrera')}
+											</th>
+
+										</tr>
+									</thead>
+									<tbody>
+										<g:each in="${equivalencias}" status="i"
+											var="equivalenciaInstance">
+											<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
+
+												<td><g:link controller="materia" action="show"
+														id="${equivalenciaInstance.id}">
+														${fieldValue(bean: equivalenciaInstance, field: "codigo")}
+													</g:link></td>
+
+												<td>
+													${fieldValue(bean: equivalenciaInstance, field: "nombre")}
+												</td>
+
+												<td>
+													${fieldValue(bean: equivalenciaInstance, field: "carrera")}
+												</td>
+
+											</tr>
+										</g:each>
+									</tbody>
+								</table>
+							</g:if>
+
 						</div>
 
 					</div>
-					
-					
+
+
 					<g:form>
 						<fieldset class="buttons">
 							<g:hiddenField name="id" value="${materiaInstance?.id}" />

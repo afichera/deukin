@@ -23,14 +23,14 @@
 	<div class="navbar navbar-inverse" role="navigation">
 			<ul class="nav navbar-nav">
 				<li><g:link class="list" action="list">
-					<g:message code="default.list.label" args="[entityName]" />
+					<g:message code="equivalencia.list.label" />
 				</g:link></li>
 		</ul>
 	</div>
 	<div id="create-equivalencia"
 		class="content scaffold-create" role="main">
 		<h1>
-			<g:message code="default.create.label" args="[entityName]" />
+			<g:message code="equivalencia.create.label"/>
 		</h1>
 		<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
@@ -45,7 +45,7 @@
 			</ul>
 		</g:hasErrors>
 		<div class="row">
-			<div class="col-lg-6">
+			<div class="col-lg-12 col-md-12 col-sx-12 lista-propiedades">
 				<div class="well">
 					<g:form action="save"
 						>
@@ -55,6 +55,16 @@
 						<fieldset class="buttons">
 							<g:submitButton name="create" class="btn btn-primary"
 								value="${message(code: 'default.button.create.label', default: 'Create')}" />
+						
+							<g:if test="${params.materiaPrincipal}">
+						<g:link class="btn btn-default" controller="materia" action="show" id="${params.materiaPrincipal?.id}">
+					<g:message code="cancelar" default="Cancelar" />
+				</g:link>
+						</g:if>
+						<g:else>
+						<g:link class="btn btn-default" controller="equivalencia" action="list" >
+					<g:message code="cancelar" default="Cancelar" /></g:link>
+						</g:else>
 						</fieldset>
 					</g:form>
 				</div>

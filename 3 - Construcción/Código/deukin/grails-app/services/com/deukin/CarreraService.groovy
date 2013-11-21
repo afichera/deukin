@@ -2,6 +2,8 @@
 
 package com.deukin
 
+import com.sun.xml.internal.ws.api.streaming.XMLStreamReaderFactory.Default;
+
 class CarreraService {
 
 	def usuarioService
@@ -60,6 +62,17 @@ class CarreraService {
 		
 	}
 
+	def obtenerCorrelatividades(Carrera carrera) {
+		def correlatividadesTodas = Correlatividad.findAll()
+		def correlatividades = []
+		for (correlatividadInstance in correlatividadesTodas) {
+			if (correlatividadInstance.materiaPrincipal.carrera==carrera) {
+				correlatividades.add(correlatividadInstance)
+			}
+			
+		}
+correlatividades
+	}
 	
 	
 }

@@ -47,7 +47,7 @@
 		roles="ROLE_COORDINADOR,ROLE_ADMINISTRATIVO">
 	<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><g:message code="secciones.docentes" /><b class="caret"></b></a>
 		<ul class="dropdown-menu">
-			<li><g:link controller='proximamente'><g:message code="secciones.docentes.docentes" /></g:link></li>
+			<li><g:link controller='docente'><g:message code="secciones.docentes.docentes" /></g:link></li>
 			<sec:ifAnyGranted
 		roles="ROLE_COORDINADOR"><li><g:link controller='proximamente'><g:message code="secciones.docentes.buscarPostulantes" /></g:link></li></sec:ifAnyGranted>
 		</ul>

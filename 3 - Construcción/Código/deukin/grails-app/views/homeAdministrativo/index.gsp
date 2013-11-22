@@ -68,7 +68,7 @@
 						</h3>
 					</div>
 					<ul>
-						<li><g:link controller='proximamente'>
+						<li><g:link controller='docente'>
 								<g:message code="secciones.docentes.docentes" />
 							</g:link></li>
 

@@ -27,12 +27,12 @@ class CorrelatividadService {
 
 		if(correlatividadAux == null){
 			
-			if(!materiaPrincipal.carrera.equals(materiaPredecesora.carrera)){
-				throw new BusinessException('Las materias seleccionadas son de diferentes carreras.')
+			if(!materiaPrincipal.planEstudio.equals(materiaPredecesora.planEstudio)){
+				throw new BusinessException('Las materias seleccionadas son de diferentes planes de estudio.')
 			}
 	
 			
-		//Comento esta parte hasta que esté el tema de los planes de estudio.			
+		//Esto hay que validar una vez que la materia este asignada a un Periodo			
 //			if(asignacionPeriodoMateriaPrincipal == null){
 //				throw new BusinessException('La materia principal no se encuentra asignada a un plan de estudio.')
 //			}

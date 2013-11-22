@@ -22,8 +22,8 @@ class CarreraService {
 		if(filtrarCarrera){
 			def username = usuario?.getUsername()
 			def usuarioDeukin = Usuario.findByUsername(username)
-			def persona = Persona.findByUsuario(usuarioDeukin)
-			def carreras = Carrera.findAllByCoordinador(persona)
+			def carrera = Coordinador.findByUsuario(usuarioDeukin).carrera			
+			
 			
 		}else{
 			def carreras = Carrera.all			
@@ -36,8 +36,9 @@ class CarreraService {
 		def filtrarCarreras = usuarioService.poseeElRol(authorities, 'ROLE_COORDINADOR')
 		def carreras = []
 		if(filtrarCarreras){
-			def persona = Persona.findByUsuario(usuarioDeukin)
-			carreras = Carrera.findAllByCoordinadorAndTituloLike(persona, queryRegex)
+			def carrera = Coordinador.findByUsuario(usuarioDeukin).carrera
+			
+			carreras.add(carrera)
 		}else{
 			carreras = Carrera.findAll { carrera -> titulo =~ queryRegex }
 		}
@@ -50,8 +51,7 @@ class CarreraService {
 		def coordinadoresFiltro = []
 		def usuariosRol = []
 		usuariosRol = usuarioService.obtenerUsuariosPorRol('ROLE_COORDINADOR')		
-		coordinadores = Persona.findAllByUsuarioInList(usuariosRol)
-		
+		coordinadores = Coordinador.findAllByUsuarioInList(usuariosRol)		
 		for (coordinador in coordinadores) {
 			if(coordinador.toString().toUpperCase().contains(queryRegex.toUpperCase())){
 				coordinadoresFiltro.add(coordinador)
@@ -65,12 +65,12 @@ class CarreraService {
 		def correlatividadesTodas = Correlatividad.findAll()
 		def correlatividades = []
 		for (correlatividadInstance in correlatividadesTodas) {
-			if (correlatividadInstance.materiaPrincipal.carrera==carrera) {
+			if (correlatividadInstance.materiaPrincipal.planEstudio.carrera==carrera) {
 				correlatividades.add(correlatividadInstance)
 			}
 			
 		}
-correlatividades
+		correlatividades
 	}
 	
 	

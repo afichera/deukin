@@ -36,40 +36,43 @@ class MateriaService {
 
 
 	public obtenerMateriasDeCoordinador(def authorities, def params, def max, def usuario) {
-		def filtrarCarrera = false
+		def filtrarPlan = false
 		def materias
 		for (auto in authorities){
 			if(auto.role.equals('ROLE_COORDINADOR') ){
-				filtrarCarrera = true
+				filtrarPlan = true
 			}
 		}
 		params.max = Math.min(max ?: 10, 100)
-		if(filtrarCarrera){
+		if(filtrarPlan){
 			def username = usuario?.getUsername()
 			def usuarioDeukin = Usuario.findByUsername(username)
-			def persona = Persona.findByUsuario(usuarioDeukin)
-			def carreras = Carrera.findAllByCoordinador(persona)			
-			materias = Materia.findAllByCarreraInList(carreras)
+			def coordinador = Coordinador.findByUsuario(usuarioDeukin)						
+			def planes = coordinador.carrera.planesEstudio// Carrera.findAllByCoordinadorOrCoordinadoresOperativos(persona, persona).planesEstudio
+						
+			materias = Materia.findAllByPlanEstudioInList(planes, params)
 		}else{
 			materias = Materia.list(params)
 		}
 	}
 	
 	public obtenerMateriasDeCoordinadorLikeQueryRegex(def authorities, def usuario, def queryRegex) {
-		def filtrarCarrera = false
+		def filtrarPlan = false
 		def materias
 		def materiasResultantes = []
 		for (auto in authorities){
 			if(auto.role.equals('ROLE_COORDINADOR') ){
-				filtrarCarrera = true
+				filtrarPlan = true
 			}
 		}
-		if(filtrarCarrera){
+		if(filtrarPlan){
 			def username = usuario?.getUsername()
 			def usuarioDeukin = Usuario.findByUsername(username)
 			def persona = Persona.findByUsuario(usuarioDeukin)
-			def carreras = Carrera.findAllByCoordinador(persona)
-			materias = Materia.findAllByCarreraInList(carreras)						
+			
+			def planes = coordinador.carrera.planesEstudio
+//			def planes = Carrera.findAllByCoordinadorOrCoordinadoresOperativos(persona, persona).planesEstudio
+			materias = Materia.findAllByPlanEstudioInList(planes)						
 		}else{		
 			materias = Materia.list()			
 		}

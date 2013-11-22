@@ -9,8 +9,8 @@ package com.deukin
  */
 class Equivalencia{
 
-	Materia materiaPrincipal
-	Materia materiaEquivalente
+	Materia materiaPrincipal//Matematica Gral
+	Materia materiaEquivalente//calculo, discreta, etc
 
 	static constraints = {
 		materiaPrincipal(unique:'materiaEquivalente')

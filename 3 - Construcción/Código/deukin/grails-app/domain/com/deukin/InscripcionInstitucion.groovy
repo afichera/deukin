@@ -25,7 +25,8 @@ class InscripcionInstitucion implements Serializable {
 		
 	Date fechaInscripcion
 	Date fechaBaja	
-	EstadoInscripcionInstitucion estadoInscripcionInstitucion	
+	EstadoInscripcionInstitucion estadoInscripcionInstitucion
+	TipoInscripcionInstitucion tipoInscripcionInstitucion	
 
     static constraints = {
 		documentoNumero(unique:['tipoDocumento'])
@@ -35,7 +36,7 @@ class InscripcionInstitucion implements Serializable {
 		calle blank:false
 		localidad blank:false
 		observaciones nullable:true
-		telefonoNumero blank:false		
+		telefonoNumero blank:false
+		tipoInscripcionInstitucion nullable:true
     }
-	
 }

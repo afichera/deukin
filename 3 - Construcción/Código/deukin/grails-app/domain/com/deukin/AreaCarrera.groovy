@@ -7,6 +7,6 @@ class AreaCarrera {
 	
     static constraints = {
 		nombre blank:false
-		areaMadre nulleable:true
+		areaMadre nullable:true
     }
 }

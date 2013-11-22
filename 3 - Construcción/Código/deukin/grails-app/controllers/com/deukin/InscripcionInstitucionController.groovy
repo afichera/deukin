@@ -47,7 +47,8 @@ class InscripcionInstitucionController {
 	@Secured(['ROLE_ADMINISTRADOR_SISTEMA', 'ROLE_ADMINISTRATIVO'])
 	def confirmarInscripcion(Long id){
 		def inscripcionInstitucionInstance = InscripcionInstitucion.get(id)
-		def alumno
+
+		def persona
 		if(!inscripcionInstitucionInstance){
 			flash.message = message(code: 'default.not.found.message', args: [
 				message(code: 'inscripcionInstitucion.label', default: 'InscripcionInstitucion'),
@@ -56,9 +57,12 @@ class InscripcionInstitucionController {
 			redirect(action: "list")
 			return
 		}
+		if(!inscripcionInstitucionInstance.tipoInscripcionInstitucion){
+			inscripcionInstitucionInstance.tipoInscripcionInstitucion = TipoInscripcionInstitucion.ALUMNO
+		}
 		try{
-			alumno = inscripcionInstitucionService.confirmarInscripcion(inscripcionInstitucionInstance)
-			correoElectronicoService.enviarMailActivacionAlumno(alumno)
+			persona = inscripcionInstitucionService.confirmarInscripcion(inscripcionInstitucionInstance)
+			correoElectronicoService.enviarMailActivacionPersona(persona)
 			redirect(action: "list")
 			return
 		}catch(Exception ex){

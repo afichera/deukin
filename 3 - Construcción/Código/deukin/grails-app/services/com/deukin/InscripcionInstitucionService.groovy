@@ -50,7 +50,7 @@ class InscripcionInstitucionService {
 	def confirmarInscripcion(InscripcionInstitucion inscripcion){
 		Documento documento = Documento.findByNumeroAndTipoDocumento(inscripcion.documentoNumero, inscripcion.tipoDocumento)
 		Usuario usuario = Usuario.findByUsername(inscripcion.usuarioRegistro.username)
-		Alumno alumno
+		def persona
 		if(documento == null){
 			if(usuario == null){
 				try{
@@ -60,16 +60,24 @@ class InscripcionInstitucionService {
 					Contacto  contacto = new Contacto(domicilio: domicilio)
 					contacto.telefonos = []
 					contacto.telefonos.add(telefono)
-					usuario = usuarioService.crear(inscripcion.usuarioRegistro.username, inscripcion.usuarioRegistro.password, "ROLE_ALUMNO")					
-					alumno = new Alumno(usuario:usuario, documento:documento, contacto:contacto, nombre:inscripcion.nombre, apellido: inscripcion.apellido).save(failOnError:true)
+					if(inscripcion.tipoInscripcionInstitucion.equals(TipoInscripcionInstitucion.ALUMNO)){
+						usuario = usuarioService.crear(inscripcion.usuarioRegistro.username, inscripcion.usuarioRegistro.password, "ROLE_ALUMNO")						
+						persona = new Alumno(usuario:usuario, documento:documento, contacto:contacto, nombre:inscripcion.nombre, apellido: inscripcion.apellido).save(failOnError:true)
+
+					}else if(inscripcion.tipoInscripcionInstitucion.equals(TipoInscripcionInstitucion.DOCENTE)){
+						usuario = usuarioService.crear(inscripcion.usuarioRegistro.username, inscripcion.usuarioRegistro.password, "ROLE_DOCENTE")
+						persona = new Docente(usuario:usuario, documento:documento, contacto:contacto, nombre:inscripcion.nombre, apellido: inscripcion.apellido).save(failOnError:true)
+
+					}
+					
 					inscripcion.estadoInscripcionInstitucion = EstadoInscripcionInstitucion.CONFIRMADA
 					inscripcion.save()					
-					log.info("Se realizó la activación del alumno "+alumno.apellido+" "+alumno.nombre+" id: "+alumno.id)
-					alumno
+					log.info("Se realizó la activación del usuario "+persona.apellido+" "+persona.nombre+" id: "+alumno.id)
+					persona
 				}catch(Exception e){
-					log.error("Falló al activar el alumno. Causa: ")
+					log.error("Falló al activar el usuario. Causa: ")
 					log.error(e.stackTrace)
-					throw new BusinessException("No se pudo activar el registro del alumno. "+e.message)
+					throw new BusinessException("No se pudo activar el registro del usuario. "+e.message)
 				}	
 
 			}else{

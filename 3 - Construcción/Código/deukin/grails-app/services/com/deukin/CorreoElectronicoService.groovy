@@ -35,14 +35,14 @@ class CorreoElectronicoService {
 		retorno
 	}
 
-	def enviarMailActivacionAlumno(Alumno alumno){
+	def enviarMailActivacionPersona(Persona persona){
 		def retorno = true
 		def institucionEducativaUnica = InstitucionEducativa.findByNombre('UNLAM')
 		try{
-			def cuerpo = '<h2><b> Estimado ' + alumno.nombre+' '+ alumno.apellido+'</b></h2><br/>'
+			def cuerpo = '<h2><b> Estimado ' + persona.nombre+' '+ persona.apellido+'</b></h2><br/>'
 			cuerpo += 'Se proceso su Registro fue procesado correctamente y su cuenta de Deukin ha sido activada.<br/>'
 			cuerpo += 'Recuerde que para acceder deberá ingresar a nuestro sistema con el nombre de usuario y password con el que se registr&oacute;. <br/>'
-			cuerpo += 'Su nombre de usuario es: '+alumno.usuario.username+'.<br/>'
+			cuerpo += 'Su nombre de usuario es: '+persona.usuario.username+'.<br/>'
 			cuerpo += 'Saludos Cordiales.<br/><br/><br/>'
 			cuerpo += institucionEducativaUnica.nombre+'<br/>'
 			cuerpo += institucionEducativaUnica?.contacto?.domicilio?.calle+' '+institucionEducativaUnica?.contacto?.domicilio?.numero?.toString()+'<br/>'
@@ -51,7 +51,7 @@ class CorreoElectronicoService {
 
 			asynchronousMailService.sendMail{
 				// Mail parameters
-				to alumno.usuario.username
+				to persona.usuario.username
 				subject "Cuenta Activada "
 				html cuerpo;
 			}

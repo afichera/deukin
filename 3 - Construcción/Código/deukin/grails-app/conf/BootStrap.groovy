@@ -1,21 +1,18 @@
-import sun.org.mozilla.javascript.internal.ast.ForInLoop;
-
 import com.deukin.Alumno
 import com.deukin.Carrera
 import com.deukin.Contacto
-import com.deukin.Coordinador;
+import com.deukin.Coordinador
 import com.deukin.Departamento
 import com.deukin.Docente
 import com.deukin.Documento
 import com.deukin.Domicilio
-import com.deukin.EspacioFisico;
+import com.deukin.EspacioFisico
 import com.deukin.EstadoDeCreacion
 import com.deukin.EstadoRecurso
 import com.deukin.InstitucionEducativa
 import com.deukin.Materia
 import com.deukin.ModalidadAsistencia
 import com.deukin.PeriodoDedicacion
-import com.deukin.Persona
 import com.deukin.PlanEstudio
 import com.deukin.Recurso
 import com.deukin.Rol
@@ -254,10 +251,10 @@ class BootStrap {
 		//Solo Para Test
 		def periodoDedicacion1 = PeriodoDedicacion.findByAnioAndCuatrimestre(1, 1)?: new PeriodoDedicacion(anio:1, cuatrimestre:1).save(failOnError:true)
 		def periodoDedicacion2 = PeriodoDedicacion.findByAnioAndCuatrimestre(1, 2)?: new PeriodoDedicacion(anio:1, cuatrimestre:2).save(failOnError:true)
-		def periodoDedicacion3 = PeriodoDedicacion.findByAnioAndCuatrimestre(2, 1)?: new PeriodoDedicacion(anio:1, cuatrimestre:1).save(failOnError:true)
-		def periodoDedicacion4 = PeriodoDedicacion.findByAnioAndCuatrimestre(2, 2)?: new PeriodoDedicacion(anio:1, cuatrimestre:2).save(failOnError:true)
-		def periodoDedicacion5 = PeriodoDedicacion.findByAnioAndCuatrimestre(3, 1)?: new PeriodoDedicacion(anio:1, cuatrimestre:1).save(failOnError:true)
-		def periodoDedicacion6 = PeriodoDedicacion.findByAnioAndCuatrimestre(4, 2)?: new PeriodoDedicacion(anio:1, cuatrimestre:2).save(failOnError:true)
+		def periodoDedicacion3 = PeriodoDedicacion.findByAnioAndCuatrimestre(2, 1)?: new PeriodoDedicacion(anio:2, cuatrimestre:1).save(failOnError:true)
+		def periodoDedicacion4 = PeriodoDedicacion.findByAnioAndCuatrimestre(2, 2)?: new PeriodoDedicacion(anio:2, cuatrimestre:2).save(failOnError:true)
+		def periodoDedicacion5 = PeriodoDedicacion.findByAnioAndCuatrimestre(3, 1)?: new PeriodoDedicacion(anio:3, cuatrimestre:1).save(failOnError:true)
+		def periodoDedicacion6 = PeriodoDedicacion.findByAnioAndCuatrimestre(4, 2)?: new PeriodoDedicacion(anio:4, cuatrimestre:2).save(failOnError:true)
 
 		//Departamentos solo para Test
 

@@ -6,15 +6,15 @@ import org.springframework.dao.DataIntegrityViolationException
 
 @Secured(['ROLE_COORDINADOR','ROLE_ADMINISTRATIVO'])
 class MateriaController {
-	
+
 	def springSecurityService
 	def materiaService
 	def carreraService
 	def usuarioService
 	def planEstudioService
-	
+
 	static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
-	
+
 	def searchCarrerasAutocomplete = {
 		def usuarioLogueado = springSecurityService.principal
 		def queryRegex = "%${params.query}%"
@@ -24,28 +24,26 @@ class MateriaController {
 			results() {
 				carreras.each { carrera ->
 					result(){
-						name(carrera.titulo)						
+						name(carrera.titulo)
 						id(carrera.id)
 					}
 				}
 			}
 		}
-
-				
 	}
 
 	def searchPlanesEstudioAJAX = {
 		def usuarioLogueado = springSecurityService.principal
-		def queryRegex = "%${params.query}%"
+		def queryRegex = "${params.query}"
 		def planesEstudio = planEstudioService.getPlanesEstudioLikeParamsAndCoordinadorUser(queryRegex,
 
-usuarioLogueado)
-		
+				usuarioLogueado)
+
 		render(contentType: "text/xml") {
 			results() {
 				planesEstudio.each { plan ->
 					result(){
-						name(plan.identificacion)
+						name(plan.identificacion + '-' +plan.carrera.titulo)
 						id(plan)
 					}
 				}
@@ -54,7 +52,7 @@ usuarioLogueado)
 	}
 
 
-	
+
 	def index() {
 		redirect(action: "list", params: params)
 	}
@@ -70,7 +68,7 @@ usuarioLogueado)
 	def create() {
 		[materiaInstance: new Materia(params)]
 	}
-	
+
 	def listaCarrerasMostrar(){
 		def authorities =  springSecurityService.principal.authorities
 		def usuario = springSecurityService.principal
@@ -101,7 +99,7 @@ usuarioLogueado)
 			redirect(action: "list")
 			return
 		}
-		
+
 		def equivalencias = materiaService.obtenerEquivalentes(materiaInstance)
 		def predecesoras = materiaService.obtenerPredecesoras(materiaInstance)
 

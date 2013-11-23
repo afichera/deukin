@@ -16,7 +16,7 @@ class Carrera implements Serializable {
 	String descripcion
 	EstadoDeCreacion estado
 	//Los objetivos pueden ser varios. Los planes tambien, solo que uno será el Vigente
-	static hasMany = [objetivos:ObjetivoCarrera, planesEstudio:PlanEstudio, materias:Materia, coordinadores:Coordinador]
+	static hasMany = [objetivos:ObjetivoCarrera, planesEstudio:PlanEstudio, coordinadores:Coordinador]
 	
 	
 		

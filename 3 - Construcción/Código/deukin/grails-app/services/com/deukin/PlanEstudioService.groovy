@@ -1,4 +1,6 @@
 package com.deukin
+
+
 /**
  * Representa los Servicios para Planes de Estudio.
  * @author Ale Mobile
@@ -7,23 +9,42 @@ package com.deukin
 class PlanEstudioService {
 
 	def usuarioService
-	
-    def serviceMethod() {
 
-    }
-	
-	def getPlanesEstudioLikeParamsAndCoordinadorUser(def texto, def userLogued){
+	def serviceMethod() {
+	}
+
+	def getPlanesEstudioLikeParamsAndCoordinadorUser(String texto, def userLogued){
 		def authorities =  userLogued.authorities
 		def usuarioDeukin = usuarioService.obtenerUsuario(userLogued)
 		def filtrarPlanes = usuarioService.poseeElRol(authorities, 'ROLE_COORDINADOR')
 		def carreras = []
-		def planes = []
+		def filtrados
+		def planes
+
 		if(filtrarPlanes){
 			def persona = Persona.findByUsuario(usuarioDeukin)
-			carreras = Carrera.findAllByCoordinadorAndTituloLike(persona, texto)
+			def coordinador = Coordinador.findByUsuario(usuarioDeukin)
+			def carreraCoordinador = coordinador?.carrera
+			carreras.add(carreraCoordinador)
 		}else{
-			carreras = Carrera.findAll { carrera -> titulo =~ texto }
+			carreras = Carrera.all
 		}
-		planes = PlanEstudio.findAllByCarreraInList(carreras)
-	}	
+		if(carreras){
+			planes = PlanEstudio.findAllByCarreraInList(carreras)
+			filtrados = PlanEstudio.findAllByCarreraInList(carreras)
+			Carrera carreraAux2
+			
+			for (planEstudio in planes) {
+				carreraAux2 = planEstudio.carrera
+				if(!(planEstudio.identificacion.toUpperCase().contains(texto.toUpperCase()))
+				&& !(carreraAux2.titulo.toUpperCase().contains(texto.toUpperCase()))
+				){
+					filtrados.remove(PlanEstudio.get(planEstudio.id))
+				}
+			}
+			filtrados
+		}
+		filtrados
+		
+	}
 }

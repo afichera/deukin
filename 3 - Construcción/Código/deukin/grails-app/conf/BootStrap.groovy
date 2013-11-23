@@ -1,3 +1,5 @@
+import sun.org.mozilla.javascript.internal.ast.ForInLoop;
+
 import com.deukin.Alumno
 import com.deukin.Carrera
 import com.deukin.Contacto
@@ -6,6 +8,7 @@ import com.deukin.Departamento
 import com.deukin.Docente
 import com.deukin.Documento
 import com.deukin.Domicilio
+import com.deukin.EspacioFisico;
 import com.deukin.EstadoDeCreacion
 import com.deukin.EstadoRecurso
 import com.deukin.InstitucionEducativa
@@ -276,7 +279,22 @@ class BootStrap {
 				
 		//Docentes
 		def docente1 = Docente.findByUsuario(docenteUser1) ?: new Docente(apellido:'Fernandez',nombre: 'Juan', usuario: docenteUser1, documento: documentoDNIdocente1, contacto: contactoDocente1, departamento: departamentoIngenieria).save(failOnError:true)
-		docente1.getApellido()
+		
+		
+		int numeroInicial = 101
+		int cantidadCrear = 80
+		def espacioFisico
+		def nroPabellon = 1
+		def ubicacion
+		for(int i = numeroInicial; i<=numeroInicial+cantidadCrear;i++){
+			ubicacion = "Pabellon Nro "+nroPabellon
+			espacioFisico = EspacioFisico.findByNumero(i) ?: new EspacioFisico(numero: i, ubicacion: ubicacion).save(failOnError:true)
+			if(i%10==0){
+				nroPabellon = nroPabellon + 2
+			}
+			
+		}
+		
 	}
 	def destroy = {
 	}

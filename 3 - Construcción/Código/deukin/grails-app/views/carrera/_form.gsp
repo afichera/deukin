@@ -84,16 +84,16 @@
 
 
 
-<div class="fieldcontain ${hasErrors(bean: carreraInstance, field: 'coordinador', 'error')} row">
-	<label for="coordinador" class="col-lg-2 control-label">
-		<g:message code="carrera.coordinador.label" default="Coordinador" />: 
+<div class="fieldcontain ${hasErrors(bean: carreraInstance, field: 'coordinadores', 'error')} row">
+	<label for="coordinadores" class="col-lg-2 control-label">
+		<g:message code="carrera.coordinadores.label" default="Coordinadores" />: 
 		
 	</label>
 	<div class="col-lg-10">
 <%--	<g:select class="form-control"  id="coordinador" name="coordinador.id" from="${com.deukin.Persona.list()}" optionKey="id" value="${carreraInstance?.coordinador?.id}" class="many-to-one" noSelection="['null': '']"/>--%>
-	<g:hiddenField id ="coordinador.id" name ="coordinador.id" value="${carreraInstance?.coordinador?.id}"/>
+<%--	<g:hiddenField id ="coordinador.id" name ="coordinador.id" value="${carreraInstance?.coordinador?.id}"/>
 	<richui:autoComplete class="form-control"  name="coordinadorNombre" minQueryLength="2" onItemSelect="eligeCoordinador(id)" value="${carreraInstance?.coordinador}"
-		action="${createLinkTo('dir': 'carrera/searchCoordinadores')}" forceSelection="false"/>
+		action="${createLinkTo('dir': 'carrera/searchCoordinadores')}" forceSelection="false"/> --%>
 		</div>
 </div>
 

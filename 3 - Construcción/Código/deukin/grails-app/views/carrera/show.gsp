@@ -9,6 +9,7 @@
 <g:set var="entityName"
 	value="${message(code: 'carrera.label', default: 'Carrera')}" />
 <title><g:message code="default.show.label" args="[entityName]" /></title>
+<resource:accordion />
 </head>
 <body>
 	<div class="navbar navbar-inverse" role="navigation">
@@ -142,15 +143,22 @@
 					</div>
 
 					<div class="row">
-						<label id="coordinador-label"
+						<label id="coordinadores-label"
 							class="col-lg-2 control-label property-label"><g:message
-								code="carrera.coordinador.label" default="Coordinador" />:</label>
-						<div class=" col-lg-10 " aria-labelledby="coordinador-label">
-							<g:if test="${carreraInstance?.coordinador}">
-								<g:link controller="persona" action="show"
-									id="${carreraInstance?.coordinador?.id}">
-									${carreraInstance?.coordinador?.encodeAsHTML()}
-								</g:link>
+								code="carrera.coordinadores.label" default="Coordinadores" />:
+								</label>
+										
+							<div class=" col-lg-10 ">
+							<g:if test="${carreraInstance?.coordinadores}">
+								<ul>
+									<g:each in="${carreraInstance.coordinadores}" var="co">
+										<li><span class="" aria-labelledby="coordinadores-label">
+										<g:link
+											controller="coordinadores" action="show" id="${co.id}">
+												${co?.encodeAsHTML()}</g:link>
+										</span></li>
+									</g:each>
+								</ul>
 							</g:if>
 						</div>
 					</div>
@@ -159,61 +167,29 @@
 						<label id="planesEstudio-label"
 							class="col-lg-2 control-label property-label"><g:message
 								code="carrera.planesEstudio.label" default="Planes Estudio" />:
-
+ <g:link
+								controller="planEstudio" action="create"
+								params="['carrera.id': carreraInstance?.id]">
+								<span class="glyphicon glyphicon-plus"
+									title="${message(code: 'default.add.label', args: [message(code: 'planEstudio.label', default: 'Plan de Estudio')])}"></span>
+							</g:link>
 						</label>
 						<div class=" col-lg-10 ">
 							<g:if test="${carreraInstance?.planesEstudio}">
-								<table class="table table-striped table-bordered table-hover">
-									<thead>
-										<tr>
-
-											<th>
-												${message(code: 'planEstudio.identificacion.label', default: 'Identificación')}
-											</th>
-
-											<th>
-												${message(code: 'planEstudio.estado.label', default: 'Estado')}
-											</th>
-
-										</tr>
-									</thead>
-									<tbody>
-										<g:each in="${carreraInstance.planesEstudio}" status="i"
+						<g:each in="${carreraInstance.planesEstudio}" status="i"
 											var="pl">
-											<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
+					<richui:accordion>
+					<richui:accordionItem caption="${fieldValue(bean: pl, field: "identificacion")} - ${fieldValue(bean: pl, field: "estado")}">
+					
+					<%--
 
 												<td><g:link controller="planEstudio" action="show"
 														id="${pl.id}">
 														${fieldValue(bean: pl, field: "identificacion")}
 													</g:link></td>
 
-												<td>
-													${fieldValue(bean: pl, field: "estado")}
-												</td>
-
-
-											</tr>
-										</g:each>
-									</tbody>
-								</table>
-							</g:if>
-						</div>
-					</div>
-
-					<div class="row">
-						<label id="materias-label"
-							class="col-lg-2 control-label property-label"><g:message
-								code="carrera.materias.label" default="Materias" />: <g:link
-								controller="materia" action="create"
-								params="['carrera.id': carreraInstance?.id]">
-								<span class="glyphicon glyphicon-plus"
-									title="${message(code: 'default.add.label', args: [message(code: 'materia.label', default: 'Materia')])}"></span>
-							</g:link></label>
-
-
-						<div class=" col-lg-10 ">
-
-							<g:if test="${carreraInstance?.materias}">
+												--%>
+				
 
 								<table class="table table-striped table-bordered table-hover">
 									<thead>
@@ -244,25 +220,25 @@
 									</thead>
 									<tbody>
 										<g:each
-											in="${carreraInstance.materias.sort{a,b-> a.codigo.compareTo(b.codigo)}}"
-											status="i" var="m">
-											<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
+											in="${pl.asignacionesPeriodosMaterias.sort{a,b-> a.materia.codigo.compareTo(b.materia.codigo)}}"
+											status="k" var="m">
+											<tr class="${(k % 2) == 0 ? 'even' : 'odd'}">
 
 												<td><g:link controller="materia" action="show"
-														id="${m.id}">
-														${fieldValue(bean: m, field: "codigo")}
+														id="${m.materia.id}">
+														${fieldValue(bean: m.materia, field: "codigo")}
 													</g:link></td>
 
 												<td>
-													${fieldValue(bean: m, field: "nombre")}
+													${fieldValue(bean: m.materia, field: "nombre")}
 												</td>
 
 												<td>
-													${fieldValue(bean: m, field: "cantidadDocentesRequeridos")}
+													${fieldValue(bean: m.materia, field: "cantidadDocentesRequeridos")}
 												</td>
 
 												<td>
-													${fieldValue(bean: m, field: "cantidadUnidadesHorarias")}
+													${fieldValue(bean: m.materia, field: "cantidadUnidadesHorarias")}
 												</td>
 												<td>
 																			<g:if test="${correlatividades}">
@@ -286,14 +262,22 @@
 										</g:each>
 									</tbody>
 								</table>
+								<g:link controller="planEstudio" action="show"
+														id="${pl.id}">
+														Ir al plan
+													</g:link>
+						</richui:accordionItem>
+						</richui:accordion>	
+
+
+										
+										</g:each>
+							
 							</g:if>
 						</div>
 					</div>
 
-
-
-
-
+	
 					<g:form>
 						<fieldset class="buttons">
 							<g:hiddenField name="id" value="${carreraInstance?.id}" />

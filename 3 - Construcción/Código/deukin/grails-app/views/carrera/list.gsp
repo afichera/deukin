@@ -30,8 +30,6 @@
 					
 						<g:sortableColumn property="descripcion" title="${message(code: 'carrera.descripcion.label', default: 'Descripción')}" />
 					
-						<g:sortableColumn property="coordinador" title="${message(code: 'carrera.coordinador.label', default: 'Coordinador')}" />
-						
 						<g:sortableColumn property="estado" title="${message(code: 'carrera.estado.label', default: 'Estado')}" />
 					
 					</tr>
@@ -48,8 +46,7 @@
 					
 						<td>${fieldValue(bean: carreraInstance, field: "descripcion")}</td>
 					
-						<td>${fieldValue(bean: carreraInstance, field: "coordinador")}</td>
-					
+				
 						<td>${fieldValue(bean: carreraInstance, field: "estado")}</td>
 					
 					</tr>

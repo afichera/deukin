@@ -30,7 +30,7 @@
 					
 						<g:sortableColumn property="cantidadUnidadesHorarias" title="${message(code: 'materia.cantidadUnidadesHorarias.label', default: 'Cantidad Unidades Horarias')}" />
 					
-						<g:sortableColumn property="carrera" title="${message(code: 'materia.carrera.label', default: 'Carrera')}" />
+						<g:sortableColumn property="PlanEstudio" title="${message(code: 'materia.PlanEstudio.label', default: 'Plan de Estudio - Carrera')}" />
 						
 					
 					</tr>
@@ -47,7 +47,7 @@
 					
 						<td>${fieldValue(bean: materiaInstance, field: "cantidadUnidadesHorarias")}</td>
 					
-						<td>${fieldValue(bean: materiaInstance, field: "carrera")}</td>
+						<td>${fieldValue(bean: materiaInstance, field: "planEstudio")}</td>
 					
 					</tr>
 				</g:each>

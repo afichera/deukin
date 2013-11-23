@@ -7,7 +7,7 @@ package com.deukin
 class AsignacionPeriodoMateria {
 
 	Materia materia
-	PeriodoAcademico periodo
+	PeriodoDedicacion periodo
 	static belongsTo = [planEstudio:PlanEstudio]
 
 	static constraints = {

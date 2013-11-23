@@ -42,14 +42,14 @@
 	<div class=" col-lg-9 "><g:field  class="form-control" name="cantidadUnidadesHorarias" type="number" value="${materiaInstance.cantidadUnidadesHorarias}" required=""/></div>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: materiaInstance, field: 'carrera', 'error')} required row">
-	<label for="carrera" class="control-label col-lg-3">
-		<g:message code="materia.carrera.label" default="Carrera" />
+<div class="fieldcontain ${hasErrors(bean: materiaInstance, field: 'planEstudio', 'error')} required row">
+	<label for="planEstudio" class="control-label col-lg-3">
+		<g:message code="materia.planEstudio.label" default="Plan de Estudio" />
 		*: 
 	</label>
-	<g:hiddenField id ="carrera.id" name ="carrera.id" value="${materiaInstance?.carrera?.id}"/>
-<div class=" col-lg-9 ">	<richui:autoComplete name="carreraTitulo" minQueryLength="2" onItemSelect="eligeCarrera(id)" value="${materiaInstance?.carrera}"
-		action="${createLinkTo('dir': 'materia/searchCarrerasAutocomplete')}" forceSelection="false"  class="form-control" /></div>
+	<g:hiddenField id ="planEstudio.id" name ="planEstudio.id" value="${materiaInstance?.planEstudio?.id}"/>
+<div class=" col-lg-9 ">	<richui:autoComplete name="planEstudioIdentificacion" minQueryLength="2" onItemSelect="eligePlanEstudio(id)" value="${materiaInstance?.planEstudio}"
+		action="${createLinkTo('dir': 'materia/searchPlanEstudioAutocomplete')}" forceSelection="false"  class="form-control" /></div>
 <%--	<g:select id="carrera" name="carrera.id" from="${com.deukin.Carrera.list()}" optionKey="id" required="" value="${materiaInstance?.carrera?.id}" class="many-to-one"/>--%>
 </div>
 

@@ -24,7 +24,7 @@ class PlanEstudio {
     }
 	
 	String toString(){
-		identificacion
+		identificacion  + '- '+ carrera
 	}
 	
 }

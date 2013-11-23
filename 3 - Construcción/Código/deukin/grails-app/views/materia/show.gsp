@@ -100,10 +100,10 @@
 						<label id="carrera-label" class="property-label col-lg-3"><g:message
 								code="materia.carrera.label" default="Carrera" />: </label>
 						<div class="col-lg-9">
-							<g:if test="${materiaInstance?.carrera}">
+							<g:if test="${materiaInstance?.planEstudio?.carrera}">
 								<g:link controller="carrera" action="show"
-									id="${materiaInstance?.carrera?.id}">
-									${materiaInstance?.carrera?.encodeAsHTML()}
+									id="${materiaInstance?.planEstudio?.carrera?.id}">
+									${materiaInstance?.planEstudio?.carrera?.titulo}
 								</g:link>
 
 

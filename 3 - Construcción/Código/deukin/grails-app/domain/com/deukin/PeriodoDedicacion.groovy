@@ -14,4 +14,8 @@ class PeriodoDedicacion {
 		anio(unique:['cuatrimestre'])
     }
 	
+	String toString(){
+		anio  + ' - '+ cuatrimestre
+	}
+	
 }

@@ -252,8 +252,12 @@ class BootStrap {
 		def materia18 = Materia.findByCodigo(208)?: new Materia(codigo:208, nombre:'PROGRAMACION WEB 3', cantidadUnidadesHorarias:80, cupoMinimoAlumnos:8, cupoMaximoAlumnos:30, cantidadDocentesRequeridos:2, contenidoMinimo:'Aca va el contenido minimo...', bibliografia:'Acá va la bibliografia.',planEstudio:planEstudio2).save(failOnError:true)
 		
 		//Solo Para Test
-		def periodoDedicacion1 = PeriodoDedicacion.findByAnioAndCuatrimestre(2013, 1)?: new PeriodoDedicacion(anio:2013, cuatrimestre:1).save(failOnError:true)
-		def periodoDedicacion2 = PeriodoDedicacion.findByAnioAndCuatrimestre(2013, 2)?: new PeriodoDedicacion(anio:2013, cuatrimestre:2).save(failOnError:true)
+		def periodoDedicacion1 = PeriodoDedicacion.findByAnioAndCuatrimestre(1, 1)?: new PeriodoDedicacion(anio:1, cuatrimestre:1).save(failOnError:true)
+		def periodoDedicacion2 = PeriodoDedicacion.findByAnioAndCuatrimestre(1, 2)?: new PeriodoDedicacion(anio:1, cuatrimestre:2).save(failOnError:true)
+		def periodoDedicacion3 = PeriodoDedicacion.findByAnioAndCuatrimestre(2, 1)?: new PeriodoDedicacion(anio:1, cuatrimestre:1).save(failOnError:true)
+		def periodoDedicacion4 = PeriodoDedicacion.findByAnioAndCuatrimestre(2, 2)?: new PeriodoDedicacion(anio:1, cuatrimestre:2).save(failOnError:true)
+		def periodoDedicacion5 = PeriodoDedicacion.findByAnioAndCuatrimestre(3, 1)?: new PeriodoDedicacion(anio:1, cuatrimestre:1).save(failOnError:true)
+		def periodoDedicacion6 = PeriodoDedicacion.findByAnioAndCuatrimestre(4, 2)?: new PeriodoDedicacion(anio:1, cuatrimestre:2).save(failOnError:true)
 
 		//Departamentos solo para Test
 

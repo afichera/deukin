@@ -16,7 +16,7 @@ class CurriculumAdjuntoController {
     }
 
     def create() {
-		Persona persona = Persona.get(params.alumno.id)
+		Persona persona = Persona.get(params.persona.id)
 		def curriculumAdjunto = new CurriculumAdjunto()
 		curriculumAdjunto.persona = persona
         [curriculumAdjuntoInstance: curriculumAdjunto]
@@ -37,8 +37,15 @@ class CurriculumAdjuntoController {
         }
 
         flash.message = message(code: 'default.created.message', args: [message(code: 'curriculumAdjunto.label', default: 'CurriculumAdjunto'), curriculumAdjuntoInstance.id])
-		redirect(controller:"alumno", action: "show", id: curriculumAdjuntoInstance.persona.id)
-		
+		if(curriculumAdjuntoInstance.persona instanceof Alumno){
+			redirect(controller:"alumno", action: "show", id: curriculumAdjuntoInstance.persona.id)
+			
+		}
+		if(curriculumAdjuntoInstance.persona instanceof Docente){
+			redirect(controller:"docente", action: "show", id: curriculumAdjuntoInstance.persona.id)
+			
+		}
+				
     }
 	
 	def showArchivo() {

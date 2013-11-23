@@ -22,4 +22,8 @@ class Departamento {
 		vision(nullable:true)
 		contacto(nullable:true)
     }
+	
+	String toString(){
+		nombre
+	}
 }

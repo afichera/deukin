@@ -123,7 +123,7 @@
 				</g:link></li>
 		</g:each>
 		<li class="add"><g:link controller="curriculumAdjunto"
-				action="create" params="['alumno.id': alumnoInstance?.id]">
+				action="create" params="['persona.id': alumnoInstance?.id]">
 				${message(code: 'default.add.label', args: [message(code: 'curriculumAdjunto.label', default: 'CurriculumAdjunto')])}
 			</g:link></li>
 	</ul>

@@ -3,7 +3,7 @@ package com.deukin
 import grails.plugins.springsecurity.Secured
 
 import org.springframework.dao.DataIntegrityViolationException
-@Secured(['ROLE_ADMINISTRADOR_SISTEMA, ROLE_DOCENTE, ROLE_COORDINADOR, ROLE_ADMINISTRATIVO'])
+@Secured(['ROLE_ADMINISTRADOR_SISTEMA', 'ROLE_DOCENTE', 'ROLE_COORDINADOR', 'ROLE_ADMINISTRATIVO'])
 class DocenteController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]

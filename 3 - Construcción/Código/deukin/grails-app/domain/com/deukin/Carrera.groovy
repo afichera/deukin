@@ -22,13 +22,13 @@ class Carrera implements Serializable {
 		
     static constraints = {
 		titulo unique:true, maxSize:200, blank:false
-		condicionIngreso nullable:true, blank:true
+		condicionIngreso nullable:true, blank:true,  maxSize:500
 		planesEstudio nullable:true
 		coordinadores nullable:true
 		objetivos nullable:true
-		fundamentacion nullable:true
-		perfilDelGraduado nullable:true
-		descripcion nullable:true
+		fundamentacion nullable:true, maxSize:50000
+		perfilDelGraduado nullable:true, maxSize:50000
+		descripcion nullable:true, maxSize:50000
 		
 		
 	

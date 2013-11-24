@@ -18,6 +18,8 @@ dataSource {
 	driverClassName = "org.postgresql.Driver"
 	username = "postgres"
 	password = "postgres"
+	charset = "utf8"
+	
 }
 hibernate {
 	cache.use_second_level_cache = true

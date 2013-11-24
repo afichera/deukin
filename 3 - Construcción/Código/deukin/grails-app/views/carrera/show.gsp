@@ -84,7 +84,8 @@
 
 						<div class="  col-lg-10 " aria-labelledby="fundamentacion-label">
 							<g:if test="${carreraInstance?.fundamentacion}">
-								<g:fieldValue bean="${carreraInstance}" field="fundamentacion" />
+								<g:parrafo string="${carreraInstance?.fundamentacion}"/>
+								
 
 							</g:if>
 						</div>
@@ -126,8 +127,7 @@
 								default="Perfil Del Graduado" />: </label>
 						<div class=" col-lg-10 " aria-labelledby="perfilDelGraduado-label">
 							<g:if test="${carreraInstance?.perfilDelGraduado}">
-								<g:fieldValue bean="${carreraInstance}"
-									field="perfilDelGraduado" />
+								<g:parrafo string="${carreraInstance?.perfilDelGraduado}"/>
 							</g:if>
 						</div>
 					</div>
@@ -137,7 +137,7 @@
 								code="carrera.descripcion.label" default="Descripcion" />: </label>
 						<div class=" col-lg-10 " aria-labelledby="descripcion-label">
 							<g:if test="${carreraInstance?.descripcion}">
-								<g:fieldValue bean="${carreraInstance}" field="descripcion" />
+								<g:parrafo string="${carreraInstance?.descripcion}"/>
 							</g:if>
 						</div>
 					</div>
@@ -212,6 +212,14 @@
 											<th>
 												${message(code: 'materia.cantidadUnidadesHorarias.label', default: 'Cantidad Unidades Horarias')}
 											</th>
+											
+											<th>
+												${message(code: 'materia.anio.label', default: 'Año')}
+											</th>
+											
+											<th>
+												${message(code: 'materia.cuatrimestre.label', default: 'Cuatrimestre')}
+											</th>																						
 
 											<th>
 												${message(code: 'materia.correlativas.label', default: 'Correlativas')}
@@ -241,6 +249,17 @@
 												<td>
 													${fieldValue(bean: m.materia, field: "cantidadUnidadesHorarias")}
 												</td>
+												
+												<td>
+													${fieldValue(bean: m.periodo, field: "anio")}
+												</td>
+												
+												<td>
+													${fieldValue(bean: m.periodo, field: "cuatrimestre")}
+												</td>												
+												
+												
+												
 												<td>
 																			<g:if test="${correlatividades}">
 

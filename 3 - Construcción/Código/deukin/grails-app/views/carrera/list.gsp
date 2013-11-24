@@ -24,11 +24,7 @@
 					
 						<g:sortableColumn property="titulo" title="${message(code: 'carrera.titulo.label', default: 'Título')}" defaultOrder="true"/>
 					
-						<g:sortableColumn property="fundamentacion" title="${message(code: 'carrera.fundamentacion.label', default: 'Fundamentación')}" />
-					
-						<g:sortableColumn property="perfilDelGraduado" title="${message(code: 'carrera.perfilDelGraduado.label', default: 'Perfil Del Graduado')}" />
-					
-						<g:sortableColumn property="descripcion" title="${message(code: 'carrera.descripcion.label', default: 'Descripción')}" />
+						<g:sortableColumn property="planesEstudio" title="${message(code: 'carrera.planesEstudio.label', default: 'Planes de Estudio')}" />
 					
 						<g:sortableColumn property="estado" title="${message(code: 'carrera.estado.label', default: 'Estado')}" />
 					
@@ -40,14 +36,23 @@
 					
 						<td><g:link action="show" id="${carreraInstance.id}">${fieldValue(bean: carreraInstance, field: "titulo")}</g:link></td>
 					
-						<td>${fieldValue(bean: carreraInstance, field: "fundamentacion")}</td>
+						<td>
+														<g:if test="${carreraInstance?.planesEstudio}">
+								
+									<g:each in="${carreraInstance.planesEstudio}" var="pl">
+									
+										<g:link controller="planEstudio" action="show" id="${pl.id}">
+												${pl?.identificacion.encodeAsHTML()}</g:link><br/>
+										
+									</g:each>
+								
+							</g:if>
+						
+						
+						
+						</td>
 					
-						<td>${fieldValue(bean: carreraInstance, field: "perfilDelGraduado")}</td>
-					
-						<td>${fieldValue(bean: carreraInstance, field: "descripcion")}</td>
-					
-				
-						<td>${fieldValue(bean: carreraInstance, field: "estado")}</td>
+   						<td>${fieldValue(bean: carreraInstance, field: "estado")}</td>
 					
 					</tr>
 				</g:each>

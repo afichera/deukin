@@ -110,6 +110,20 @@
 							</g:if>
 						</div>
 					</div>
+										<div class="row">
+											<label id="planEstudio-label" class="property-label col-lg-3"><g:message
+								code="materia.planEstudio.label" default="Plan de Estudio" />: </label>
+						<div class="col-lg-9">
+							<g:if test="${materiaInstance?.planEstudio}">
+								<g:link controller="planEstudio" action="show"
+									id="${materiaInstance?.planEstudio?.id}">
+									${materiaInstance?.planEstudio?.identificacion}
+								</g:link>
+
+
+							</g:if>
+						</div>
+					</div>
 					<div class="row">
 
 

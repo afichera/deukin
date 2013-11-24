@@ -9,7 +9,7 @@
 <g:set var="entityName"
 	value="${message(code: 'carrera.label', default: 'Carrera')}" />
 <title><g:message code="default.show.label" args="[entityName]" /></title>
-<resource:accordion />
+<resource:accordion skin="custom" />
 </head>
 <body>
 	<div class="navbar navbar-inverse" role="navigation">
@@ -152,10 +152,11 @@
 							<g:if test="${carreraInstance?.coordinadores}">
 								<ul>
 									<g:each in="${carreraInstance.coordinadores}" var="co">
+									
 										<li><span class="" aria-labelledby="coordinadores-label">
 										<g:link
 											controller="coordinadores" action="show" id="${co.id}">
-												${co?.encodeAsHTML()}</g:link>
+												${co?.encodeAsHTML()}<g:if test="${co.coordinadorGeneral}"> (Coordinador General)</g:if></g:link>
 										</span></li>
 									</g:each>
 								</ul>

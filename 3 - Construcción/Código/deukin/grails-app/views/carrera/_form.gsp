@@ -136,47 +136,7 @@
 </div>
 
 
-<div class="fieldcontain ${hasErrors(bean: carreraInstance, field: 'materias', 'error')} row">
-	<label for="materias" class="col-lg-2 control-label">
-		<g:message code="carrera.materias.label" default="Materias" />: 
-		
-	</label>
-	<div class="col-lg-10">
-	<g:if test="${carreraInstance?.materias}">
-									<table class="table table-striped table-bordered table-hover">
-				<thead>
-					<tr>
-					
-						<th>${message(code: 'materia.codigo.label', default: 'Codigo')}</th>
-					
-						<th>${message(code: 'materia.nombre.label', default: 'Nombre')}</th>
-					
-							
-						<th>${message(code: 'materia.cantidadDocentesRequeridos.label', default: 'Cantidad Docentes Requeridos')}</th>
-					
-						<th>${message(code: 'materia.cantidadUnidadesHorarias.label', default: 'Cantidad Unidades Horarias')}</th>
 
-					
-					</tr>
-				</thead>
-				<tbody>
-				<g:each in="${carreraInstance.materias.sort{a,b-> a.codigo.compareTo(b.codigo)}}" status="i"  var="m" >
-					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-					
-						<td><g:link controller="materia" action="show" id="${m.id}">${fieldValue(bean: m, field: "codigo")}</g:link></td>
-					
-						<td>${fieldValue(bean: m, field: "nombre")}</td>
-					
-						<td>${fieldValue(bean: m, field: "cantidadDocentesRequeridos")}</td>
-					
-						<td>${fieldValue(bean: m, field: "cantidadUnidadesHorarias")}</td>
-
-					
-					</tr>
-				</g:each>
-				</tbody>
-			</table>
-</g:if>
 </div>
 </div>
 

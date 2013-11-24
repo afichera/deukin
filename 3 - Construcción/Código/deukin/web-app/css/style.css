@@ -52,3 +52,86 @@ padding-left:0;
 	
 }
 
+
+
+
+#accordion
+.accordion-menu{
+	margin-top:0;
+	
+}
+
+dl.accordion-menu {
+  margin-bottom: 21px;
+  margin-top:0;
+}
+
+dl.accordion-menu dt.a-m-t {
+margin-bottom: 3px;
+
+width:100%;
+color: #18bc9c;
+}
+
+dl.accordion-menu dt.a-m-t-hover{
+
+}
+
+
+dl.accordion-menu dt.a-m-t-down{
+
+	
+}
+
+
+
+
+
+html.accordion-menu-js dt.a-m-t{
+	cursor:pointer;
+	zoom:1;
+}
+
+dl.accordion-menu dd.a-m-d {
+	margin: 0;
+	padding: 0;
+	padding:0;
+}
+
+html.accordion-menu-js dd.a-m-d{
+	display:none;
+}
+
+
+html.accordion-menu-js dd.a-m-d-expand {
+	display:block;
+}
+
+html.accordion-menu-js dd.a-m-d-before-expand {
+	display:block;
+	position:relative;
+	z-index:-1;
+	opacity:0;
+	height:auto !important;
+	visibility:hidden;
+	overflow:visible;
+}
+
+
+html.accordion-menu-js dt.a-m-t-expand {
+
+	
+	
+}
+
+html.accordion-menu-js dd.a-m-d-anim {
+	overflow:hidden;
+	display:block;	
+}
+
+dl.accordion-menu dd.a-m-d .bd{
+	padding:0.5em;
+
+}
+
+

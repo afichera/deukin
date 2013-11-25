@@ -12,6 +12,25 @@
 	</div>
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: cursoInstance, field: 'configuracionesCursoDia', 'error')} ">
+	<label for="configuracionesCursoDia" class="control-label col-lg-2">
+		<g:message code="curso.configuracionesCursoDia.label" default="Configuraciones Curso Dia" />
+		
+	: </label>
+	<div class="col-lg-10">
+	
+<ul class="one-to-many">
+<g:each in="${cursoInstance?.configuracionesCursoDia?}" var="c">
+    <li><g:link controller="configuracionCursoDia" action="show" id="${c.id}">${c?.encodeAsHTML()}</g:link></li>
+</g:each>
+<li class="add">
+<g:link controller="configuracionCursoDia" action="create" params="['curso.id': cursoInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'configuracionCursoDia.label', default: 'ConfiguracionCursoDia')])}</g:link>
+</li>
+</ul>
+
+	</div>
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: cursoInstance, field: 'cronogramaCarrera', 'error')} required">
 	<label for="cronogramaCarrera" class="control-label col-lg-2">
 		<g:message code="curso.cronogramaCarrera.label" default="Cronograma Carrera" />
@@ -32,16 +51,6 @@
 	</div>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: cursoInstance, field: 'espacioFisico', 'error')} required">
-	<label for="espacioFisico" class="control-label col-lg-2">
-		<g:message code="curso.espacioFisico.label" default="Espacio Fisico" />
-		<span class="required-indicator">*</span>
-	: </label>
-	<div class="col-lg-10">
-	<g:select id="espacioFisico" name="espacioFisico.id" from="${com.deukin.EspacioFisico.list()}" optionKey="id" required="" value="${cursoInstance?.espacioFisico?.id}" class="many-to-one"/>
-	</div>
-</div>
-
 <div class="fieldcontain ${hasErrors(bean: cursoInstance, field: 'estadoCurso', 'error')} required">
 	<label for="estadoCurso" class="control-label col-lg-2">
 		<g:message code="curso.estadoCurso.label" default="Estado Curso" />
@@ -49,26 +58,6 @@
 	: </label>
 	<div class="col-lg-10">
 	<g:select name="estadoCurso" from="${com.deukin.EstadoCurso?.values()}" keys="${com.deukin.EstadoCurso.values()*.name()}" required="" value="${cursoInstance?.estadoCurso?.name()}"/>
-	</div>
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: cursoInstance, field: 'horaDesde', 'error')} required">
-	<label for="horaDesde" class="control-label col-lg-2">
-		<g:message code="curso.horaDesde.label" default="Hora Desde" />
-		<span class="required-indicator">*</span>
-	: </label>
-	<div class="col-lg-10">
-	
-	</div>
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: cursoInstance, field: 'horaHasta', 'error')} required">
-	<label for="horaHasta" class="control-label col-lg-2">
-		<g:message code="curso.horaHasta.label" default="Hora Hasta" />
-		<span class="required-indicator">*</span>
-	: </label>
-	<div class="col-lg-10">
-	
 	</div>
 </div>
 

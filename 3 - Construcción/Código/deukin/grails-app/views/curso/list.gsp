@@ -26,13 +26,11 @@
 					
 						<th><g:message code="curso.cronogramaCarrera.label" default="Cronograma Carrera" /></th>
 					
-						<th><g:message code="curso.espacioFisico.label" default="Espacio Fisico" /></th>
-					
 						<g:sortableColumn property="estadoCurso" title="${message(code: 'curso.estadoCurso.label', default: 'Estado Curso <span class="glyphicon glyphicon-sort"></span>')}" />
 					
-						<g:sortableColumn property="horaDesde" title="${message(code: 'curso.horaDesde.label', default: 'Hora Desde <span class="glyphicon glyphicon-sort"></span>')}" />
+						<th><g:message code="curso.materia.label" default="Materia" /></th>
 					
-						<g:sortableColumn property="horaHasta" title="${message(code: 'curso.horaHasta.label', default: 'Hora Hasta <span class="glyphicon glyphicon-sort"></span>')}" />
+						<th><g:message code="curso.turno.label" default="Turno" /></th>
 					
 					</tr>
 				</thead>
@@ -44,13 +42,11 @@
 					
 						<td>${fieldValue(bean: cursoInstance, field: "cronogramaCarrera")}</td>
 					
-						<td>${fieldValue(bean: cursoInstance, field: "espacioFisico")}</td>
-					
 						<td>${fieldValue(bean: cursoInstance, field: "estadoCurso")}</td>
 					
-						<td>${fieldValue(bean: cursoInstance, field: "horaDesde")}</td>
+						<td>${fieldValue(bean: cursoInstance, field: "materia")}</td>
 					
-						<td>${fieldValue(bean: cursoInstance, field: "horaHasta")}</td>
+						<td>${fieldValue(bean: cursoInstance, field: "turno")}</td>
 					
 					</tr>
 				</g:each>

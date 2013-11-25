@@ -43,6 +43,17 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${cursoInstance?.configuracionesCursoDia}">
+				<li class="fieldcontain">
+					<span id="configuracionesCursoDia-label" class="property-label"><g:message code="curso.configuracionesCursoDia.label" default="Configuraciones Curso Dia" /></span>
+					
+						<g:each in="${cursoInstance.configuracionesCursoDia}" var="c">
+						<span class="property-value" aria-labelledby="configuracionesCursoDia-label"><g:link controller="configuracionCursoDia" action="show" id="${c.id}">${c?.encodeAsHTML()}</g:link></span>
+						</g:each>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${cursoInstance?.cronogramaCarrera}">
 				<li class="fieldcontain">
 					<span id="cronogramaCarrera-label" class="property-label"><g:message code="curso.cronogramaCarrera.label" default="Cronograma Carrera" /></span>
@@ -63,38 +74,11 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${cursoInstance?.espacioFisico}">
-				<li class="fieldcontain">
-					<span id="espacioFisico-label" class="property-label"><g:message code="curso.espacioFisico.label" default="Espacio Fisico" /></span>
-					
-						<span class="property-value" aria-labelledby="espacioFisico-label"><g:link controller="espacioFisico" action="show" id="${cursoInstance?.espacioFisico?.id}">${cursoInstance?.espacioFisico?.encodeAsHTML()}</g:link></span>
-					
-				</li>
-				</g:if>
-			
 				<g:if test="${cursoInstance?.estadoCurso}">
 				<li class="fieldcontain">
 					<span id="estadoCurso-label" class="property-label"><g:message code="curso.estadoCurso.label" default="Estado Curso" /></span>
 					
 						<span class="property-value" aria-labelledby="estadoCurso-label"><g:fieldValue bean="${cursoInstance}" field="estadoCurso"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${cursoInstance?.horaDesde}">
-				<li class="fieldcontain">
-					<span id="horaDesde-label" class="property-label"><g:message code="curso.horaDesde.label" default="Hora Desde" /></span>
-					
-						<span class="property-value" aria-labelledby="horaDesde-label"><g:fieldValue bean="${cursoInstance}" field="horaDesde"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${cursoInstance?.horaHasta}">
-				<li class="fieldcontain">
-					<span id="horaHasta-label" class="property-label"><g:message code="curso.horaHasta.label" default="Hora Hasta" /></span>
-					
-						<span class="property-value" aria-labelledby="horaHasta-label"><g:fieldValue bean="${cursoInstance}" field="horaHasta"/></span>
 					
 				</li>
 				</g:if>

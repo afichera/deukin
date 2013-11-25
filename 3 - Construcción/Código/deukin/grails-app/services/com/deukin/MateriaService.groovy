@@ -100,6 +100,12 @@ class MateriaService {
 	
 	def obtenerEquivalentes(Materia materiaPrincipal) {
 		def equivalencias = Equivalencia.findAllByMateriaPrincipal(materiaPrincipal,materiaPrincipal)
+		def materiasequivalentes = []
+		for (equivalenciaInstance in equivalencias)
+		{
+			materiasequivalentes.add(equivalenciaInstance.materiaEquivalente)
+		}
+		materiasequivalentes
 
 	}
 	

@@ -310,7 +310,7 @@
 
 
 											<th>
-												${message(code: 'materia.carrera.label', default: 'Carrera')}
+												${message(code: 'materia.planEstudio.label', default: 'Plan de Estudio - Carrera')}
 											</th>
 
 										</tr>
@@ -330,7 +330,7 @@
 												</td>
 
 												<td>
-													${fieldValue(bean: equivalenciaInstance, field: "carrera")}
+													${fieldValue(bean: equivalenciaInstance, field: "planEstudio")}
 												</td>
 
 											</tr>

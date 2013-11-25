@@ -3,8 +3,8 @@
 <html>
 <head>
 <script type="text/javascript">
-    function eligeCarrera(carreraId){
-      document.getElementById('carrera.id').value = carreraId;
+function eligePlanEstudio(planId){
+    document.getElementById('planEstudio.id').value = planId;
   }
 </script>
 <resource:autoComplete />

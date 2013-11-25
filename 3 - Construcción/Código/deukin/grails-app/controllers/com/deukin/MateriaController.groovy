@@ -4,6 +4,9 @@ import grails.plugins.springsecurity.Secured
 
 import org.springframework.dao.DataIntegrityViolationException
 
+import com.sun.org.apache.bcel.internal.generic.NEW;
+import com.sun.xml.internal.ws.api.streaming.XMLStreamReaderFactory.Default;
+
 @Secured(['ROLE_COORDINADOR','ROLE_ADMINISTRATIVO'])
 class MateriaController {
 
@@ -44,7 +47,7 @@ class MateriaController {
 				planesEstudio.each { plan ->
 					result(){
 						name(plan.identificacion + '-' +plan.carrera.titulo)
-						id(plan)
+						id(plan.id)
 					}
 				}
 			}
@@ -76,12 +79,29 @@ class MateriaController {
 	}
 
 	def save() {
+			
 		def materiaInstance = new Materia(params)
+		
+		
 		if (!materiaInstance.save(flush: true)) {
+			flash.message = message(code: 'xx', default: 'no grabo la materia')
 			render(view: "create", model: [materiaInstance: materiaInstance])
 			return
 		}
+		
+		def planEstudioInstance = PlanEstudio.findById(params.planEstudio.id)
+		def periodoInstance = PeriodoDedicacion.findById(params.periodo.id)
+		def asignacionInstance = new AsignacionPeriodoMateria(materia:materiaInstance, periodo:periodoInstance,planEstudio:planEstudioInstance)
+		if (!asignacionInstance.save(flush: true)) {
+			flash.message = message(code: 'xx', default: 'no grabo la asignacion')
+			render(view: "create", model: [materiaInstance: materiaInstance])
+			return
+		}
+		
 
+		
+
+		
 		flash.message = message(code: 'default.created.message', args: [
 			message(code: 'materia.label', default: 'Materia'),
 			materiaInstance.id
@@ -116,8 +136,10 @@ class MateriaController {
 			redirect(action: "list")
 			return
 		}
+		
+		def asignacionPeriodoMateriaInstance = AsignacionPeriodoMateria.findByMateria(materiaInstance)
 
-		[materiaInstance: materiaInstance]
+		[materiaInstance: materiaInstance, asignacionPeriodoMateriaInstance:asignacionPeriodoMateriaInstance ]
 	}
 
 	def update(Long id, Long version) {
@@ -148,6 +170,35 @@ class MateriaController {
 			render(view: "edit", model: [materiaInstance: materiaInstance])
 			return
 		}
+		
+		
+		def asignacionPeriodoMateriaInstance = AsignacionPeriodoMateria.findByMateria(materiaInstance)
+		if (!asignacionPeriodoMateriaInstance) {
+			flash.message = message(code: 'default.not.found.message', args: [message(code: 'asignacionPeriodoMateria.label', default: 'AsignacionPeriodoMateria'), id])
+			redirect(action: "list")
+			return
+		}
+
+		if (version != null) {
+			if (asignacionPeriodoMateriaInstance.version > version) {
+				asignacionPeriodoMateriaInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
+						  [message(code: 'asignacionPeriodoMateria.label', default: 'AsignacionPeriodoMateria')] as Object[],
+						  "Another user has updated this AsignacionPeriodoMateria while you were editing")
+				render(view: "edit", model: [asignacionPeriodoMateriaInstance: asignacionPeriodoMateriaInstance])
+				return
+			}
+		}
+
+		asignacionPeriodoMateriaInstance.materia = materiaInstance
+		asignacionPeriodoMateriaInstance.periodo = PeriodoDedicacion.findById(params.periodo.id)
+		asignacionPeriodoMateriaInstance.planEstudio=PlanEstudio.findById(params.planEstudio.id)
+
+		if (!asignacionPeriodoMateriaInstance.save(flush: true)) {
+			render(view: "edit", model: [asignacionPeriodoMateriaInstance: asignacionPeriodoMateriaInstance])
+			return
+		}
+
+		
 
 		flash.message = message(code: 'default.updated.message', args: [
 			message(code: 'materia.label', default: 'Materia'),

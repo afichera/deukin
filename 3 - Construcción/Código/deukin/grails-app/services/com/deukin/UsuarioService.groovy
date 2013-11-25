@@ -4,6 +4,7 @@ import com.deukin.exceptions.BusinessException
 
 class UsuarioService {
 
+	def springSecurityService
     def serviceMethod() {
 
     }
@@ -49,5 +50,18 @@ class UsuarioService {
 		usuarios = UsuarioRol.findAllByRol(rol).usuario
 		usuarios
 		
+	}
+	
+	
+	def esElUsuarioLogueado(Long id){
+		def esElUsuarioLogueado = false
+		def usuarioLogueado = obtenerUsuario(springSecurityService.principal)
+		def persona = Persona.findByUsuario(usuarioLogueado)
+		if(persona?.id == id){
+			esElUsuarioLogueado = true
+		}else{
+			esElUsuarioLogueado = false
+		}
+		esElUsuarioLogueado
 	}
 }

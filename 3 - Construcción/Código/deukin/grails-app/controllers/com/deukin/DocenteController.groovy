@@ -7,6 +7,7 @@ import org.springframework.dao.DataIntegrityViolationException
 class DocenteController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
+	def usuarioService
 
     def index() {
         redirect(action: "list", params: params)
@@ -50,6 +51,13 @@ class DocenteController {
             redirect(action: "list")
             return
         }
+		
+		def tienePersmisoEdicion = usuarioService.esElUsuarioLogueado(id)
+		if(!tienePersmisoEdicion){
+			flash.message = message(code: 'permisoEdicion.denegado', args: [message(code: 'docente.label', default: 'Docente'), id])
+			redirect(action: "show", id: docenteInstance.id)
+			return
+		}
 
         [docenteInstance: docenteInstance]
     }

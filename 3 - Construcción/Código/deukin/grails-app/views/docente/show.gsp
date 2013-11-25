@@ -131,8 +131,8 @@
 					</ol>
 					<g:form>
 						<fieldset class="buttons">
-							<g:hiddenField name="id" value="${docenteInstance?.id}" />
-							<g:link class="btn btn-info" action="edit"
+							<g:hiddenField name="id" value="${docenteInstance?.id}" />							
+							<g:link class="btn btn-info" action="edit" 
 								id="${docenteInstance?.id}">
 								<g:message code="default.button.edit.label" default="Edit" />
 							</g:link>

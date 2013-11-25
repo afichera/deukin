@@ -72,6 +72,68 @@ class BootStrap {
 			UsuarioRol.create(docenteUser1, docenteRol, true)
 		}
 
+		def docenteUser2 = Usuario.findByUsername('docente2@deukin.com') ?: new Usuario(
+				username: 'docente2@deukin.com',
+				password: '123456',
+				enabled: true).save(failOnError: true)
+
+		if (!docenteUser2.authorities.contains(docenteRol)) {
+			UsuarioRol.create(docenteUser2, docenteRol, true)
+		}
+
+		def docenteUser3 = Usuario.findByUsername('docente3@deukin.com') ?: new Usuario(
+				username: 'docente3@deukin.com',
+				password: '123456',
+				enabled: true).save(failOnError: true)
+
+		if (!docenteUser3.authorities.contains(docenteRol)) {
+			UsuarioRol.create(docenteUser3, docenteRol, true)
+		}
+
+		def docenteUser4 = Usuario.findByUsername('docente4@deukin.com') ?: new Usuario(
+				username: 'docente4@deukin.com',
+				password: '123456',
+				enabled: true).save(failOnError: true)
+
+		if (!docenteUser4.authorities.contains(docenteRol)) {
+			UsuarioRol.create(docenteUser4, docenteRol, true)
+		}
+
+		def docenteUser5 = Usuario.findByUsername('docente5@deukin.com') ?: new Usuario(
+				username: 'docente5@deukin.com',
+				password: '123456',
+				enabled: true).save(failOnError: true)
+
+		if (!docenteUser5.authorities.contains(docenteRol)) {
+			UsuarioRol.create(docenteUser5, docenteRol, true)
+		}
+
+		def docenteUser6 = Usuario.findByUsername('docente6@deukin.com') ?: new Usuario(
+				username: 'docente6@deukin.com',
+				password: '123456',
+				enabled: true).save(failOnError: true)
+
+		if (!docenteUser6.authorities.contains(docenteRol)) {
+			UsuarioRol.create(docenteUser6, docenteRol, true)
+		}
+
+		def docenteUser7 = Usuario.findByUsername('docente7@deukin.com') ?: new Usuario(
+				username: 'docente7@deukin.com',
+				password: '123456',
+				enabled: true).save(failOnError: true)
+
+		if (!docenteUser7.authorities.contains(docenteRol)) {
+			UsuarioRol.create(docenteUser7, docenteRol, true)
+		}
+
+		def docenteUser8 = Usuario.findByUsername('docente8@deukin.com') ?: new Usuario(
+				username: 'docente8@deukin.com',
+				password: '123456',
+				enabled: true).save(failOnError: true)
+
+		if (!docenteUser8.authorities.contains(docenteRol)) {
+			UsuarioRol.create(docenteUser8, docenteRol, true)
+		}
 
 		//Usuario Coordinador Solo para pruebas
 		def usuarioCoordinador1 = Usuario.findByUsername('coordinador1@deukin.com') ?: new Usuario(
@@ -82,25 +144,25 @@ class BootStrap {
 		if (!usuarioCoordinador1.authorities.contains(coordinadorRol)) {
 			UsuarioRol.create(usuarioCoordinador1, coordinadorRol , true)
 		}
-		
+
 		def usuarioCoordinador2 = Usuario.findByUsername('coordinador2@deukin.com') ?: new Usuario(
-			username: 'coordinador2@deukin.com',
-			password: '123456',
-			enabled: true).save(failOnError: true)
+				username: 'coordinador2@deukin.com',
+				password: '123456',
+				enabled: true).save(failOnError: true)
 
-	if (!usuarioCoordinador2.authorities.contains(coordinadorRol)) {
-		UsuarioRol.create(usuarioCoordinador2, coordinadorRol , true)
-	}
-	
-	def usuarioCoordinador3 = Usuario.findByUsername('coordinador3@deukin.com') ?: new Usuario(
-		username: 'coordinador3@deukin.com',
-		password: '123456',
-		enabled: true).save(failOnError: true)
+		if (!usuarioCoordinador2.authorities.contains(coordinadorRol)) {
+			UsuarioRol.create(usuarioCoordinador2, coordinadorRol , true)
+		}
 
-if (!usuarioCoordinador3.authorities.contains(coordinadorRol)) {
-	UsuarioRol.create(usuarioCoordinador3, coordinadorRol , true)
-}
-		
+		def usuarioCoordinador3 = Usuario.findByUsername('coordinador3@deukin.com') ?: new Usuario(
+				username: 'coordinador3@deukin.com',
+				password: '123456',
+				enabled: true).save(failOnError: true)
+
+		if (!usuarioCoordinador3.authorities.contains(coordinadorRol)) {
+			UsuarioRol.create(usuarioCoordinador3, coordinadorRol , true)
+		}
+
 
 		//Usuario Administrativo Solo para pruebas
 		def usuarioAdministrativo1 = Usuario.findByUsername('administrativo1@deukin.com') ?: new Usuario(
@@ -194,14 +256,31 @@ if (!usuarioCoordinador3.authorities.contains(coordinadorRol)) {
 		def telefono1Coordinador3 = Telefono.findByNumero('1555555552')?: new Telefono(numero: '1555555552', tipoTelefono:TipoTelefono.MOVIL)
 		def telefono1Docente1 = Telefono.findByNumero('444499990000')?: new Telefono(numero: '444499990000', tipoTelefono:TipoTelefono.MOVIL)
 		
-		
+		def telefono1Docente2 = Telefono.findByNumero('444499990002')?: new Telefono(numero: '444499990002', tipoTelefono:TipoTelefono.MOVIL)
+		def telefono1Docente3 = Telefono.findByNumero('444499990003')?: new Telefono(numero: '444499990003', tipoTelefono:TipoTelefono.CASA)
+		def telefono1Docente4 = Telefono.findByNumero('444499990004')?: new Telefono(numero: '444499990004', tipoTelefono:TipoTelefono.MOVIL)
+		def telefono1Docente5 = Telefono.findByNumero('444499990005')?: new Telefono(numero: '444499990005', tipoTelefono:TipoTelefono.TRABAJO)
+		def telefono1Docente6 = Telefono.findByNumero('444499990006')?: new Telefono(numero: '444499990006', tipoTelefono:TipoTelefono.MOVIL)
+		def telefono1Docente7 = Telefono.findByNumero('444499990007')?: new Telefono(numero: '444499990007', tipoTelefono:TipoTelefono.CASA)
+		def telefono1Docente8 = Telefono.findByNumero('444499990008')?: new Telefono(numero: '444499990008', tipoTelefono:TipoTelefono.MOVIL)
+
+
 		def DomicilioAlumno1 = new Domicilio(calle: 'Martin Irigoyen', numero: 556, codigoPostal: 1712,localidad: 'Castelar', observaciones: 'Triplex del Medio.')
 		def DomicilioAlumno2 = new Domicilio(calle: 'Luis Maria Drago', numero: 2519, codigoPostal: 1712,localidad: 'Castelar')
 		def DomicilioCoordinador1 = new Domicilio(calle: 'Acá va la calle', numero: 5555, codigoPostal: 1100,localidad: 'Capital Federal', observaciones: '')
 		def DomicilioCoordinador2 = new Domicilio(calle: 'Acá va la calle', numero: 5555, codigoPostal: 1100,localidad: 'Capital Federal', observaciones: '')
 		def DomicilioCoordinador3 = new Domicilio(calle: 'Acá va la calle', numero: 5555, codigoPostal: 1100,localidad: 'Capital Federal', observaciones: '')
 		def domicilioDocente1 = new Domicilio(calle: 'Rivadavia', numero: 5677, codigoPostal: 5400,localidad: 'Capital Federal', observaciones: 'tocar timbre del medio')
+		def domicilioDocente2 = new Domicilio(calle: 'Rivadavia', numero: 5678, codigoPostal: 5400,localidad: 'Capital Federal', observaciones: 'tocar timbre del medio')
+		def domicilioDocente3 = new Domicilio(calle: 'Rivadavia', numero: 5679, codigoPostal: 5400,localidad: 'Capital Federal', observaciones: 'tocar timbre del medio')
+		def domicilioDocente4 = new Domicilio(calle: 'Rivadavia', numero: 5680, codigoPostal: 5400,localidad: 'Capital Federal', observaciones: 'tocar timbre del medio')
+		def domicilioDocente5 = new Domicilio(calle: 'Rivadavia', numero: 5681, codigoPostal: 5400,localidad: 'Capital Federal', observaciones: 'tocar timbre del medio')
+		def domicilioDocente6 = new Domicilio(calle: 'Rivadavia', numero: 5682, codigoPostal: 5400,localidad: 'Capital Federal', observaciones: 'tocar timbre del medio')
+		def domicilioDocente7 = new Domicilio(calle: 'Rivadavia', numero: 5683, codigoPostal: 5400,localidad: 'Capital Federal', observaciones: 'tocar timbre del medio')
+		def domicilioDocente8 = new Domicilio(calle: 'Rivadavia', numero: 5684, codigoPostal: 5400,localidad: 'Capital Federal', observaciones: 'tocar timbre del medio')
 		
+		
+
 		def contactoAlumno1 = new Contacto(domicilio: DomicilioAlumno1)
 		contactoAlumno1.telefonos = []
 		contactoAlumno1.telefonos.add(telefono1Alumno1)
@@ -211,24 +290,54 @@ if (!usuarioCoordinador3.authorities.contains(coordinadorRol)) {
 		contactoAlumno2.telefonos = []
 		contactoAlumno2.telefonos.add(telefono1Alumno2)
 		contactoAlumno2.telefonos.add(telefono2Alumno2)
-		
+
 		def contactoCoordinador1 = new Contacto(domicilio: DomicilioCoordinador1)
 		contactoCoordinador1.telefonos = []
 		contactoCoordinador1.telefonos.add(telefono1Coordinador1)
-		
+
 		def contactoCoordinador2 = new Contacto(domicilio: DomicilioCoordinador2)
 		contactoCoordinador2.telefonos = []
 		contactoCoordinador2.telefonos.add(telefono1Coordinador2)
-		
+
 		def contactoCoordinador3 = new Contacto(domicilio: DomicilioCoordinador3)
 		contactoCoordinador3.telefonos = []
 		contactoCoordinador3.telefonos.add(telefono1Coordinador3)
-	
+
 		def contactoDocente1 = new Contacto(domicilio: domicilioDocente1)
 		contactoDocente1.telefonos = []
 		contactoDocente1.telefonos.add(telefono1Docente1)
-		
 
+		def contactoDocente2 = new Contacto(domicilio: domicilioDocente2)
+		contactoDocente2.telefonos = []
+		contactoDocente2.telefonos.add(telefono1Docente2)
+
+		def contactoDocente3 = new Contacto(domicilio: domicilioDocente3)
+		contactoDocente3.telefonos = []
+		contactoDocente3.telefonos.add(telefono1Docente3)
+
+		def contactoDocente4 = new Contacto(domicilio: domicilioDocente4)
+		contactoDocente4.telefonos = []
+		contactoDocente4.telefonos.add(telefono1Docente4)
+
+		def contactoDocente5 = new Contacto(domicilio: domicilioDocente5)
+		contactoDocente5.telefonos = []
+		contactoDocente5.telefonos.add(telefono1Docente5)
+
+		def contactoDocente6 = new Contacto(domicilio: domicilioDocente6)
+		contactoDocente6.telefonos = []
+		contactoDocente6.telefonos.add(telefono1Docente6)
+
+		def contactoDocente7 = new Contacto(domicilio: domicilioDocente7)
+		contactoDocente7.telefonos = []
+		contactoDocente7.telefonos.add(telefono1Docente7)
+
+		def contactoDocente8 = new Contacto(domicilio: domicilioDocente8)
+		contactoDocente8.telefonos = []
+		contactoDocente8.telefonos.add(telefono1Docente8)
+
+		
+		
+		
 		//documentos solo para test
 		def documentoDNIAlumno1 = Documento.findByNumeroAndTipoDocumento(28230014, TipoDocumento.DNI)?:new Documento(numero:28230014, tipoDocumento:TipoDocumento.DNI).save(failOnError:true)
 		def documentoCUILAlumno2 = Documento.findByNumeroAndTipoDocumento(20282300142, TipoDocumento.CUIL)?:new Documento(numero:20282300142, tipoDocumento:TipoDocumento.CUIL).save(failOnError:true)
@@ -241,23 +350,30 @@ if (!usuarioCoordinador3.authorities.contains(coordinadorRol)) {
 		def personaCoordinador1 = Coordinador.findByUsuario(usuarioCoordinador1) ?: new Coordinador(apellido: 'GIOIA',nombre: 'CINTHIA', usuario: usuarioCoordinador1, documento: documentoDNICoordinador1, contacto: contactoCoordinador1, coordinadorGeneral:false).save(failOnError:true)
 		def personaCoordinador2 = Coordinador.findByUsuario(usuarioCoordinador2) ?: new Coordinador(apellido: 'ORTHUSTEGUY',nombre: 'FERNANDO', usuario: usuarioCoordinador2, documento: documentoDNICoordinador2, contacto: contactoCoordinador2, coordinadorGeneral:true).save(failOnError:true)
 		def personaCoordinador3 = Coordinador.findByUsuario(usuarioCoordinador3) ?: new Coordinador(apellido: 'RUSTICCINI',nombre: 'ALEJANDRO', usuario: usuarioCoordinador3, documento: documentoDNICoordinador3, contacto: contactoCoordinador3, coordinadorGeneral:false).save(failOnError:true)
-		
-				
+
+
 		def documentoDNIdocente1= Documento.findByNumeroAndTipoDocumento(21111111, TipoDocumento.DNI)?:new Documento(numero:21111111, tipoDocumento:TipoDocumento.DNI).save(failOnError:true)
-		
-		
-		
+		def documentoDNIdocente2= Documento.findByNumeroAndTipoDocumento(21111112, TipoDocumento.DNI)?:new Documento(numero:21111112, tipoDocumento:TipoDocumento.DNI).save(failOnError:true)
+		def documentoDNIdocente3= Documento.findByNumeroAndTipoDocumento(21111113, TipoDocumento.DNI)?:new Documento(numero:21111113, tipoDocumento:TipoDocumento.DNI).save(failOnError:true)
+		def documentoDNIdocente4= Documento.findByNumeroAndTipoDocumento(21111114, TipoDocumento.DNI)?:new Documento(numero:21111114, tipoDocumento:TipoDocumento.DNI).save(failOnError:true)
+		def documentoDNIdocente5= Documento.findByNumeroAndTipoDocumento(21111115, TipoDocumento.DNI)?:new Documento(numero:21111115, tipoDocumento:TipoDocumento.DNI).save(failOnError:true)
+		def documentoDNIdocente6= Documento.findByNumeroAndTipoDocumento(21111116, TipoDocumento.DNI)?:new Documento(numero:21111116, tipoDocumento:TipoDocumento.DNI).save(failOnError:true)
+		def documentoDNIdocente7= Documento.findByNumeroAndTipoDocumento(21111117, TipoDocumento.DNI)?:new Documento(numero:21111117, tipoDocumento:TipoDocumento.DNI).save(failOnError:true)
+		def documentoDNIdocente8= Documento.findByNumeroAndTipoDocumento(21111118, TipoDocumento.DNI)?:new Documento(numero:21111118, tipoDocumento:TipoDocumento.DNI).save(failOnError:true)
+
+
+
 		def coordinadoresCarrera1 = []
 		coordinadoresCarrera1.add(personaCoordinador1)
 		coordinadoresCarrera1.add(personaCoordinador2)
 		coordinadoresCarrera1.add(personaCoordinador3)
-		
-				//carreras solo para test
+
+		//carreras solo para test
 		def carrera1 = Carrera.findByTitulo('TECNICO UNIVERSITARIO EN DESARROLLO WEB')
 		def fundamentacion1 = 'Esta carrera se sustenta en contenidos que promuevan la adquisición de conocimientos básicos en las áreas lingüística y matemática para luego incursionar en las áreas de programación y arquitectura de aplicaciones web que permitan desarrollar y administrar las mismas, programar servicios remotos, diseñar interfaces de usuario, tecnología multimedia y aspectos sociales de las nuevas tecnologías. La articulación de las áreas mencionadas, posibilitará aplicaciones de software con los fundamentos teóricos indispensables y una importante carga horaria destinada a la práctica y al uso de herramientas de desarrollo.\n Resumiendo, se pretende satisfacer las crecientes necesidades del mercado en cuanto a la formación de profesionales expertos en administración y programación de aplicaciones web, con la incorporación de nuevos conocimientos, habilidades, aptitudes y valores, dentro de un sistema curricular flexible que brinde las opciones para encauzar adecuadamente al egresado de acuerdo a las tendencias propias de las diferentes áreas de su profesión.'
 		def perfil1 = 'El Técnico Desarrollador de Aplicaciones web es un profesional que posee conocimientos teóricos y con un destacado manejo de actividades prácticas para desempeñarse en gestiones específicas del diseño, configuración y mantenimiento de aplicaciones web así como también estar en condiciones de interactuar en actividades multidisciplinarias relacionadas con proyectos sobre las mismas. Asimismo, estará capacitado para desarrollar aplicaciones web que contemplen aspectos tales como la seguridad, calidad y accesibilidad, entre otros. '
 		def descripcion1 = 'La carrera se organiza en áreas: área de programación; área de arquitectura; área de comunicaciones y un área denominada de apoyo la cual contiene asignaturas de lingüística, de matemáticas y de normas de calidad. Por tanto se cuenta con asignaturas básicas y complementarias para la adecuada formación del alumno así como también una materia optativa para cubrir tópicos que reflejen el constante avance en este campo.\n El área de Programación brinda una perspectiva completa de lenguajes y técnicas de programación actuales. Se enfoca la especificidad en tres ejes: a) Manejo de estructuras y algoritmos de programación, b) Manejo de bases de datos y estructuras de archivos de datos y c) Técnicas y metodologías de programación web.\n El área de Arquitecturas tiene como propósito acercar al alumno a las tecnologías de hardware y software actuales, presentando sus características principales, componentes, tecnologías actuales y manejo.\n El área de Comunicaciones debe capacitar al alumno para desempeñarse satisfactoriamente y con independencia dentro de las actividades mencionadas en el perfil, y para actualizarse de acuerdo a las nuevas tecnologías de comunicaciones que surgirán durante su actividad laboral.'
-		if(!carrera1){			
+		if(!carrera1){
 			carrera1 = new Carrera(titulo: 'TECNICO UNIVERSITARIO EN DESARROLLO WEB', descripcion:descripcion1, perfilDelGraduado:perfil1,fundamentacion:fundamentacion1, condicionIngreso: 'SECUNDARIO COMPLETO', modalidadAsistencia: ModalidadAsistencia.PRESENCIAL, coordinadores: coordinadoresCarrera1, estado: EstadoDeCreacion.BORRADOR).save(failOnError:true)
 			personaCoordinador1.carrera = carrera1
 			personaCoordinador1.save(failOnError:true)
@@ -266,15 +382,15 @@ if (!usuarioCoordinador3.authorities.contains(coordinadorRol)) {
 			personaCoordinador3.carrera = carrera1
 			personaCoordinador3.save(failOnError:true)
 		}
-		
+
 		def objetivoCarrera1 = new ObjetivoCarrera(carrera:carrera1, descripcion: 'Formar técnicos universitarios con conocimientos, técnicas, herramientas y habilidades para desempeñarse en el mercado laboral actual dando respuesta inmediata a la alta demanda de profesionales en áreas técnicas especializadas como es el desarrollo, mantenimiento y gestión de aplicaciones web.').save(failOnError:true)
 		def objetivoCarrera2 = new ObjetivoCarrera(carrera:carrera1, descripcion: 'Formar técnicos en el empleo de estrategias, metodologías, técnicas y herramientas para abordar la resolución de problemas asociados a aplicaciones y procesos en la Web.').save(failOnError:true)
 		def objetivoCarrera3 = new ObjetivoCarrera(carrera:carrera1, descripcion: 'Formar un egresado con conocimientos teóricos y prácticos en análisis, diseño, programación, mantenimiento, implementación y administración de aplicaciones web.').save(failOnError:true)
 
-		
-		
+
+
 		def carrera2 = Carrera.findByTitulo('INGENIERIO EN INFORMATICA')?:new Carrera(titulo: 'INGENIERIO EN INFORMATICA', descripcion:'INGENIERIA EN INFORMATICA', condicionIngreso: 'SECUNDARIO COMPLETO', modalidadAsistencia: ModalidadAsistencia.PRESENCIAL, estado: EstadoDeCreacion.BORRADOR).save(failOnError:true)
-		
+
 		//Solo Para Test
 		def periodoDedicacion1 = PeriodoDedicacion.findByAnioAndCuatrimestre(1, 1)?: new PeriodoDedicacion(anio:1, cuatrimestre:1).save(failOnError:true)
 		def periodoDedicacion2 = PeriodoDedicacion.findByAnioAndCuatrimestre(1, 2)?: new PeriodoDedicacion(anio:1, cuatrimestre:2).save(failOnError:true)
@@ -283,16 +399,16 @@ if (!usuarioCoordinador3.authorities.contains(coordinadorRol)) {
 		def periodoDedicacion5 = PeriodoDedicacion.findByAnioAndCuatrimestre(3, 1)?: new PeriodoDedicacion(anio:3, cuatrimestre:1).save(failOnError:true)
 		def periodoDedicacion6 = PeriodoDedicacion.findByAnioAndCuatrimestre(4, 2)?: new PeriodoDedicacion(anio:4, cuatrimestre:2).save(failOnError:true)
 
-		
-				
+
+
 		//Planes de Estudio
 		def planEstudio1 = PlanEstudio.findByIdentificacion('TEC_DESA_2011')?:new PlanEstudio(identificacion: 'TEC_DESA_2011', carrera:carrera1, estado: EstadoDeCreacion.OFERTADA, cantidadPeriodosAcademicos: 5).save(failOnError:true)
 		def planEstudio2 = PlanEstudio.findByIdentificacion('TEC_DESA_2014')?:new PlanEstudio(identificacion: 'TEC_DESA_2014', carrera:carrera1, estado: EstadoDeCreacion.SIN_OFERTAR, cantidadPeriodosAcademicos: 5).save(failOnError:true)
 		def planEstudio3 = PlanEstudio.findByIdentificacion('ING_INF_1997')?:new PlanEstudio(identificacion: 'ING_INF_1997', carrera:carrera2, estado: EstadoDeCreacion.OFERTADA, cantidadPeriodosAcademicos: 10).save(failOnError:true)
 		def planEstudio4 = PlanEstudio.findByIdentificacion('ING_INF_2010')?:new PlanEstudio(identificacion: 'ING_INF_2010', carrera:carrera2, estado: EstadoDeCreacion.OFERTADA, cantidadPeriodosAcademicos: 10).save(failOnError:true)
-		
-		
-		
+
+
+
 		//Materias solo para test
 		def materia1 = Materia.findByCodigo(101)?: new Materia(codigo:101, nombre:'BASE DE DATOS 1', cantidadUnidadesHorarias:40, cupoMinimoAlumnos:20, cupoMaximoAlumnos:30, cantidadDocentesRequeridos:2, contenidoMinimo:'Aca va el contenido minimo...', bibliografia:'Acá va la bibliografia.', planEstudio:planEstudio1).save(failOnError:true)
 		def asignacion1 = AsignacionPeriodoMateria.findByMateria(materia1)?: new AsignacionPeriodoMateria(materia:materia1,periodo:periodoDedicacion1,planEstudio:planEstudio1).save(failOnError:true)
@@ -361,7 +477,7 @@ if (!usuarioCoordinador3.authorities.contains(coordinadorRol)) {
 		def materia38 = Materia.findByCodigo(408)?: new Materia(codigo:408, nombre:'PROGRAMACION WEB 3', cantidadUnidadesHorarias:80, cupoMinimoAlumnos:8, cupoMaximoAlumnos:30, cantidadDocentesRequeridos:2, contenidoMinimo:'Aca va el contenido minimo...', bibliografia:'Acá va la bibliografia.',planEstudio:planEstudio4).save(failOnError:true)
 		def asignacion38 = AsignacionPeriodoMateria.findByMateria(materia18)?: new AsignacionPeriodoMateria(materia:materia38,periodo:periodoDedicacion4,planEstudio:planEstudio4).save(failOnError:true)
 
-		
+
 		//Departamentos solo para Test
 
 		def telefonoDepartamentoIngenieria= Telefono.findByNumero('01144444444')?: new Telefono(numero: '01144444444', tipoTelefono:TipoTelefono.TRABAJO)
@@ -382,12 +498,19 @@ if (!usuarioCoordinador3.authorities.contains(coordinadorRol)) {
 		institucionEducativaUnica.departamentos = []
 		institucionEducativaUnica.departamentos.add(departamentoIngenieria)
 		institucionEducativaUnica = institucionEducativaUnica.save(failOnError:true)
-		
-				
-		//Docentes
+
+
+		//Docentes only for Test
 		def docente1 = Docente.findByUsuario(docenteUser1) ?: new Docente(apellido:'Fernandez',nombre: 'Juan', usuario: docenteUser1, documento: documentoDNIdocente1, contacto: contactoDocente1, departamento: departamentoIngenieria).save(failOnError:true)
-		
-		
+		def docente2 = Docente.findByUsuario(docenteUser2) ?: new Docente(apellido:'Gonzalez',nombre: 'Matias', usuario: docenteUser2, documento: documentoDNIdocente2, contacto: contactoDocente2, departamento: departamentoIngenieria).save(failOnError:true)
+		def docente3 = Docente.findByUsuario(docenteUser3) ?: new Docente(apellido:'Rodriguez',nombre: 'Karina', usuario: docenteUser3, documento: documentoDNIdocente3, contacto: contactoDocente3, departamento: departamentoIngenieria).save(failOnError:true)
+		def docente4 = Docente.findByUsuario(docenteUser4) ?: new Docente(apellido:'Iglesias',nombre: 'Maria Fernanda', usuario: docenteUser4, documento: documentoDNIdocente4, contacto: contactoDocente4, departamento: departamentoIngenieria).save(failOnError:true)
+		def docente5 = Docente.findByUsuario(docenteUser5) ?: new Docente(apellido:'Martinez',nombre: 'Sergio', usuario: docenteUser5, documento: documentoDNIdocente5, contacto: contactoDocente5, departamento: departamentoIngenieria).save(failOnError:true)
+		def docente6 = Docente.findByUsuario(docenteUser6) ?: new Docente(apellido:'Perez',nombre: 'Carlos', usuario: docenteUser6, documento: documentoDNIdocente6, contacto: contactoDocente6, departamento: departamentoIngenieria).save(failOnError:true)
+		def docente7 = Docente.findByUsuario(docenteUser7) ?: new Docente(apellido:'Gonzalez',nombre: 'Monica', usuario: docenteUser7, documento: documentoDNIdocente7, contacto: contactoDocente7, departamento: departamentoIngenieria).save(failOnError:true)
+		def docente8 = Docente.findByUsuario(docenteUser8) ?: new Docente(apellido:'Cano',nombre: 'Sergio', usuario: docenteUser8, documento: documentoDNIdocente8, contacto: contactoDocente8, departamento: departamentoIngenieria).save(failOnError:true)
+
+
 		int numeroInicial = 101
 		int cantidadCrear = 80
 		def espacioFisico
@@ -399,9 +522,9 @@ if (!usuarioCoordinador3.authorities.contains(coordinadorRol)) {
 			if(i%10==0){
 				nroPabellon = nroPabellon + 2
 			}
-			
+
 		}
-		
+
 	}
 	def destroy = {
 	}

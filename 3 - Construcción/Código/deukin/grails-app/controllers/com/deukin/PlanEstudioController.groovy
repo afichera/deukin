@@ -1,11 +1,21 @@
 package com.deukin
 
+import grails.plugins.springsecurity.Secured
+
 import org.springframework.dao.DataIntegrityViolationException
 
+
+@Secured(['ROLE_COORDINADOR','ROLE_ADMINISTRATIVO'])
 class PlanEstudioController {
+	
+	def springSecurityService
+	def carreraService
+
+
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
+	
     def index() {
         redirect(action: "list", params: params)
     }
@@ -99,4 +109,23 @@ class PlanEstudioController {
             redirect(action: "show", id: id)
         }
     }
+	
+	
+	def searchCarrerasAutocomplete = {
+		def usuarioLogueado = springSecurityService.principal
+		def queryRegex = "%${params.query}%"
+		def carreras = carreraService.findCarrerasLikeParamasAndCoordinadorUser(queryRegex, usuarioLogueado)
+
+		render(contentType: "text/xml") {
+			results() {
+				carreras.each { carrera ->
+					result(){
+						name(carrera.titulo)
+						id(carrera.id)
+					}
+				}
+			}
+		}
+	}
+	
 }

@@ -5,23 +5,32 @@
 <meta name="layout" content="main">
 <g:set var="entityName"
 	value="${message(code: 'planEstudio.label', default: 'PlanEstudio')}" />
-<title><g:message code="default.edit.label" args="[entityName]" /></title>
+<title><g:message code="planEstudio.edit.label"/></title>
+
+ <resource:autoComplete />
+ 
+  <script type="text/javascript">
+   function eligeCarrera(carreraId){
+	document.getElementById('carrera.id').value = carreraId;
+  }
+  </script>
+
 </head>
 <body>
 	<div class="navbar navbar-inverse" role="navigation">
 		<ul class="nav navbar-nav">
 			<li><g:link class="list" action="list">
-					<g:message code="default.list.label" args="[entityName]" />
+					<g:message code="planEstudio.list.label"/>
 				</g:link></li>
 			<li><g:link class="create" action="create">
-					<g:message code="default.new.label" args="[entityName]" />
+					<g:message code="planEstudio.new.label" />
 				</g:link></li>
 		</ul>
 	</div>
 	<div id="edit-planEstudio"
 		class="content scaffold-edit" role="main">
 		<h1>
-			<g:message code="default.edit.label" args="[entityName]" />
+			<g:message code="planEstudio.edit.label" />
 		</h1>
 		<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
@@ -36,7 +45,7 @@
 			</ul>
 		</g:hasErrors>
 		<div class="row">
-			<div class="col-lg-6">
+			<div class="col-lg-12 col-md-12 col-sx-12 lista-propiedades">
 				<div class="well">
 					<g:form method="post"
 						>

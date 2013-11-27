@@ -5,6 +5,7 @@ import com.deukin.CicloLectivo
 import com.deukin.Contacto
 import com.deukin.Coordinador
 import com.deukin.Correlatividad;
+import com.deukin.CronogramaCarrera;
 import com.deukin.Departamento
 import com.deukin.Docente
 import com.deukin.Documento
@@ -646,6 +647,12 @@ class BootStrap {
 		def periodoAcademico3 = PeriodoAcademico.findByTipoPeriodoAcademicoAndCicloLectivo(TipoPeriodoAcademico.PRIMER_CUATRIMESTRE, cicloLectivo2)?: new PeriodoAcademico(tipoPeriodoAcademico:TipoPeriodoAcademico.PRIMER_CUATRIMESTRE, cicloLectivo:cicloLectivo2, cantidadSemanas:12, fechaInicioPeriodo: fechaInicioPeriodo3, fechaFinPeriodo: fechaFinPeriodo3).save(failOnError:true)
 		def periodoAcademico4 = PeriodoAcademico.findByTipoPeriodoAcademicoAndCicloLectivo(TipoPeriodoAcademico.SEGUNDO_CUATRIMESTRE, cicloLectivo2)?: new PeriodoAcademico(tipoPeriodoAcademico:TipoPeriodoAcademico.SEGUNDO_CUATRIMESTRE, cicloLectivo:cicloLectivo2, cantidadSemanas:12, fechaInicioPeriodo: fechaInicioPeriodo4, fechaFinPeriodo: fechaFinPeriodo4).save(failOnError:true)
 
+		def cronogramaCarrera1 = CronogramaCarrera.findByPlanEstudioAndCicloLectivo(planEstudio1,cicloLectivo1)?: new CronogramaCarrera(planEstudio:planEstudio1,cicloLectivo:cicloLectivo1).save(failOnError:true)
+		def cronogramaCarrera2 = CronogramaCarrera.findByPlanEstudioAndCicloLectivo(planEstudio2,cicloLectivo1)?: new CronogramaCarrera(planEstudio:planEstudio2,cicloLectivo:cicloLectivo1).save(failOnError:true)
+		def cronogramaCarrera3 = CronogramaCarrera.findByPlanEstudioAndCicloLectivo(planEstudio3,cicloLectivo1)?: new CronogramaCarrera(planEstudio:planEstudio3,cicloLectivo:cicloLectivo1).save(failOnError:true)
+		def cronogramaCarrera4 = CronogramaCarrera.findByPlanEstudioAndCicloLectivo(planEstudio4,cicloLectivo1)?: new CronogramaCarrera(planEstudio:planEstudio4,cicloLectivo:cicloLectivo1).save(failOnError:true)
+		
+		
 		
 		
 	}

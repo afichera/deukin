@@ -4,10 +4,12 @@ import com.deukin.Carrera
 import com.deukin.CicloLectivo
 import com.deukin.Contacto
 import com.deukin.Coordinador
+import com.deukin.Correlatividad;
 import com.deukin.Departamento
 import com.deukin.Docente
 import com.deukin.Documento
 import com.deukin.Domicilio
+import com.deukin.Equivalencia;
 import com.deukin.EspacioFisico
 import com.deukin.EstadoDeCreacion
 import com.deukin.EstadoRecurso
@@ -478,6 +480,101 @@ class BootStrap {
 		def materia38 = Materia.findByCodigo(408)?: new Materia(codigo:408, nombre:'PROGRAMACION WEB 3', cantidadUnidadesHorarias:80, cupoMinimoAlumnos:8, cupoMaximoAlumnos:30, cantidadDocentesRequeridos:2, contenidoMinimo:'Aca va el contenido minimo...', bibliografia:'Acá va la bibliografia.',planEstudio:planEstudio4).save(failOnError:true)
 		def asignacion38 = AsignacionPeriodoMateria.findByMateria(materia18)?: new AsignacionPeriodoMateria(materia:materia38,periodo:periodoDedicacion4,planEstudio:planEstudio4).save(failOnError:true)
 
+		//correlatividades
+		def correlatividad1 = Correlatividad.findByMateriaPrincipalAndMateriaPredecesora(materia4,materia2)?:new Correlatividad(materiaPrincipal:materia4,materiaPredecesora:materia2).save(failOnError:true)
+		def correlatividad2 = Correlatividad.findByMateriaPrincipalAndMateriaPredecesora(materia5,materia1)?:new Correlatividad(materiaPrincipal:materia5,materiaPredecesora:materia1).save(failOnError:true)
+		def correlatividad3 = Correlatividad.findByMateriaPrincipalAndMateriaPredecesora(materia6,materia3)?:new Correlatividad(materiaPrincipal:materia6,materiaPredecesora:materia3).save(failOnError:true)
+		def correlatividad4 = Correlatividad.findByMateriaPrincipalAndMateriaPredecesora(materia7,materia4)?:new Correlatividad(materiaPrincipal:materia7,materiaPredecesora:materia4).save(failOnError:true)
+		def correlatividad5 = Correlatividad.findByMateriaPrincipalAndMateriaPredecesora(materia8,materia7)?:new Correlatividad(materiaPrincipal:materia8,materiaPredecesora:materia7).save(failOnError:true)
+		def correlatividad6 = Correlatividad.findByMateriaPrincipalAndMateriaPredecesora(materia8,materia5)?:new Correlatividad(materiaPrincipal:materia8,materiaPredecesora:materia5).save(failOnError:true)
+		def correlatividad11 = Correlatividad.findByMateriaPrincipalAndMateriaPredecesora(materia14,materia12)?:new Correlatividad(materiaPrincipal:materia14,materiaPredecesora:materia12).save(failOnError:true)
+		def correlatividad12 = Correlatividad.findByMateriaPrincipalAndMateriaPredecesora(materia15,materia11)?:new Correlatividad(materiaPrincipal:materia15,materiaPredecesora:materia11).save(failOnError:true)
+		def correlatividad13 = Correlatividad.findByMateriaPrincipalAndMateriaPredecesora(materia16,materia13)?:new Correlatividad(materiaPrincipal:materia16,materiaPredecesora:materia13).save(failOnError:true)
+		def correlatividad14 = Correlatividad.findByMateriaPrincipalAndMateriaPredecesora(materia17,materia14)?:new Correlatividad(materiaPrincipal:materia17,materiaPredecesora:materia14).save(failOnError:true)
+		def correlatividad15 = Correlatividad.findByMateriaPrincipalAndMateriaPredecesora(materia18,materia17)?:new Correlatividad(materiaPrincipal:materia18,materiaPredecesora:materia17).save(failOnError:true)
+		def correlatividad16 = Correlatividad.findByMateriaPrincipalAndMateriaPredecesora(materia18,materia15)?:new Correlatividad(materiaPrincipal:materia18,materiaPredecesora:materia15).save(failOnError:true)
+		def correlatividad21 = Correlatividad.findByMateriaPrincipalAndMateriaPredecesora(materia24,materia22)?:new Correlatividad(materiaPrincipal:materia24,materiaPredecesora:materia22).save(failOnError:true)
+		def correlatividad22 = Correlatividad.findByMateriaPrincipalAndMateriaPredecesora(materia25,materia21)?:new Correlatividad(materiaPrincipal:materia25,materiaPredecesora:materia21).save(failOnError:true)
+		def correlatividad23 = Correlatividad.findByMateriaPrincipalAndMateriaPredecesora(materia26,materia23)?:new Correlatividad(materiaPrincipal:materia26,materiaPredecesora:materia23).save(failOnError:true)
+		def correlatividad24 = Correlatividad.findByMateriaPrincipalAndMateriaPredecesora(materia27,materia24)?:new Correlatividad(materiaPrincipal:materia27,materiaPredecesora:materia24).save(failOnError:true)
+		def correlatividad25 = Correlatividad.findByMateriaPrincipalAndMateriaPredecesora(materia28,materia27)?:new Correlatividad(materiaPrincipal:materia28,materiaPredecesora:materia27).save(failOnError:true)
+		def correlatividad26 = Correlatividad.findByMateriaPrincipalAndMateriaPredecesora(materia28,materia25)?:new Correlatividad(materiaPrincipal:materia28,materiaPredecesora:materia25).save(failOnError:true)
+		def correlatividad31 = Correlatividad.findByMateriaPrincipalAndMateriaPredecesora(materia34,materia32)?:new Correlatividad(materiaPrincipal:materia34,materiaPredecesora:materia32).save(failOnError:true)
+		def correlatividad32 = Correlatividad.findByMateriaPrincipalAndMateriaPredecesora(materia35,materia31)?:new Correlatividad(materiaPrincipal:materia35,materiaPredecesora:materia31).save(failOnError:true)
+		def correlatividad33 = Correlatividad.findByMateriaPrincipalAndMateriaPredecesora(materia36,materia33)?:new Correlatividad(materiaPrincipal:materia36,materiaPredecesora:materia33).save(failOnError:true)
+		def correlatividad34 = Correlatividad.findByMateriaPrincipalAndMateriaPredecesora(materia37,materia34)?:new Correlatividad(materiaPrincipal:materia37,materiaPredecesora:materia34).save(failOnError:true)
+		def correlatividad35 = Correlatividad.findByMateriaPrincipalAndMateriaPredecesora(materia38,materia37)?:new Correlatividad(materiaPrincipal:materia38,materiaPredecesora:materia37).save(failOnError:true)
+		def correlatividad36 = Correlatividad.findByMateriaPrincipalAndMateriaPredecesora(materia38,materia35)?:new Correlatividad(materiaPrincipal:materia38,materiaPredecesora:materia35).save(failOnError:true)
+		
+		//Equivalencias sólo para test
+			//bidireccionales
+		def equivalencia1a = Equivalencia.findByMateriaPrincipalAndMateriaEquivalente(materia1,materia21)?:new Equivalencia(materiaPrincipal:materia1,materiaEquivalente:materia21).save(failOnError:true)		
+		def equivalencia1b= Equivalencia.findByMateriaPrincipalAndMateriaEquivalente(materia21,materia1)?:new Equivalencia(materiaPrincipal:materia21,materiaEquivalente:materia1).save(failOnError:true)
+		def equivalencia2a = Equivalencia.findByMateriaPrincipalAndMateriaEquivalente(materia2,materia22)?:new Equivalencia(materiaPrincipal:materia2,materiaEquivalente:materia22).save(failOnError:true)
+		def equivalencia2b= Equivalencia.findByMateriaPrincipalAndMateriaEquivalente(materia2,materia2)?:new Equivalencia(materiaPrincipal:materia22,materiaEquivalente:materia2).save(failOnError:true)
+		def equivalencia3a = Equivalencia.findByMateriaPrincipalAndMateriaEquivalente(materia3,materia23)?:new Equivalencia(materiaPrincipal:materia3,materiaEquivalente:materia23).save(failOnError:true)
+		def equivalencia3b= Equivalencia.findByMateriaPrincipalAndMateriaEquivalente(materia23,materia3)?:new Equivalencia(materiaPrincipal:materia23,materiaEquivalente:materia3).save(failOnError:true)
+		def equivalencia4a = Equivalencia.findByMateriaPrincipalAndMateriaEquivalente(materia4,materia24)?:new Equivalencia(materiaPrincipal:materia4,materiaEquivalente:materia24).save(failOnError:true)
+		def equivalencia4b= Equivalencia.findByMateriaPrincipalAndMateriaEquivalente(materia24,materia4)?:new Equivalencia(materiaPrincipal:materia24,materiaEquivalente:materia4).save(failOnError:true)
+		def equivalencia5a = Equivalencia.findByMateriaPrincipalAndMateriaEquivalente(materia5,materia25)?:new Equivalencia(materiaPrincipal:materia5,materiaEquivalente:materia25).save(failOnError:true)
+		def equivalencia5b= Equivalencia.findByMateriaPrincipalAndMateriaEquivalente(materia25,materia5)?:new Equivalencia(materiaPrincipal:materia25,materiaEquivalente:materia5).save(failOnError:true)
+		def equivalencia6a = Equivalencia.findByMateriaPrincipalAndMateriaEquivalente(materia6,materia26)?:new Equivalencia(materiaPrincipal:materia6,materiaEquivalente:materia26).save(failOnError:true)
+		def equivalencia6b= Equivalencia.findByMateriaPrincipalAndMateriaEquivalente(materia26,materia6)?:new Equivalencia(materiaPrincipal:materia26,materiaEquivalente:materia6).save(failOnError:true)
+		def equivalencia7a = Equivalencia.findByMateriaPrincipalAndMateriaEquivalente(materia7,materia27)?:new Equivalencia(materiaPrincipal:materia7,materiaEquivalente:materia27).save(failOnError:true)
+		def equivalencia7b= Equivalencia.findByMateriaPrincipalAndMateriaEquivalente(materia27,materia7)?:new Equivalencia(materiaPrincipal:materia27,materiaEquivalente:materia7).save(failOnError:true)
+		def equivalencia8a = Equivalencia.findByMateriaPrincipalAndMateriaEquivalente(materia8,materia28)?:new Equivalencia(materiaPrincipal:materia8,materiaEquivalente:materia28).save(failOnError:true)
+		def equivalencia8b= Equivalencia.findByMateriaPrincipalAndMateriaEquivalente(materia28,materia8)?:new Equivalencia(materiaPrincipal:materia28,materiaEquivalente:materia8).save(failOnError:true)
+		def equivalencia11a = Equivalencia.findByMateriaPrincipalAndMateriaEquivalente(materia11,materia31)?:new Equivalencia(materiaPrincipal:materia11,materiaEquivalente:materia31).save(failOnError:true)
+		def equivalencia11b= Equivalencia.findByMateriaPrincipalAndMateriaEquivalente(materia31,materia11)?:new Equivalencia(materiaPrincipal:materia31,materiaEquivalente:materia11).save(failOnError:true)
+		def equivalencia12a = Equivalencia.findByMateriaPrincipalAndMateriaEquivalente(materia12,materia22)?:new Equivalencia(materiaPrincipal:materia12,materiaEquivalente:materia32).save(failOnError:true)
+		def equivalencia12b= Equivalencia.findByMateriaPrincipalAndMateriaEquivalente(materia32,materia12)?:new Equivalencia(materiaPrincipal:materia32,materiaEquivalente:materia12).save(failOnError:true)
+		def equivalencia13a = Equivalencia.findByMateriaPrincipalAndMateriaEquivalente(materia13,materia33)?:new Equivalencia(materiaPrincipal:materia13,materiaEquivalente:materia33).save(failOnError:true)
+		def equivalencia13b= Equivalencia.findByMateriaPrincipalAndMateriaEquivalente(materia33,materia13)?:new Equivalencia(materiaPrincipal:materia33,materiaEquivalente:materia13).save(failOnError:true)
+		def equivalencia14a = Equivalencia.findByMateriaPrincipalAndMateriaEquivalente(materia14,materia34)?:new Equivalencia(materiaPrincipal:materia14,materiaEquivalente:materia34).save(failOnError:true)
+		def equivalencia14b= Equivalencia.findByMateriaPrincipalAndMateriaEquivalente(materia34,materia14)?:new Equivalencia(materiaPrincipal:materia34,materiaEquivalente:materia14).save(failOnError:true)
+		def equivalencia15a = Equivalencia.findByMateriaPrincipalAndMateriaEquivalente(materia15,materia35)?:new Equivalencia(materiaPrincipal:materia15,materiaEquivalente:materia35).save(failOnError:true)
+		def equivalencia15b= Equivalencia.findByMateriaPrincipalAndMateriaEquivalente(materia35,materia15)?:new Equivalencia(materiaPrincipal:materia35,materiaEquivalente:materia15).save(failOnError:true)
+		def equivalencia16a = Equivalencia.findByMateriaPrincipalAndMateriaEquivalente(materia16,materia36)?:new Equivalencia(materiaPrincipal:materia16,materiaEquivalente:materia36).save(failOnError:true)
+		def equivalencia16b= Equivalencia.findByMateriaPrincipalAndMateriaEquivalente(materia36,materia16)?:new Equivalencia(materiaPrincipal:materia36,materiaEquivalente:materia16).save(failOnError:true)
+		def equivalencia17a = Equivalencia.findByMateriaPrincipalAndMateriaEquivalente(materia17,materia37)?:new Equivalencia(materiaPrincipal:materia17,materiaEquivalente:materia37).save(failOnError:true)
+		def equivalencia17b= Equivalencia.findByMateriaPrincipalAndMateriaEquivalente(materia37,materia17)?:new Equivalencia(materiaPrincipal:materia37,materiaEquivalente:materia17).save(failOnError:true)
+		def equivalencia18a = Equivalencia.findByMateriaPrincipalAndMateriaEquivalente(materia18,materia38)?:new Equivalencia(materiaPrincipal:materia18,materiaEquivalente:materia38).save(failOnError:true)
+		def equivalencia18b= Equivalencia.findByMateriaPrincipalAndMateriaEquivalente(materia38,materia18)?:new Equivalencia(materiaPrincipal:materia38,materiaEquivalente:materia18).save(failOnError:true)
+			//unidireccionales
+		def equivalencia1c = Equivalencia.findByMateriaPrincipalAndMateriaEquivalente(materia1,materia31)?:new Equivalencia(materiaPrincipal:materia1,materiaEquivalente:materia31).save(failOnError:true)
+		def equivalencia1d = Equivalencia.findByMateriaPrincipalAndMateriaEquivalente(materia1,materia11)?:new Equivalencia(materiaPrincipal:materia1,materiaEquivalente:materia11).save(failOnError:true)
+		def equivalencia2c = Equivalencia.findByMateriaPrincipalAndMateriaEquivalente(materia2,materia32)?:new Equivalencia(materiaPrincipal:materia2,materiaEquivalente:materia32).save(failOnError:true)
+		def equivalencia2d = Equivalencia.findByMateriaPrincipalAndMateriaEquivalente(materia2,materia12)?:new Equivalencia(materiaPrincipal:materia2,materiaEquivalente:materia12).save(failOnError:true)
+		def equivalencia3c = Equivalencia.findByMateriaPrincipalAndMateriaEquivalente(materia3,materia33)?:new Equivalencia(materiaPrincipal:materia3,materiaEquivalente:materia33).save(failOnError:true)
+		def equivalencia3d = Equivalencia.findByMateriaPrincipalAndMateriaEquivalente(materia3,materia13)?:new Equivalencia(materiaPrincipal:materia3,materiaEquivalente:materia13).save(failOnError:true)
+		def equivalencia4c = Equivalencia.findByMateriaPrincipalAndMateriaEquivalente(materia4,materia34)?:new Equivalencia(materiaPrincipal:materia4,materiaEquivalente:materia34).save(failOnError:true)
+		def equivalencia4d = Equivalencia.findByMateriaPrincipalAndMateriaEquivalente(materia4,materia14)?:new Equivalencia(materiaPrincipal:materia4,materiaEquivalente:materia14).save(failOnError:true)
+		def equivalencia5c = Equivalencia.findByMateriaPrincipalAndMateriaEquivalente(materia5,materia35)?:new Equivalencia(materiaPrincipal:materia5,materiaEquivalente:materia35).save(failOnError:true)
+		def equivalencia5d = Equivalencia.findByMateriaPrincipalAndMateriaEquivalente(materia5,materia15)?:new Equivalencia(materiaPrincipal:materia5,materiaEquivalente:materia15).save(failOnError:true)
+		def equivalencia6c = Equivalencia.findByMateriaPrincipalAndMateriaEquivalente(materia6,materia36)?:new Equivalencia(materiaPrincipal:materia6,materiaEquivalente:materia36).save(failOnError:true)
+		def equivalencia6d = Equivalencia.findByMateriaPrincipalAndMateriaEquivalente(materia6,materia16)?:new Equivalencia(materiaPrincipal:materia6,materiaEquivalente:materia16).save(failOnError:true)
+		def equivalencia7c = Equivalencia.findByMateriaPrincipalAndMateriaEquivalente(materia7,materia37)?:new Equivalencia(materiaPrincipal:materia7,materiaEquivalente:materia37).save(failOnError:true)
+		def equivalencia7d = Equivalencia.findByMateriaPrincipalAndMateriaEquivalente(materia7,materia17)?:new Equivalencia(materiaPrincipal:materia7,materiaEquivalente:materia17).save(failOnError:true)
+		def equivalencia8c = Equivalencia.findByMateriaPrincipalAndMateriaEquivalente(materia8,materia38)?:new Equivalencia(materiaPrincipal:materia8,materiaEquivalente:materia38).save(failOnError:true)
+		def equivalencia8d = Equivalencia.findByMateriaPrincipalAndMateriaEquivalente(materia8,materia18)?:new Equivalencia(materiaPrincipal:materia8,materiaEquivalente:materia18).save(failOnError:true)
+		def equivalencia11c = Equivalencia.findByMateriaPrincipalAndMateriaEquivalente(materia21,materia31)?:new Equivalencia(materiaPrincipal:materia21,materiaEquivalente:materia31).save(failOnError:true)
+		def equivalencia11d = Equivalencia.findByMateriaPrincipalAndMateriaEquivalente(materia21,materia11)?:new Equivalencia(materiaPrincipal:materia21,materiaEquivalente:materia11).save(failOnError:true)
+		def equivalencia12c = Equivalencia.findByMateriaPrincipalAndMateriaEquivalente(materia22,materia32)?:new Equivalencia(materiaPrincipal:materia22,materiaEquivalente:materia32).save(failOnError:true)
+		def equivalencia12d = Equivalencia.findByMateriaPrincipalAndMateriaEquivalente(materia22,materia12)?:new Equivalencia(materiaPrincipal:materia22,materiaEquivalente:materia12).save(failOnError:true)
+		def equivalencia13c = Equivalencia.findByMateriaPrincipalAndMateriaEquivalente(materia23,materia33)?:new Equivalencia(materiaPrincipal:materia23,materiaEquivalente:materia33).save(failOnError:true)
+		def equivalencia13d = Equivalencia.findByMateriaPrincipalAndMateriaEquivalente(materia23,materia13)?:new Equivalencia(materiaPrincipal:materia23,materiaEquivalente:materia13).save(failOnError:true)
+		def equivalencia14c = Equivalencia.findByMateriaPrincipalAndMateriaEquivalente(materia24,materia34)?:new Equivalencia(materiaPrincipal:materia24,materiaEquivalente:materia34).save(failOnError:true)
+		def equivalencia14d = Equivalencia.findByMateriaPrincipalAndMateriaEquivalente(materia24,materia14)?:new Equivalencia(materiaPrincipal:materia24,materiaEquivalente:materia14).save(failOnError:true)
+		def equivalencia15c = Equivalencia.findByMateriaPrincipalAndMateriaEquivalente(materia25,materia35)?:new Equivalencia(materiaPrincipal:materia25,materiaEquivalente:materia35).save(failOnError:true)
+		def equivalencia15d = Equivalencia.findByMateriaPrincipalAndMateriaEquivalente(materia25,materia15)?:new Equivalencia(materiaPrincipal:materia25,materiaEquivalente:materia15).save(failOnError:true)
+		def equivalencia16c = Equivalencia.findByMateriaPrincipalAndMateriaEquivalente(materia26,materia36)?:new Equivalencia(materiaPrincipal:materia26,materiaEquivalente:materia36).save(failOnError:true)
+		def equivalencia16d = Equivalencia.findByMateriaPrincipalAndMateriaEquivalente(materia26,materia16)?:new Equivalencia(materiaPrincipal:materia26,materiaEquivalente:materia16).save(failOnError:true)
+		def equivalencia17c = Equivalencia.findByMateriaPrincipalAndMateriaEquivalente(materia27,materia37)?:new Equivalencia(materiaPrincipal:materia27,materiaEquivalente:materia37).save(failOnError:true)
+		def equivalencia17d = Equivalencia.findByMateriaPrincipalAndMateriaEquivalente(materia27,materia17)?:new Equivalencia(materiaPrincipal:materia27,materiaEquivalente:materia17).save(failOnError:true)
+		def equivalencia18c = Equivalencia.findByMateriaPrincipalAndMateriaEquivalente(materia28,materia38)?:new Equivalencia(materiaPrincipal:materia28,materiaEquivalente:materia38).save(failOnError:true)
+		def equivalencia18d = Equivalencia.findByMateriaPrincipalAndMateriaEquivalente(materia28,materia18)?:new Equivalencia(materiaPrincipal:materia28,materiaEquivalente:materia18).save(failOnError:true)
+		
+		
 
 		//Departamentos solo para Test
 

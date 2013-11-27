@@ -16,7 +16,7 @@
 						</h3>
 					</div>
 					<ul>
-						<li><g:link controller='proximamente'>
+						<li><g:link class="disabled" controller='proximamente'>
 								<g:message code="secciones.institucion.datos" />
 							</g:link></li>
 						<li><g:link controller='departamento'>
@@ -40,14 +40,14 @@
 				</div>
 			</div>
 			<div class="col-lg-4">
-				<div class="panel panel-info">
+				<div class="panel">
 					<div class="panel-heading">
 						<h3 class="panel-title">
 							<g:message code="secciones.aplicacion" />
 						</h3>
 					</div>
 					<ul>
-						<li><g:link controller='proximamente'>
+						<li><g:link class="disabled" controller='proximamente'>
 								<g:message code="secciones.aplicacion.opciones" />
 							</g:link></li>
 					</ul>

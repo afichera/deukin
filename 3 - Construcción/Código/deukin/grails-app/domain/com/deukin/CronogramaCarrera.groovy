@@ -7,7 +7,7 @@ package com.deukin
  */
 class CronogramaCarrera {
 
-	static hasMany = [cursos:Curso, periodosAcademicos:PeriodoAcademico]
+	static hasMany = [cursos:Curso]
 	static belongsTo = [planEstudio:PlanEstudio]
 	CicloLectivo cicloLectivo
 	

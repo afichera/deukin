@@ -1,8 +1,7 @@
-import java.awt.GraphicsConfiguration.DefaultBufferCapabilities;
-
 import com.deukin.Alumno
-import com.deukin.AsignacionPeriodoMateria;
+import com.deukin.AsignacionPeriodoMateria
 import com.deukin.Carrera
+import com.deukin.CicloLectivo
 import com.deukin.Contacto
 import com.deukin.Coordinador
 import com.deukin.Departamento
@@ -524,6 +523,9 @@ class BootStrap {
 			}
 
 		}
+		Date fechaInicioCiclo1 = Date.parse("dd/MM/yyyy", "01/04/2013")
+		Date fechaFinCiclo1 = new Date('21/12/2014')
+		def cicloLectivo = CicloLectivo.findByCodigo('CICLO LECTIVO 2013') ?: new CicloLectivo(codigo:'CICLO LECTIVO 2013', fechaInicio: new Date(), fechaFin: new Date()).save(failOnError:true)
 
 	}
 	def destroy = {

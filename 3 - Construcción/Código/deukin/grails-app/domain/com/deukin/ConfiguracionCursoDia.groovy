@@ -6,6 +6,7 @@ class ConfiguracionCursoDia {
 	DiaSemana diaSemana
 	EspacioFisico espacioFisico
 	static belongsTo=[curso:Curso]
+	static hasMany = [asignacionesDocenteCurso:AsignacionDocenteCurso]
 	static transients = ['startTime', 'endTime']
 	
 	  Integer horaInicio

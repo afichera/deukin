@@ -11,9 +11,10 @@ class Curso {
 	//Tengo dudas si el belongsTo se puede aplicar a 2 al mismo tiempo.
 	String codigo
 	static belongsTo = [materia:Materia, cronogramaCarrera:CronogramaCarrera]		
-	static hasMany = [docentes:Docente, recursosFijos:Recurso, configuracionesCursoDia:ConfiguracionCursoDia]
+	static hasMany = [configuracionesCursoDia:ConfiguracionCursoDia]
 	Turno turno
 	EstadoCurso estadoCurso
+	PeriodoAcademico periodoAcademico
 	
     static constraints = {
 		codigo(unique:['cronogramaCarrera', 'materia', 'turno'], maxSize:20)

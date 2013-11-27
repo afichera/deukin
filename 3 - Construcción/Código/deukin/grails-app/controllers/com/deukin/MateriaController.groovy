@@ -4,9 +4,6 @@ import grails.plugins.springsecurity.Secured
 
 import org.springframework.dao.DataIntegrityViolationException
 
-import com.sun.org.apache.bcel.internal.generic.NEW;
-import com.sun.xml.internal.ws.api.streaming.XMLStreamReaderFactory.Default;
-
 @Secured(['ROLE_COORDINADOR','ROLE_ADMINISTRATIVO'])
 class MateriaController {
 

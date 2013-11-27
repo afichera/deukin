@@ -2,7 +2,7 @@
 
 
 
-<div class="fieldcontain ${hasErrors(bean: cursoInstance, field: 'codigo', 'error')} ">
+<div class="fieldcontain ${hasErrors(bean: cursoInstance, field: 'codigo', 'error')}   row">
 	<label for="codigo" class="control-label col-lg-2">
 		<g:message code="curso.codigo.label" default="Codigo" />
 		
@@ -12,7 +12,7 @@
 	</div>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: cursoInstance, field: 'configuracionesCursoDia', 'error')} ">
+<div class="fieldcontain ${hasErrors(bean: cursoInstance, field: 'configuracionesCursoDia', 'error')}   row">
 	<label for="configuracionesCursoDia" class="control-label col-lg-2">
 		<g:message code="curso.configuracionesCursoDia.label" default="Configuraciones Curso Dia" />
 		
@@ -31,7 +31,7 @@
 	</div>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: cursoInstance, field: 'cronogramaCarrera', 'error')} required">
+<div class="fieldcontain ${hasErrors(bean: cursoInstance, field: 'cronogramaCarrera', 'error')} required  row">
 	<label for="cronogramaCarrera" class="control-label col-lg-2">
 		<g:message code="curso.cronogramaCarrera.label" default="Cronograma Carrera" />
 		<span class="required-indicator">*</span>
@@ -41,17 +41,7 @@
 	</div>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: cursoInstance, field: 'docentes', 'error')} ">
-	<label for="docentes" class="control-label col-lg-2">
-		<g:message code="curso.docentes.label" default="Docentes" />
-		
-	: </label>
-	<div class="col-lg-10">
-	<g:select name="docentes" from="${com.deukin.Docente.list()}" multiple="multiple" optionKey="id" size="5" value="${cursoInstance?.docentes*.id}" class="many-to-many"/>
-	</div>
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: cursoInstance, field: 'estadoCurso', 'error')} required">
+<div class="fieldcontain ${hasErrors(bean: cursoInstance, field: 'estadoCurso', 'error')} required  row">
 	<label for="estadoCurso" class="control-label col-lg-2">
 		<g:message code="curso.estadoCurso.label" default="Estado Curso" />
 		<span class="required-indicator">*</span>
@@ -61,7 +51,7 @@
 	</div>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: cursoInstance, field: 'materia', 'error')} required">
+<div class="fieldcontain ${hasErrors(bean: cursoInstance, field: 'materia', 'error')} required  row">
 	<label for="materia" class="control-label col-lg-2">
 		<g:message code="curso.materia.label" default="Materia" />
 		<span class="required-indicator">*</span>
@@ -71,17 +61,17 @@
 	</div>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: cursoInstance, field: 'recursosFijos', 'error')} ">
-	<label for="recursosFijos" class="control-label col-lg-2">
-		<g:message code="curso.recursosFijos.label" default="Recursos Fijos" />
-		
+<div class="fieldcontain ${hasErrors(bean: cursoInstance, field: 'periodoAcademico', 'error')} required  row">
+	<label for="periodoAcademico" class="control-label col-lg-2">
+		<g:message code="curso.periodoAcademico.label" default="Periodo Academico" />
+		<span class="required-indicator">*</span>
 	: </label>
 	<div class="col-lg-10">
-	<g:select name="recursosFijos" from="${com.deukin.Recurso.list()}" multiple="multiple" optionKey="id" size="5" value="${cursoInstance?.recursosFijos*.id}" class="many-to-many"/>
+	<g:select id="periodoAcademico" name="periodoAcademico.id" from="${com.deukin.PeriodoAcademico.list()}" optionKey="id" required="" value="${cursoInstance?.periodoAcademico?.id}" class="many-to-one"/>
 	</div>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: cursoInstance, field: 'turno', 'error')} required">
+<div class="fieldcontain ${hasErrors(bean: cursoInstance, field: 'turno', 'error')} required  row">
 	<label for="turno" class="control-label col-lg-2">
 		<g:message code="curso.turno.label" default="Turno" />
 		<span class="required-indicator">*</span>

@@ -24,7 +24,7 @@
 			<g:message code="default.edit.label" args="[entityName]" />
 		</h1>
 		<g:if test="${flash.message}">
-			<div class="message" role="status">${flash.message}</div>
+			<div class="message alert alert-danger" role="status">${flash.message}</div>
 		</g:if>
 		<g:hasErrors bean="${configuracionCursoDiaInstance}">
 			<ul class="alert alert-danger" role="alert">

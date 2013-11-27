@@ -16,17 +16,23 @@
 		<div id="list-configuracionCursoDia" class="content scaffold-list" role="main">
 			<h1><g:message code="default.list.label" args="[entityName]" /></h1>
 			<g:if test="${flash.message}">
-			<div class="message" role="status">${flash.message}</div>
+			<div class="message alert alert-info" role="status">${flash.message}</div>
 			</g:if>
 			<table class="table table-striped table-bordered table-hover">
 				<thead>
 					<tr>
 					
+						<g:sortableColumn property="horaInicio" title="${message(code: 'configuracionCursoDia.horaInicio.label', default: 'Hora Inicio')}" />
+					
+						<g:sortableColumn property="horaFin" title="${message(code: 'configuracionCursoDia.horaFin.label', default: 'Hora Fin')}" />
+					
+						<g:sortableColumn property="minutosInicio" title="${message(code: 'configuracionCursoDia.minutosInicio.label', default: 'Minutos Inicio')}" />
+					
+						<g:sortableColumn property="minutosFin" title="${message(code: 'configuracionCursoDia.minutosFin.label', default: 'Minutos Fin')}" />
+					
 						<th><g:message code="configuracionCursoDia.curso.label" default="Curso" /></th>
 					
-						<g:sortableColumn property="diaSemana" title="${message(code: 'configuracionCursoDia.diaSemana.label', default: 'Dia Semana <span class="glyphicon glyphicon-sort"></span>')}" />
-					
-						<th><g:message code="configuracionCursoDia.espacioFisico.label" default="Espacio Fisico" /></th>
+						<g:sortableColumn property="diaSemana" title="${message(code: 'configuracionCursoDia.diaSemana.label', default: 'Dia Semana')}" />
 					
 					</tr>
 				</thead>
@@ -34,11 +40,17 @@
 				<g:each in="${configuracionCursoDiaInstanceList}" status="i" var="configuracionCursoDiaInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${configuracionCursoDiaInstance.id}">${fieldValue(bean: configuracionCursoDiaInstance, field: "curso")}</g:link></td>
+						<td><g:link action="show" id="${configuracionCursoDiaInstance.id}">${fieldValue(bean: configuracionCursoDiaInstance, field: "horaInicio")}</g:link></td>
+					
+						<td>${fieldValue(bean: configuracionCursoDiaInstance, field: "horaFin")}</td>
+					
+						<td>${fieldValue(bean: configuracionCursoDiaInstance, field: "minutosInicio")}</td>
+					
+						<td>${fieldValue(bean: configuracionCursoDiaInstance, field: "minutosFin")}</td>
+					
+						<td>${fieldValue(bean: configuracionCursoDiaInstance, field: "curso")}</td>
 					
 						<td>${fieldValue(bean: configuracionCursoDiaInstance, field: "diaSemana")}</td>
-					
-						<td>${fieldValue(bean: configuracionCursoDiaInstance, field: "espacioFisico")}</td>
 					
 					</tr>
 				</g:each>

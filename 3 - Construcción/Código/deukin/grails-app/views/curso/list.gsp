@@ -16,19 +16,21 @@
 		<div id="list-curso" class="content scaffold-list" role="main">
 			<h1><g:message code="default.list.label" args="[entityName]" /></h1>
 			<g:if test="${flash.message}">
-			<div class="message" role="status">${flash.message}</div>
+			<div class="message alert alert-info" role="status">${flash.message}</div>
 			</g:if>
 			<table class="table table-striped table-bordered table-hover">
 				<thead>
 					<tr>
 					
-						<g:sortableColumn property="codigo" title="${message(code: 'curso.codigo.label', default: 'Codigo <span class="glyphicon glyphicon-sort"></span>')}" />
+						<g:sortableColumn property="codigo" title="${message(code: 'curso.codigo.label', default: 'Codigo')}" />
 					
 						<th><g:message code="curso.cronogramaCarrera.label" default="Cronograma Carrera" /></th>
 					
-						<g:sortableColumn property="estadoCurso" title="${message(code: 'curso.estadoCurso.label', default: 'Estado Curso <span class="glyphicon glyphicon-sort"></span>')}" />
+						<g:sortableColumn property="estadoCurso" title="${message(code: 'curso.estadoCurso.label', default: 'Estado Curso')}" />
 					
 						<th><g:message code="curso.materia.label" default="Materia" /></th>
+					
+						<th><g:message code="curso.periodoAcademico.label" default="Periodo Academico" /></th>
 					
 						<th><g:message code="curso.turno.label" default="Turno" /></th>
 					
@@ -45,6 +47,8 @@
 						<td>${fieldValue(bean: cursoInstance, field: "estadoCurso")}</td>
 					
 						<td>${fieldValue(bean: cursoInstance, field: "materia")}</td>
+					
+						<td>${fieldValue(bean: cursoInstance, field: "periodoAcademico")}</td>
 					
 						<td>${fieldValue(bean: cursoInstance, field: "turno")}</td>
 					

@@ -15,12 +15,14 @@ import com.deukin.InstitucionEducativa
 import com.deukin.Materia
 import com.deukin.ModalidadAsistencia
 import com.deukin.ObjetivoCarrera
+import com.deukin.PeriodoAcademico
 import com.deukin.PeriodoDedicacion
 import com.deukin.PlanEstudio
 import com.deukin.Recurso
 import com.deukin.Rol
 import com.deukin.Telefono
 import com.deukin.TipoDocumento
+import com.deukin.TipoPeriodoAcademico
 import com.deukin.TipoRecurso
 import com.deukin.TipoTelefono
 import com.deukin.Turno
@@ -523,10 +525,32 @@ class BootStrap {
 			}
 
 		}
+		
 		Date fechaInicioCiclo1 = Date.parse("dd/MM/yyyy", "01/04/2013")
-		Date fechaFinCiclo1 = new Date('21/12/2014')
-		def cicloLectivo = CicloLectivo.findByCodigo('CICLO LECTIVO 2013') ?: new CicloLectivo(codigo:'CICLO LECTIVO 2013', fechaInicio: new Date(), fechaFin: new Date()).save(failOnError:true)
+		Date fechaFinCiclo1 = Date.parse("dd/MM/yyyy", "21/12/2013")
+		def cicloLectivo1 = CicloLectivo.findByCodigo('CICLO LECTIVO 2013') ?: new CicloLectivo(codigo:'CICLO LECTIVO 2013', fechaInicio: fechaInicioCiclo1, fechaFin: fechaFinCiclo1).save(failOnError:true)
+		Date fechaInicioCiclo2 = Date.parse("dd/MM/yyyy", "01/04/2012")
+		Date fechaFinCiclo2 = Date.parse("dd/MM/yyyy", "21/12/2012")
+		def cicloLectivo2 = CicloLectivo.findByCodigo('CICLO LECTIVO 2012') ?: new CicloLectivo(codigo:'CICLO LECTIVO 2012', fechaInicio: fechaInicioCiclo2, fechaFin: fechaFinCiclo2).save(failOnError:true)
+				
+		Date fechaInicioPeriodo1 = Date.parse("dd/MM/yyyy", "01/04/2013")
+		Date fechaFinPeriodo1 = Date.parse("dd/MM/yyyy", "26/07/2013")
+		Date fechaInicioPeriodo2 = Date.parse("dd/MM/yyyy", "26/08/2013")
+		Date fechaFinPeriodo2 = Date.parse("dd/MM/yyyy", "21/12/2013")
 
+		Date fechaInicioPeriodo3 = Date.parse("dd/MM/yyyy", "01/04/2012")
+		Date fechaFinPeriodo3 = Date.parse("dd/MM/yyyy", "26/07/2012")
+		Date fechaInicioPeriodo4 = Date.parse("dd/MM/yyyy", "26/08/2012")
+		Date fechaFinPeriodo4 = Date.parse("dd/MM/yyyy", "21/12/2012")
+
+				
+		def periodoAcademico1 = PeriodoAcademico.findByTipoPeriodoAcademicoAndCicloLectivo(TipoPeriodoAcademico.PRIMER_CUATRIMESTRE, cicloLectivo1)?: new PeriodoAcademico(tipoPeriodoAcademico:TipoPeriodoAcademico.PRIMER_CUATRIMESTRE, cicloLectivo:cicloLectivo1, cantidadSemanas:12, fechaInicioPeriodo: fechaInicioPeriodo1, fechaFinPeriodo: fechaFinPeriodo1).save(failOnError:true)		
+		def periodoAcademico2 = PeriodoAcademico.findByTipoPeriodoAcademicoAndCicloLectivo(TipoPeriodoAcademico.SEGUNDO_CUATRIMESTRE, cicloLectivo1)?: new PeriodoAcademico(tipoPeriodoAcademico:TipoPeriodoAcademico.SEGUNDO_CUATRIMESTRE, cicloLectivo:cicloLectivo1, cantidadSemanas:12, fechaInicioPeriodo: fechaInicioPeriodo2, fechaFinPeriodo: fechaFinPeriodo2).save(failOnError:true)
+		def periodoAcademico3 = PeriodoAcademico.findByTipoPeriodoAcademicoAndCicloLectivo(TipoPeriodoAcademico.PRIMER_CUATRIMESTRE, cicloLectivo2)?: new PeriodoAcademico(tipoPeriodoAcademico:TipoPeriodoAcademico.PRIMER_CUATRIMESTRE, cicloLectivo:cicloLectivo2, cantidadSemanas:12, fechaInicioPeriodo: fechaInicioPeriodo3, fechaFinPeriodo: fechaFinPeriodo3).save(failOnError:true)
+		def periodoAcademico4 = PeriodoAcademico.findByTipoPeriodoAcademicoAndCicloLectivo(TipoPeriodoAcademico.SEGUNDO_CUATRIMESTRE, cicloLectivo2)?: new PeriodoAcademico(tipoPeriodoAcademico:TipoPeriodoAcademico.SEGUNDO_CUATRIMESTRE, cicloLectivo:cicloLectivo2, cantidadSemanas:12, fechaInicioPeriodo: fechaInicioPeriodo4, fechaFinPeriodo: fechaFinPeriodo4).save(failOnError:true)
+
+		
+		
 	}
 	def destroy = {
 	}

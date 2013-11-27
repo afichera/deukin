@@ -13,10 +13,8 @@ class PeriodoAcademico {
 	Integer cantidadSemanas	
 	Date fechaInicioPeriodo
 	Date fechaFinPeriodo
-	Date fechaInicioInscripcion
-	Date fechaFinInscripcion
 	
-	static belongsTo = [CicloLectivo]
+	static belongsTo = [cicloLectivo:CicloLectivo]
 	
     static constraints = {
 		

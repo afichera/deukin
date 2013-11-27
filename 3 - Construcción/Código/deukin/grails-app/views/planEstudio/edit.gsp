@@ -33,7 +33,7 @@
 			<g:message code="planEstudio.edit.label" />
 		</h1>
 		<g:if test="${flash.message}">
-			<div class="message" role="status">${flash.message}</div>
+			<div class="message alert alert-danger" role="status">${flash.message}</div>
 		</g:if>
 		<g:hasErrors bean="${planEstudioInstance}">
 			<ul class="alert alert-danger" role="alert">
@@ -57,10 +57,8 @@
 						<fieldset class="buttons">
 							<g:actionSubmit class="save" action="update" class="btn btn-success"
 								value="${message(code: 'default.button.update.label', default: 'Update')}" />
-							<g:actionSubmit class="btn btn-danger" action="delete"
-								value="${message(code: 'default.button.delete.label', default: 'Delete')}"
-								formnovalidate=""
-								onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+								<g:link class="btn btn-default" controller="planEstudio" action="show" id="${planEstudioInstance?.id}">		
+					<g:message code="cancelar" default="Cancelar" /></g:link>
 						</fieldset>
 					</g:form>
 				</div>

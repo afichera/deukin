@@ -16,19 +16,19 @@
 		<div id="list-planEstudio" class="content scaffold-list" role="main">
 			<h1><g:message code="planEstudio.list.label" /></h1>
 			<g:if test="${flash.message}">
-			<div class="message" role="status">${flash.message}</div>
+			<div class="message  alert alert-info" role="status">${flash.message}</div>
 			</g:if>
 			<table class="table table-striped table-bordered table-hover">
 				<thead>
 					<tr>
 					
-						<g:sortableColumn property="identificacion" title="${message(code: 'planEstudio.identificacion.label', default: 'Identificacion <span class="glyphicon glyphicon-sort"></span>')}" />
+						<g:sortableColumn property="identificacion" title="${message(code: 'planEstudio.identificacion.label', default: 'Identificacion')}" />
 					
-						<g:sortableColumn property="cantidadPeriodosAcademicos" title="${message(code: 'planEstudio.cantidadPeriodosAcademicos.label', default: 'Cantidad Periodos Academicos <span class="glyphicon glyphicon-sort"></span>')}" />
+						<g:sortableColumn property="cantidadPeriodosAcademicos" title="${message(code: 'planEstudio.cantidadPeriodosAcademicos.label', default: 'Cantidad Periodos Academicos')}" />
+						
+						<g:sortableColumn property="carrera" title="${message(code: 'planEstudio.carrera.label', default: 'Carrera')}" />
 					
-						<th><g:message code="planEstudio.carrera.label" default="Carrera" /></th>
-					
-						<g:sortableColumn property="estado" title="${message(code: 'planEstudio.estado.label', default: 'Estado <span class="glyphicon glyphicon-sort"></span>')}" />
+						<g:sortableColumn property="estado" title="${message(code: 'planEstudio.estado.label', default: 'Estado')}" />
 					
 					</tr>
 				</thead>

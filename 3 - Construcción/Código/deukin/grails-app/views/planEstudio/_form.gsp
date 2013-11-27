@@ -11,7 +11,21 @@
 	<g:textField name="identificacion" required="" value="${planEstudioInstance?.identificacion}"/>
 	</div>
 </div>
+ <g:if test="${params.action == 'edit'}">
+<div class="fieldcontain ${hasErrors(bean: planEstudioInstance, field: 'estado', 'error')} required  row">
+	<label for="estado" class="control-label col-lg-2">
+		<g:message code="planEstudio.estado.label" default="Estado" />
+		<span class="required-indicator">*</span>
+	: </label>
+	<div class="col-lg-10">
+	<g:select name="estado" from="${com.deukin.EstadoDeCreacion?.values()}" keys="${com.deukin.EstadoDeCreacion.values()*.name()}" required="" value="${planEstudioInstance?.estado?.name()}" />
+	</div>
+</div>
+</g:if>
+<g:else>
+<g:hiddenField id ="estado" name ="estado" value="BORRADOR"/>
 
+</g:else>
 <div class="fieldcontain ${hasErrors(bean: planEstudioInstance, field: 'cantidadPeriodosAcademicos', 'error')}   row">
 	<label for="cantidadPeriodosAcademicos" class="control-label col-lg-2">
 		<g:message code="planEstudio.cantidadPeriodosAcademicos.label" default="Cantidad Periodos Academicos" />
@@ -38,15 +52,6 @@
 	
 <%--	<g:select id="carrera" name="carrera.id" from="${com.deukin.Carrera.list()}" optionKey="id" required="" value="${planEstudioInstance?.carrera?.id}" class="many-to-one"/>--%>
 	</div>
-</div>
 
-<div class="fieldcontain ${hasErrors(bean: planEstudioInstance, field: 'estado', 'error')} required  row">
-	<label for="estado" class="control-label col-lg-2">
-		<g:message code="planEstudio.estado.label" default="Estado" />
-		<span class="required-indicator">*</span>
-	: </label>
-	<div class="col-lg-10">
-	<g:select name="estado" from="${com.deukin.EstadoDeCreacion?.values()}" keys="${com.deukin.EstadoDeCreacion.values()*.name()}" required="" value="${planEstudioInstance?.estado?.name()}"/>
-	</div>
-</div>
+
 

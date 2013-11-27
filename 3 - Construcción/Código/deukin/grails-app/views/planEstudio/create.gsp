@@ -30,7 +30,7 @@
 			<g:message code="planEstudio.create.label"  />
 		</h1>
 		<g:if test="${flash.message}">
-			<div class="message" role="status">${flash.message}</div>
+			<div class="message alert alert-danger" role="status">${flash.message}</div>
 		</g:if>
 		<g:hasErrors bean="${planEstudioInstance}">
 			<ul class="alert alert-danger" role="alert">
@@ -52,6 +52,17 @@
 						<fieldset class="buttons">
 							<g:submitButton name="create" class="btn btn-primary"
 								value="${message(code: 'default.button.create.label', default: 'Create')}" />
+						<g:if test="${params.carrera}">
+						<g:link class="btn btn-default" controller="carrera" action="show" id="${params.carrera?.id}">
+					<g:message code="cancelar" default="Cancelar" />
+				</g:link>
+						</g:if>
+						<g:else>
+						<g:link class="btn btn-default" controller="planEstudio" action="list" >
+					<g:message code="cancelar" default="Cancelar" /></g:link>
+						</g:else>
+						
+						
 						</fieldset>
 					</g:form>
 				</div>

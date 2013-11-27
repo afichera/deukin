@@ -47,4 +47,16 @@ class PlanEstudioService {
 		filtrados
 		
 	}
+	
+	def obtenerCorrelatividades(PlanEstudio planEstudio) {
+		def correlatividadesTodas = Correlatividad.findAll()
+		def correlatividades = []
+		for (correlatividadInstance in correlatividadesTodas) {
+			if (correlatividadInstance.materiaPrincipal.planEstudio==planEstudio) {
+				correlatividades.add(correlatividadInstance)
+			}
+			
+		}
+		correlatividades
+	}
 }

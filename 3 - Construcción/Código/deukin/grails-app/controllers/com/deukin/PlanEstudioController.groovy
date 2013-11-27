@@ -10,6 +10,7 @@ class PlanEstudioController {
 	
 	def springSecurityService
 	def carreraService
+	def planEstudioService
 
 
 
@@ -47,8 +48,9 @@ class PlanEstudioController {
             redirect(action: "list")
             return
         }
+		def correlatividades = planEstudioService.obtenerCorrelatividades(planEstudioInstance)
 
-        [planEstudioInstance: planEstudioInstance]
+        [planEstudioInstance: planEstudioInstance, correlatividades:correlatividades]
     }
 
     def edit(Long id) {

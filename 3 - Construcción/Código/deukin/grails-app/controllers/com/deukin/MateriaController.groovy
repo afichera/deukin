@@ -103,7 +103,13 @@ class MateriaController {
 			message(code: 'materia.label', default: 'Materia'),
 			materiaInstance.id
 		])
+		if (params.vieneDePlanEstudio=="true") {
+			
+			redirect(controller: "planEstudio", action: "show", id: params.planEstudio.id)
+		}
+		else {
 		redirect(action: "show", id: materiaInstance.id)
+		}
 	}
 
 	def show(Long id) {

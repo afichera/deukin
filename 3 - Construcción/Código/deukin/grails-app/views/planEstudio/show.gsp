@@ -1,13 +1,13 @@
 
 
-<%@ page import="com.deukin.PlanEstudio" %>
+<%@ page import="com.deukin.PlanEstudio"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta name="layout" content="main">
 <g:set var="entityName"
 	value="${message(code: 'planEstudio.label', default: 'PlanEstudio')}" />
-<title><g:message code="planEstudio.show.label"  /></title>
+<title><g:message code="planEstudio.show.label" /></title>
 </head>
 <body>
 	<div class="navbar navbar-inverse" role="navigation">
@@ -21,67 +21,197 @@
 		</ul>
 	</div>
 
-	<div id="show-planEstudio"
-		class="content scaffold-show" role="main">
+	<div id="show-planEstudio" class="content scaffold-show" role="main">
 		<h1>
 			<g:message code="planEstudio.show.label" />
 		</h1>
 		<g:if test="${flash.message}">
-			<div class="message" role="status">${flash.message}</div>
+			<div class="message  alert alert-info" role="status">
+				${flash.message}
+			</div>
 		</g:if>
 		<div class="row">
 			<div class="col-lg-12 col-md-12 col-sx-12 lista-propiedades">
 				<div class="well">
-					<ol class="property-list planEstudio">
+
+
+
+					<div class="fieldcontain row">
+						<label id="identificacion-label" class="property-label col-lg-3"><g:message
+								code="planEstudio.identificacion.label" default="Identificacion" />:
+						</label>
 						
-				<g:if test="${planEstudioInstance?.identificacion}">
-				<li class="fieldcontain">
-					<span id="identificacion-label" class="property-label"><g:message code="planEstudio.identificacion.label" default="Identificacion" /></span>
+							<div class="property-value  col-lg-9"
+								aria-labelledby="identificacion-label">
+								<g:if test="${planEstudioInstance?.identificacion}">
+								<g:fieldValue
+									bean="${planEstudioInstance}" field="identificacion" />
+									</g:if>
+									</div>
+						
+					</div>
+
+
+					<div class="fieldcontain row">
+						<label id="estado-label" class="property-label col-lg-3"><g:message
+								code="planEstudio.estado.label" default="Estado" />: </label>
+						
+							<div class="property-value col-lg-9" aria-labelledby="estado-label">
+							
+							<g:if test="${planEstudioInstance?.estado}"><g:fieldValue
+									bean="${planEstudioInstance}" field="estado" />
+									</g:if></div>
+						
+					</div>
+
+
+					<div class="fieldcontain row">
+						<label id="carrera-label" class="property-label col-lg-3"><g:message
+								code="planEstudio.carrera.label" default="Carrera" />: </label>
+						
+							<div class="property-value col-lg-9" aria-labelledby="carrera-label">
+							<g:if test="${planEstudioInstance?.carrera}">
+							<g:link
+									controller="carrera" action="show"
+									id="${planEstudioInstance?.carrera?.id}">
+									${planEstudioInstance?.carrera?.encodeAsHTML()}
+								</g:link>
+									</g:if>
+								</div>
 					
-						<span class="property-value" aria-labelledby="identificacion-label"><g:fieldValue bean="${planEstudioInstance}" field="identificacion"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${planEstudioInstance?.cantidadPeriodosAcademicos}">
-				<li class="fieldcontain">
-					<span id="cantidadPeriodosAcademicos-label" class="property-label"><g:message code="planEstudio.cantidadPeriodosAcademicos.label" default="Cantidad Periodos Academicos" /></span>
-					
-						<span class="property-value" aria-labelledby="cantidadPeriodosAcademicos-label"><g:fieldValue bean="${planEstudioInstance}" field="cantidadPeriodosAcademicos"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${planEstudioInstance?.asignacionesPeriodosMaterias}">
-				<li class="fieldcontain">
-					<span id="asignacionesPeriodosMaterias-label" class="property-label"><g:message code="planEstudio.asignacionesPeriodosMaterias.label" default="Asignaciones Periodos Materias" /></span>
-					
-						<g:each in="${planEstudioInstance.asignacionesPeriodosMaterias}" var="a">
-						<span class="property-value" aria-labelledby="asignacionesPeriodosMaterias-label"><g:link controller="asignacionPeriodoMateria" action="show" id="${a.id}">${a?.encodeAsHTML()}</g:link></span>
-						</g:each>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${planEstudioInstance?.carrera}">
-				<li class="fieldcontain">
-					<span id="carrera-label" class="property-label"><g:message code="planEstudio.carrera.label" default="Carrera" /></span>
-					
-						<span class="property-value" aria-labelledby="carrera-label"><g:link controller="carrera" action="show" id="${planEstudioInstance?.carrera?.id}">${planEstudioInstance?.carrera?.encodeAsHTML()}</g:link></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${planEstudioInstance?.estado}">
-				<li class="fieldcontain">
-					<span id="estado-label" class="property-label"><g:message code="planEstudio.estado.label" default="Estado" /></span>
-					
-						<span class="property-value" aria-labelledby="estado-label"><g:fieldValue bean="${planEstudioInstance}" field="estado"/></span>
-					
-				</li>
-				</g:if>
-			
-					</ol>
+					</div>
+
+
+					<div class="fieldcontain row">
+						<label id="cantidadPeriodosAcademicos-label"
+							class="property-label col-lg-3"><g:message
+								code="planEstudio.cantidadPeriodosAcademicos.label"
+								default="Cantidad Periodos Academicos" />: </label>
+
+						<div class="property-value col-lg-9"
+							aria-labelledby="cantidadPeriodosAcademicos-label">
+							<g:if test="${planEstudioInstance?.cantidadPeriodosAcademicos}">
+								<g:fieldValue bean="${planEstudioInstance}"
+									field="cantidadPeriodosAcademicos" />
+							</g:if>
+						</div>
+
+					</div>
+
+
+
+
+
+					<div class="fieldcontain row">
+						<label id="materias-label" class="property-label col-lg-3"><g:message
+								code="planEstudio.materias.label" default="Materias" />: <g:link
+								controller="materia" action="create"
+								params="['planEstudio.id': planEstudioInstance?.id]">
+								<span class="glyphicon glyphicon-plus"
+									title="${message(code: 'default.add.label', args: [message(code: 'materia.label', default: 'Materia')])}"></span>
+							</g:link> </label>
+						<div class="col-lg-12">
+							<g:if test="${planEstudioInstance?.asignacionesPeriodosMaterias}">
+
+								<table class="table table-striped table-bordered table-hover">
+									<thead>
+										<tr>
+
+											<th>
+												${message(code: 'materia.codigo.label', default: 'Codigo')}
+											</th>
+
+											<th>
+												${message(code: 'materia.nombre.label', default: 'Nombre')}
+											</th>
+
+
+											<th>
+												${message(code: 'materia.cantidadDocentesRequeridos.label', default: 'Cantidad Docentes Requeridos')}
+											</th>
+
+											<th>
+												${message(code: 'materia.cantidadUnidadesHorarias.label', default: 'Cantidad Unidades Horarias')}
+											</th>
+
+											<th>
+												${message(code: 'materia.anio.label', default: 'Año')}
+											</th>
+
+											<th>
+												${message(code: 'materia.cuatrimestre.label', default: 'Cuatrimestre')}
+											</th>
+
+											<th>
+												${message(code: 'materia.correlativas.label', default: 'Correlativas')}
+											</th>
+
+										</tr>
+									</thead>
+									<tbody>
+										<g:each
+											in="${planEstudioInstance.asignacionesPeriodosMaterias.sort{a,b-> a.materia.codigo.compareTo(b.materia.codigo)}}"
+											status="k" var="m">
+											<tr class="${(k % 2) == 0 ? 'even' : 'odd'}">
+
+												<td><g:link controller="materia" action="show"
+														id="${m.materia.id}">
+														${fieldValue(bean: m.materia, field: "codigo")}
+													</g:link></td>
+
+												<td>
+													${fieldValue(bean: m.materia, field: "nombre")}
+												</td>
+
+												<td>
+													${fieldValue(bean: m.materia, field: "cantidadDocentesRequeridos")}
+												</td>
+
+												<td>
+													${fieldValue(bean: m.materia, field: "cantidadUnidadesHorarias")}
+												</td>
+
+												<td>
+													${fieldValue(bean: m.periodo, field: "anio")}
+												</td>
+
+												<td>
+													${fieldValue(bean: m.periodo, field: "cuatrimestre")}
+												</td>
+
+
+
+												<td><g:if test="${correlatividades}">
+
+
+														<g:each in="${correlatividades}" status="y" var="c">
+															<g:if test="${c?.materiaPrincipal?.id==m?.materia?.id}">
+																<g:link controller="materia" action="show"
+																	id="${c.materiaPredecesora.id}">
+																	${c?.materiaPredecesora?.encodeAsHTML()}<br />
+																</g:link>
+															</g:if>
+														</g:each>
+
+													</g:if></td>
+
+
+											</tr>
+										</g:each>
+									</tbody>
+								</table>
+
+							</g:if>
+						</div>
+					</div>
+
+
+
+
+
+
+
+
 					<g:form>
 						<fieldset class="buttons">
 							<g:hiddenField name="id" value="${planEstudioInstance?.id}" />

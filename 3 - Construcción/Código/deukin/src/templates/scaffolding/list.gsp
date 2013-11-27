@@ -16,7 +16,7 @@
 		<div id="list-${domainClass.propertyName}" class="content scaffold-list" role="main">
 			<h1><g:message code="default.list.label" args="[entityName]" /></h1>
 			<g:if test="\${flash.message}">
-			<div class="message" role="status">\${flash.message}</div>
+			<div class="message alert alert-info" role="status">\${flash.message}</div>
 			</g:if>
 			<table class="table table-striped table-bordered table-hover">
 				<thead>
@@ -30,7 +30,7 @@
 								if (p.isAssociation()) { %>
 						<th><g:message code="${domainClass.propertyName}.${p.name}.label" default="${p.naturalName}" /></th>
 					<%      } else { %>
-						<g:sortableColumn property="${p.name}" title="\${message(code: '${domainClass.propertyName}.${p.name}.label', default: '${p.naturalName} <span class="glyphicon glyphicon-sort"></span>')}" />
+						<g:sortableColumn property="${p.name}" title="\${message(code: '${domainClass.propertyName}.${p.name}.label', default: '${p.naturalName}')}" />
 					<%  }   }   } %>
 					</tr>
 				</thead>

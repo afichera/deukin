@@ -46,10 +46,27 @@ function eligePlanEstudio(planId){
 						>
 						<fieldset class="form">
 							<g:render template="form" />
+						
+						
 						</fieldset>
 						<fieldset class="buttons">
 							<g:submitButton name="create" class="btn btn-primary"
 								value="${message(code: 'default.button.create.label', default: 'Create')}" />
+										<g:if test="${params.planEstudio}">
+						<g:hiddenField id ="vieneDePlanEstudio" name ="vieneDePlanEstudio" value="true"/>
+						<g:link class="btn btn-default" controller="planEstudio" action="show" id="${params.planEstudio?.id}">
+					<g:message code="cancelar" default="Cancelar" />
+				</g:link>
+						</g:if>
+						<g:else>
+						<g:hiddenField id ="vieneDePlanEstudio" name ="vieneDePlanEstudio" value="false"/>
+						<g:link class="btn btn-default" controller="materia" action="list" >
+					<g:message code="cancelar" default="Cancelar" /></g:link>
+						</g:else>
+						
+						
+						
+						
 						</fieldset>
 					</g:form>
 				</div>

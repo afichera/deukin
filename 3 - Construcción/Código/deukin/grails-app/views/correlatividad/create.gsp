@@ -32,7 +32,7 @@
 			<g:message code="correlatividad.create.label" />
 		</h1>
 		<g:if test="${flash.message}">
-			<div class="message" role="status">${flash.message}</div>
+			<div class="message alert alert-danger" role="status">${flash.message}</div>
 		</g:if>
 		<g:hasErrors bean="${correlatividadInstance}">
 			<ul class="alert alert-danger" role="alert">
@@ -56,11 +56,13 @@
 								value="${message(code: 'default.button.create.label', default: 'Create')}" />
 						
 													<g:if test="${params.materiaPrincipal}">
+						<g:hiddenField id ="vieneDeMateria" name ="vieneDeMateria" value="true"/>
 						<g:link class="btn btn-default" controller="materia" action="show" id="${params.materiaPrincipal?.id}">
 					<g:message code="cancelar" default="Cancelar" />
 				</g:link>
 						</g:if>
 						<g:else>
+						<g:hiddenField id ="vieneDeMateria" name ="vieneDeMateria" value="false"/>
 						<g:link class="btn btn-default" controller="correlatividad" action="list" >
 					<g:message code="cancelar" default="Cancelar" /></g:link>
 						</g:else>

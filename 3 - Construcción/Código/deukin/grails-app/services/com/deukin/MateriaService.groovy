@@ -69,6 +69,7 @@ class MateriaService {
 			def username = usuario?.getUsername()
 			def usuarioDeukin = Usuario.findByUsername(username)
 			def persona = Persona.findByUsuario(usuarioDeukin)
+			def coordinador = Coordinador.findByUsuario(usuarioDeukin)
 			
 			def planes = coordinador.carrera.planesEstudio
 //			def planes = Carrera.findAllByCoordinadorOrCoordinadoresOperativos(persona, persona).planesEstudio

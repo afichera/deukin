@@ -27,7 +27,7 @@
 			<g:message code="correlatividad.show.label" />
 		</h1>
 		<g:if test="${flash.message}">
-			<div class="message" role="status">${flash.message}</div>
+			<div class="message alert alert-info" role="status">${flash.message}</div>
 		</g:if>
 		<div class="row">
 			<div class="col-lg-12 col-md-12 col-sx-12 lista-propiedades">

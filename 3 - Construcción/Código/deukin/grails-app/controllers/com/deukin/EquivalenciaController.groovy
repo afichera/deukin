@@ -31,7 +31,16 @@ class EquivalenciaController {
         }
 
         flash.message = message(code: 'default.created.message', args: [message(code: 'equivalencia.label', default: 'Equivalencia'), equivalenciaInstance.id])
-        redirect(action: "show", id: equivalenciaInstance.id)
+        
+		if (params.vieneDeMateria=="true") {
+			
+			redirect(controller: "materia", action: "show", id: params.materiaPrincipal.id)
+		}
+		else {
+		
+		
+		redirect(action: "show", id: equivalenciaInstance.id)
+		}
     }
 
     def show(Long id) {

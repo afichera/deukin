@@ -61,7 +61,14 @@ class CorrelatividadController {
 					return
 				}
 				flash.message = message(code: 'default.created.message', args: [message(code: 'correlatividad.label', default: 'Correlatividad'), correlatividadInstance.id])
+				
+				if (params.vieneDeMateria=="true") {
+					
+					redirect(controller: "materia", action: "show", id: params.materiaPrincipal.id)
+				}
+				else {
 				redirect(action: "show", id: correlatividadInstance.id)
+				}
 			}
 
 		}catch(Exception ex){

@@ -22,17 +22,20 @@
 				<thead>
 					<tr>
 					
-						<g:sortableColumn property="horaInicio" title="${message(code: 'configuracionCursoDia.horaInicio.label', default: 'Hora Inicio')}" />
+										
+						<th>${message(code: 'cursos.codigo.label', default: 'Código')}</th>
+						
+						<th>${message(code: 'cursos.materia.label', default: 'Materia')}</th>
+						
+						<th>${message(code: 'cursos.espacioFisico.label', default: 'Aula/Laboratorio')}</th>
 					
-						<g:sortableColumn property="horaFin" title="${message(code: 'configuracionCursoDia.horaFin.label', default: 'Hora Fin')}" />
+						<th>${message(code: 'configuracionCursoDia.diaSemana.label', default: 'Día')}</th>
 					
-						<g:sortableColumn property="minutosInicio" title="${message(code: 'configuracionCursoDia.minutosInicio.label', default: 'Minutos Inicio')}" />
+						<th>${message(code: 'configuracionCursoDia.horario.label', default: 'Horario')}</th>
 					
-						<g:sortableColumn property="minutosFin" title="${message(code: 'configuracionCursoDia.minutosFin.label', default: 'Minutos Fin')}" />
-					
-						<th><g:message code="configuracionCursoDia.curso.label" default="Curso" /></th>
-					
-						<g:sortableColumn property="diaSemana" title="${message(code: 'configuracionCursoDia.diaSemana.label', default: 'Dia Semana')}" />
+						<th>${message(code: 'configuracionCursoDia.docentes.label', default: 'Docentes')}</th>
+								
+						
 					
 					</tr>
 				</thead>
@@ -40,17 +43,23 @@
 				<g:each in="${configuracionCursoDiaInstanceList}" status="i" var="configuracionCursoDiaInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${configuracionCursoDiaInstance.id}">${fieldValue(bean: configuracionCursoDiaInstance, field: "horaInicio")}</g:link></td>
-					
-						<td>${fieldValue(bean: configuracionCursoDiaInstance, field: "horaFin")}</td>
-					
-						<td>${fieldValue(bean: configuracionCursoDiaInstance, field: "minutosInicio")}</td>
-					
-						<td>${fieldValue(bean: configuracionCursoDiaInstance, field: "minutosFin")}</td>
-					
-						<td>${fieldValue(bean: configuracionCursoDiaInstance, field: "curso")}</td>
-					
+						<td><g:link action="show" id="${configuracionCursoDiaInstance.curso.id}">${fieldValue(bean: configuracionCursoDiaInstance?.curso, field: "codigo")}</g:link></td>					
+						
+						<td>${fieldValue(bean: configuracionCursoDiaInstance?.curso, field: "materia")}</td>
+						
+						<td>${fieldValue(bean: configuracionCursoDiaInstance, field: "espacioFisico")}</td>
+
 						<td>${fieldValue(bean: configuracionCursoDiaInstance, field: "diaSemana")}</td>
+					
+						<td>${configuracionCursoDiaInstance.getStartTime()}-${configuracionCursoDiaInstance.getEndTime()}</td>
+						
+						<td>
+						<g:each in="${configuracionCursoDiaInstance.asignacionesDocenteCurso}" status="y" var="a">
+						<g:link controller="docente" action="show" id="${a.docente.id}">${fieldValue(bean: a, field: "docente")}</g:link><br/>
+						</g:each>
+						</td>
+					
+
 					
 					</tr>
 				</g:each>

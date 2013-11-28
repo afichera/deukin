@@ -2,8 +2,11 @@ package com.deukin
 
 import grails.plugins.springsecurity.Secured
 
+import org.springframework.dao.DataIntegrityViolationException
+@Secured(['ROLE_COORDINADOR','ROLE_ADMINISTRATIVO','ROLE_DOCENTE', 'ROLE_ADMINISTRADOR_SISTEMA'])
+
 class CursosController {
-	@Secured(['ROLE_COORDINADOR','ROLE_ADMINISTRATIVO','ROLE_DOCENTE', 'ROLE_ADMINISTRADOR_SISTEMA'])
+	
 	static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
     def index() {
 		redirect(action: "list", params: params)

@@ -15,4 +15,8 @@ class EspacioFisico {
 		ubicacion(maxLength:200)
 		observaciones(nullable:true)
     }
+	
+	String toString(){
+		numero
+	}
 }

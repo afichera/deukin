@@ -22,7 +22,7 @@
 						<li><g:link controller='materia'>
 								<g:message code="secciones.academicas.materias" />
 							</g:link></li>
-						<li><g:link controller='curso'>
+						<li><g:link controller='cursos'>
 								<g:message code="secciones.academicas.cursos" />
 							</g:link></li>
 						<li><g:link controller='planEstudio'>

@@ -20,7 +20,7 @@
 						<li><g:link controller='materia'><g:message code="secciones.academicas.materias" /></g:link></li>
 						<li><g:link controller='correlatividad'><g:message code="secciones.academicas.correlatividades" /></g:link></li>
 						<li><g:link controller='equivalencia'><g:message code="secciones.academicas.equivalencias" /></g:link></li>						
-						<li><g:link controller='curso'><g:message code="secciones.academicas.cursos" /></g:link></li>
+						<li><g:link controller='cursos'><g:message code="secciones.academicas.cursos" /></g:link></li>
 						<li><g:link controller='planEstudio'><g:message code="secciones.academicas.planesDeEstudio" /></g:link></li>
 						<li><g:link controller='cronogramaCarrera'><g:message code="secciones.academicas.cronogramasDeCursos" /></g:link></li>						
 						<li><g:link class="disabled" controller='proximamente'><g:message code="secciones.academicas.finales" /></g:link></li>

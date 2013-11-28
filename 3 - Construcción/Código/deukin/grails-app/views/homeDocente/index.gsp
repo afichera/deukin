@@ -17,7 +17,7 @@
 					</div>
 					<ul>
 						<li><g:link controller='materia'><g:message code="secciones.academicas.materias" /></g:link></li>
-						<li><g:link controller='curso'><g:message code="secciones.academicas.cursos" /></g:link></li>
+						<li><g:link controller='cursos'><g:message code="secciones.academicas.cursos" /></g:link></li>
 						<li><g:link controller='proximamente'><g:message code="secciones.academicas.finales" /></g:link></li>
 					</ul>
 				</div>

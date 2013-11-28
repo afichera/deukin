@@ -18,7 +18,7 @@
 				</sec:ifAnyGranted>
 				<sec:ifAnyGranted
 					roles="ROLE_DOCENTE,ROLE_COORDINADOR,ROLE_ADMINISTRATIVO">
-					<li><g:link controller='curso'>
+					<li><g:link controller='cursos'>
 							<g:message code="secciones.academicas.cursos" />
 						</g:link></li>
 				</sec:ifAnyGranted>

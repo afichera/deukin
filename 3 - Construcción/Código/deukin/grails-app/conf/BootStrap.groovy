@@ -146,6 +146,44 @@ class BootStrap {
 			UsuarioRol.create(docenteUser8, docenteRol, true)
 		}
 
+
+		def docenteUser9 = Usuario.findByUsername('docente9@deukin.com') ?: new Usuario(
+				username: 'docente9@deukin.com',
+				password: '123456',
+				enabled: true).save(failOnError: true)
+
+		if (!docenteUser9.authorities.contains(docenteRol)) {
+			UsuarioRol.create(docenteUser9, docenteRol, true)
+		}
+
+		def docenteUser10 = Usuario.findByUsername('docente10@deukin.com') ?: new Usuario(
+				username: 'docente10@deukin.com',
+				password: '123456',
+				enabled: true).save(failOnError: true)
+
+		if (!docenteUser10.authorities.contains(docenteRol)) {
+			UsuarioRol.create(docenteUser10, docenteRol, true)
+		}
+
+		def docenteUser11 = Usuario.findByUsername('docente11@deukin.com') ?: new Usuario(
+				username: 'docente11@deukin.com',
+				password: '123456',
+				enabled: true).save(failOnError: true)
+
+		if (!docenteUser11.authorities.contains(docenteRol)) {
+			UsuarioRol.create(docenteUser11, docenteRol, true)
+		}
+
+		def docenteUser12 = Usuario.findByUsername('docente12@deukin.com') ?: new Usuario(
+				username: 'docente12@deukin.com',
+				password: '123456',
+				enabled: true).save(failOnError: true)
+
+		if (!docenteUser12.authorities.contains(docenteRol)) {
+			UsuarioRol.create(docenteUser12, docenteRol, true)
+		}
+
+
 		//Usuario Coordinador Solo para pruebas
 		def usuarioCoordinador1 = Usuario.findByUsername('coordinador1@deukin.com') ?: new Usuario(
 				username: 'coordinador1@deukin.com',
@@ -274,6 +312,11 @@ class BootStrap {
 		def telefono1Docente6 = Telefono.findByNumero('444499990006')?: new Telefono(numero: '444499990006', tipoTelefono:TipoTelefono.MOVIL)
 		def telefono1Docente7 = Telefono.findByNumero('444499990007')?: new Telefono(numero: '444499990007', tipoTelefono:TipoTelefono.CASA)
 		def telefono1Docente8 = Telefono.findByNumero('444499990008')?: new Telefono(numero: '444499990008', tipoTelefono:TipoTelefono.MOVIL)
+		def telefono1Docente9 = Telefono.findByNumero('444499990009')?: new Telefono(numero: '444499990009', tipoTelefono:TipoTelefono.TRABAJO)
+		def telefono1Docente10 = Telefono.findByNumero('444499990010')?: new Telefono(numero: '444499990010', tipoTelefono:TipoTelefono.MOVIL)
+		def telefono1Docente11 = Telefono.findByNumero('444499990011')?: new Telefono(numero: '444499990011', tipoTelefono:TipoTelefono.CASA)
+		def telefono1Docente12 = Telefono.findByNumero('444499990012')?: new Telefono(numero: '444499990012', tipoTelefono:TipoTelefono.MOVIL)
+
 
 
 		def DomicilioAlumno1 = new Domicilio(calle: 'Martin Irigoyen', numero: 556, codigoPostal: 1712,localidad: 'Castelar', observaciones: 'Triplex del Medio.')
@@ -289,6 +332,10 @@ class BootStrap {
 		def domicilioDocente6 = new Domicilio(calle: 'Rivadavia', numero: 5682, codigoPostal: 5400,localidad: 'Capital Federal', observaciones: 'tocar timbre del medio')
 		def domicilioDocente7 = new Domicilio(calle: 'Rivadavia', numero: 5683, codigoPostal: 5400,localidad: 'Capital Federal', observaciones: 'tocar timbre del medio')
 		def domicilioDocente8 = new Domicilio(calle: 'Rivadavia', numero: 5684, codigoPostal: 5400,localidad: 'Capital Federal', observaciones: 'tocar timbre del medio')
+		def domicilioDocente9 = new Domicilio(calle: 'Rivadavia', numero: 5681, codigoPostal: 5400,localidad: 'Capital Federal', observaciones: 'tocar timbre del medio')
+		def domicilioDocente10 = new Domicilio(calle: 'Rivadavia', numero: 5682, codigoPostal: 5400,localidad: 'Capital Federal', observaciones: 'tocar timbre del medio')
+		def domicilioDocente11 = new Domicilio(calle: 'Rivadavia', numero: 5683, codigoPostal: 5400,localidad: 'Capital Federal', observaciones: 'tocar timbre del medio')
+		def domicilioDocente12 = new Domicilio(calle: 'Rivadavia', numero: 5684, codigoPostal: 5400,localidad: 'Capital Federal', observaciones: 'tocar timbre del medio')
 
 
 
@@ -346,6 +393,21 @@ class BootStrap {
 		contactoDocente8.telefonos = []
 		contactoDocente8.telefonos.add(telefono1Docente8)
 
+		def contactoDocente9 = new Contacto(domicilio: domicilioDocente9)
+		contactoDocente9.telefonos = []
+		contactoDocente9.telefonos.add(telefono1Docente9)
+
+		def contactoDocente10 = new Contacto(domicilio: domicilioDocente10)
+		contactoDocente10.telefonos = []
+		contactoDocente10.telefonos.add(telefono1Docente10)
+
+		def contactoDocente11 = new Contacto(domicilio: domicilioDocente11)
+		contactoDocente11.telefonos = []
+		contactoDocente11.telefonos.add(telefono1Docente11)
+
+		def contactoDocente12 = new Contacto(domicilio: domicilioDocente12)
+		contactoDocente12.telefonos = []
+		contactoDocente12.telefonos.add(telefono1Docente12)
 
 
 
@@ -371,7 +433,10 @@ class BootStrap {
 		def documentoDNIdocente6= Documento.findByNumeroAndTipoDocumento(21111116, TipoDocumento.DNI)?:new Documento(numero:21111116, tipoDocumento:TipoDocumento.DNI).save(failOnError:true)
 		def documentoDNIdocente7= Documento.findByNumeroAndTipoDocumento(21111117, TipoDocumento.DNI)?:new Documento(numero:21111117, tipoDocumento:TipoDocumento.DNI).save(failOnError:true)
 		def documentoDNIdocente8= Documento.findByNumeroAndTipoDocumento(21111118, TipoDocumento.DNI)?:new Documento(numero:21111118, tipoDocumento:TipoDocumento.DNI).save(failOnError:true)
-
+		def documentoDNIdocente9= Documento.findByNumeroAndTipoDocumento(21111109, TipoDocumento.DNI)?:new Documento(numero:21111119, tipoDocumento:TipoDocumento.DNI).save(failOnError:true)
+		def documentoDNIdocente10= Documento.findByNumeroAndTipoDocumento(29999910, TipoDocumento.DNI)?:new Documento(numero:29999910, tipoDocumento:TipoDocumento.DNI).save(failOnError:true)
+		def documentoDNIdocente11= Documento.findByNumeroAndTipoDocumento(29999911, TipoDocumento.DNI)?:new Documento(numero:29999911, tipoDocumento:TipoDocumento.DNI).save(failOnError:true)
+		def documentoDNIdocente12= Documento.findByNumeroAndTipoDocumento(29999912, TipoDocumento.DNI)?:new Documento(numero:29999912, tipoDocumento:TipoDocumento.DNI).save(failOnError:true)
 
 
 		def coordinadoresCarrera1 = []
@@ -615,6 +680,12 @@ class BootStrap {
 		def docente6 = Docente.findByUsuario(docenteUser6) ?: new Docente(apellido:'Perez',nombre: 'Carlos', usuario: docenteUser6, documento: documentoDNIdocente6, contacto: contactoDocente6, departamento: departamentoIngenieria).save(failOnError:true)
 		def docente7 = Docente.findByUsuario(docenteUser7) ?: new Docente(apellido:'Gonzalez',nombre: 'Monica', usuario: docenteUser7, documento: documentoDNIdocente7, contacto: contactoDocente7, departamento: departamentoIngenieria).save(failOnError:true)
 		def docente8 = Docente.findByUsuario(docenteUser8) ?: new Docente(apellido:'Cano',nombre: 'Sergio', usuario: docenteUser8, documento: documentoDNIdocente8, contacto: contactoDocente8, departamento: departamentoIngenieria).save(failOnError:true)
+		def docente9 = Docente.findByUsuario(docenteUser9) ?: new Docente(apellido:'Barbosa',nombre: 'Gerardo', usuario: docenteUser9, documento: documentoDNIdocente9, contacto: contactoDocente9, departamento: departamentoIngenieria).save(failOnError:true)
+		def docente10 = Docente.findByUsuario(docenteUser10) ?: new Docente(apellido:'Fernandez',nombre: 'Lito', usuario: docenteUser10, documento: documentoDNIdocente10, contacto: contactoDocente10, departamento: departamentoIngenieria).save(failOnError:true)
+		def docente11 = Docente.findByUsuario(docenteUser11) ?: new Docente(apellido:'Garcia',nombre: 'Lucas', usuario: docenteUser11, documento: documentoDNIdocente11, contacto: contactoDocente11, departamento: departamentoIngenieria).save(failOnError:true)
+		def docente12 = Docente.findByUsuario(docenteUser12) ?: new Docente(apellido:'Rusti',nombre: 'Ale', usuario: docenteUser12, documento: documentoDNIdocente12, contacto: contactoDocente12, departamento: departamentoIngenieria).save(failOnError:true)
+
+
 
 
 		int numeroInicial = 101
@@ -700,10 +771,677 @@ class BootStrap {
 		def curso30 = Curso.findByCodigoAndCronogramaCarreraAndMateriaAndTurno('2012C2M106', cronogramaAnioPasado, materia6, turnoManiana)?:new Curso(codigo:'2012C2M106', cronogramaCarrera:cronogramaAnioPasado, materia:materia6, turno:turnoManiana, estadoCurso:EstadoCurso.CERRADO, periodoAcademico:periodoAcademico4).save(failOnError:true)
 		def curso31 = Curso.findByCodigoAndCronogramaCarreraAndMateriaAndTurno('2012C2M107', cronogramaAnioPasado, materia7, turnoManiana)?:new Curso(codigo:'2012C2M107', cronogramaCarrera:cronogramaAnioPasado, materia:materia7, turno:turnoManiana, estadoCurso:EstadoCurso.CERRADO, periodoAcademico:periodoAcademico4).save(failOnError:true)
 		def curso32 = Curso.findByCodigoAndCronogramaCarreraAndMateriaAndTurno('2012C2M108', cronogramaAnioPasado, materia8, turnoManiana)?:new Curso(codigo:'2012C2M108', cronogramaCarrera:cronogramaAnioPasado, materia:materia8, turno:turnoManiana, estadoCurso:EstadoCurso.CERRADO, periodoAcademico:periodoAcademico4).save(failOnError:true)
+
+		//Solo para Test
+
+		//Configuraciones Curso Dia Primer Cuatrimestre 2012 Turno Noche
+		initCursosDia2012TurnoNocheCuatrimestre1(docente1, docente2, curso1, docente3, docente4, curso2, docente5, docente6, curso3, docente7, curso4, curso5, curso6, curso7, docente9, docente10, docente11, curso8)
+
+		//Configuraciones CursoDia Primer Cuatrimestre Turno Mañana
+		initCursosDia2012TurnoManianaCuatrimestre1(docente1, docente2, curso17, docente3, docente4, curso18, docente5, docente6, curso19, docente7, curso20, curso21, docente12, docente11, curso22, curso23, docente9, docente10, curso24)
+
+		//Configuraciones Curso Dia Segundo Cuatrimestre 2012 Turno Noche
+		initCursosDia2012TurnoNocheCuatrimestre2(docente1, docente2, curso9, docente3, docente4, curso10, docente5, docente6, docente7, curso11, curso12, curso13, curso14, docente9, docente10, docente11, curso15, curso16)
+
+		//Configuraciones CursoDia Segundo Cuatrimestre Turno Mañana
+		initCursosDia2012TurnoManianaCuatrimestre2(docente1, docente2, curso25, docente3, docente4, curso26, docente5, docente6, curso27, docente7, curso28, curso29, docente12, docente11, curso30, curso31, docente9, docente10, curso32)
 		
-		//Configuraciones Curso Dia
-		
+	}
+
+	private initCursosDia2012TurnoManianaCuatrimestre2(Docente docente1, Docente docente2, def curso25, Docente docente3, Docente docente4, def curso26, Docente docente5, Docente docente6, def curso27, Docente docente7, def curso28, def curso29, Docente docente12, Docente docente11, def curso30, def curso31, Docente docente9, Docente docente10, def curso32) {
 		//Caso de 1 Dia de cursada con 2 docentes al 100
+		if(!curso25?.configuracionesCursoDia){
+			def configuracionesCursoDia1 = []
+			def asignacionesDocenteCursoDia1 = []
+			EspacioFisico espacioFisico1 = EspacioFisico.findByNumero(500) ?: new EspacioFisico(numero:500, ubicacion: 'PABELLON 1').save(failOnError:true)
+			AsignacionDocenteCurso asignacionDocenteCurso1 = new AsignacionDocenteCurso(docente:docente1, tipoPorcentajeAsignacion:TipoPorcentajeAsignacion.ASIGNADO_AL_100)
+			AsignacionDocenteCurso asignacionDocenteCurso2 = new AsignacionDocenteCurso(docente:docente2, tipoPorcentajeAsignacion:TipoPorcentajeAsignacion.ASIGNADO_AL_100)
+			ConfiguracionCursoDia configuracionCursoDia1 = new ConfiguracionCursoDia(diaSemana: DiaSemana.LUNES, espacioFisico:espacioFisico1, curso:curso25, horaInicio:8, horaFin:12, minutosInicio:0, minutosFin:0)
+			asignacionDocenteCurso1.configuracionCursoDia = configuracionCursoDia1
+			asignacionDocenteCurso2.configuracionCursoDia = configuracionCursoDia1
+			asignacionesDocenteCursoDia1.add(asignacionDocenteCurso1)
+			asignacionesDocenteCursoDia1.add(asignacionDocenteCurso2)
+			configuracionCursoDia1.asignacionesDocenteCurso = asignacionesDocenteCursoDia1
+			configuracionCursoDia1 = configuracionCursoDia1.save(failOnError:true)
+			configuracionesCursoDia1.add(configuracionCursoDia1)
+			curso25.configuracionesCursoDia = configuracionesCursoDia1
+			curso25 = curso25.save()
+
+		}
+
+		//Caso de Materia de 2 Dias 2 Espacios Fisicos Distintos y diferentes asignaciones en diferentes porcentajes por dia.
+		if(!curso26?.configuracionesCursoDia){
+			def configuracionesCursoDia1 = []
+			def asignacionesDocenteCursoDia1 = []
+			def asignacionesDocenteCursoDia2 = []
+			EspacioFisico espacioFisico1 = EspacioFisico.findByNumero(501) ?: new EspacioFisico(numero:501, ubicacion: 'PABELLON 1').save(failOnError:true)
+			EspacioFisico espacioFisico2 = EspacioFisico.findByNumero(502) ?: new EspacioFisico(numero:502, ubicacion: 'LABORATORIO 3').save(failOnError:true)
+
+			AsignacionDocenteCurso asignacionDocenteCurso1 = new AsignacionDocenteCurso(docente:docente3, tipoPorcentajeAsignacion:TipoPorcentajeAsignacion.ASIGNADO_AL_100)
+			AsignacionDocenteCurso asignacionDocenteCurso2 = new AsignacionDocenteCurso(docente:docente4, tipoPorcentajeAsignacion:TipoPorcentajeAsignacion.ASIGNADO_AL_50)
+			AsignacionDocenteCurso asignacionDocenteCurso3 = new AsignacionDocenteCurso(docente:docente4, tipoPorcentajeAsignacion:TipoPorcentajeAsignacion.ASIGNADO_AL_100)
+
+			ConfiguracionCursoDia configuracionCursoDia1 = new ConfiguracionCursoDia(diaSemana: DiaSemana.MARTES, espacioFisico:espacioFisico1, curso:curso26, horaInicio:8, horaFin:12, minutosInicio:0, minutosFin:0)
+			ConfiguracionCursoDia configuracionCursoDia2 = new ConfiguracionCursoDia(diaSemana: DiaSemana.JUEVES, espacioFisico:espacioFisico2, curso:curso26, horaInicio:8, horaFin:12, minutosInicio:0, minutosFin:0)
+
+			asignacionDocenteCurso1.configuracionCursoDia = configuracionCursoDia1
+			asignacionDocenteCurso2.configuracionCursoDia = configuracionCursoDia1
+			asignacionDocenteCurso3.configuracionCursoDia = configuracionCursoDia2
+
+			asignacionesDocenteCursoDia1.add(asignacionDocenteCurso1)
+			asignacionesDocenteCursoDia1.add(asignacionDocenteCurso2)
+			asignacionesDocenteCursoDia2.add(asignacionDocenteCurso3)
+
+			configuracionCursoDia1.asignacionesDocenteCurso = asignacionesDocenteCursoDia1
+			configuracionCursoDia2.asignacionesDocenteCurso = asignacionesDocenteCursoDia2
+
+			configuracionCursoDia1 = configuracionCursoDia1.save(failOnError:true)
+			configuracionCursoDia2 = configuracionCursoDia2.save(failOnError:true)
+
+			configuracionesCursoDia1.add(configuracionCursoDia1)
+			configuracionesCursoDia1.add(configuracionCursoDia2)
+
+			curso26.configuracionesCursoDia = configuracionesCursoDia1
+			curso26 = curso26.save()
+		}
+
+		//caso del 1 solo dia 2 Docentes al 50% es decir, 2 hs cada docente
+		if(!curso27?.configuracionesCursoDia){
+			def configuracionesCursoDia1 = []
+			def asignacionesDocenteCursoDia1 = []
+			EspacioFisico espacioFisico1 = EspacioFisico.findByNumero(503) ?: new EspacioFisico(numero:503, ubicacion: 'PABELLON 2').save(failOnError:true)
+			AsignacionDocenteCurso asignacionDocenteCurso1 = new AsignacionDocenteCurso(docente:docente5, tipoPorcentajeAsignacion:TipoPorcentajeAsignacion.ASIGNADO_AL_50)
+			AsignacionDocenteCurso asignacionDocenteCurso2 = new AsignacionDocenteCurso(docente:docente6, tipoPorcentajeAsignacion:TipoPorcentajeAsignacion.ASIGNADO_AL_50)
+			ConfiguracionCursoDia configuracionCursoDia1 = new ConfiguracionCursoDia(diaSemana: DiaSemana.MIERCOLES, espacioFisico:espacioFisico1, curso:curso27, horaInicio:8, horaFin:12, minutosInicio:0, minutosFin:0)
+			asignacionDocenteCurso1.configuracionCursoDia = configuracionCursoDia1
+			asignacionDocenteCurso2.configuracionCursoDia = configuracionCursoDia1
+			asignacionesDocenteCursoDia1.add(asignacionDocenteCurso1)
+			asignacionesDocenteCursoDia1.add(asignacionDocenteCurso2)
+			configuracionCursoDia1.asignacionesDocenteCurso = asignacionesDocenteCursoDia1
+			configuracionCursoDia1 = configuracionCursoDia1.save(failOnError:true)
+			configuracionesCursoDia1.add(configuracionCursoDia1)
+			curso27.configuracionesCursoDia = configuracionesCursoDia1
+			curso27 = curso27.save()
+
+		}
+
+		//caso del 1 solo dia 2 Docentes al 50% y uno al 100 es decir, 2 hs cada docente salvo 1 que se queda todo el dia
+		if(!curso28?.configuracionesCursoDia){
+			def configuracionesCursoDia1 = []
+			def asignacionesDocenteCursoDia1 = []
+			EspacioFisico espacioFisico1 = EspacioFisico.findByNumero(504) ?: new EspacioFisico(numero:504, ubicacion: 'LABOTARORIO WEB').save(failOnError:true)
+			AsignacionDocenteCurso asignacionDocenteCurso1 = new AsignacionDocenteCurso(docente:docente7, tipoPorcentajeAsignacion:TipoPorcentajeAsignacion.ASIGNADO_AL_100)
+			AsignacionDocenteCurso asignacionDocenteCurso2 = new AsignacionDocenteCurso(docente:docente6, tipoPorcentajeAsignacion:TipoPorcentajeAsignacion.ASIGNADO_AL_50)
+			AsignacionDocenteCurso asignacionDocenteCurso3 = new AsignacionDocenteCurso(docente:docente2, tipoPorcentajeAsignacion:TipoPorcentajeAsignacion.ASIGNADO_AL_50)
+			ConfiguracionCursoDia configuracionCursoDia1 = new ConfiguracionCursoDia(diaSemana: DiaSemana.VIERNES, espacioFisico:espacioFisico1, curso:curso28, horaInicio:8, horaFin:12, minutosInicio:0, minutosFin:0)
+			asignacionDocenteCurso1.configuracionCursoDia = configuracionCursoDia1
+			asignacionDocenteCurso2.configuracionCursoDia = configuracionCursoDia1
+			asignacionDocenteCurso3.configuracionCursoDia = configuracionCursoDia1
+			asignacionesDocenteCursoDia1.add(asignacionDocenteCurso1)
+			asignacionesDocenteCursoDia1.add(asignacionDocenteCurso2)
+			asignacionesDocenteCursoDia1.add(asignacionDocenteCurso3)
+			configuracionCursoDia1.asignacionesDocenteCurso = asignacionesDocenteCursoDia1
+			configuracionCursoDia1 = configuracionCursoDia1.save(failOnError:true)
+			configuracionesCursoDia1.add(configuracionCursoDia1)
+			curso28.configuracionesCursoDia = configuracionesCursoDia1
+			curso28 = curso28.save()
+		}
+
+		//Materia BDD 2 Ocupando mismo dia que BDD1 pero diferentes docentes/espacios Fisicos
+		if(!curso29?.configuracionesCursoDia){
+			def configuracionesCursoDia1 = []
+			def asignacionesDocenteCursoDia1 = []
+			EspacioFisico espacioFisico1 = EspacioFisico.findByNumero(505) ?: new EspacioFisico(numero:505, ubicacion: 'AULA MAGNA').save(failOnError:true)
+			AsignacionDocenteCurso asignacionDocenteCurso1 = new AsignacionDocenteCurso(docente:docente3, tipoPorcentajeAsignacion:TipoPorcentajeAsignacion.ASIGNADO_AL_100)
+			AsignacionDocenteCurso asignacionDocenteCurso2 = new AsignacionDocenteCurso(docente:docente4, tipoPorcentajeAsignacion:TipoPorcentajeAsignacion.ASIGNADO_AL_100)
+
+			ConfiguracionCursoDia configuracionCursoDia1 = new ConfiguracionCursoDia(diaSemana: DiaSemana.LUNES, espacioFisico:espacioFisico1, curso:curso29, horaInicio:8, horaFin:12, minutosInicio:0, minutosFin:0)
+			asignacionDocenteCurso1.configuracionCursoDia = configuracionCursoDia1
+			asignacionDocenteCurso2.configuracionCursoDia = configuracionCursoDia1
+
+			asignacionesDocenteCursoDia1.add(asignacionDocenteCurso1)
+			asignacionesDocenteCursoDia1.add(asignacionDocenteCurso2)
+
+			configuracionCursoDia1.asignacionesDocenteCurso = asignacionesDocenteCursoDia1
+			configuracionCursoDia1 = configuracionCursoDia1.save(failOnError:true)
+			configuracionesCursoDia1.add(configuracionCursoDia1)
+			curso29.configuracionesCursoDia = configuracionesCursoDia1
+			curso29 = curso29.save()
+		}
+
+		//Curso de los sabados
+		if(!curso30?.configuracionesCursoDia){
+			def configuracionesCursoDia1 = []
+			def asignacionesDocenteCursoDia1 = []
+			EspacioFisico espacioFisico1 = EspacioFisico.findByNumero(506) ?: new EspacioFisico(numero:506, ubicacion: 'PABELLON 3').save(failOnError:true)
+			AsignacionDocenteCurso asignacionDocenteCurso1 = new AsignacionDocenteCurso(docente:docente12, tipoPorcentajeAsignacion:TipoPorcentajeAsignacion.ASIGNADO_AL_100)
+			AsignacionDocenteCurso asignacionDocenteCurso2 = new AsignacionDocenteCurso(docente:docente11, tipoPorcentajeAsignacion:TipoPorcentajeAsignacion.ASIGNADO_AL_100)
+
+			ConfiguracionCursoDia configuracionCursoDia1 = new ConfiguracionCursoDia(diaSemana: DiaSemana.SABADO, espacioFisico:espacioFisico1, curso:curso30, horaInicio:8, horaFin:12, minutosInicio:0, minutosFin:0)
+			asignacionDocenteCurso1.configuracionCursoDia = configuracionCursoDia1
+			asignacionDocenteCurso2.configuracionCursoDia = configuracionCursoDia1
+
+			asignacionesDocenteCursoDia1.add(asignacionDocenteCurso1)
+			asignacionesDocenteCursoDia1.add(asignacionDocenteCurso2)
+
+			configuracionCursoDia1.asignacionesDocenteCurso = asignacionesDocenteCursoDia1
+			configuracionCursoDia1 = configuracionCursoDia1.save(failOnError:true)
+			configuracionesCursoDia1.add(configuracionCursoDia1)
+			curso30.configuracionesCursoDia = configuracionesCursoDia1
+			curso30 = curso30.save()
+		}
+
+		//Caso de Materia de 2 Dias 2 Espacios Fisicos Distintos y diferentes asignaciones en diferentes porcentajes por dia.
+		if(!curso31?.configuracionesCursoDia){
+			def configuracionesCursoDia1 = []
+			def asignacionesDocenteCursoDia1 = []
+			def asignacionesDocenteCursoDia2 = []
+			EspacioFisico espacioFisico1 = EspacioFisico.findByNumero(507) ?: new EspacioFisico(numero:507, ubicacion: 'PABELLON 1').save(failOnError:true)
+			EspacioFisico espacioFisico2 = EspacioFisico.findByNumero(508) ?: new EspacioFisico(numero:508, ubicacion: 'ZONA DE LABORATORIOS').save(failOnError:true)
+
+			AsignacionDocenteCurso asignacionDocenteCurso1 = new AsignacionDocenteCurso(docente:docente2, tipoPorcentajeAsignacion:TipoPorcentajeAsignacion.ASIGNADO_AL_100)
+			AsignacionDocenteCurso asignacionDocenteCurso2 = new AsignacionDocenteCurso(docente:docente7, tipoPorcentajeAsignacion:TipoPorcentajeAsignacion.ASIGNADO_AL_50)
+			AsignacionDocenteCurso asignacionDocenteCurso3 = new AsignacionDocenteCurso(docente:docente2, tipoPorcentajeAsignacion:TipoPorcentajeAsignacion.ASIGNADO_AL_100)
+
+			ConfiguracionCursoDia configuracionCursoDia1 = new ConfiguracionCursoDia(diaSemana: DiaSemana.LUNES, espacioFisico:espacioFisico1, curso:curso31, horaInicio:8, horaFin:12, minutosInicio:0, minutosFin:0)
+			ConfiguracionCursoDia configuracionCursoDia2 = new ConfiguracionCursoDia(diaSemana: DiaSemana.MIERCOLES, espacioFisico:espacioFisico2, curso:curso31, horaInicio:8, horaFin:12, minutosInicio:0, minutosFin:0)
+
+			asignacionDocenteCurso1.configuracionCursoDia = configuracionCursoDia1
+			asignacionDocenteCurso2.configuracionCursoDia = configuracionCursoDia1
+			asignacionDocenteCurso3.configuracionCursoDia = configuracionCursoDia2
+
+			asignacionesDocenteCursoDia1.add(asignacionDocenteCurso1)
+			asignacionesDocenteCursoDia1.add(asignacionDocenteCurso2)
+			asignacionesDocenteCursoDia2.add(asignacionDocenteCurso3)
+
+			configuracionCursoDia1.asignacionesDocenteCurso = asignacionesDocenteCursoDia1
+			configuracionCursoDia2.asignacionesDocenteCurso = asignacionesDocenteCursoDia2
+
+			configuracionCursoDia1 = configuracionCursoDia1.save(failOnError:true)
+			configuracionCursoDia2 = configuracionCursoDia2.save(failOnError:true)
+
+			configuracionesCursoDia1.add(configuracionCursoDia1)
+			configuracionesCursoDia1.add(configuracionCursoDia2)
+
+			curso31.configuracionesCursoDia = configuracionesCursoDia1
+			curso31 = curso31.save()
+		}
+
+
+		//Caso de Materia de 2 Dias 2 Espacios Fisicos Distintos y diferentes asignaciones en diferentes porcentajes por dia.
+		if(!curso32?.configuracionesCursoDia){
+			def configuracionesCursoDia1 = []
+			def asignacionesDocenteCursoDia1 = []
+			def asignacionesDocenteCursoDia2 = []
+			EspacioFisico espacioFisico1 = EspacioFisico.findByNumero(521) ?: new EspacioFisico(numero:521, ubicacion: 'PABELLON 1').save(failOnError:true)
+			EspacioFisico espacioFisico2 = EspacioFisico.findByNumero(522) ?: new EspacioFisico(numero:522, ubicacion: 'ZONA DE LABORATORIOS').save(failOnError:true)
+
+			AsignacionDocenteCurso asignacionDocenteCurso1 = new AsignacionDocenteCurso(docente:docente9, tipoPorcentajeAsignacion:TipoPorcentajeAsignacion.ASIGNADO_AL_100)
+			AsignacionDocenteCurso asignacionDocenteCurso2 = new AsignacionDocenteCurso(docente:docente10, tipoPorcentajeAsignacion:TipoPorcentajeAsignacion.ASIGNADO_AL_50)
+			AsignacionDocenteCurso asignacionDocenteCurso3 = new AsignacionDocenteCurso(docente:docente11, tipoPorcentajeAsignacion:TipoPorcentajeAsignacion.ASIGNADO_AL_100)
+
+			ConfiguracionCursoDia configuracionCursoDia1 = new ConfiguracionCursoDia(diaSemana: DiaSemana.LUNES, espacioFisico:espacioFisico1, curso:curso32, horaInicio:8, horaFin:12, minutosInicio:0, minutosFin:0)
+			ConfiguracionCursoDia configuracionCursoDia2 = new ConfiguracionCursoDia(diaSemana: DiaSemana.MIERCOLES, espacioFisico:espacioFisico2, curso:curso32, horaInicio:8, horaFin:12, minutosInicio:0, minutosFin:0)
+
+			asignacionDocenteCurso1.configuracionCursoDia = configuracionCursoDia1
+			asignacionDocenteCurso2.configuracionCursoDia = configuracionCursoDia1
+			asignacionDocenteCurso3.configuracionCursoDia = configuracionCursoDia2
+
+			asignacionesDocenteCursoDia1.add(asignacionDocenteCurso1)
+			asignacionesDocenteCursoDia1.add(asignacionDocenteCurso2)
+			asignacionesDocenteCursoDia2.add(asignacionDocenteCurso3)
+
+			configuracionCursoDia1.asignacionesDocenteCurso = asignacionesDocenteCursoDia1
+			configuracionCursoDia2.asignacionesDocenteCurso = asignacionesDocenteCursoDia2
+
+			configuracionCursoDia1 = configuracionCursoDia1.save(failOnError:true)
+			configuracionCursoDia2 = configuracionCursoDia2.save(failOnError:true)
+
+			configuracionesCursoDia1.add(configuracionCursoDia1)
+			configuracionesCursoDia1.add(configuracionCursoDia2)
+
+			curso32.configuracionesCursoDia = configuracionesCursoDia1
+			curso32 = curso32.save()
+		}
+	}
+
+	private initCursosDia2012TurnoNocheCuatrimestre2(Docente docente1, Docente docente2, def curso9, Docente docente3, Docente docente4, def curso10, Docente docente5, Docente docente6, Docente docente7, def curso11, def curso12, def curso13, def curso14, Docente docente9, Docente docente10, Docente docente11, def curso15, def curso16) {		
+		//Caso de 1 Dia de cursada con 2 docentes al 100
+		if(!curso9?.configuracionesCursoDia){
+			def configuracionesCursoDia1 = []
+			def asignacionesDocenteCursoDia1 = []
+			EspacioFisico espacioFisico1 = EspacioFisico.findByNumero(601) ?: new EspacioFisico(numero:601, ubicacion: 'PABELLON 1').save(failOnError:true)
+			AsignacionDocenteCurso asignacionDocenteCurso1 = new AsignacionDocenteCurso(docente:docente1, tipoPorcentajeAsignacion:TipoPorcentajeAsignacion.ASIGNADO_AL_100)
+			AsignacionDocenteCurso asignacionDocenteCurso2 = new AsignacionDocenteCurso(docente:docente2, tipoPorcentajeAsignacion:TipoPorcentajeAsignacion.ASIGNADO_AL_100)
+			ConfiguracionCursoDia configuracionCursoDia1 = new ConfiguracionCursoDia(diaSemana: DiaSemana.LUNES, espacioFisico:espacioFisico1, curso:curso9, horaInicio:19, horaFin:23, minutosInicio:0, minutosFin:0)
+			asignacionDocenteCurso1.configuracionCursoDia = configuracionCursoDia1
+			asignacionDocenteCurso2.configuracionCursoDia = configuracionCursoDia1
+			asignacionesDocenteCursoDia1.add(asignacionDocenteCurso1)
+			asignacionesDocenteCursoDia1.add(asignacionDocenteCurso2)
+			configuracionCursoDia1.asignacionesDocenteCurso = asignacionesDocenteCursoDia1
+			configuracionCursoDia1 = configuracionCursoDia1.save(failOnError:true)
+			configuracionesCursoDia1.add(configuracionCursoDia1)
+			curso9.configuracionesCursoDia = configuracionesCursoDia1
+			curso9 = curso9.save()
+
+		}
+
+		//Caso de Materia de 2 Dias 2 Espacios Fisicos Distintos y diferentes asignaciones en diferentes porcentajes por dia.
+		if(!curso10?.configuracionesCursoDia){
+			def configuracionesCursoDia1 = []
+			def asignacionesDocenteCursoDia1 = []
+			def asignacionesDocenteCursoDia2 = []
+			EspacioFisico espacioFisico1 = EspacioFisico.findByNumero(607) ?: new EspacioFisico(numero:607, ubicacion: 'PABELLON 1').save(failOnError:true)
+			EspacioFisico espacioFisico2 = EspacioFisico.findByNumero(603) ?: new EspacioFisico(numero:603, ubicacion: 'LABORATORIO 3').save(failOnError:true)
+
+			AsignacionDocenteCurso asignacionDocenteCurso1 = new AsignacionDocenteCurso(docente:docente3, tipoPorcentajeAsignacion:TipoPorcentajeAsignacion.ASIGNADO_AL_100)
+			AsignacionDocenteCurso asignacionDocenteCurso2 = new AsignacionDocenteCurso(docente:docente4, tipoPorcentajeAsignacion:TipoPorcentajeAsignacion.ASIGNADO_AL_50)
+			AsignacionDocenteCurso asignacionDocenteCurso3 = new AsignacionDocenteCurso(docente:docente4, tipoPorcentajeAsignacion:TipoPorcentajeAsignacion.ASIGNADO_AL_100)
+
+			ConfiguracionCursoDia configuracionCursoDia1 = new ConfiguracionCursoDia(diaSemana: DiaSemana.MARTES, espacioFisico:espacioFisico1, curso:curso10, horaInicio:19, horaFin:23, minutosInicio:0, minutosFin:0)
+			ConfiguracionCursoDia configuracionCursoDia2 = new ConfiguracionCursoDia(diaSemana: DiaSemana.JUEVES, espacioFisico:espacioFisico2, curso:curso10, horaInicio:19, horaFin:23, minutosInicio:0, minutosFin:0)
+
+			asignacionDocenteCurso1.configuracionCursoDia = configuracionCursoDia1
+			asignacionDocenteCurso2.configuracionCursoDia = configuracionCursoDia1
+			asignacionDocenteCurso3.configuracionCursoDia = configuracionCursoDia2
+
+			asignacionesDocenteCursoDia1.add(asignacionDocenteCurso1)
+			asignacionesDocenteCursoDia1.add(asignacionDocenteCurso2)
+			asignacionesDocenteCursoDia2.add(asignacionDocenteCurso3)
+
+			configuracionCursoDia1.asignacionesDocenteCurso = asignacionesDocenteCursoDia1
+			configuracionCursoDia2.asignacionesDocenteCurso = asignacionesDocenteCursoDia2
+
+			configuracionCursoDia1 = configuracionCursoDia1.save(failOnError:true)
+			configuracionCursoDia2 = configuracionCursoDia2.save(failOnError:true)
+
+			configuracionesCursoDia1.add(configuracionCursoDia1)
+			configuracionesCursoDia1.add(configuracionCursoDia2)
+
+			curso10.configuracionesCursoDia = configuracionesCursoDia1
+			curso10 = curso10.save()
+		}
+
+		//caso del 1 solo dia 2 Docentes al 50% es decir, 2 hs cada docente
+		if(!curso11?.configuracionesCursoDia){
+			def configuracionesCursoDia1 = []
+			def asignacionesDocenteCursoDia1 = []
+			EspacioFisico espacioFisico1 = EspacioFisico.findByNumero(602) ?: new EspacioFisico(numero:602, ubicacion: 'PABELLON 2').save(failOnError:true)
+			AsignacionDocenteCurso asignacionDocenteCurso1 = new AsignacionDocenteCurso(docente:docente5, tipoPorcentajeAsignacion:TipoPorcentajeAsignacion.ASIGNADO_AL_50)
+			AsignacionDocenteCurso asignacionDocenteCurso2 = new AsignacionDocenteCurso(docente:docente6, tipoPorcentajeAsignacion:TipoPorcentajeAsignacion.ASIGNADO_AL_50)
+			ConfiguracionCursoDia configuracionCursoDia1 = new ConfiguracionCursoDia(diaSemana: DiaSemana.MIERCOLES, espacioFisico:espacioFisico1, curso:curso11, horaInicio:19, horaFin:23, minutosInicio:0, minutosFin:0)
+			asignacionDocenteCurso1.configuracionCursoDia = configuracionCursoDia1
+			asignacionDocenteCurso2.configuracionCursoDia = configuracionCursoDia1
+			asignacionesDocenteCursoDia1.add(asignacionDocenteCurso1)
+			asignacionesDocenteCursoDia1.add(asignacionDocenteCurso2)
+			configuracionCursoDia1.asignacionesDocenteCurso = asignacionesDocenteCursoDia1
+			configuracionCursoDia1 = configuracionCursoDia1.save(failOnError:true)
+			configuracionesCursoDia1.add(configuracionCursoDia1)
+			curso11.configuracionesCursoDia = configuracionesCursoDia1
+			curso11 = curso11.save()
+
+		}
+
+		//caso del 1 solo dia 2 Docentes al 50% y uno al 100 es decir, 2 hs cada docente salvo 1 que se queda todo el dia
+		if(!curso12?.configuracionesCursoDia){
+			def configuracionesCursoDia1 = []
+			def asignacionesDocenteCursoDia1 = []
+			EspacioFisico espacioFisico1 = EspacioFisico.findByNumero(605) ?: new EspacioFisico(numero:605, ubicacion: 'LABOTARORIO WEB').save(failOnError:true)
+			AsignacionDocenteCurso asignacionDocenteCurso1 = new AsignacionDocenteCurso(docente:docente7, tipoPorcentajeAsignacion:TipoPorcentajeAsignacion.ASIGNADO_AL_100)
+			AsignacionDocenteCurso asignacionDocenteCurso2 = new AsignacionDocenteCurso(docente:docente6, tipoPorcentajeAsignacion:TipoPorcentajeAsignacion.ASIGNADO_AL_50)
+			AsignacionDocenteCurso asignacionDocenteCurso3 = new AsignacionDocenteCurso(docente:docente2, tipoPorcentajeAsignacion:TipoPorcentajeAsignacion.ASIGNADO_AL_50)
+			ConfiguracionCursoDia configuracionCursoDia1 = new ConfiguracionCursoDia(diaSemana: DiaSemana.VIERNES, espacioFisico:espacioFisico1, curso:curso12, horaInicio:19, horaFin:23, minutosInicio:0, minutosFin:0)
+			asignacionDocenteCurso1.configuracionCursoDia = configuracionCursoDia1
+			asignacionDocenteCurso2.configuracionCursoDia = configuracionCursoDia1
+			asignacionDocenteCurso3.configuracionCursoDia = configuracionCursoDia1
+			asignacionesDocenteCursoDia1.add(asignacionDocenteCurso1)
+			asignacionesDocenteCursoDia1.add(asignacionDocenteCurso2)
+			asignacionesDocenteCursoDia1.add(asignacionDocenteCurso3)
+			configuracionCursoDia1.asignacionesDocenteCurso = asignacionesDocenteCursoDia1
+			configuracionCursoDia1 = configuracionCursoDia1.save(failOnError:true)
+			configuracionesCursoDia1.add(configuracionCursoDia1)
+			curso12.configuracionesCursoDia = configuracionesCursoDia1
+			curso12 = curso12.save()
+		}
+
+		//Materia BDD 2 Ocupando mismo dia que BDD1 pero diferentes docentes/espacios Fisicos
+		if(!curso13?.configuracionesCursoDia){
+			def configuracionesCursoDia1 = []
+			def asignacionesDocenteCursoDia1 = []
+			EspacioFisico espacioFisico1 = EspacioFisico.findByNumero(617) ?: new EspacioFisico(numero:617, ubicacion: 'AULA MAGNA').save(failOnError:true)
+			AsignacionDocenteCurso asignacionDocenteCurso1 = new AsignacionDocenteCurso(docente:docente3, tipoPorcentajeAsignacion:TipoPorcentajeAsignacion.ASIGNADO_AL_100)
+			AsignacionDocenteCurso asignacionDocenteCurso2 = new AsignacionDocenteCurso(docente:docente4, tipoPorcentajeAsignacion:TipoPorcentajeAsignacion.ASIGNADO_AL_100)
+
+			ConfiguracionCursoDia configuracionCursoDia1 = new ConfiguracionCursoDia(diaSemana: DiaSemana.LUNES, espacioFisico:espacioFisico1, curso:curso13, horaInicio:19, horaFin:23, minutosInicio:0, minutosFin:0)
+			asignacionDocenteCurso1.configuracionCursoDia = configuracionCursoDia1
+			asignacionDocenteCurso2.configuracionCursoDia = configuracionCursoDia1
+
+			asignacionesDocenteCursoDia1.add(asignacionDocenteCurso1)
+			asignacionesDocenteCursoDia1.add(asignacionDocenteCurso2)
+
+			configuracionCursoDia1.asignacionesDocenteCurso = asignacionesDocenteCursoDia1
+			configuracionCursoDia1 = configuracionCursoDia1.save(failOnError:true)
+			configuracionesCursoDia1.add(configuracionCursoDia1)
+			curso13.configuracionesCursoDia = configuracionesCursoDia1
+			curso13 = curso13.save()
+		}
+
+		//Curso de los sabados
+		if(!curso14?.configuracionesCursoDia){
+			def configuracionesCursoDia1 = []
+			def asignacionesDocenteCursoDia1 = []
+			EspacioFisico espacioFisico1 = EspacioFisico.findByNumero(618) ?: new EspacioFisico(numero:618, ubicacion: 'PABELLON 3').save(failOnError:true)
+			AsignacionDocenteCurso asignacionDocenteCurso1 = new AsignacionDocenteCurso(docente:docente1, tipoPorcentajeAsignacion:TipoPorcentajeAsignacion.ASIGNADO_AL_100)
+			AsignacionDocenteCurso asignacionDocenteCurso2 = new AsignacionDocenteCurso(docente:docente2, tipoPorcentajeAsignacion:TipoPorcentajeAsignacion.ASIGNADO_AL_100)
+
+			ConfiguracionCursoDia configuracionCursoDia1 = new ConfiguracionCursoDia(diaSemana: DiaSemana.SABADO, espacioFisico:espacioFisico1, curso:curso14, horaInicio:8, horaFin:12, minutosInicio:0, minutosFin:0)
+			asignacionDocenteCurso1.configuracionCursoDia = configuracionCursoDia1
+			asignacionDocenteCurso2.configuracionCursoDia = configuracionCursoDia1
+
+			asignacionesDocenteCursoDia1.add(asignacionDocenteCurso1)
+			asignacionesDocenteCursoDia1.add(asignacionDocenteCurso2)
+
+			configuracionCursoDia1.asignacionesDocenteCurso = asignacionesDocenteCursoDia1
+			configuracionCursoDia1 = configuracionCursoDia1.save(failOnError:true)
+			configuracionesCursoDia1.add(configuracionCursoDia1)
+			curso14.configuracionesCursoDia = configuracionesCursoDia1
+			curso14 = curso14.save()
+		}
+
+		//Caso de Materia de 2 Dias 2 Espacios Fisicos Distintos y diferentes asignaciones en diferentes porcentajes por dia.
+		if(!curso15?.configuracionesCursoDia){
+			def configuracionesCursoDia1 = []
+			def asignacionesDocenteCursoDia1 = []
+			def asignacionesDocenteCursoDia2 = []
+			EspacioFisico espacioFisico1 = EspacioFisico.findByNumero(619) ?: new EspacioFisico(numero:619, ubicacion: 'PABELLON 1').save(failOnError:true)
+			EspacioFisico espacioFisico2 = EspacioFisico.findByNumero(620) ?: new EspacioFisico(numero:620, ubicacion: 'ZONA DE LABORATORIOS').save(failOnError:true)
+
+			AsignacionDocenteCurso asignacionDocenteCurso1 = new AsignacionDocenteCurso(docente:docente2, tipoPorcentajeAsignacion:TipoPorcentajeAsignacion.ASIGNADO_AL_100)
+			AsignacionDocenteCurso asignacionDocenteCurso2 = new AsignacionDocenteCurso(docente:docente7, tipoPorcentajeAsignacion:TipoPorcentajeAsignacion.ASIGNADO_AL_50)
+			AsignacionDocenteCurso asignacionDocenteCurso3 = new AsignacionDocenteCurso(docente:docente2, tipoPorcentajeAsignacion:TipoPorcentajeAsignacion.ASIGNADO_AL_100)
+
+			ConfiguracionCursoDia configuracionCursoDia1 = new ConfiguracionCursoDia(diaSemana: DiaSemana.LUNES, espacioFisico:espacioFisico1, curso:curso15, horaInicio:19, horaFin:23, minutosInicio:0, minutosFin:0)
+			ConfiguracionCursoDia configuracionCursoDia2 = new ConfiguracionCursoDia(diaSemana: DiaSemana.MIERCOLES, espacioFisico:espacioFisico2, curso:curso15, horaInicio:19, horaFin:23, minutosInicio:0, minutosFin:0)
+
+			asignacionDocenteCurso1.configuracionCursoDia = configuracionCursoDia1
+			asignacionDocenteCurso2.configuracionCursoDia = configuracionCursoDia1
+			asignacionDocenteCurso3.configuracionCursoDia = configuracionCursoDia2
+
+			asignacionesDocenteCursoDia1.add(asignacionDocenteCurso1)
+			asignacionesDocenteCursoDia1.add(asignacionDocenteCurso2)
+			asignacionesDocenteCursoDia2.add(asignacionDocenteCurso3)
+
+			configuracionCursoDia1.asignacionesDocenteCurso = asignacionesDocenteCursoDia1
+			configuracionCursoDia2.asignacionesDocenteCurso = asignacionesDocenteCursoDia2
+
+			configuracionCursoDia1 = configuracionCursoDia1.save(failOnError:true)
+			configuracionCursoDia2 = configuracionCursoDia2.save(failOnError:true)
+
+			configuracionesCursoDia1.add(configuracionCursoDia1)
+			configuracionesCursoDia1.add(configuracionCursoDia2)
+
+			curso15.configuracionesCursoDia = configuracionesCursoDia1
+			curso15 = curso15.save()
+		}
+
+
+		//Caso de Materia de 2 Dias 2 Espacios Fisicos Distintos y diferentes asignaciones en diferentes porcentajes por dia.
+		if(!curso16?.configuracionesCursoDia){
+			def configuracionesCursoDia1 = []
+			def asignacionesDocenteCursoDia1 = []
+			def asignacionesDocenteCursoDia2 = []
+			EspacioFisico espacioFisico1 = EspacioFisico.findByNumero(625) ?: new EspacioFisico(numero:625, ubicacion: 'PABELLON 1').save(failOnError:true)
+			EspacioFisico espacioFisico2 = EspacioFisico.findByNumero(621) ?: new EspacioFisico(numero:621, ubicacion: 'ZONA DE LABORATORIOS').save(failOnError:true)
+
+			AsignacionDocenteCurso asignacionDocenteCurso1 = new AsignacionDocenteCurso(docente:docente9, tipoPorcentajeAsignacion:TipoPorcentajeAsignacion.ASIGNADO_AL_100)
+			AsignacionDocenteCurso asignacionDocenteCurso2 = new AsignacionDocenteCurso(docente:docente10, tipoPorcentajeAsignacion:TipoPorcentajeAsignacion.ASIGNADO_AL_50)
+			AsignacionDocenteCurso asignacionDocenteCurso3 = new AsignacionDocenteCurso(docente:docente11, tipoPorcentajeAsignacion:TipoPorcentajeAsignacion.ASIGNADO_AL_100)
+
+			ConfiguracionCursoDia configuracionCursoDia1 = new ConfiguracionCursoDia(diaSemana: DiaSemana.LUNES, espacioFisico:espacioFisico1, curso:curso16, horaInicio:19, horaFin:23, minutosInicio:0, minutosFin:0)
+			ConfiguracionCursoDia configuracionCursoDia2 = new ConfiguracionCursoDia(diaSemana: DiaSemana.MIERCOLES, espacioFisico:espacioFisico2, curso:curso16, horaInicio:19, horaFin:23, minutosInicio:0, minutosFin:0)
+
+			asignacionDocenteCurso1.configuracionCursoDia = configuracionCursoDia1
+			asignacionDocenteCurso2.configuracionCursoDia = configuracionCursoDia1
+			asignacionDocenteCurso3.configuracionCursoDia = configuracionCursoDia2
+
+			asignacionesDocenteCursoDia1.add(asignacionDocenteCurso1)
+			asignacionesDocenteCursoDia1.add(asignacionDocenteCurso2)
+			asignacionesDocenteCursoDia2.add(asignacionDocenteCurso3)
+
+			configuracionCursoDia1.asignacionesDocenteCurso = asignacionesDocenteCursoDia1
+			configuracionCursoDia2.asignacionesDocenteCurso = asignacionesDocenteCursoDia2
+
+			configuracionCursoDia1 = configuracionCursoDia1.save(failOnError:true)
+			configuracionCursoDia2 = configuracionCursoDia2.save(failOnError:true)
+
+			configuracionesCursoDia1.add(configuracionCursoDia1)
+			configuracionesCursoDia1.add(configuracionCursoDia2)
+
+			curso16.configuracionesCursoDia = configuracionesCursoDia1
+			curso16 = curso16.save()
+		}
+	}
+
+	private initCursosDia2012TurnoManianaCuatrimestre1(Docente docente1, Docente docente2, def curso17, Docente docente3, Docente docente4, def curso18, Docente docente5, Docente docente6, def curso19, Docente docente7, def curso20, def curso21, Docente docente12, Docente docente11, def curso22, def curso23, Docente docente9, Docente docente10, def curso24) {
+		//Caso de 1 Dia de cursada con 2 docentes al 100
+		if(!curso17?.configuracionesCursoDia){
+			def configuracionesCursoDia1 = []
+			def asignacionesDocenteCursoDia1 = []
+			EspacioFisico espacioFisico1 = EspacioFisico.findByNumero(700) ?: new EspacioFisico(numero:700, ubicacion: 'PABELLON 1').save(failOnError:true)
+			AsignacionDocenteCurso asignacionDocenteCurso1 = new AsignacionDocenteCurso(docente:docente1, tipoPorcentajeAsignacion:TipoPorcentajeAsignacion.ASIGNADO_AL_100)
+			AsignacionDocenteCurso asignacionDocenteCurso2 = new AsignacionDocenteCurso(docente:docente2, tipoPorcentajeAsignacion:TipoPorcentajeAsignacion.ASIGNADO_AL_100)
+			ConfiguracionCursoDia configuracionCursoDia1 = new ConfiguracionCursoDia(diaSemana: DiaSemana.LUNES, espacioFisico:espacioFisico1, curso:curso17, horaInicio:8, horaFin:12, minutosInicio:0, minutosFin:0)
+			asignacionDocenteCurso1.configuracionCursoDia = configuracionCursoDia1
+			asignacionDocenteCurso2.configuracionCursoDia = configuracionCursoDia1
+			asignacionesDocenteCursoDia1.add(asignacionDocenteCurso1)
+			asignacionesDocenteCursoDia1.add(asignacionDocenteCurso2)
+			configuracionCursoDia1.asignacionesDocenteCurso = asignacionesDocenteCursoDia1
+			configuracionCursoDia1 = configuracionCursoDia1.save(failOnError:true)
+			configuracionesCursoDia1.add(configuracionCursoDia1)
+			curso17.configuracionesCursoDia = configuracionesCursoDia1
+			curso17 = curso17.save()
+
+		}
+
+		//Caso de Materia de 2 Dias 2 Espacios Fisicos Distintos y diferentes asignaciones en diferentes porcentajes por dia.
+		if(!curso18?.configuracionesCursoDia){
+			def configuracionesCursoDia1 = []
+			def asignacionesDocenteCursoDia1 = []
+			def asignacionesDocenteCursoDia2 = []
+			EspacioFisico espacioFisico1 = EspacioFisico.findByNumero(701) ?: new EspacioFisico(numero:701, ubicacion: 'PABELLON 1').save(failOnError:true)
+			EspacioFisico espacioFisico2 = EspacioFisico.findByNumero(702) ?: new EspacioFisico(numero:702, ubicacion: 'LABORATORIO 3').save(failOnError:true)
+
+			AsignacionDocenteCurso asignacionDocenteCurso1 = new AsignacionDocenteCurso(docente:docente3, tipoPorcentajeAsignacion:TipoPorcentajeAsignacion.ASIGNADO_AL_100)
+			AsignacionDocenteCurso asignacionDocenteCurso2 = new AsignacionDocenteCurso(docente:docente4, tipoPorcentajeAsignacion:TipoPorcentajeAsignacion.ASIGNADO_AL_50)
+			AsignacionDocenteCurso asignacionDocenteCurso3 = new AsignacionDocenteCurso(docente:docente4, tipoPorcentajeAsignacion:TipoPorcentajeAsignacion.ASIGNADO_AL_100)
+
+			ConfiguracionCursoDia configuracionCursoDia1 = new ConfiguracionCursoDia(diaSemana: DiaSemana.MARTES, espacioFisico:espacioFisico1, curso:curso18, horaInicio:8, horaFin:12, minutosInicio:0, minutosFin:0)
+			ConfiguracionCursoDia configuracionCursoDia2 = new ConfiguracionCursoDia(diaSemana: DiaSemana.JUEVES, espacioFisico:espacioFisico2, curso:curso18, horaInicio:8, horaFin:12, minutosInicio:0, minutosFin:0)
+
+			asignacionDocenteCurso1.configuracionCursoDia = configuracionCursoDia1
+			asignacionDocenteCurso2.configuracionCursoDia = configuracionCursoDia1
+			asignacionDocenteCurso3.configuracionCursoDia = configuracionCursoDia2
+
+			asignacionesDocenteCursoDia1.add(asignacionDocenteCurso1)
+			asignacionesDocenteCursoDia1.add(asignacionDocenteCurso2)
+			asignacionesDocenteCursoDia2.add(asignacionDocenteCurso3)
+
+			configuracionCursoDia1.asignacionesDocenteCurso = asignacionesDocenteCursoDia1
+			configuracionCursoDia2.asignacionesDocenteCurso = asignacionesDocenteCursoDia2
+
+			configuracionCursoDia1 = configuracionCursoDia1.save(failOnError:true)
+			configuracionCursoDia2 = configuracionCursoDia2.save(failOnError:true)
+
+			configuracionesCursoDia1.add(configuracionCursoDia1)
+			configuracionesCursoDia1.add(configuracionCursoDia2)
+
+			curso18.configuracionesCursoDia = configuracionesCursoDia1
+			curso18 = curso18.save()
+		}
+
+		//caso del 1 solo dia 2 Docentes al 50% es decir, 2 hs cada docente
+		if(!curso19?.configuracionesCursoDia){
+			def configuracionesCursoDia1 = []
+			def asignacionesDocenteCursoDia1 = []
+			EspacioFisico espacioFisico1 = EspacioFisico.findByNumero(703) ?: new EspacioFisico(numero:703, ubicacion: 'PABELLON 2').save(failOnError:true)
+			AsignacionDocenteCurso asignacionDocenteCurso1 = new AsignacionDocenteCurso(docente:docente5, tipoPorcentajeAsignacion:TipoPorcentajeAsignacion.ASIGNADO_AL_50)
+			AsignacionDocenteCurso asignacionDocenteCurso2 = new AsignacionDocenteCurso(docente:docente6, tipoPorcentajeAsignacion:TipoPorcentajeAsignacion.ASIGNADO_AL_50)
+			ConfiguracionCursoDia configuracionCursoDia1 = new ConfiguracionCursoDia(diaSemana: DiaSemana.MIERCOLES, espacioFisico:espacioFisico1, curso:curso19, horaInicio:8, horaFin:12, minutosInicio:0, minutosFin:0)
+			asignacionDocenteCurso1.configuracionCursoDia = configuracionCursoDia1
+			asignacionDocenteCurso2.configuracionCursoDia = configuracionCursoDia1
+			asignacionesDocenteCursoDia1.add(asignacionDocenteCurso1)
+			asignacionesDocenteCursoDia1.add(asignacionDocenteCurso2)
+			configuracionCursoDia1.asignacionesDocenteCurso = asignacionesDocenteCursoDia1
+			configuracionCursoDia1 = configuracionCursoDia1.save(failOnError:true)
+			configuracionesCursoDia1.add(configuracionCursoDia1)
+			curso19.configuracionesCursoDia = configuracionesCursoDia1
+			curso19 = curso19.save()
+
+		}
+
+		//caso del 1 solo dia 2 Docentes al 50% y uno al 100 es decir, 2 hs cada docente salvo 1 que se queda todo el dia
+		if(!curso20?.configuracionesCursoDia){
+			def configuracionesCursoDia1 = []
+			def asignacionesDocenteCursoDia1 = []
+			EspacioFisico espacioFisico1 = EspacioFisico.findByNumero(704) ?: new EspacioFisico(numero:704, ubicacion: 'LABOTARORIO WEB').save(failOnError:true)
+			AsignacionDocenteCurso asignacionDocenteCurso1 = new AsignacionDocenteCurso(docente:docente7, tipoPorcentajeAsignacion:TipoPorcentajeAsignacion.ASIGNADO_AL_100)
+			AsignacionDocenteCurso asignacionDocenteCurso2 = new AsignacionDocenteCurso(docente:docente6, tipoPorcentajeAsignacion:TipoPorcentajeAsignacion.ASIGNADO_AL_50)
+			AsignacionDocenteCurso asignacionDocenteCurso3 = new AsignacionDocenteCurso(docente:docente2, tipoPorcentajeAsignacion:TipoPorcentajeAsignacion.ASIGNADO_AL_50)
+			ConfiguracionCursoDia configuracionCursoDia1 = new ConfiguracionCursoDia(diaSemana: DiaSemana.VIERNES, espacioFisico:espacioFisico1, curso:curso20, horaInicio:8, horaFin:12, minutosInicio:0, minutosFin:0)
+			asignacionDocenteCurso1.configuracionCursoDia = configuracionCursoDia1
+			asignacionDocenteCurso2.configuracionCursoDia = configuracionCursoDia1
+			asignacionDocenteCurso3.configuracionCursoDia = configuracionCursoDia1
+			asignacionesDocenteCursoDia1.add(asignacionDocenteCurso1)
+			asignacionesDocenteCursoDia1.add(asignacionDocenteCurso2)
+			asignacionesDocenteCursoDia1.add(asignacionDocenteCurso3)
+			configuracionCursoDia1.asignacionesDocenteCurso = asignacionesDocenteCursoDia1
+			configuracionCursoDia1 = configuracionCursoDia1.save(failOnError:true)
+			configuracionesCursoDia1.add(configuracionCursoDia1)
+			curso20.configuracionesCursoDia = configuracionesCursoDia1
+			curso20 = curso20.save()
+		}
+
+		//Materia BDD 2 Ocupando mismo dia que BDD1 pero diferentes docentes/espacios Fisicos
+		if(!curso21?.configuracionesCursoDia){
+			def configuracionesCursoDia1 = []
+			def asignacionesDocenteCursoDia1 = []
+			EspacioFisico espacioFisico1 = EspacioFisico.findByNumero(705) ?: new EspacioFisico(numero:705, ubicacion: 'AULA MAGNA').save(failOnError:true)
+			AsignacionDocenteCurso asignacionDocenteCurso1 = new AsignacionDocenteCurso(docente:docente3, tipoPorcentajeAsignacion:TipoPorcentajeAsignacion.ASIGNADO_AL_100)
+			AsignacionDocenteCurso asignacionDocenteCurso2 = new AsignacionDocenteCurso(docente:docente4, tipoPorcentajeAsignacion:TipoPorcentajeAsignacion.ASIGNADO_AL_100)
+
+			ConfiguracionCursoDia configuracionCursoDia1 = new ConfiguracionCursoDia(diaSemana: DiaSemana.LUNES, espacioFisico:espacioFisico1, curso:curso21, horaInicio:8, horaFin:12, minutosInicio:0, minutosFin:0)
+			asignacionDocenteCurso1.configuracionCursoDia = configuracionCursoDia1
+			asignacionDocenteCurso2.configuracionCursoDia = configuracionCursoDia1
+
+			asignacionesDocenteCursoDia1.add(asignacionDocenteCurso1)
+			asignacionesDocenteCursoDia1.add(asignacionDocenteCurso2)
+
+			configuracionCursoDia1.asignacionesDocenteCurso = asignacionesDocenteCursoDia1
+			configuracionCursoDia1 = configuracionCursoDia1.save(failOnError:true)
+			configuracionesCursoDia1.add(configuracionCursoDia1)
+			curso21.configuracionesCursoDia = configuracionesCursoDia1
+			curso21 = curso21.save()
+		}
+
+		//Curso de los sabados
+		if(!curso22?.configuracionesCursoDia){
+			def configuracionesCursoDia1 = []
+			def asignacionesDocenteCursoDia1 = []
+			EspacioFisico espacioFisico1 = EspacioFisico.findByNumero(706) ?: new EspacioFisico(numero:706, ubicacion: 'PABELLON 3').save(failOnError:true)
+			AsignacionDocenteCurso asignacionDocenteCurso1 = new AsignacionDocenteCurso(docente:docente12, tipoPorcentajeAsignacion:TipoPorcentajeAsignacion.ASIGNADO_AL_100)
+			AsignacionDocenteCurso asignacionDocenteCurso2 = new AsignacionDocenteCurso(docente:docente11, tipoPorcentajeAsignacion:TipoPorcentajeAsignacion.ASIGNADO_AL_100)
+
+			ConfiguracionCursoDia configuracionCursoDia1 = new ConfiguracionCursoDia(diaSemana: DiaSemana.SABADO, espacioFisico:espacioFisico1, curso:curso22, horaInicio:8, horaFin:12, minutosInicio:0, minutosFin:0)
+			asignacionDocenteCurso1.configuracionCursoDia = configuracionCursoDia1
+			asignacionDocenteCurso2.configuracionCursoDia = configuracionCursoDia1
+
+			asignacionesDocenteCursoDia1.add(asignacionDocenteCurso1)
+			asignacionesDocenteCursoDia1.add(asignacionDocenteCurso2)
+
+			configuracionCursoDia1.asignacionesDocenteCurso = asignacionesDocenteCursoDia1
+			configuracionCursoDia1 = configuracionCursoDia1.save(failOnError:true)
+			configuracionesCursoDia1.add(configuracionCursoDia1)
+			curso22.configuracionesCursoDia = configuracionesCursoDia1
+			curso22 = curso22.save()
+		}
+
+		//Caso de Materia de 2 Dias 2 Espacios Fisicos Distintos y diferentes asignaciones en diferentes porcentajes por dia.
+		if(!curso23?.configuracionesCursoDia){
+			def configuracionesCursoDia1 = []
+			def asignacionesDocenteCursoDia1 = []
+			def asignacionesDocenteCursoDia2 = []
+			EspacioFisico espacioFisico1 = EspacioFisico.findByNumero(707) ?: new EspacioFisico(numero:707, ubicacion: 'PABELLON 1').save(failOnError:true)
+			EspacioFisico espacioFisico2 = EspacioFisico.findByNumero(708) ?: new EspacioFisico(numero:708, ubicacion: 'ZONA DE LABORATORIOS').save(failOnError:true)
+
+			AsignacionDocenteCurso asignacionDocenteCurso1 = new AsignacionDocenteCurso(docente:docente2, tipoPorcentajeAsignacion:TipoPorcentajeAsignacion.ASIGNADO_AL_100)
+			AsignacionDocenteCurso asignacionDocenteCurso2 = new AsignacionDocenteCurso(docente:docente7, tipoPorcentajeAsignacion:TipoPorcentajeAsignacion.ASIGNADO_AL_50)
+			AsignacionDocenteCurso asignacionDocenteCurso3 = new AsignacionDocenteCurso(docente:docente2, tipoPorcentajeAsignacion:TipoPorcentajeAsignacion.ASIGNADO_AL_100)
+
+			ConfiguracionCursoDia configuracionCursoDia1 = new ConfiguracionCursoDia(diaSemana: DiaSemana.LUNES, espacioFisico:espacioFisico1, curso:curso23, horaInicio:8, horaFin:12, minutosInicio:0, minutosFin:0)
+			ConfiguracionCursoDia configuracionCursoDia2 = new ConfiguracionCursoDia(diaSemana: DiaSemana.MIERCOLES, espacioFisico:espacioFisico2, curso:curso23, horaInicio:8, horaFin:12, minutosInicio:0, minutosFin:0)
+
+			asignacionDocenteCurso1.configuracionCursoDia = configuracionCursoDia1
+			asignacionDocenteCurso2.configuracionCursoDia = configuracionCursoDia1
+			asignacionDocenteCurso3.configuracionCursoDia = configuracionCursoDia2
+
+			asignacionesDocenteCursoDia1.add(asignacionDocenteCurso1)
+			asignacionesDocenteCursoDia1.add(asignacionDocenteCurso2)
+			asignacionesDocenteCursoDia2.add(asignacionDocenteCurso3)
+
+			configuracionCursoDia1.asignacionesDocenteCurso = asignacionesDocenteCursoDia1
+			configuracionCursoDia2.asignacionesDocenteCurso = asignacionesDocenteCursoDia2
+
+			configuracionCursoDia1 = configuracionCursoDia1.save(failOnError:true)
+			configuracionCursoDia2 = configuracionCursoDia2.save(failOnError:true)
+
+			configuracionesCursoDia1.add(configuracionCursoDia1)
+			configuracionesCursoDia1.add(configuracionCursoDia2)
+
+			curso23.configuracionesCursoDia = configuracionesCursoDia1
+			curso23 = curso23.save()
+		}
+
+
+		//Caso de Materia de 2 Dias 2 Espacios Fisicos Distintos y diferentes asignaciones en diferentes porcentajes por dia.
+		if(!curso24?.configuracionesCursoDia){
+			def configuracionesCursoDia1 = []
+			def asignacionesDocenteCursoDia1 = []
+			def asignacionesDocenteCursoDia2 = []
+			EspacioFisico espacioFisico1 = EspacioFisico.findByNumero(721) ?: new EspacioFisico(numero:721, ubicacion: 'PABELLON 1').save(failOnError:true)
+			EspacioFisico espacioFisico2 = EspacioFisico.findByNumero(722) ?: new EspacioFisico(numero:722, ubicacion: 'ZONA DE LABORATORIOS').save(failOnError:true)
+
+			AsignacionDocenteCurso asignacionDocenteCurso1 = new AsignacionDocenteCurso(docente:docente9, tipoPorcentajeAsignacion:TipoPorcentajeAsignacion.ASIGNADO_AL_100)
+			AsignacionDocenteCurso asignacionDocenteCurso2 = new AsignacionDocenteCurso(docente:docente10, tipoPorcentajeAsignacion:TipoPorcentajeAsignacion.ASIGNADO_AL_50)
+			AsignacionDocenteCurso asignacionDocenteCurso3 = new AsignacionDocenteCurso(docente:docente11, tipoPorcentajeAsignacion:TipoPorcentajeAsignacion.ASIGNADO_AL_100)
+
+			ConfiguracionCursoDia configuracionCursoDia1 = new ConfiguracionCursoDia(diaSemana: DiaSemana.LUNES, espacioFisico:espacioFisico1, curso:curso24, horaInicio:8, horaFin:12, minutosInicio:0, minutosFin:0)
+			ConfiguracionCursoDia configuracionCursoDia2 = new ConfiguracionCursoDia(diaSemana: DiaSemana.MIERCOLES, espacioFisico:espacioFisico2, curso:curso24, horaInicio:8, horaFin:12, minutosInicio:0, minutosFin:0)
+
+			asignacionDocenteCurso1.configuracionCursoDia = configuracionCursoDia1
+			asignacionDocenteCurso2.configuracionCursoDia = configuracionCursoDia1
+			asignacionDocenteCurso3.configuracionCursoDia = configuracionCursoDia2
+
+			asignacionesDocenteCursoDia1.add(asignacionDocenteCurso1)
+			asignacionesDocenteCursoDia1.add(asignacionDocenteCurso2)
+			asignacionesDocenteCursoDia2.add(asignacionDocenteCurso3)
+
+			configuracionCursoDia1.asignacionesDocenteCurso = asignacionesDocenteCursoDia1
+			configuracionCursoDia2.asignacionesDocenteCurso = asignacionesDocenteCursoDia2
+
+			configuracionCursoDia1 = configuracionCursoDia1.save(failOnError:true)
+			configuracionCursoDia2 = configuracionCursoDia2.save(failOnError:true)
+
+			configuracionesCursoDia1.add(configuracionCursoDia1)
+			configuracionesCursoDia1.add(configuracionCursoDia2)
+
+			curso24.configuracionesCursoDia = configuracionesCursoDia1
+			curso24 = curso24.save()
+		}
+	}
+
+	private initCursosDia2012TurnoNocheCuatrimestre1(Docente docente1, Docente docente2, def curso1, Docente docente3, Docente docente4, def curso2, Docente docente5, Docente docente6, def curso3, Docente docente7, def curso4, def curso5, def curso6, def curso7, Docente docente9, Docente docente10, Docente docente11, def curso8) {
+		
+		//Caso de 1 Dia de cursada con 2 docentes al 100		
 		if(!curso1?.configuracionesCursoDia){
 			def configuracionesCursoDia1 = []
 			def asignacionesDocenteCursoDia1 = []
@@ -715,12 +1453,12 @@ class BootStrap {
 			asignacionDocenteCurso2.configuracionCursoDia = configuracionCursoDia1
 			asignacionesDocenteCursoDia1.add(asignacionDocenteCurso1)
 			asignacionesDocenteCursoDia1.add(asignacionDocenteCurso2)
-			configuracionCursoDia1.asignacionesDocenteCurso = asignacionesDocenteCursoDia1			
+			configuracionCursoDia1.asignacionesDocenteCurso = asignacionesDocenteCursoDia1
 			configuracionCursoDia1 = configuracionCursoDia1.save(failOnError:true)
 			configuracionesCursoDia1.add(configuracionCursoDia1)
 			curso1.configuracionesCursoDia = configuracionesCursoDia1
 			curso1 = curso1.save()
-				
+
 		}
 
 		//Caso de Materia de 2 Dias 2 Espacios Fisicos Distintos y diferentes asignaciones en diferentes porcentajes por dia.
@@ -730,35 +1468,35 @@ class BootStrap {
 			def asignacionesDocenteCursoDia2 = []
 			EspacioFisico espacioFisico1 = EspacioFisico.findByNumero(907) ?: new EspacioFisico(numero:907, ubicacion: 'PABELLON 1').save(failOnError:true)
 			EspacioFisico espacioFisico2 = EspacioFisico.findByNumero(903) ?: new EspacioFisico(numero:903, ubicacion: 'LABORATORIO 3').save(failOnError:true)
-			
+
 			AsignacionDocenteCurso asignacionDocenteCurso1 = new AsignacionDocenteCurso(docente:docente3, tipoPorcentajeAsignacion:TipoPorcentajeAsignacion.ASIGNADO_AL_100)
 			AsignacionDocenteCurso asignacionDocenteCurso2 = new AsignacionDocenteCurso(docente:docente4, tipoPorcentajeAsignacion:TipoPorcentajeAsignacion.ASIGNADO_AL_50)
 			AsignacionDocenteCurso asignacionDocenteCurso3 = new AsignacionDocenteCurso(docente:docente4, tipoPorcentajeAsignacion:TipoPorcentajeAsignacion.ASIGNADO_AL_100)
-			
+
 			ConfiguracionCursoDia configuracionCursoDia1 = new ConfiguracionCursoDia(diaSemana: DiaSemana.MARTES, espacioFisico:espacioFisico1, curso:curso2, horaInicio:19, horaFin:23, minutosInicio:0, minutosFin:0)
 			ConfiguracionCursoDia configuracionCursoDia2 = new ConfiguracionCursoDia(diaSemana: DiaSemana.JUEVES, espacioFisico:espacioFisico2, curso:curso2, horaInicio:19, horaFin:23, minutosInicio:0, minutosFin:0)
-			
+
 			asignacionDocenteCurso1.configuracionCursoDia = configuracionCursoDia1
 			asignacionDocenteCurso2.configuracionCursoDia = configuracionCursoDia1
 			asignacionDocenteCurso3.configuracionCursoDia = configuracionCursoDia2
-			
+
 			asignacionesDocenteCursoDia1.add(asignacionDocenteCurso1)
 			asignacionesDocenteCursoDia1.add(asignacionDocenteCurso2)
 			asignacionesDocenteCursoDia2.add(asignacionDocenteCurso3)
-			
+
 			configuracionCursoDia1.asignacionesDocenteCurso = asignacionesDocenteCursoDia1
 			configuracionCursoDia2.asignacionesDocenteCurso = asignacionesDocenteCursoDia2
-			
+
 			configuracionCursoDia1 = configuracionCursoDia1.save(failOnError:true)
 			configuracionCursoDia2 = configuracionCursoDia2.save(failOnError:true)
-			
+
 			configuracionesCursoDia1.add(configuracionCursoDia1)
 			configuracionesCursoDia1.add(configuracionCursoDia2)
-			
+
 			curso2.configuracionesCursoDia = configuracionesCursoDia1
-			curso2 = curso2.save()				
+			curso2 = curso2.save()
 		}
-		
+
 		//caso del 1 solo dia 2 Docentes al 50% es decir, 2 hs cada docente
 		if(!curso3?.configuracionesCursoDia){
 			def configuracionesCursoDia1 = []
@@ -776,7 +1514,7 @@ class BootStrap {
 			configuracionesCursoDia1.add(configuracionCursoDia1)
 			curso3.configuracionesCursoDia = configuracionesCursoDia1
 			curso3 = curso3.save()
-				
+
 		}
 
 		//caso del 1 solo dia 2 Docentes al 50% y uno al 100 es decir, 2 hs cada docente salvo 1 que se queda todo el dia
@@ -798,9 +1536,9 @@ class BootStrap {
 			configuracionCursoDia1 = configuracionCursoDia1.save(failOnError:true)
 			configuracionesCursoDia1.add(configuracionCursoDia1)
 			curso4.configuracionesCursoDia = configuracionesCursoDia1
-			curso4 = curso4.save()				
+			curso4 = curso4.save()
 		}
-		
+
 		//Materia BDD 2 Ocupando mismo dia que BDD1 pero diferentes docentes/espacios Fisicos
 		if(!curso5?.configuracionesCursoDia){
 			def configuracionesCursoDia1 = []
@@ -808,25 +1546,117 @@ class BootStrap {
 			EspacioFisico espacioFisico1 = EspacioFisico.findByNumero(906) ?: new EspacioFisico(numero:906, ubicacion: 'AULA MAGNA').save(failOnError:true)
 			AsignacionDocenteCurso asignacionDocenteCurso1 = new AsignacionDocenteCurso(docente:docente3, tipoPorcentajeAsignacion:TipoPorcentajeAsignacion.ASIGNADO_AL_100)
 			AsignacionDocenteCurso asignacionDocenteCurso2 = new AsignacionDocenteCurso(docente:docente4, tipoPorcentajeAsignacion:TipoPorcentajeAsignacion.ASIGNADO_AL_100)
-			
+
 			ConfiguracionCursoDia configuracionCursoDia1 = new ConfiguracionCursoDia(diaSemana: DiaSemana.LUNES, espacioFisico:espacioFisico1, curso:curso5, horaInicio:19, horaFin:23, minutosInicio:0, minutosFin:0)
 			asignacionDocenteCurso1.configuracionCursoDia = configuracionCursoDia1
 			asignacionDocenteCurso2.configuracionCursoDia = configuracionCursoDia1
-			
+
 			asignacionesDocenteCursoDia1.add(asignacionDocenteCurso1)
 			asignacionesDocenteCursoDia1.add(asignacionDocenteCurso2)
-			
+
 			configuracionCursoDia1.asignacionesDocenteCurso = asignacionesDocenteCursoDia1
 			configuracionCursoDia1 = configuracionCursoDia1.save(failOnError:true)
 			configuracionesCursoDia1.add(configuracionCursoDia1)
 			curso5.configuracionesCursoDia = configuracionesCursoDia1
 			curso5 = curso5.save()
 		}
-		
+
+		//Curso de los sabados
+		if(!curso6?.configuracionesCursoDia){
+			def configuracionesCursoDia1 = []
+			def asignacionesDocenteCursoDia1 = []
+			EspacioFisico espacioFisico1 = EspacioFisico.findByNumero(801) ?: new EspacioFisico(numero:801, ubicacion: 'PABELLON 3').save(failOnError:true)
+			AsignacionDocenteCurso asignacionDocenteCurso1 = new AsignacionDocenteCurso(docente:docente1, tipoPorcentajeAsignacion:TipoPorcentajeAsignacion.ASIGNADO_AL_100)
+			AsignacionDocenteCurso asignacionDocenteCurso2 = new AsignacionDocenteCurso(docente:docente2, tipoPorcentajeAsignacion:TipoPorcentajeAsignacion.ASIGNADO_AL_100)
+
+			ConfiguracionCursoDia configuracionCursoDia1 = new ConfiguracionCursoDia(diaSemana: DiaSemana.SABADO, espacioFisico:espacioFisico1, curso:curso6, horaInicio:8, horaFin:12, minutosInicio:0, minutosFin:0)
+			asignacionDocenteCurso1.configuracionCursoDia = configuracionCursoDia1
+			asignacionDocenteCurso2.configuracionCursoDia = configuracionCursoDia1
+
+			asignacionesDocenteCursoDia1.add(asignacionDocenteCurso1)
+			asignacionesDocenteCursoDia1.add(asignacionDocenteCurso2)
+
+			configuracionCursoDia1.asignacionesDocenteCurso = asignacionesDocenteCursoDia1
+			configuracionCursoDia1 = configuracionCursoDia1.save(failOnError:true)
+			configuracionesCursoDia1.add(configuracionCursoDia1)
+			curso6.configuracionesCursoDia = configuracionesCursoDia1
+			curso6 = curso6.save()
+		}
+
+		//Caso de Materia de 2 Dias 2 Espacios Fisicos Distintos y diferentes asignaciones en diferentes porcentajes por dia.
+		if(!curso7?.configuracionesCursoDia){
+			def configuracionesCursoDia1 = []
+			def asignacionesDocenteCursoDia1 = []
+			def asignacionesDocenteCursoDia2 = []
+			EspacioFisico espacioFisico1 = EspacioFisico.findByNumero(802) ?: new EspacioFisico(numero:802, ubicacion: 'PABELLON 1').save(failOnError:true)
+			EspacioFisico espacioFisico2 = EspacioFisico.findByNumero(803) ?: new EspacioFisico(numero:803, ubicacion: 'ZONA DE LABORATORIOS').save(failOnError:true)
+
+			AsignacionDocenteCurso asignacionDocenteCurso1 = new AsignacionDocenteCurso(docente:docente2, tipoPorcentajeAsignacion:TipoPorcentajeAsignacion.ASIGNADO_AL_100)
+			AsignacionDocenteCurso asignacionDocenteCurso2 = new AsignacionDocenteCurso(docente:docente7, tipoPorcentajeAsignacion:TipoPorcentajeAsignacion.ASIGNADO_AL_50)
+			AsignacionDocenteCurso asignacionDocenteCurso3 = new AsignacionDocenteCurso(docente:docente2, tipoPorcentajeAsignacion:TipoPorcentajeAsignacion.ASIGNADO_AL_100)
+
+			ConfiguracionCursoDia configuracionCursoDia1 = new ConfiguracionCursoDia(diaSemana: DiaSemana.LUNES, espacioFisico:espacioFisico1, curso:curso7, horaInicio:19, horaFin:23, minutosInicio:0, minutosFin:0)
+			ConfiguracionCursoDia configuracionCursoDia2 = new ConfiguracionCursoDia(diaSemana: DiaSemana.MIERCOLES, espacioFisico:espacioFisico2, curso:curso7, horaInicio:19, horaFin:23, minutosInicio:0, minutosFin:0)
+
+			asignacionDocenteCurso1.configuracionCursoDia = configuracionCursoDia1
+			asignacionDocenteCurso2.configuracionCursoDia = configuracionCursoDia1
+			asignacionDocenteCurso3.configuracionCursoDia = configuracionCursoDia2
+
+			asignacionesDocenteCursoDia1.add(asignacionDocenteCurso1)
+			asignacionesDocenteCursoDia1.add(asignacionDocenteCurso2)
+			asignacionesDocenteCursoDia2.add(asignacionDocenteCurso3)
+
+			configuracionCursoDia1.asignacionesDocenteCurso = asignacionesDocenteCursoDia1
+			configuracionCursoDia2.asignacionesDocenteCurso = asignacionesDocenteCursoDia2
+
+			configuracionCursoDia1 = configuracionCursoDia1.save(failOnError:true)
+			configuracionCursoDia2 = configuracionCursoDia2.save(failOnError:true)
+
+			configuracionesCursoDia1.add(configuracionCursoDia1)
+			configuracionesCursoDia1.add(configuracionCursoDia2)
+
+			curso7.configuracionesCursoDia = configuracionesCursoDia1
+			curso7 = curso7.save()
+		}
 
 
+		//Caso de Materia de 2 Dias 2 Espacios Fisicos Distintos y diferentes asignaciones en diferentes porcentajes por dia.
+		if(!curso8?.configuracionesCursoDia){
+			def configuracionesCursoDia1 = []
+			def asignacionesDocenteCursoDia1 = []
+			def asignacionesDocenteCursoDia2 = []
+			EspacioFisico espacioFisico1 = EspacioFisico.findByNumero(804) ?: new EspacioFisico(numero:804, ubicacion: 'PABELLON 1').save(failOnError:true)
+			EspacioFisico espacioFisico2 = EspacioFisico.findByNumero(805) ?: new EspacioFisico(numero:805, ubicacion: 'ZONA DE LABORATORIOS').save(failOnError:true)
 
+			AsignacionDocenteCurso asignacionDocenteCurso1 = new AsignacionDocenteCurso(docente:docente9, tipoPorcentajeAsignacion:TipoPorcentajeAsignacion.ASIGNADO_AL_100)
+			AsignacionDocenteCurso asignacionDocenteCurso2 = new AsignacionDocenteCurso(docente:docente10, tipoPorcentajeAsignacion:TipoPorcentajeAsignacion.ASIGNADO_AL_50)
+			AsignacionDocenteCurso asignacionDocenteCurso3 = new AsignacionDocenteCurso(docente:docente11, tipoPorcentajeAsignacion:TipoPorcentajeAsignacion.ASIGNADO_AL_100)
+
+			ConfiguracionCursoDia configuracionCursoDia1 = new ConfiguracionCursoDia(diaSemana: DiaSemana.LUNES, espacioFisico:espacioFisico1, curso:curso7, horaInicio:19, horaFin:23, minutosInicio:0, minutosFin:0)
+			ConfiguracionCursoDia configuracionCursoDia2 = new ConfiguracionCursoDia(diaSemana: DiaSemana.MIERCOLES, espacioFisico:espacioFisico2, curso:curso7, horaInicio:19, horaFin:23, minutosInicio:0, minutosFin:0)
+
+			asignacionDocenteCurso1.configuracionCursoDia = configuracionCursoDia1
+			asignacionDocenteCurso2.configuracionCursoDia = configuracionCursoDia1
+			asignacionDocenteCurso3.configuracionCursoDia = configuracionCursoDia2
+
+			asignacionesDocenteCursoDia1.add(asignacionDocenteCurso1)
+			asignacionesDocenteCursoDia1.add(asignacionDocenteCurso2)
+			asignacionesDocenteCursoDia2.add(asignacionDocenteCurso3)
+
+			configuracionCursoDia1.asignacionesDocenteCurso = asignacionesDocenteCursoDia1
+			configuracionCursoDia2.asignacionesDocenteCurso = asignacionesDocenteCursoDia2
+
+			configuracionCursoDia1 = configuracionCursoDia1.save(failOnError:true)
+			configuracionCursoDia2 = configuracionCursoDia2.save(failOnError:true)
+
+			configuracionesCursoDia1.add(configuracionCursoDia1)
+			configuracionesCursoDia1.add(configuracionCursoDia2)
+
+			curso8.configuracionesCursoDia = configuracionesCursoDia1
+			curso8 = curso8.save()
+		}
 	}
+	
 	def destroy = {
 	}
 }

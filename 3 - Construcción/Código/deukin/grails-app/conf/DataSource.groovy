@@ -38,7 +38,7 @@ environments {
 	}
 	test {
 		dataSource {
-			dbCreate = "update"
+			dbCreate = "create-drop"
 			//            url = "jdbc:h2:mem:testDb;MVCC=TRUE;LOCK_TIMEOUT=10000"
 //			url = "jdbc:mysql://localhost:3306/deukin_test"
 			url = 'jdbc:postgresql://localhost:5432/deukin_test'
@@ -46,7 +46,7 @@ environments {
 	}
 	production {
 		dataSource {
-			dbCreate = "update"
+			dbCreate = "create-drop"
 			//            url = "jdbc:h2:prodDb;MVCC=TRUE;LOCK_TIMEOUT=10000"
 //			url = 'jdbc:postgresql://localhost:5432/deukin_prod'
 			url = "jdbc:mysql://localhost:3306/deukin_prod"

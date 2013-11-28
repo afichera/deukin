@@ -1,17 +1,22 @@
 import com.deukin.Alumno
+import com.deukin.AsignacionDocenteCurso
 import com.deukin.AsignacionPeriodoMateria
 import com.deukin.Carrera
 import com.deukin.CicloLectivo
+import com.deukin.ConfiguracionCursoDia
 import com.deukin.Contacto
 import com.deukin.Coordinador
-import com.deukin.Correlatividad;
-import com.deukin.CronogramaCarrera;
+import com.deukin.Correlatividad
+import com.deukin.CronogramaCarrera
+import com.deukin.Curso
 import com.deukin.Departamento
+import com.deukin.DiaSemana
 import com.deukin.Docente
 import com.deukin.Documento
 import com.deukin.Domicilio
-import com.deukin.Equivalencia;
+import com.deukin.Equivalencia
 import com.deukin.EspacioFisico
+import com.deukin.EstadoCurso
 import com.deukin.EstadoDeCreacion
 import com.deukin.EstadoRecurso
 import com.deukin.InstitucionEducativa
@@ -26,11 +31,13 @@ import com.deukin.Rol
 import com.deukin.Telefono
 import com.deukin.TipoDocumento
 import com.deukin.TipoPeriodoAcademico
+import com.deukin.TipoPorcentajeAsignacion
 import com.deukin.TipoRecurso
 import com.deukin.TipoTelefono
 import com.deukin.Turno
 import com.deukin.Usuario
 import com.deukin.UsuarioRol
+
 
 
 class BootStrap {
@@ -259,7 +266,7 @@ class BootStrap {
 		def telefono1Coordinador2 = Telefono.findByNumero('1555555551')?: new Telefono(numero: '1555555551', tipoTelefono:TipoTelefono.MOVIL)
 		def telefono1Coordinador3 = Telefono.findByNumero('1555555552')?: new Telefono(numero: '1555555552', tipoTelefono:TipoTelefono.MOVIL)
 		def telefono1Docente1 = Telefono.findByNumero('444499990000')?: new Telefono(numero: '444499990000', tipoTelefono:TipoTelefono.MOVIL)
-		
+
 		def telefono1Docente2 = Telefono.findByNumero('444499990002')?: new Telefono(numero: '444499990002', tipoTelefono:TipoTelefono.MOVIL)
 		def telefono1Docente3 = Telefono.findByNumero('444499990003')?: new Telefono(numero: '444499990003', tipoTelefono:TipoTelefono.CASA)
 		def telefono1Docente4 = Telefono.findByNumero('444499990004')?: new Telefono(numero: '444499990004', tipoTelefono:TipoTelefono.MOVIL)
@@ -282,8 +289,8 @@ class BootStrap {
 		def domicilioDocente6 = new Domicilio(calle: 'Rivadavia', numero: 5682, codigoPostal: 5400,localidad: 'Capital Federal', observaciones: 'tocar timbre del medio')
 		def domicilioDocente7 = new Domicilio(calle: 'Rivadavia', numero: 5683, codigoPostal: 5400,localidad: 'Capital Federal', observaciones: 'tocar timbre del medio')
 		def domicilioDocente8 = new Domicilio(calle: 'Rivadavia', numero: 5684, codigoPostal: 5400,localidad: 'Capital Federal', observaciones: 'tocar timbre del medio')
-		
-		
+
+
 
 		def contactoAlumno1 = new Contacto(domicilio: DomicilioAlumno1)
 		contactoAlumno1.telefonos = []
@@ -339,9 +346,9 @@ class BootStrap {
 		contactoDocente8.telefonos = []
 		contactoDocente8.telefonos.add(telefono1Docente8)
 
-		
-		
-		
+
+
+
 		//documentos solo para test
 		def documentoDNIAlumno1 = Documento.findByNumeroAndTipoDocumento(28230014, TipoDocumento.DNI)?:new Documento(numero:28230014, tipoDocumento:TipoDocumento.DNI).save(failOnError:true)
 		def documentoCUILAlumno2 = Documento.findByNumeroAndTipoDocumento(20282300142, TipoDocumento.CUIL)?:new Documento(numero:20282300142, tipoDocumento:TipoDocumento.CUIL).save(failOnError:true)
@@ -506,10 +513,10 @@ class BootStrap {
 		def correlatividad34 = Correlatividad.findByMateriaPrincipalAndMateriaPredecesora(materia37,materia34)?:new Correlatividad(materiaPrincipal:materia37,materiaPredecesora:materia34).save(failOnError:true)
 		def correlatividad35 = Correlatividad.findByMateriaPrincipalAndMateriaPredecesora(materia38,materia37)?:new Correlatividad(materiaPrincipal:materia38,materiaPredecesora:materia37).save(failOnError:true)
 		def correlatividad36 = Correlatividad.findByMateriaPrincipalAndMateriaPredecesora(materia38,materia35)?:new Correlatividad(materiaPrincipal:materia38,materiaPredecesora:materia35).save(failOnError:true)
-		
+
 		//Equivalencias sólo para test
-			//bidireccionales
-		def equivalencia1a = Equivalencia.findByMateriaPrincipalAndMateriaEquivalente(materia1,materia21)?:new Equivalencia(materiaPrincipal:materia1,materiaEquivalente:materia21).save(failOnError:true)		
+		//bidireccionales
+		def equivalencia1a = Equivalencia.findByMateriaPrincipalAndMateriaEquivalente(materia1,materia21)?:new Equivalencia(materiaPrincipal:materia1,materiaEquivalente:materia21).save(failOnError:true)
 		def equivalencia1b= Equivalencia.findByMateriaPrincipalAndMateriaEquivalente(materia21,materia1)?:new Equivalencia(materiaPrincipal:materia21,materiaEquivalente:materia1).save(failOnError:true)
 		def equivalencia2a = Equivalencia.findByMateriaPrincipalAndMateriaEquivalente(materia2,materia22)?:new Equivalencia(materiaPrincipal:materia2,materiaEquivalente:materia22).save(failOnError:true)
 		def equivalencia2b= Equivalencia.findByMateriaPrincipalAndMateriaEquivalente(materia2,materia2)?:new Equivalencia(materiaPrincipal:materia22,materiaEquivalente:materia2).save(failOnError:true)
@@ -541,7 +548,7 @@ class BootStrap {
 		def equivalencia17b= Equivalencia.findByMateriaPrincipalAndMateriaEquivalente(materia37,materia17)?:new Equivalencia(materiaPrincipal:materia37,materiaEquivalente:materia17).save(failOnError:true)
 		def equivalencia18a = Equivalencia.findByMateriaPrincipalAndMateriaEquivalente(materia18,materia38)?:new Equivalencia(materiaPrincipal:materia18,materiaEquivalente:materia38).save(failOnError:true)
 		def equivalencia18b= Equivalencia.findByMateriaPrincipalAndMateriaEquivalente(materia38,materia18)?:new Equivalencia(materiaPrincipal:materia38,materiaEquivalente:materia18).save(failOnError:true)
-			//unidireccionales
+		//unidireccionales
 		def equivalencia1c = Equivalencia.findByMateriaPrincipalAndMateriaEquivalente(materia1,materia31)?:new Equivalencia(materiaPrincipal:materia1,materiaEquivalente:materia31).save(failOnError:true)
 		def equivalencia1d = Equivalencia.findByMateriaPrincipalAndMateriaEquivalente(materia1,materia11)?:new Equivalencia(materiaPrincipal:materia1,materiaEquivalente:materia11).save(failOnError:true)
 		def equivalencia2c = Equivalencia.findByMateriaPrincipalAndMateriaEquivalente(materia2,materia32)?:new Equivalencia(materiaPrincipal:materia2,materiaEquivalente:materia32).save(failOnError:true)
@@ -574,8 +581,8 @@ class BootStrap {
 		def equivalencia17d = Equivalencia.findByMateriaPrincipalAndMateriaEquivalente(materia27,materia17)?:new Equivalencia(materiaPrincipal:materia27,materiaEquivalente:materia17).save(failOnError:true)
 		def equivalencia18c = Equivalencia.findByMateriaPrincipalAndMateriaEquivalente(materia28,materia38)?:new Equivalencia(materiaPrincipal:materia28,materiaEquivalente:materia38).save(failOnError:true)
 		def equivalencia18d = Equivalencia.findByMateriaPrincipalAndMateriaEquivalente(materia28,materia18)?:new Equivalencia(materiaPrincipal:materia28,materiaEquivalente:materia18).save(failOnError:true)
-		
-		
+
+
 
 		//Departamentos solo para Test
 
@@ -612,25 +619,25 @@ class BootStrap {
 
 		int numeroInicial = 101
 		int cantidadCrear = 80
-		def espacioFisico
+		def espacioFisicoAux
 		def nroPabellon = 1
 		def ubicacion
 		for(int i = numeroInicial; i<=numeroInicial+cantidadCrear;i++){
 			ubicacion = "Pabellon Nro "+nroPabellon
-			espacioFisico = EspacioFisico.findByNumero(i) ?: new EspacioFisico(numero: i, ubicacion: ubicacion).save(failOnError:true)
+			espacioFisicoAux = EspacioFisico.findByNumero(i) ?: new EspacioFisico(numero: i, ubicacion: ubicacion).save(failOnError:true)
 			if(i%10==0){
 				nroPabellon = nroPabellon + 2
 			}
 
 		}
-		
+
 		Date fechaInicioCiclo1 = Date.parse("dd/MM/yyyy", "01/04/2013")
 		Date fechaFinCiclo1 = Date.parse("dd/MM/yyyy", "21/12/2013")
 		def cicloLectivo1 = CicloLectivo.findByCodigo('CICLO LECTIVO 2013') ?: new CicloLectivo(codigo:'CICLO LECTIVO 2013', fechaInicio: fechaInicioCiclo1, fechaFin: fechaFinCiclo1).save(failOnError:true)
 		Date fechaInicioCiclo2 = Date.parse("dd/MM/yyyy", "01/04/2012")
 		Date fechaFinCiclo2 = Date.parse("dd/MM/yyyy", "21/12/2012")
 		def cicloLectivo2 = CicloLectivo.findByCodigo('CICLO LECTIVO 2012') ?: new CicloLectivo(codigo:'CICLO LECTIVO 2012', fechaInicio: fechaInicioCiclo2, fechaFin: fechaFinCiclo2).save(failOnError:true)
-				
+
 		Date fechaInicioPeriodo1 = Date.parse("dd/MM/yyyy", "01/04/2013")
 		Date fechaFinPeriodo1 = Date.parse("dd/MM/yyyy", "26/07/2013")
 		Date fechaInicioPeriodo2 = Date.parse("dd/MM/yyyy", "26/08/2013")
@@ -641,8 +648,8 @@ class BootStrap {
 		Date fechaInicioPeriodo4 = Date.parse("dd/MM/yyyy", "26/08/2012")
 		Date fechaFinPeriodo4 = Date.parse("dd/MM/yyyy", "21/12/2012")
 
-				
-		def periodoAcademico1 = PeriodoAcademico.findByTipoPeriodoAcademicoAndCicloLectivo(TipoPeriodoAcademico.PRIMER_CUATRIMESTRE, cicloLectivo1)?: new PeriodoAcademico(tipoPeriodoAcademico:TipoPeriodoAcademico.PRIMER_CUATRIMESTRE, cicloLectivo:cicloLectivo1, cantidadSemanas:12, fechaInicioPeriodo: fechaInicioPeriodo1, fechaFinPeriodo: fechaFinPeriodo1).save(failOnError:true)		
+
+		def periodoAcademico1 = PeriodoAcademico.findByTipoPeriodoAcademicoAndCicloLectivo(TipoPeriodoAcademico.PRIMER_CUATRIMESTRE, cicloLectivo1)?: new PeriodoAcademico(tipoPeriodoAcademico:TipoPeriodoAcademico.PRIMER_CUATRIMESTRE, cicloLectivo:cicloLectivo1, cantidadSemanas:12, fechaInicioPeriodo: fechaInicioPeriodo1, fechaFinPeriodo: fechaFinPeriodo1).save(failOnError:true)
 		def periodoAcademico2 = PeriodoAcademico.findByTipoPeriodoAcademicoAndCicloLectivo(TipoPeriodoAcademico.SEGUNDO_CUATRIMESTRE, cicloLectivo1)?: new PeriodoAcademico(tipoPeriodoAcademico:TipoPeriodoAcademico.SEGUNDO_CUATRIMESTRE, cicloLectivo:cicloLectivo1, cantidadSemanas:12, fechaInicioPeriodo: fechaInicioPeriodo2, fechaFinPeriodo: fechaFinPeriodo2).save(failOnError:true)
 		def periodoAcademico3 = PeriodoAcademico.findByTipoPeriodoAcademicoAndCicloLectivo(TipoPeriodoAcademico.PRIMER_CUATRIMESTRE, cicloLectivo2)?: new PeriodoAcademico(tipoPeriodoAcademico:TipoPeriodoAcademico.PRIMER_CUATRIMESTRE, cicloLectivo:cicloLectivo2, cantidadSemanas:12, fechaInicioPeriodo: fechaInicioPeriodo3, fechaFinPeriodo: fechaFinPeriodo3).save(failOnError:true)
 		def periodoAcademico4 = PeriodoAcademico.findByTipoPeriodoAcademicoAndCicloLectivo(TipoPeriodoAcademico.SEGUNDO_CUATRIMESTRE, cicloLectivo2)?: new PeriodoAcademico(tipoPeriodoAcademico:TipoPeriodoAcademico.SEGUNDO_CUATRIMESTRE, cicloLectivo:cicloLectivo2, cantidadSemanas:12, fechaInicioPeriodo: fechaInicioPeriodo4, fechaFinPeriodo: fechaFinPeriodo4).save(failOnError:true)
@@ -651,10 +658,174 @@ class BootStrap {
 		def cronogramaCarrera2 = CronogramaCarrera.findByPlanEstudioAndCicloLectivo(planEstudio2,cicloLectivo1)?: new CronogramaCarrera(planEstudio:planEstudio2,cicloLectivo:cicloLectivo1).save(failOnError:true)
 		def cronogramaCarrera3 = CronogramaCarrera.findByPlanEstudioAndCicloLectivo(planEstudio3,cicloLectivo1)?: new CronogramaCarrera(planEstudio:planEstudio3,cicloLectivo:cicloLectivo1).save(failOnError:true)
 		def cronogramaCarrera4 = CronogramaCarrera.findByPlanEstudioAndCicloLectivo(planEstudio4,cicloLectivo1)?: new CronogramaCarrera(planEstudio:planEstudio4,cicloLectivo:cicloLectivo1).save(failOnError:true)
+
+		def cronogramaAnioPasado = CronogramaCarrera.findByCicloLectivoAndPlanEstudio(cicloLectivo2, planEstudio1)?: new CronogramaCarrera(cicloLectivo: cicloLectivo2, planEstudio:planEstudio1).save(failOnError:true)
+
+		//Cursos 2012 Cuatrimestre 1 Turno Noche
+		def curso1 = Curso.findByCodigoAndCronogramaCarreraAndMateriaAndTurno('2012C1N101', cronogramaAnioPasado, materia1, turnoNoche)?:new Curso(codigo:'2012C1N101', cronogramaCarrera:cronogramaAnioPasado, materia:materia1, turno:turnoNoche, estadoCurso:EstadoCurso.CERRADO, periodoAcademico:periodoAcademico3).save(failOnError:true)
+		def curso2 = Curso.findByCodigoAndCronogramaCarreraAndMateriaAndTurno('2012C1N102', cronogramaAnioPasado, materia2, turnoNoche)?:new Curso(codigo:'2012C1N102', cronogramaCarrera:cronogramaAnioPasado, materia:materia2, turno:turnoNoche, estadoCurso:EstadoCurso.CERRADO, periodoAcademico:periodoAcademico3).save(failOnError:true)
+		def curso3 = Curso.findByCodigoAndCronogramaCarreraAndMateriaAndTurno('2012C1N103', cronogramaAnioPasado, materia3, turnoNoche)?:new Curso(codigo:'2012C1N103', cronogramaCarrera:cronogramaAnioPasado, materia:materia3, turno:turnoNoche, estadoCurso:EstadoCurso.CERRADO, periodoAcademico:periodoAcademico3).save(failOnError:true)
+		def curso4 = Curso.findByCodigoAndCronogramaCarreraAndMateriaAndTurno('2012C1N104', cronogramaAnioPasado, materia4, turnoNoche)?:new Curso(codigo:'2012C1N104', cronogramaCarrera:cronogramaAnioPasado, materia:materia4, turno:turnoNoche, estadoCurso:EstadoCurso.CERRADO, periodoAcademico:periodoAcademico3).save(failOnError:true)
+		def curso5 = Curso.findByCodigoAndCronogramaCarreraAndMateriaAndTurno('2012C1N105', cronogramaAnioPasado, materia5, turnoNoche)?:new Curso(codigo:'2012C1N105', cronogramaCarrera:cronogramaAnioPasado, materia:materia5, turno:turnoNoche, estadoCurso:EstadoCurso.CERRADO, periodoAcademico:periodoAcademico3).save(failOnError:true)
+		def curso6 = Curso.findByCodigoAndCronogramaCarreraAndMateriaAndTurno('2012C1N106', cronogramaAnioPasado, materia6, turnoNoche)?:new Curso(codigo:'2012C1N106', cronogramaCarrera:cronogramaAnioPasado, materia:materia6, turno:turnoNoche, estadoCurso:EstadoCurso.CERRADO, periodoAcademico:periodoAcademico3).save(failOnError:true)
+		def curso7 = Curso.findByCodigoAndCronogramaCarreraAndMateriaAndTurno('2012C1N107', cronogramaAnioPasado, materia7, turnoNoche)?:new Curso(codigo:'2012C1N107', cronogramaCarrera:cronogramaAnioPasado, materia:materia7, turno:turnoNoche, estadoCurso:EstadoCurso.CERRADO, periodoAcademico:periodoAcademico3).save(failOnError:true)
+		def curso8 = Curso.findByCodigoAndCronogramaCarreraAndMateriaAndTurno('2012C1N108', cronogramaAnioPasado, materia8, turnoNoche)?:new Curso(codigo:'2012C1N108', cronogramaCarrera:cronogramaAnioPasado, materia:materia8, turno:turnoNoche, estadoCurso:EstadoCurso.CERRADO, periodoAcademico:periodoAcademico3).save(failOnError:true)
+
+		//Cursos 2012 Cuatrimestre 2 Turno Noche
+		def curso9 = Curso.findByCodigoAndCronogramaCarreraAndMateriaAndTurno('2012C2N101', cronogramaAnioPasado, materia1, turnoNoche)?:new Curso(codigo:'2012C2N101', cronogramaCarrera:cronogramaAnioPasado, materia:materia1, turno:turnoNoche, estadoCurso:EstadoCurso.CERRADO, periodoAcademico:periodoAcademico4).save(failOnError:true)
+		def curso10 = Curso.findByCodigoAndCronogramaCarreraAndMateriaAndTurno('2012C2N102', cronogramaAnioPasado, materia2, turnoNoche)?:new Curso(codigo:'2012C2N102', cronogramaCarrera:cronogramaAnioPasado, materia:materia2, turno:turnoNoche, estadoCurso:EstadoCurso.CERRADO, periodoAcademico:periodoAcademico4).save(failOnError:true)
+		def curso11 = Curso.findByCodigoAndCronogramaCarreraAndMateriaAndTurno('2012C2N103', cronogramaAnioPasado, materia3, turnoNoche)?:new Curso(codigo:'2012C2N103', cronogramaCarrera:cronogramaAnioPasado, materia:materia3, turno:turnoNoche, estadoCurso:EstadoCurso.CERRADO, periodoAcademico:periodoAcademico4).save(failOnError:true)
+		def curso12 = Curso.findByCodigoAndCronogramaCarreraAndMateriaAndTurno('2012C2N104', cronogramaAnioPasado, materia4, turnoNoche)?:new Curso(codigo:'2012C2N104', cronogramaCarrera:cronogramaAnioPasado, materia:materia4, turno:turnoNoche, estadoCurso:EstadoCurso.CERRADO, periodoAcademico:periodoAcademico4).save(failOnError:true)
+		def curso13 = Curso.findByCodigoAndCronogramaCarreraAndMateriaAndTurno('2012C2N105', cronogramaAnioPasado, materia5, turnoNoche)?:new Curso(codigo:'2012C2N105', cronogramaCarrera:cronogramaAnioPasado, materia:materia5, turno:turnoNoche, estadoCurso:EstadoCurso.CERRADO, periodoAcademico:periodoAcademico4).save(failOnError:true)
+		def curso14 = Curso.findByCodigoAndCronogramaCarreraAndMateriaAndTurno('2012C2N106', cronogramaAnioPasado, materia6, turnoNoche)?:new Curso(codigo:'2012C2N106', cronogramaCarrera:cronogramaAnioPasado, materia:materia6, turno:turnoNoche, estadoCurso:EstadoCurso.CERRADO, periodoAcademico:periodoAcademico4).save(failOnError:true)
+		def curso15 = Curso.findByCodigoAndCronogramaCarreraAndMateriaAndTurno('2012C2N107', cronogramaAnioPasado, materia7, turnoNoche)?:new Curso(codigo:'2012C2N107', cronogramaCarrera:cronogramaAnioPasado, materia:materia7, turno:turnoNoche, estadoCurso:EstadoCurso.CERRADO, periodoAcademico:periodoAcademico4).save(failOnError:true)
+		def curso16 = Curso.findByCodigoAndCronogramaCarreraAndMateriaAndTurno('2012C2N108', cronogramaAnioPasado, materia8, turnoNoche)?:new Curso(codigo:'2012C2N108', cronogramaCarrera:cronogramaAnioPasado, materia:materia8, turno:turnoNoche, estadoCurso:EstadoCurso.CERRADO, periodoAcademico:periodoAcademico4).save(failOnError:true)
+
+		//Cursos 2012 Cuatrimestre 1 Turno Mañana
+		def curso17 = Curso.findByCodigoAndCronogramaCarreraAndMateriaAndTurno('2012C1M101', cronogramaAnioPasado, materia1, turnoManiana)?:new Curso(codigo:'2012C1M101', cronogramaCarrera:cronogramaAnioPasado, materia:materia1, turno:turnoManiana, estadoCurso:EstadoCurso.CERRADO, periodoAcademico:periodoAcademico3).save(failOnError:true)
+		def curso18 = Curso.findByCodigoAndCronogramaCarreraAndMateriaAndTurno('2012C1M102', cronogramaAnioPasado, materia2, turnoManiana)?:new Curso(codigo:'2012C1M102', cronogramaCarrera:cronogramaAnioPasado, materia:materia2, turno:turnoManiana, estadoCurso:EstadoCurso.CERRADO, periodoAcademico:periodoAcademico3).save(failOnError:true)
+		def curso19 = Curso.findByCodigoAndCronogramaCarreraAndMateriaAndTurno('2012C1M103', cronogramaAnioPasado, materia3, turnoManiana)?:new Curso(codigo:'2012C1M103', cronogramaCarrera:cronogramaAnioPasado, materia:materia3, turno:turnoManiana, estadoCurso:EstadoCurso.CERRADO, periodoAcademico:periodoAcademico3).save(failOnError:true)
+		def curso20 = Curso.findByCodigoAndCronogramaCarreraAndMateriaAndTurno('2012C1M104', cronogramaAnioPasado, materia4, turnoManiana)?:new Curso(codigo:'2012C1M104', cronogramaCarrera:cronogramaAnioPasado, materia:materia4, turno:turnoManiana, estadoCurso:EstadoCurso.CERRADO, periodoAcademico:periodoAcademico3).save(failOnError:true)
+		def curso21 = Curso.findByCodigoAndCronogramaCarreraAndMateriaAndTurno('2012C1M105', cronogramaAnioPasado, materia5, turnoManiana)?:new Curso(codigo:'2012C1M105', cronogramaCarrera:cronogramaAnioPasado, materia:materia5, turno:turnoManiana, estadoCurso:EstadoCurso.CERRADO, periodoAcademico:periodoAcademico3).save(failOnError:true)
+		def curso22 = Curso.findByCodigoAndCronogramaCarreraAndMateriaAndTurno('2012C1M106', cronogramaAnioPasado, materia6, turnoManiana)?:new Curso(codigo:'2012C1M106', cronogramaCarrera:cronogramaAnioPasado, materia:materia6, turno:turnoManiana, estadoCurso:EstadoCurso.CERRADO, periodoAcademico:periodoAcademico3).save(failOnError:true)
+		def curso23 = Curso.findByCodigoAndCronogramaCarreraAndMateriaAndTurno('2012C1M107', cronogramaAnioPasado, materia7, turnoManiana)?:new Curso(codigo:'2012C1M107', cronogramaCarrera:cronogramaAnioPasado, materia:materia7, turno:turnoManiana, estadoCurso:EstadoCurso.CERRADO, periodoAcademico:periodoAcademico3).save(failOnError:true)
+		def curso24 = Curso.findByCodigoAndCronogramaCarreraAndMateriaAndTurno('2012C1M108', cronogramaAnioPasado, materia8, turnoManiana)?:new Curso(codigo:'2012C1M108', cronogramaCarrera:cronogramaAnioPasado, materia:materia8, turno:turnoManiana, estadoCurso:EstadoCurso.CERRADO, periodoAcademico:periodoAcademico3).save(failOnError:true)
+
+		//Cursos 2012 Cuatrimestre 2 Turno Mañana
+		def curso25 = Curso.findByCodigoAndCronogramaCarreraAndMateriaAndTurno('2012C2M101', cronogramaAnioPasado, materia1, turnoManiana)?:new Curso(codigo:'2012C2M101', cronogramaCarrera:cronogramaAnioPasado, materia:materia1, turno:turnoManiana, estadoCurso:EstadoCurso.CERRADO, periodoAcademico:periodoAcademico4).save(failOnError:true)
+		def curso26 = Curso.findByCodigoAndCronogramaCarreraAndMateriaAndTurno('2012C2M102', cronogramaAnioPasado, materia2, turnoManiana)?:new Curso(codigo:'2012C2M102', cronogramaCarrera:cronogramaAnioPasado, materia:materia2, turno:turnoManiana, estadoCurso:EstadoCurso.CERRADO, periodoAcademico:periodoAcademico4).save(failOnError:true)
+		def curso27 = Curso.findByCodigoAndCronogramaCarreraAndMateriaAndTurno('2012C2M103', cronogramaAnioPasado, materia3, turnoManiana)?:new Curso(codigo:'2012C2M103', cronogramaCarrera:cronogramaAnioPasado, materia:materia3, turno:turnoManiana, estadoCurso:EstadoCurso.CERRADO, periodoAcademico:periodoAcademico4).save(failOnError:true)
+		def curso28 = Curso.findByCodigoAndCronogramaCarreraAndMateriaAndTurno('2012C2M104', cronogramaAnioPasado, materia4, turnoManiana)?:new Curso(codigo:'2012C2M104', cronogramaCarrera:cronogramaAnioPasado, materia:materia4, turno:turnoManiana, estadoCurso:EstadoCurso.CERRADO, periodoAcademico:periodoAcademico4).save(failOnError:true)
+		def curso29 = Curso.findByCodigoAndCronogramaCarreraAndMateriaAndTurno('2012C2M105', cronogramaAnioPasado, materia5, turnoManiana)?:new Curso(codigo:'2012C2M105', cronogramaCarrera:cronogramaAnioPasado, materia:materia5, turno:turnoManiana, estadoCurso:EstadoCurso.CERRADO, periodoAcademico:periodoAcademico4).save(failOnError:true)
+		def curso30 = Curso.findByCodigoAndCronogramaCarreraAndMateriaAndTurno('2012C2M106', cronogramaAnioPasado, materia6, turnoManiana)?:new Curso(codigo:'2012C2M106', cronogramaCarrera:cronogramaAnioPasado, materia:materia6, turno:turnoManiana, estadoCurso:EstadoCurso.CERRADO, periodoAcademico:periodoAcademico4).save(failOnError:true)
+		def curso31 = Curso.findByCodigoAndCronogramaCarreraAndMateriaAndTurno('2012C2M107', cronogramaAnioPasado, materia7, turnoManiana)?:new Curso(codigo:'2012C2M107', cronogramaCarrera:cronogramaAnioPasado, materia:materia7, turno:turnoManiana, estadoCurso:EstadoCurso.CERRADO, periodoAcademico:periodoAcademico4).save(failOnError:true)
+		def curso32 = Curso.findByCodigoAndCronogramaCarreraAndMateriaAndTurno('2012C2M108', cronogramaAnioPasado, materia8, turnoManiana)?:new Curso(codigo:'2012C2M108', cronogramaCarrera:cronogramaAnioPasado, materia:materia8, turno:turnoManiana, estadoCurso:EstadoCurso.CERRADO, periodoAcademico:periodoAcademico4).save(failOnError:true)
 		
+		//Configuraciones Curso Dia
 		
+		//Caso de 1 Dia de cursada con 2 docentes al 100
+		if(!curso1?.configuracionesCursoDia){
+			def configuracionesCursoDia1 = []
+			def asignacionesDocenteCursoDia1 = []
+			EspacioFisico espacioFisico1 = EspacioFisico.findByNumero(901) ?: new EspacioFisico(numero:901, ubicacion: 'PABELLON 1').save(failOnError:true)
+			AsignacionDocenteCurso asignacionDocenteCurso1 = new AsignacionDocenteCurso(docente:docente1, tipoPorcentajeAsignacion:TipoPorcentajeAsignacion.ASIGNADO_AL_100)
+			AsignacionDocenteCurso asignacionDocenteCurso2 = new AsignacionDocenteCurso(docente:docente2, tipoPorcentajeAsignacion:TipoPorcentajeAsignacion.ASIGNADO_AL_100)
+			ConfiguracionCursoDia configuracionCursoDia1 = new ConfiguracionCursoDia(diaSemana: DiaSemana.LUNES, espacioFisico:espacioFisico1, curso:curso1, horaInicio:19, horaFin:23, minutosInicio:0, minutosFin:0)
+			asignacionDocenteCurso1.configuracionCursoDia = configuracionCursoDia1
+			asignacionDocenteCurso2.configuracionCursoDia = configuracionCursoDia1
+			asignacionesDocenteCursoDia1.add(asignacionDocenteCurso1)
+			asignacionesDocenteCursoDia1.add(asignacionDocenteCurso2)
+			configuracionCursoDia1.asignacionesDocenteCurso = asignacionesDocenteCursoDia1			
+			configuracionCursoDia1 = configuracionCursoDia1.save(failOnError:true)
+			configuracionesCursoDia1.add(configuracionCursoDia1)
+			curso1.configuracionesCursoDia = configuracionesCursoDia1
+			curso1 = curso1.save()
+				
+		}
+
+		//Caso de Materia de 2 Dias 2 Espacios Fisicos Distintos y diferentes asignaciones en diferentes porcentajes por dia.
+		if(!curso2?.configuracionesCursoDia){
+			def configuracionesCursoDia1 = []
+			def asignacionesDocenteCursoDia1 = []
+			def asignacionesDocenteCursoDia2 = []
+			EspacioFisico espacioFisico1 = EspacioFisico.findByNumero(907) ?: new EspacioFisico(numero:907, ubicacion: 'PABELLON 1').save(failOnError:true)
+			EspacioFisico espacioFisico2 = EspacioFisico.findByNumero(903) ?: new EspacioFisico(numero:903, ubicacion: 'LABORATORIO 3').save(failOnError:true)
+			
+			AsignacionDocenteCurso asignacionDocenteCurso1 = new AsignacionDocenteCurso(docente:docente3, tipoPorcentajeAsignacion:TipoPorcentajeAsignacion.ASIGNADO_AL_100)
+			AsignacionDocenteCurso asignacionDocenteCurso2 = new AsignacionDocenteCurso(docente:docente4, tipoPorcentajeAsignacion:TipoPorcentajeAsignacion.ASIGNADO_AL_50)
+			AsignacionDocenteCurso asignacionDocenteCurso3 = new AsignacionDocenteCurso(docente:docente4, tipoPorcentajeAsignacion:TipoPorcentajeAsignacion.ASIGNADO_AL_100)
+			
+			ConfiguracionCursoDia configuracionCursoDia1 = new ConfiguracionCursoDia(diaSemana: DiaSemana.MARTES, espacioFisico:espacioFisico1, curso:curso2, horaInicio:19, horaFin:23, minutosInicio:0, minutosFin:0)
+			ConfiguracionCursoDia configuracionCursoDia2 = new ConfiguracionCursoDia(diaSemana: DiaSemana.JUEVES, espacioFisico:espacioFisico2, curso:curso2, horaInicio:19, horaFin:23, minutosInicio:0, minutosFin:0)
+			
+			asignacionDocenteCurso1.configuracionCursoDia = configuracionCursoDia1
+			asignacionDocenteCurso2.configuracionCursoDia = configuracionCursoDia1
+			asignacionDocenteCurso3.configuracionCursoDia = configuracionCursoDia2
+			
+			asignacionesDocenteCursoDia1.add(asignacionDocenteCurso1)
+			asignacionesDocenteCursoDia1.add(asignacionDocenteCurso2)
+			asignacionesDocenteCursoDia2.add(asignacionDocenteCurso3)
+			
+			configuracionCursoDia1.asignacionesDocenteCurso = asignacionesDocenteCursoDia1
+			configuracionCursoDia2.asignacionesDocenteCurso = asignacionesDocenteCursoDia2
+			
+			configuracionCursoDia1 = configuracionCursoDia1.save(failOnError:true)
+			configuracionCursoDia2 = configuracionCursoDia2.save(failOnError:true)
+			
+			configuracionesCursoDia1.add(configuracionCursoDia1)
+			configuracionesCursoDia1.add(configuracionCursoDia2)
+			
+			curso2.configuracionesCursoDia = configuracionesCursoDia1
+			curso2 = curso2.save()				
+		}
 		
+		//caso del 1 solo dia 2 Docentes al 50% es decir, 2 hs cada docente
+		if(!curso3?.configuracionesCursoDia){
+			def configuracionesCursoDia1 = []
+			def asignacionesDocenteCursoDia1 = []
+			EspacioFisico espacioFisico1 = EspacioFisico.findByNumero(902) ?: new EspacioFisico(numero:902, ubicacion: 'PABELLON 2').save(failOnError:true)
+			AsignacionDocenteCurso asignacionDocenteCurso1 = new AsignacionDocenteCurso(docente:docente5, tipoPorcentajeAsignacion:TipoPorcentajeAsignacion.ASIGNADO_AL_50)
+			AsignacionDocenteCurso asignacionDocenteCurso2 = new AsignacionDocenteCurso(docente:docente6, tipoPorcentajeAsignacion:TipoPorcentajeAsignacion.ASIGNADO_AL_50)
+			ConfiguracionCursoDia configuracionCursoDia1 = new ConfiguracionCursoDia(diaSemana: DiaSemana.MIERCOLES, espacioFisico:espacioFisico1, curso:curso3, horaInicio:19, horaFin:23, minutosInicio:0, minutosFin:0)
+			asignacionDocenteCurso1.configuracionCursoDia = configuracionCursoDia1
+			asignacionDocenteCurso2.configuracionCursoDia = configuracionCursoDia1
+			asignacionesDocenteCursoDia1.add(asignacionDocenteCurso1)
+			asignacionesDocenteCursoDia1.add(asignacionDocenteCurso2)
+			configuracionCursoDia1.asignacionesDocenteCurso = asignacionesDocenteCursoDia1
+			configuracionCursoDia1 = configuracionCursoDia1.save(failOnError:true)
+			configuracionesCursoDia1.add(configuracionCursoDia1)
+			curso3.configuracionesCursoDia = configuracionesCursoDia1
+			curso3 = curso3.save()
+				
+		}
+
+		//caso del 1 solo dia 2 Docentes al 50% y uno al 100 es decir, 2 hs cada docente salvo 1 que se queda todo el dia
+		if(!curso4?.configuracionesCursoDia){
+			def configuracionesCursoDia1 = []
+			def asignacionesDocenteCursoDia1 = []
+			EspacioFisico espacioFisico1 = EspacioFisico.findByNumero(905) ?: new EspacioFisico(numero:905, ubicacion: 'LABOTARORIO WEB').save(failOnError:true)
+			AsignacionDocenteCurso asignacionDocenteCurso1 = new AsignacionDocenteCurso(docente:docente7, tipoPorcentajeAsignacion:TipoPorcentajeAsignacion.ASIGNADO_AL_100)
+			AsignacionDocenteCurso asignacionDocenteCurso2 = new AsignacionDocenteCurso(docente:docente6, tipoPorcentajeAsignacion:TipoPorcentajeAsignacion.ASIGNADO_AL_50)
+			AsignacionDocenteCurso asignacionDocenteCurso3 = new AsignacionDocenteCurso(docente:docente2, tipoPorcentajeAsignacion:TipoPorcentajeAsignacion.ASIGNADO_AL_50)
+			ConfiguracionCursoDia configuracionCursoDia1 = new ConfiguracionCursoDia(diaSemana: DiaSemana.VIERNES, espacioFisico:espacioFisico1, curso:curso4, horaInicio:19, horaFin:23, minutosInicio:0, minutosFin:0)
+			asignacionDocenteCurso1.configuracionCursoDia = configuracionCursoDia1
+			asignacionDocenteCurso2.configuracionCursoDia = configuracionCursoDia1
+			asignacionDocenteCurso3.configuracionCursoDia = configuracionCursoDia1
+			asignacionesDocenteCursoDia1.add(asignacionDocenteCurso1)
+			asignacionesDocenteCursoDia1.add(asignacionDocenteCurso2)
+			asignacionesDocenteCursoDia1.add(asignacionDocenteCurso3)
+			configuracionCursoDia1.asignacionesDocenteCurso = asignacionesDocenteCursoDia1
+			configuracionCursoDia1 = configuracionCursoDia1.save(failOnError:true)
+			configuracionesCursoDia1.add(configuracionCursoDia1)
+			curso4.configuracionesCursoDia = configuracionesCursoDia1
+			curso4 = curso4.save()				
+		}
 		
+		//Materia BDD 2 Ocupando mismo dia que BDD1 pero diferentes docentes/espacios Fisicos
+		if(!curso5?.configuracionesCursoDia){
+			def configuracionesCursoDia1 = []
+			def asignacionesDocenteCursoDia1 = []
+			EspacioFisico espacioFisico1 = EspacioFisico.findByNumero(906) ?: new EspacioFisico(numero:906, ubicacion: 'AULA MAGNA').save(failOnError:true)
+			AsignacionDocenteCurso asignacionDocenteCurso1 = new AsignacionDocenteCurso(docente:docente3, tipoPorcentajeAsignacion:TipoPorcentajeAsignacion.ASIGNADO_AL_100)
+			AsignacionDocenteCurso asignacionDocenteCurso2 = new AsignacionDocenteCurso(docente:docente4, tipoPorcentajeAsignacion:TipoPorcentajeAsignacion.ASIGNADO_AL_100)
+			
+			ConfiguracionCursoDia configuracionCursoDia1 = new ConfiguracionCursoDia(diaSemana: DiaSemana.LUNES, espacioFisico:espacioFisico1, curso:curso5, horaInicio:19, horaFin:23, minutosInicio:0, minutosFin:0)
+			asignacionDocenteCurso1.configuracionCursoDia = configuracionCursoDia1
+			asignacionDocenteCurso2.configuracionCursoDia = configuracionCursoDia1
+			
+			asignacionesDocenteCursoDia1.add(asignacionDocenteCurso1)
+			asignacionesDocenteCursoDia1.add(asignacionDocenteCurso2)
+			
+			configuracionCursoDia1.asignacionesDocenteCurso = asignacionesDocenteCursoDia1
+			configuracionCursoDia1 = configuracionCursoDia1.save(failOnError:true)
+			configuracionesCursoDia1.add(configuracionCursoDia1)
+			curso5.configuracionesCursoDia = configuracionesCursoDia1
+			curso5 = curso5.save()
+		}
+		
+
+
+
 	}
 	def destroy = {
 	}

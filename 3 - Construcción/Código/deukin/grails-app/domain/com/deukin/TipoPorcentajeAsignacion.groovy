@@ -1,8 +1,8 @@
 package com.deukin
 
 enum TipoPorcentajeAsignacion{
-	ASIGNADO_AL_100 ('100%'),
-	ASIGNADO_AL_50 ('50%')
+	ASIGNADO_AL_100 ('1'),
+	ASIGNADO_AL_50 ('0.5')
 	
 	String name
 

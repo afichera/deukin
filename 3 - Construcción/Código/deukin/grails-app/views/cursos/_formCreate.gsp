@@ -42,46 +42,40 @@
 	</div>
 </div>
 <div class="row">
+<label for="horaInicio" class="control-label col-lg-2"><g:message code="configuracionCursoDia.horaInicio.label" default="Hora Inicio" />*: </label>
 <div class="fieldcontain ${hasErrors(bean: configuracionCursoDiaInstance, field: 'horaInicio', 'error')} required  ">
-	<label for="horaInicio" class="control-label col-lg-2">
-		<g:message code="configuracionCursoDia.horaInicio.label" default="Hora Inicio" />
-		<span class="required-indicator">*</span>
-	: </label>
-	<div class="col-lg-2">
-	<g:select name="horaInicio" from="${0..23}" class="range" required="" value="${fieldValue(bean: configuracionCursoDiaInstance, field: 'horaInicio')}"/>
+	<label for="horaInicio" class="control-label col-lg-1">
+	hh: </label>
+	<div class="col-lg-1">
+	<g:select name="horaInicio" from="${0..23}" class="range form-control" required="" value="${fieldValue(bean: configuracionCursoDiaInstance, field: 'horaInicio')}"/>
 	</div>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: configuracionCursoDiaInstance, field: 'minutosInicio', 'error')} required  ">
-	<label for="minutosInicio" class="control-label col-lg-2">
-		<g:message code="configuracionCursoDia.minutosInicio.label" default="Minutos Inicio" />
-		<span class="required-indicator">*</span>
-	: </label>
-	<div class="col-lg-2">
-	<g:select name="minutosInicio" from="${0..59}" class="range" required="" value="${fieldValue(bean: configuracionCursoDiaInstance, field: 'minutosInicio')}"/>
+	<label for="minutosInicio" class="control-label col-lg-1">
+	mm: </label>
+	<div class="col-lg-1">
+	<g:select name="minutosInicio" from="${0..59}" class="range form-control" required="" value="${fieldValue(bean: configuracionCursoDiaInstance, field: 'minutosInicio')}"/>
 	</div>
 </div>
 </div>
 <div class="row">
+<label for="horaFin" class="control-label col-lg-2"><g:message code="configuracionCursoDia.horaFin.label" default="Hora Fin" />*: </label>
 <div class="fieldcontain ${hasErrors(bean: configuracionCursoDiaInstance, field: 'horaFin', 'error')} required  ">
-	<label for="horaFin" class="control-label col-lg-2">
-		<g:message code="configuracionCursoDia.horaFin.label" default="Hora Fin" />
-		<span class="required-indicator">*</span>
-	: </label>
-	<div class="col-lg-2">
-	<g:select name="horaFin" from="${0..23}" class="range" required="" value="${fieldValue(bean: configuracionCursoDiaInstance, field: 'horaFin')}"/>
+	<label for="horaFin" class="control-label col-lg-1">
+		hh: </label>
+	<div class="col-lg-1">
+	<g:select name="horaFin" from="${0..23}" class="range form-control" required="" value="${fieldValue(bean: configuracionCursoDiaInstance, field: 'horaFin')}"/>
 	</div>
 </div>
 
 
 
 <div class="fieldcontain ${hasErrors(bean: configuracionCursoDiaInstance, field: 'minutosFin', 'error')} required  ">
-	<label for="minutosFin" class="control-label col-lg-2">
-		<g:message code="configuracionCursoDia.minutosFin.label" default="Minutos Fin" />
-		<span class="required-indicator">*</span>
-	: </label>
-	<div class="col-lg-2">
-	<g:select name="minutosFin" from="${0..59}" class="range" required="" value="${fieldValue(bean: configuracionCursoDiaInstance, field: 'minutosFin')}"/>
+	<label for="minutosFin" class="control-label col-lg-1 ">
+		mm: </label>
+	<div class="col-lg-1">
+	<g:select name="minutosFin" from="${0..59}" class="range form-control" required="" value="${fieldValue(bean: configuracionCursoDiaInstance, field: 'minutosFin')}"/>
 	</div>
 </div>
 </div>

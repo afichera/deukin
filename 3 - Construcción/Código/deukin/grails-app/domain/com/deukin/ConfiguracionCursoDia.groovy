@@ -7,7 +7,7 @@ class ConfiguracionCursoDia {
 	EspacioFisico espacioFisico
 	static belongsTo=[curso:Curso]
 	static hasMany = [asignacionesDocenteCurso:AsignacionDocenteCurso]
-	static transients = ['startTime', 'endTime']
+	static transients = ['startTime', 'endTime','getSumaHoras']
 	
 	  Integer horaInicio
 	  Integer minutosInicio	
@@ -34,6 +34,23 @@ class ConfiguracionCursoDia {
 		minutosInicio range: 0..59
 		minutosFin range: 0..59	
 	  }
+	  
+	 def getSumaHoras(){
+		 def sumaHoras
+		 def sumaMinutos
+		 //se fue al otro día
+		 if(horaFin<horaInicio){
+			sumaHoras = (24-horaInicio+horaFin) 
+		 }else{
+		 	sumaHoras  = horaFin - horaInicio
+		 }
+		 
+		 sumaHoras = sumaHoras*60
+		 sumaMinutos = minutosFin-minutosInicio		
+		 sumaHoras +=sumaMinutos
+		 sumaHoras = sumaHoras/60
+		 sumaHoras
+	 }
 	
 	
 	

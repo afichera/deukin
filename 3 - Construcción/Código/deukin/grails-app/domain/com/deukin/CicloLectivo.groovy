@@ -17,4 +17,9 @@ class CicloLectivo {
     static constraints = {
 		codigo(maxSize:50, unique:true)
     }
+	
+	String toString() {
+		codigo
+		
+	}
 }

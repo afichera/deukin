@@ -20,16 +20,9 @@ class CursosController {
 	
 	def list(Integer max) {
 		params.max = Math.min(max ?: 10, 100)
-		def planEstudioInstance = PlanEstudio.findById(params.planEstudio.id)
+		
 		[configuracionCursoDiaInstanceList: ConfiguracionCursoDia.list(params), configuracionCursoDiaInstanceTotal: ConfiguracionCursoDia.count()]
 	}
 
-	def listFiltrado(Integer max) {
-		params.max = Math.min(max ?: 10, 100)
-		def planEstudioInstance = PlanEstudio.findById(params.planEstudio.id)
-		def cursoLista = Curso.findAllByMateriaInList(planEstudioInstance.materias)
-		
-		[configuracionCursoDiaInstanceList: ConfiguracionCursoDia.findAllByCursoInList(cursoLista), configuracionCursoDiaInstanceTotal: ConfiguracionCursoDia.count()]
-	}
-	
+
 }

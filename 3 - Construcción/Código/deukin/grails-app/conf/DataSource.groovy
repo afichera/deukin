@@ -13,8 +13,8 @@
 
 dataSource {
 	pooled = true
-//	dbCreate = "update"
-	dbCreate = "create-drop"
+	dbCreate = "update"
+//	dbCreate = "create-drop"
 	driverClassName = "org.postgresql.Driver"
 	username = "postgres"
 	password = "postgres"
@@ -30,8 +30,8 @@ hibernate {
 environments {
 	development {
 		dataSource {
-			dbCreate = "create-drop" // one of 'create', 'create-drop', 'update', 'validate', ''
-//			dbCreate = "update" // one of 'create', 'create-drop', 'update', 'validate', ''
+//			dbCreate = "create-drop" // one of 'create', 'create-drop', 'update', 'validate', ''
+			dbCreate = "update" // one of 'create', 'create-drop', 'update', 'validate', ''
 			//            url = "jdbc:h2:mem:devDb;MVCC=TRUE;LOCK_TIMEOUT=10000"
 			url = 'jdbc:postgresql://localhost:5432/deukin_dev'
 //			url = "jdbc:mysql://localhost:3306/deukin_dev"

@@ -17,6 +17,7 @@ class Materia {
 	String bibliografia
 	String contenidoMinimo
 	Integer cantidadDocentesRequeridos
+	PeriodoDedicacion periodo
 	//Las equivalencias son las que equivalen a esta materia, las coorrelativas son las predecesoras.
 	static hasMany = [objetivosGenerales:Objetivo, objetivosEspecificos:ObjetivoEspecifico, tiposRecurso:TipoRecurso]
 	static belongsTo =[planEstudio:PlanEstudio]

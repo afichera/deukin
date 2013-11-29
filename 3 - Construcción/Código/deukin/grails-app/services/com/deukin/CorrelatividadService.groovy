@@ -14,8 +14,7 @@ class CorrelatividadService {
 		def materiaPrincipal = Materia.get(futuraCorrelatividad.materiaPrincipal.id)
 		def materiaPredecesora = Materia.get(futuraCorrelatividad.materiaPredecesora.id)
 		def correlatividadAux
-		def asignacionPeriodoMateriaPrincipal = AsignacionPeriodoMateria.findByMateria(materiaPrincipal)
-		def asignacionPeriodoMateriaPredecesora = AsignacionPeriodoMateria.findByMateria(materiaPredecesora)
+		
 		
 		def valida = false
 		

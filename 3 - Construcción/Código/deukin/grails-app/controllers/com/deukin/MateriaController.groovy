@@ -86,18 +86,6 @@ class MateriaController {
 			return
 		}
 		
-		def planEstudioInstance = PlanEstudio.findById(params.planEstudio.id)
-		def periodoInstance = PeriodoDedicacion.findById(params.periodo.id)
-		def asignacionInstance = new AsignacionPeriodoMateria(materia:materiaInstance, periodo:periodoInstance,planEstudio:planEstudioInstance)
-		if (!asignacionInstance.save(flush: true)) {
-			flash.message = message(code: 'xx', default: 'no grabo la asignacion')
-			render(view: "create", model: [materiaInstance: materiaInstance])
-			return
-		}
-		
-
-		
-
 		
 		flash.message = message(code: 'default.created.message', args: [
 			message(code: 'materia.label', default: 'Materia'),
@@ -140,9 +128,9 @@ class MateriaController {
 			return
 		}
 		
-		def asignacionPeriodoMateriaInstance = AsignacionPeriodoMateria.findByMateria(materiaInstance)
+	
 
-		[materiaInstance: materiaInstance, asignacionPeriodoMateriaInstance:asignacionPeriodoMateriaInstance ]
+		[materiaInstance: materiaInstance]
 	}
 
 	def update(Long id, Long version) {
@@ -175,33 +163,7 @@ class MateriaController {
 		}
 		
 		
-		def asignacionPeriodoMateriaInstance = AsignacionPeriodoMateria.findByMateria(materiaInstance)
-		if (!asignacionPeriodoMateriaInstance) {
-			flash.message = message(code: 'default.not.found.message', args: [message(code: 'asignacionPeriodoMateria.label', default: 'AsignacionPeriodoMateria'), id])
-			redirect(action: "list")
-			return
-		}
-
-		if (version != null) {
-			if (asignacionPeriodoMateriaInstance.version > version) {
-				asignacionPeriodoMateriaInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
-						  [message(code: 'asignacionPeriodoMateria.label', default: 'AsignacionPeriodoMateria')] as Object[],
-						  "Another user has updated this AsignacionPeriodoMateria while you were editing")
-				render(view: "edit", model: [asignacionPeriodoMateriaInstance: asignacionPeriodoMateriaInstance])
-				return
-			}
-		}
-
-		asignacionPeriodoMateriaInstance.materia = materiaInstance
-		asignacionPeriodoMateriaInstance.periodo = PeriodoDedicacion.findById(params.periodo.id)
-		asignacionPeriodoMateriaInstance.planEstudio=PlanEstudio.findById(params.planEstudio.id)
-
-		if (!asignacionPeriodoMateriaInstance.save(flush: true)) {
-			render(view: "edit", model: [asignacionPeriodoMateriaInstance: asignacionPeriodoMateriaInstance])
-			return
-		}
-
-		
+	
 
 		flash.message = message(code: 'default.updated.message', args: [
 			message(code: 'materia.label', default: 'Materia'),

@@ -111,7 +111,7 @@
 									title="${message(code: 'default.add.label', args: [message(code: 'materia.label', default: 'Materia')])}"></span>
 							</g:link> </label>
 						<div class="col-lg-12">
-							<g:if test="${planEstudioInstance?.asignacionesPeriodosMaterias}">
+							<g:if test="${planEstudioInstance?.materias}">
 
 								<table class="table table-striped table-bordered table-hover">
 									<thead>
@@ -150,25 +150,25 @@
 									</thead>
 									<tbody>
 										<g:each
-											in="${planEstudioInstance.asignacionesPeriodosMaterias.sort{a,b-> a.materia.codigo.compareTo(b.materia.codigo)}}"
+											in="${planEstudioInstance.materias.sort{a,b-> a.codigo.compareTo(b.codigo)}}"
 											status="k" var="m">
 											<tr class="${(k % 2) == 0 ? 'even' : 'odd'}">
 
 												<td><g:link controller="materia" action="show"
-														id="${m.materia.id}">
-														${fieldValue(bean: m.materia, field: "codigo")}
+														id="${m.id}">
+														${fieldValue(bean: m, field: "codigo")}
 													</g:link></td>
 
 												<td>
-													${fieldValue(bean: m.materia, field: "nombre")}
+													${fieldValue(bean: m, field: "nombre")}
 												</td>
 
 												<td>
-													${fieldValue(bean: m.materia, field: "cantidadDocentesRequeridos")}
+													${fieldValue(bean: m, field: "cantidadDocentesRequeridos")}
 												</td>
 
 												<td>
-													${fieldValue(bean: m.materia, field: "cantidadUnidadesHorarias")}
+													${fieldValue(bean: m, field: "cantidadUnidadesHorarias")}
 												</td>
 
 												<td>
@@ -185,7 +185,7 @@
 
 
 														<g:each in="${correlatividades}" status="y" var="c">
-															<g:if test="${c?.materiaPrincipal?.id==m?.materia?.id}">
+															<g:if test="${c?.materiaPrincipal?.id==m?.id}">
 																<g:link controller="materia" action="show"
 																	id="${c.materiaPredecesora.id}">
 																	${c?.materiaPredecesora?.encodeAsHTML()}<br />

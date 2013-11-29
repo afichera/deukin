@@ -124,6 +124,22 @@
 							</g:if>
 						</div>
 					</div>
+					
+					<div class="row">
+
+
+						<label id="periodo-label" class="property-label col-lg-3"><g:message
+								code="materia.periodo.label" default="Año - Cuatrimestre" />:
+						</label>
+						<div class="col-lg-9">
+							<g:if test="${materiaInstance?.periodo}">
+								<g:fieldValue bean="${materiaInstance}" field="periodo" />
+
+
+							</g:if>
+						</div>
+					</div>
+					
 					<div class="row">
 
 
@@ -242,7 +258,7 @@
 									<span class="property-value"
 										aria-labelledby="tiposRecurso-label"><g:link
 											controller="tipoRecurso" action="show" id="${t.id}">
-											${t?.encodeAsHTML()}
+											${t?.encodeAsHTML()}<br/>
 										</g:link></span>
 								</g:each>
 

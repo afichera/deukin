@@ -34,7 +34,7 @@ class CarreraController {
 		}
 		
 		def saveNew() {
-			def planEstudioInstance = new  PlanEstudio(identificacion:params.nombrePlanDeEstudio,estado: EstadoDeCreacion.BORRADOR, cantidadPeriodosAcademicos:null,asignacionesPeriodosMaterias:null)
+			def planEstudioInstance = new  PlanEstudio(identificacion:params.nombrePlanDeEstudio,estado: EstadoDeCreacion.BORRADOR, cantidadPeriodosAcademicos:null,materias:null)
 			
 			def carreraInstance = new Carrera(titulo: params.titulo, descripcion:null, condicionIngreso: null, modalidadAsistencia: params.modalidadAsistencia, coordinador: null, estado: EstadoDeCreacion.BORRADOR)
 									.addToPlanesEstudio(planEstudioInstance)

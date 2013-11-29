@@ -230,25 +230,25 @@
 												</thead>
 												<tbody>
 													<g:each
-														in="${pl.asignacionesPeriodosMaterias.sort{a,b-> a.materia.codigo.compareTo(b.materia.codigo)}}"
+														in="${pl.materias.sort{a,b-> a.codigo.compareTo(b.codigo)}}"
 														status="k" var="m">
 														<tr class="${(k % 2) == 0 ? 'even' : 'odd'}">
 
 															<td><g:link controller="materia" action="show"
-																	id="${m.materia.id}">
-																	${fieldValue(bean: m.materia, field: "codigo")}
+																	id="${m.id}">
+																	${fieldValue(bean: m, field: "codigo")}
 																</g:link></td>
 
 															<td>
-																${fieldValue(bean: m.materia, field: "nombre")}
+																${fieldValue(bean: m, field: "nombre")}
 															</td>
 
 															<td>
-																${fieldValue(bean: m.materia, field: "cantidadDocentesRequeridos")}
+																${fieldValue(bean: m, field: "cantidadDocentesRequeridos")}
 															</td>
 
 															<td>
-																${fieldValue(bean: m.materia, field: "cantidadUnidadesHorarias")}
+																${fieldValue(bean: m, field: "cantidadUnidadesHorarias")}
 															</td>
 
 															<td>
@@ -266,7 +266,7 @@
 
 																	<g:each in="${correlatividades}" status="y" var="c">
 																		<g:if
-																			test="${c?.materiaPrincipal?.id==m?.materia?.id}">
+																			test="${c?.materiaPrincipal?.id==m?.id}">
 																			<g:link controller="materia" action="show"
 																				id="${c.materiaPredecesora.id}">
 																				${c?.materiaPredecesora?.encodeAsHTML()}<br />

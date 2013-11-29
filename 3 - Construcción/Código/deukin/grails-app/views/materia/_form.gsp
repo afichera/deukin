@@ -54,13 +54,13 @@
 </div>
 
 
-<div class="fieldcontain ${hasErrors(bean: asignacionPeriodoMateriaInstance, field: 'periodo', 'error')} required row">
+<div class="fieldcontain ${hasErrors(bean: materiaInstance, field: 'periodo', 'error')} required row">
 	<label for="periodo" class="control-label col-lg-3">
 		<g:message code="materia.periodo.label" default="Año - Cuatrimestre" />
 		<span class="required-indicator">*</span>
 	: </label>
 	<div class="col-lg-9">
-	<g:select id="periodo" name="periodo.id" from="${com.deukin.PeriodoDedicacion.list()}" optionKey="id" required="" value="${asignacionPeriodoMateriaInstance?.periodo?.id}" class="many-to-one"/>
+	<g:select id="periodo" name="periodo.id" from="${com.deukin.PeriodoDedicacion.list()}" optionKey="id" required="" value="${materiaInstance?.periodo?.id}" class="many-to-one"/>
 	</div>
 </div>
 

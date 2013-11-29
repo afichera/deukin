@@ -27,10 +27,10 @@
 			<g:message code="default.show.label" args="[entityName]" />
 		</h1>
 		<g:if test="${flash.message}">
-			<div class="message" role="status">${flash.message}</div>
+			<div class="message alert alert-info" role="status">${flash.message}</div>
 		</g:if>
 		<div class="row">
-			<div class="col-lg-6">
+			<div class="col-lg-12 col-md-12 col-sx-12 lista-propiedades">
 				<div class="well">
 					<ol class="property-list cronogramaCarrera">
 						
@@ -49,17 +49,6 @@
 					
 						<g:each in="${cronogramaCarreraInstance.cursos}" var="c">
 						<span class="property-value" aria-labelledby="cursos-label"><g:link controller="curso" action="show" id="${c.id}">${c?.encodeAsHTML()}</g:link></span>
-						</g:each>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${cronogramaCarreraInstance?.periodosAcademicos}">
-				<li class="fieldcontain">
-					<span id="periodosAcademicos-label" class="property-label"><g:message code="cronogramaCarrera.periodosAcademicos.label" default="Periodos Academicos" /></span>
-					
-						<g:each in="${cronogramaCarreraInstance.periodosAcademicos}" var="p">
-						<span class="property-value" aria-labelledby="periodosAcademicos-label"><g:link controller="periodoAcademico" action="show" id="${p.id}">${p?.encodeAsHTML()}</g:link></span>
 						</g:each>
 					
 				</li>

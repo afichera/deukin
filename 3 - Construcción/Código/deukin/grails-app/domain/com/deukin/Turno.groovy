@@ -17,4 +17,8 @@ class Turno {
     static constraints = {
 		codigo(unique:true, maxLength:20)
     }
+	
+	String toString() {
+	codigo	
+	}
 }

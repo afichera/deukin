@@ -108,9 +108,15 @@
 			</div>
 			</div>
 
-
-	<g:hiddenField name="estadoCurso" id="estadoCurso" value="ABIERTO"/>
-
+<div class="fieldcontain ${hasErrors(bean: cursoInstance, field: 'estadoCurso', 'error')} required  row">
+	<label for="estadoCurso" class="control-label col-lg-2">
+		<g:message code="curso.estadoCurso.label" default="Estado Curso" />
+		<span class="required-indicator">*</span>
+	: </label>
+	<div class="col-lg-10">
+	<g:select class=" form-control"name="estadoCurso" from="${com.deukin.EstadoCurso?.values()}" keys="${com.deukin.EstadoCurso.values()*.name()}" required="" value="${cursoInstance?.estadoCurso?.name()}"/>
+	</div>
+</div>
 
 
 

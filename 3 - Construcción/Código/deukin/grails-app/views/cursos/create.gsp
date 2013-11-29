@@ -5,8 +5,16 @@
 <meta name="layout" content="main">
 <g:set var="entityName"
 	value="${message(code: 'curso.label', default: 'Curso')}" />
-<title><g:message code="default.create.label"
-		args="[entityName]" /></title>
+<title><g:message code="cursos.create.label"
+		 /></title>
+		
+		<script type="text/javascript">
+    function eligeMateria(materiaId){
+      document.getElementById('materia.id').value = materiaId;
+    }
+
+</script>
+<resource:autoComplete />
 </head>
 <body>
 	<div class="navbar navbar-inverse" role="navigation">

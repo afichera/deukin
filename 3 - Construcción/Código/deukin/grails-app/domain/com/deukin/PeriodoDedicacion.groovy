@@ -18,4 +18,8 @@ class PeriodoDedicacion {
 		anio  + ' - '+ cuatrimestre
 	}
 	
+	Integer cantCuatrimestre() {
+		((anio -1)*2)+cuatrimestre
+	}
+	
 }

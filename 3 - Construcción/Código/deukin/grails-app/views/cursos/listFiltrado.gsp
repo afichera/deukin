@@ -15,7 +15,7 @@
 		</div>
 		<div id="list-configuracionCursoDia" class="content scaffold-list" role="main">
 			<h1><g:message code="cursos.list.label" /></h1>
-			<g:form  controller = "cursos"  name="myForm" action="list" id="{planEstudio.id}" >
+			<g:form  controller = "cursos"  name="myForm" action="listFiltrado" >
 			<div class="row">
 			<label class="col-lg-2"><g:message code="control-label cursos.planEstudio.label" default="Plan de Estudio" /></label>
 				<div class="col-lg-4">

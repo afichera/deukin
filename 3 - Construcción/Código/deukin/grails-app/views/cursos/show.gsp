@@ -63,90 +63,56 @@
 								<span class="glyphicon glyphicon-plus"
 									title="${message(code: 'configuracionCursoDia.add.label', args: [message(code: 'configuracionCursoDia.label', default: 'configuracionCursoDia')])}"></span>
 							</g:link></label>
+							<div class="col-lg-9">
 					<g:if test="${cursoInstance?.configuracionesCursoDia}">
 						
-						<table class="table table-striped table-bordered table-hover">
-			<thead>
-				<tr>
-
-							<th>
-						${message(code: 'configuracionCursoDia.diaSemana.label', default: 'Día')}
-					</th>
-
-
-
-					<th>
-						${message(code: 'configuracionCursoDia.horario.label', default: 'Horario')}
-					</th>
-
-					<th>
-						${message(code: 'cursos.espacioFisico.label', default: 'Aula/Laboratorio')}
-					</th>
-
-
-
-					<th>
-						${message(code: 'configuracionCursoDia.docentes.label', default: 'Docentes')}
-					</th>
-					
-					<th>
-					</th>
-
-
-
-				</tr>
-			</thead>
-			<tbody>
+		
 				<g:each in="${cursoInstance.configuracionesCursoDia}" status="i" var="configuracionCursoDiaInstance">
-					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-
-						<td>
-							${fieldValue(bean: configuracionCursoDiaInstance, field: "diaSemana")}
-						</td>
-						
-						
-						<td>
-							${configuracionCursoDiaInstance.getStartTime()}-${configuracionCursoDiaInstance.getEndTime()}
-						</td>
-						<td>
-							${fieldValue(bean: configuracionCursoDiaInstance, field: "espacioFisico")}
-						</td>
-
-
-
-
-						<td><g:each
-								in="${configuracionCursoDiaInstance.asignacionesDocenteCurso}"
-								status="y" var="a">
-								<g:link controller="docente" action="show" id="${a.docente.id}">
-									${fieldValue(bean: a, field: "docente")}
-								</g:link>
-								<br />
-							</g:each></td>
-
-
-
-					
-					
-					<td>
-							<g:link
+		
+							<div class="panel">
+              <div class="panel-heading">${fieldValue(bean: configuracionCursoDiaInstance, field: "diaSemana")}&nbsp;&nbsp;&nbsp;    
+              <g:link
 								controller="configuracionCursoDia" action="edit"
 								id="${configuracionCursoDiaInstance?.id }">
 								<span class="glyphicon glyphicon-pencil"
 									title="${message(code: 'configuracionCursoDia.edit.label', args: [message(code: 'configuracionCursoDia.label', default: 'configuracionCursoDia')])}"></span>
 							</g:link>
-							
-							
-							
-														
-							
-					</td>
-					</tr>
+              </div>
+              				<ul>		
+							<li>${message(code: 'configuracionCursoDia.horario.label', default: 'Horario')}: ${configuracionCursoDiaInstance?.getStartTime()}-${configuracionCursoDiaInstance?.getEndTime()}</li>
+						
+							<li>${message(code: 'cursos.espacioFisico.label', default: 'Aula/Laboratorio')}: ${fieldValue(bean: configuracionCursoDiaInstance, field: "espacioFisico")}</li>
+						<li>
+						${message(code: 'configuracionCursoDia.docentes.label', default: 'Docentes')}: <g:link
+								controller="asignacionDocenteCurso" action="create"
+								params="['configuracionCursoDia.id': configuracionCursoDiaInstance?.id]">
+								<span class="glyphicon glyphicon-plus"
+									title="${message(code: 'asignacionDocenteCurso.add.label', args: [message(code: 'asignacionDocenteCurso.label', default: 'Asignacion Docente')])}"></span>
+							</g:link>
+						<ul>
+						<g:each
+								in="${configuracionCursoDiaInstance.asignacionesDocenteCurso}"
+								status="y" var="a">
+								<li><g:link controller="asignacionDocenteCurso" action="edit" id="${a.id}">
+									${fieldValue(bean: a, field: "docente")}
+								</g:link></li>
+								
+							</g:each>
+						</ul>
+						
+						</li>
+						
+						</ul>
+            </div>
 				</g:each>
 			</tbody>
 		</table>
+				
+		
+				
 						
 					</g:if>
+					</div>
 				</div>
 				
 			

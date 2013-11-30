@@ -80,24 +80,7 @@
 	</div>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: configuracionCursoDiaInstance, field: 'asignacionesDocenteCurso', 'error')}   row">
-	<label for="asignacionesDocenteCurso" class="control-label col-lg-2">
-		<g:message code="configuracionCursoDia.asignacionesDocenteCurso.label" default="Asignaciones Docente Curso" />
-		
-	: </label>
-	<div class="col-lg-10">
-	
-<ul class="one-to-many">
-<g:each in="${configuracionCursoDiaInstance?.asignacionesDocenteCurso?}" var="a">
-    <li><g:link controller="asignacionDocenteCurso" action="show" id="${a.id}">${a?.encodeAsHTML()}</g:link></li>
-</g:each>
-<li class="add">
-<g:link controller="asignacionDocenteCurso" action="create" params="['configuracionCursoDia.id': configuracionCursoDiaInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'asignacionDocenteCurso.label', default: 'AsignacionDocenteCurso')])}</g:link>
-</li>
-</ul>
 
-	</div>
-</div>
 
 
 

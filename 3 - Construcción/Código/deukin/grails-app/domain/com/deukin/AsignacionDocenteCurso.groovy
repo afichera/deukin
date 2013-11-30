@@ -6,6 +6,6 @@ class AsignacionDocenteCurso {
 	TipoPorcentajeAsignacion tipoPorcentajeAsignacion
 	static belongsTo = [configuracionCursoDia:ConfiguracionCursoDia]
     static constraints = {
-		
+		docente(unique:['configuracionCursoDia'])
     }
 }

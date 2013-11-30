@@ -26,7 +26,7 @@
 						<g:sortableColumn property="nombre" title="${message(code: 'docente.nombre.label', default: 'Nombre <span class="glyphicon glyphicon-sort"></span>')}" />
 										
 						<th><g:message code="docente.departamento.label" default="Departamento" /></th>
-					
+						<th><g:message code="docente.cantidadHorasCicloActual.label" default="Horas Ciclo Actual" /></th>
 					
 					
 					</tr>
@@ -61,7 +61,10 @@
 						
 						<td>${fieldValue(bean: docenteInstance, field: "nombre")}</td>					
 					
-						<td>${fieldValue(bean: docenteInstance, field: "departamento")}</td>	
+						<td>${fieldValue(bean: docenteInstance, field: "departamento")}</td>
+						
+						<td>${fieldValue(bean: docenteInstance, field: "cantidadHorasCicloActual")}</td>
+							
 					</tr>
 				</g:each>
 				</tbody>

@@ -8,14 +8,18 @@ class DocenteController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 	def usuarioService
-
+	def subListaService
+	def docenteService
+	
     def index() {
         redirect(action: "list", params: params)
     }
 
     def list(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        [docenteInstanceList: Docente.list(params), docenteInstanceTotal: Docente.count()]
+		def docentes = Docente.all
+		def subLista = subListaService.getSubList(docentes, params)
+        [docenteInstanceList: subLista, docenteInstanceTotal: docentes.size()]
     }
 
     def create() {

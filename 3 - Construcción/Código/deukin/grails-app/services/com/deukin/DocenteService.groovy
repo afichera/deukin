@@ -39,7 +39,7 @@ class DocenteService {
 			throw new BusinessException("No se encontró cronograma de carrera con id: "+cronogramaId)
 		}
 
-		def cursosDelCronograma = Curso.findAllByCronogramaCarrera(cronogramaCarrera)
+		def cursosDelCronograma = Curso.findAllByCronogramaCarrera(cronograma)
 		def configuracionesCursoDia = []
 		def asignacionesDocente = []
 		for (curso in cursosDelCronograma) {
@@ -58,7 +58,13 @@ class DocenteService {
 	}
 
 	public Float obtenerHorasByDocenteIdInCicloLectivoActual(def docenteId){
-		def ciclosLectivos = CicloLectivo.findAllWhere(fechaInicio >= new Date() && fechaFin <=new Date())
+		def fechaActual = new Date()
+		Calendar calendario = new GregorianCalendar()
+		calendario.setTime(fechaActual)
+				
+		Date fechaInicioCiclo1 = Date.parse("dd/MM/yyyy", "01/01/"+calendario.get(Calendar.YEAR).toString())
+		Date fechaFinCiclo1 = Date.parse("dd/MM/yyyy", "31/12/"+calendario.get(Calendar.YEAR).toString())
+		def ciclosLectivos = CicloLectivo.findAllByFechaFinGreaterThanAndFechaInicioLessThan(fechaInicioCiclo1, fechaFinCiclo1)// (new Date(), new Date())
 		def resultado = 0
 		def cronogramas = []
 		//Debería ser solo uno pero por las dudas
@@ -68,6 +74,7 @@ class DocenteService {
 				resultado += this.obtenerHorasByDocenteIdAndCronogramaCarreraId(docenteId, cronograma.id)
 			}
 		}
+		resultado
 	}
 
 }

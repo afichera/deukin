@@ -1,34 +1,41 @@
-<%@ page import="com.deukin.ConfiguracionCursoDia" %>
+<%@ page import="com.deukin.Curso" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta name="layout" content="main">
 <g:set var="entityName"
-	value="${message(code: 'configuracionCursoDia.label', default: 'ConfiguracionCursoDia')}" />
-<title><g:message code="configuracionCursoDia.edit.label" /></title>
+	value="${message(code: 'curso.label', default: 'Curso')}" />
+<title><g:message code="cursos.edit.label"  /></title>
+		<script type="text/javascript">
+    function eligeMateria(materiaId){
+      document.getElementById('materia.id').value = materiaId;
+    }
+
+</script>
+<resource:autoComplete />
 </head>
 <body>
 	<div class="navbar navbar-inverse" role="navigation">
 		<ul class="nav navbar-nav">
-			<li><g:link controller="cursos" class="list" action="list">
+			<li><g:link class="list" action="list">
 					<g:message code="cursos.list.label"  />
 				</g:link></li>
-			<li><g:link  controller="cursos" class="create" action="create">
+			<li><g:link class="create" action="create">
 					<g:message code="cursos.new.label"  />
 				</g:link></li>
 		</ul>
 	</div>
-	<div id="edit-configuracionCursoDia"
+	<div id="edit-curso"
 		class="content scaffold-edit" role="main">
 		<h1>
-			<g:message code="configuracionCursoDia.edit.label"  />
+			<g:message code="cursos.edit.label" />
 		</h1>
 		<g:if test="${flash.message}">
 			<div class="message alert alert-danger" role="status">${flash.message}</div>
 		</g:if>
-		<g:hasErrors bean="${configuracionCursoDiaInstance}">
+		<g:hasErrors bean="${cursoInstance}">
 			<ul class="alert alert-danger" role="alert">
-				<g:eachError bean="${configuracionCursoDiaInstance}" var="error">
+				<g:eachError bean="${cursoInstance}" var="error">
 					<li
 						<g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message
 							error="${error}" /></li>
@@ -40,19 +47,15 @@
 				<div class="well">
 					<g:form method="post"
 						>
-						<g:hiddenField name="id" value="${configuracionCursoDiaInstance?.id}" />
-						<g:hiddenField name="version" value="${configuracionCursoDiaInstance?.version}" />
+						<g:hiddenField name="id" value="${cursoInstance?.id}" />
+						<g:hiddenField name="version" value="${cursoInstance?.version}" />
 						<fieldset class="form">
 							<g:render template="form" />
 						</fieldset>
 						<fieldset class="buttons">
 							<g:actionSubmit class="save" action="update" class="btn btn-success"
 								value="${message(code: 'default.button.update.label', default: 'Update')}" />
-							<g:actionSubmit class="btn btn-danger" action="delete"
-								value="${message(code: 'default.button.delete.label', default: 'Delete')}"
-								formnovalidate=""
-								onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
-						<g:link class="btn btn-default" controller="cursos" action="show" id="${configuracionCursoDiaInstance?.curso?.id}">
+						<g:link class="btn btn-default" controller="cursos" action="show" id="${cursoInstance?.id}">		
 					<g:message code="cancelar" default="Cancelar" /></g:link>
 						</fieldset>
 					</g:form>

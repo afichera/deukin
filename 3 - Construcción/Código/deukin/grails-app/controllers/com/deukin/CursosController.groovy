@@ -84,10 +84,60 @@ class CursosController {
 	}
 	
 	
+	
+	def update(Long id, Long version) {
+		def materiaInstance = Materia.findById(params.materia.id)
+		def planEstudioInstance = materiaInstance.planEstudio
+		def cicloLectivoInstance = CicloLectivo.findById(params.cicloLectivo.id)
+		
+		def cronogramaCarreraInstance = CronogramaCarrera.findByCicloLectivoAndPlanEstudio(cicloLectivoInstance,planEstudioInstance)
+		
+		params.cronogramaCarrera = cronogramaCarreraInstance
+		def cursoInstance = Curso.get(id)
+		if (!cursoInstance) {
+			flash.message = message(code: 'default.not.found.message', args: [message(code: 'curso.label', default: 'Curso'), id])
+			redirect(action: "list")
+			return
+		}
+
+		if (version != null) {
+			if (cursoInstance.version > version) {
+				cursoInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
+						  [message(code: 'curso.label', default: 'Curso')] as Object[],
+						  "Another user has updated this Curso while you were editing")
+				render(view: "edit", model: [cursoInstance: cursoInstance])
+				return
+			}
+		}
+
+		cursoInstance.properties = params
+
+		if (!cursoInstance.save(flush: true)) {
+			render(view: "edit", model: [cursoInstance: cursoInstance])
+			return
+		}
+
+		flash.message = message(code: 'default.updated.message', args: [message(code: 'cursos.label', default: 'Curso'), cursoInstance.id])
+		redirect(action: "show", id: cursoInstance.id)
+	}
+	
+	
+	
 	def show(Long id) {
 		def cursoInstance = Curso.get(id)
 		if (!cursoInstance) {
 			flash.message = message(code: 'default.not.found.message', args: [message(code: 'curso.label', default: 'Curso'), id])
+			redirect(action: "list")
+			return
+		}
+
+		[cursoInstance: cursoInstance]
+	}
+	
+	def edit(Long id) {
+		def cursoInstance = Curso.get(id)
+		if (!cursoInstance) {
+			flash.message = message(code: 'default.not.found.message', args: [message(code: 'cursos.label', default: 'Cursos'), id])
 			redirect(action: "list")
 			return
 		}

@@ -2,6 +2,8 @@ package com.deukin
 
 import org.springframework.dao.DataIntegrityViolationException
 
+import com.sun.xml.internal.ws.api.streaming.XMLStreamReaderFactory.Default;
+
 class ConfiguracionCursoDiaController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
@@ -27,7 +29,7 @@ class ConfiguracionCursoDiaController {
         }
 
         flash.message = message(code: 'default.created.message', args: [message(code: 'configuracionCursoDia.label', default: 'ConfiguracionCursoDia'), configuracionCursoDiaInstance.id])
-        redirect(action: "show", id: configuracionCursoDiaInstance.id)
+        redirect(controller:"cursos", action: "show", id: configuracionCursoDiaInstance.curso.id)
     }
 
     def show(Long id) {
@@ -78,11 +80,12 @@ class ConfiguracionCursoDiaController {
         }
 
         flash.message = message(code: 'default.updated.message', args: [message(code: 'configuracionCursoDia.label', default: 'ConfiguracionCursoDia'), configuracionCursoDiaInstance.id])
-        redirect(action: "show", id: configuracionCursoDiaInstance.id)
+        redirect(controller:"cursos", action: "show", id: configuracionCursoDiaInstance.curso.id)
     }
 
     def delete(Long id) {
         def configuracionCursoDiaInstance = ConfiguracionCursoDia.get(id)
+		def idRegreso = configuracionCursoDiaInstance.curso.id
         if (!configuracionCursoDiaInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'configuracionCursoDia.label', default: 'ConfiguracionCursoDia'), id])
             redirect(action: "list")
@@ -92,7 +95,7 @@ class ConfiguracionCursoDiaController {
         try {
             configuracionCursoDiaInstance.delete(flush: true)
             flash.message = message(code: 'default.deleted.message', args: [message(code: 'configuracionCursoDia.label', default: 'ConfiguracionCursoDia'), id])
-            redirect(action: "list")
+            redirect(controller:"cursos",action: "show", id:idRegreso)
         }
         catch (DataIntegrityViolationException e) {
             flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'configuracionCursoDia.label', default: 'ConfiguracionCursoDia'), id])

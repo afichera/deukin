@@ -6,7 +6,7 @@
 <meta name="layout" content="main">
 <g:set var="entityName"
 	value="${message(code: 'configuracionCursoDia.label', default: 'ConfiguracionCursoDia')}" />
-<title><g:message code="default.list.label" args="[entityName]" /></title>
+<title><g:message code="cursos.list.label" /></title>
 <script src="${createLink(uri: '/')}js/jquery.js"></script>
 <script type="text/javascript">
 		$(document).ready( function() {

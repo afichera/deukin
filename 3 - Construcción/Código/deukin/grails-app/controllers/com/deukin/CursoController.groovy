@@ -71,6 +71,8 @@ class CursoController {
                 return
             }
         }
+		
+
 
         cursoInstance.properties = params
 

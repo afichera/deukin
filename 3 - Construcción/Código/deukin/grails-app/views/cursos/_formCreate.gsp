@@ -27,7 +27,15 @@
 	
 	</div>
 </div>
-
+<div class="fieldcontain ${hasErrors(bean: cursoInstance, field: 'turno', 'error')} required  row">
+	<label for="turno" class="control-label col-lg-2">
+		<g:message code="curso.turno.label" default="Turno" />
+		<span class="required-indicator">*</span>
+	: </label>
+	<div class="col-lg-10">
+	<g:select id="turno" name="turno.id" from="${com.deukin.Turno.list()}" optionKey="id" required="" value="${cursoInstance?.turno?.id}" class="many-to-one form-control"/>
+	</div>
+</div>
 <div class="fieldcontain ${hasErrors(bean: configuracionCursoDiaInstance, field: 'diaSemana', 'error')} required  row">
 	<label for="diaSemana" class="control-label col-lg-2">
 		<g:message code="configuracionCursoDia.diaSemana.label" default="Dia Semana" />
@@ -39,15 +47,7 @@
 	<div class="col-lg-12"><em><g:message code="configuracionCursoDia.aclaracion.label" default="" /></em></div>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: cursoInstance, field: 'turno', 'error')} required  row">
-	<label for="turno" class="control-label col-lg-2">
-		<g:message code="curso.turno.label" default="Turno" />
-		<span class="required-indicator">*</span>
-	: </label>
-	<div class="col-lg-10">
-	<g:select id="turno" name="turno.id" from="${com.deukin.Turno.list()}" optionKey="id" required="" value="${cursoInstance?.turno?.id}" class="many-to-one form-control"/>
-	</div>
-</div>
+
 <div class="row">
 <label for="horaInicio" class="control-label col-lg-2"><g:message code="configuracionCursoDia.horaInicio.label" default="Hora Inicio" />*: </label>
 <div class="fieldcontain ${hasErrors(bean: configuracionCursoDiaInstance, field: 'horaInicio', 'error')} required  ">

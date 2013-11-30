@@ -52,7 +52,11 @@ padding-left:0;
 	
 }
 
-
+.multiple .last {
+	
+	border-bottom: 1px solid #18bc9c;
+	margin-bottom:20px;
+}
 
 
 #accordion

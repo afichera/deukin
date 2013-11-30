@@ -13,7 +13,7 @@ class CursoController {
     }
 
     def list(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
+        params.max = Math.min(max ?: 10, 100)		
         [cursoInstanceList: Curso.list(params), cursoInstanceTotal: Curso.count()]
     }
 

@@ -20,7 +20,7 @@
 		var planId = $('#planEstudioFiltro').val();
 		var cicloId = $('#cicloLectivoFiltro').val();
 		if (planId!="undefined"||cicloId!="undefined")
-			window.location.href=${createLink(uri: '/')} +'cursos/list?planEstudio.id='+planId+'&'+'cicloLectivo.id='+cicloId;
+			window.location.href=${createLink(uri: '/')} +'cursos/list?planEstudioId='+planId+'&'+'cicloLectivoId='+cicloId;
 		else
 			window.location.href=${createLink(uri: '/')} +'cursos/list';
 			

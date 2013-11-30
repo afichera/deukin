@@ -126,13 +126,77 @@
 								</g:each></li>
 						</g:if>
 
-
-
 					</ol>
+					<g:if test="${asignacionDocenteCursoInstanceList}">
+						<table class="table table-striped table-bordered table-hover">
+							<thead>
+								<tr>
+									<th><g:message
+											code="asignacionDocenteCurso.cicloLectivo.label" /></th>
+									<th><g:message
+											code="asignacionDocenteCurso.periodoAcademico.label" /></th>
+
+									<th><g:message code="asignacionDocenteCurso.curso.label" /></th>
+
+									<th><g:message code="asignacionDocenteCurso.materia.label" /></th>
+
+									<th><g:message code="asignacionDocenteCurso.dia.label" /></th>
+
+									<th><g:message code="asignacionDocenteCurso.horario.label" /></th>
+
+									<th><g:message
+											code="asignacionDocenteCurso.cantidadHoras.label" /></th>
+								</tr>
+							</thead>
+
+
+							<tbody>
+								<g:each in="${asignacionDocenteCursoInstanceList}" status="i"
+									var="asignacionDocenteCursoInstance">
+									<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
+										<td>
+											${asignacionDocenteCursoInstance?.configuracionCursoDia?.curso?.cronogramaCarrera?.cicloLectivo?.codigo}
+
+										</td>
+
+										<td>
+											${asignacionDocenteCursoInstance?.configuracionCursoDia?.curso?.periodoAcademico?.toString()}
+										</td>
+
+										<td>
+											${asignacionDocenteCursoInstance?.configuracionCursoDia?.curso?.codigo}
+										</td>
+
+										<td>
+											${asignacionDocenteCursoInstance?.configuracionCursoDia?.curso?.materia?.toString()}
+										</td>
+
+										<td>
+											${asignacionDocenteCursoInstance?.configuracionCursoDia?.diaSemana?.name}
+										</td>
+
+										<td>
+											${asignacionDocenteCursoInstance?.configuracionCursoDia?.startTime}
+											- ${asignacionDocenteCursoInstance?.configuracionCursoDia?.endTime}
+										</td>
+
+										<td>
+											${asignacionDocenteCursoInstance?.cantidadHorasAsignacion}
+										</td>
+
+
+
+									</tr>
+								</g:each>
+							</tbody>
+						</table>
+					</g:if>
+
+
 					<g:form>
 						<fieldset class="buttons">
-							<g:hiddenField name="id" value="${docenteInstance?.id}" />							
-							<g:link class="btn btn-info" action="edit" 
+							<g:hiddenField name="id" value="${docenteInstance?.id}" />
+							<g:link class="btn btn-info" action="edit"
 								id="${docenteInstance?.id}">
 								<g:message code="default.button.edit.label" default="Edit" />
 							</g:link>

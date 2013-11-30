@@ -10,6 +10,7 @@ class DocenteController {
 	def usuarioService
 	def subListaService
 	def docenteService
+	def asignacionDocenteCursoService
 	
     def index() {
         redirect(action: "list", params: params)
@@ -44,8 +45,8 @@ class DocenteController {
             redirect(action: "list")
             return
         }
-
-        [docenteInstance: docenteInstance]
+		def asignaciones = asignacionDocenteCursoService.getAsignacionesDocenteCursoByDocenteOrderByPeriodoAcademico(docenteInstance)		
+        [docenteInstance: docenteInstance, asignacionDocenteCursoInstanceList:asignaciones]
     }
 
     def edit(Long id) {
@@ -62,8 +63,8 @@ class DocenteController {
 			redirect(action: "show", id: docenteInstance.id)
 			return
 		}
-
-        [docenteInstance: docenteInstance]
+		
+		[docenteInstance: docenteInstance]
     }
 
     def update(Long id, Long version) {

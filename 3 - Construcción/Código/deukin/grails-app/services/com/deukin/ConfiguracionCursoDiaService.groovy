@@ -10,7 +10,7 @@ class ConfiguracionCursoDiaService {
 	}
 
 
-	def obtenerByPlanEstudioIdAndCicloLectivoId(Long planEstudioId, Long cicloLectivoId, def params){
+	def obtenerByPlanEstudioIdAndCicloLectivoId(Long planEstudioId, Long cicloLectivoId){
 		def configuracionesCursoDia = []
 		def planEstudio = null
 		def cicloLectivo = null

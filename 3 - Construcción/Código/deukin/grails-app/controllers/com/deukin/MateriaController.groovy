@@ -12,7 +12,8 @@ class MateriaController {
 	def carreraService
 	def usuarioService
 	def planEstudioService
-
+	def subListaService
+	
 	static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
 	def searchCarrerasAutocomplete = {
@@ -58,10 +59,14 @@ class MateriaController {
 	}
 
 	def list(Integer max) {
+		
+		params.max = Math.min(max ?: 10, 100)		
 		def authorities =  springSecurityService.principal.authorities
 		def usuario = springSecurityService.principal
-		def materias = materiaService.obtenerMateriasDeCoordinador(authorities, params, max, usuario)
-		[materiaInstanceList:materias, materiaInstanceTotal: materias.size()]
+		def materias = materiaService.obtenerMateriasDeCoordinador(authorities, usuario)
+		def subLista = subListaService.getSubList(materias, params)
+		
+		[materiaInstanceList:subLista, materiaInstanceTotal: materias.size()]
 	}
 
 

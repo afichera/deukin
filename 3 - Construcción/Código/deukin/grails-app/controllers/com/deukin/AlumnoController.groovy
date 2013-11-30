@@ -13,6 +13,7 @@ class AlumnoController {
 	def usuarioService
 	def alumnoService
 	def personaService
+	def subListaService
 
 	static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
@@ -40,17 +41,18 @@ class AlumnoController {
 			listaAlumnos = Alumno.list(params)
 		}else if(usuarioService.poseeElRol(authorities, 'ROLE_COORDINADOR')){
 			def coordinador = personaService.findByUser(springSecurityService.principal)
-			listaAlumnos = alumnoService.findAllAlumnosByCoordinadorACargo(coordinador, params)
+			listaAlumnos = alumnoService.findAllAlumnosByCoordinadorACargo(coordinador)
 		}else if(usuarioService.poseeElRol(authorities, 'ROLE_DOCENTE')){
 			def docente = personaService.findByUser(springSecurityService.principal)
-			listaAlumnos = alumnoService.findAllAlumnosByDocente(docente, params)
+			listaAlumnos = alumnoService.findAllAlumnosByDocente(docente)
 		}
 
 		if(listaAlumnos !=null && !listaAlumnos.isEmpty()){
 			cantidad = listaAlumnos.size()
 		}
+		def subLista = subListaService.getSubList(listaAlumnos, params)
 
-		[alumnoInstanceList: listaAlumnos, alumnoInstanceTotal: cantidad]
+		[alumnoInstanceList: subLista, alumnoInstanceTotal: cantidad]
 	}
 
 	def create() {

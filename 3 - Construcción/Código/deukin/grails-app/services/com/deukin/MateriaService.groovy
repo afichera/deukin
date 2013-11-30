@@ -35,7 +35,7 @@ class MateriaService {
 	}
 
 
-	public obtenerMateriasDeCoordinador(def authorities, def params, def max, def usuario) {
+	public obtenerMateriasDeCoordinador(def authorities, def usuario) {
 		def filtrarPlan = false
 		def materias
 		for (auto in authorities){
@@ -43,16 +43,16 @@ class MateriaService {
 				filtrarPlan = true
 			}
 		}
-		params.max = Math.min(max ?: 10, 100)
+		
 		if(filtrarPlan){
 			def username = usuario?.getUsername()
 			def usuarioDeukin = Usuario.findByUsername(username)
 			def coordinador = Coordinador.findByUsuario(usuarioDeukin)						
 			def planes = coordinador.carrera.planesEstudio// Carrera.findAllByCoordinadorOrCoordinadoresOperativos(persona, persona).planesEstudio
 						
-			materias = Materia.findAllByPlanEstudioInList(planes, params)
+			materias = Materia.findAllByPlanEstudioInList(planes)
 		}else{
-			materias = Materia.list(params)
+			materias = Materia.list()
 		}
 	}
 	

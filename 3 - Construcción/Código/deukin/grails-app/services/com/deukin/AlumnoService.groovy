@@ -6,7 +6,7 @@ class AlumnoService {
 	}
 
 
-	def findAllAlumnosByCoordinadorACargo(def coordinador, def params){
+	def findAllAlumnosByCoordinadorACargo(def coordinador){
 		def alumnos = []
 		def carreras = Carrera.findAllByCoordinador(coordinador)
 		def materias = Materia.findAllByCarreraInList(carreras)
@@ -22,7 +22,7 @@ class AlumnoService {
 		alumnos
 	}
 
-	def findAllAlumnosByDocente(def docente, def params){
+	def findAllAlumnosByDocente(def docente){
 		def alumnos = []
 		//		def cursos = Curso.executeQuery("select c from Curso c, CursoDocente cd where cd.docente=?", docente)
 		if(docente){

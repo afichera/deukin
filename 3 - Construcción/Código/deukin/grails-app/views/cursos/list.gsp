@@ -19,11 +19,8 @@
 		function filtros(){
 		var planId = $('#planEstudioFiltro').val();
 		var cicloId = $('#cicloLectivoFiltro').val();
-		if (planId!="undefined"||cicloId!="undefined")
-			window.location.href=${createLink(uri: '/')} +'cursos/list?planEstudioId='+planId+'&'+'cicloLectivoId='+cicloId;
-		else
-			window.location.href=${createLink(uri: '/')} +'cursos/list';
-			
+		window.location.href=${createLink(uri: '/')} +'cursos/list?planEstudio.id='+planId+'&'+'cicloLectivo.id='+cicloId;
+					
 		}
 </script>
 
@@ -50,7 +47,7 @@
 				<g:select id="planEstudioFiltro" name="planEstudioFiltro"
 					from="${com.deukin.PlanEstudio.list()}" optionKey="id"
 					value="${planEstudio?.id}" class="many-to-one" onchange="filtros()"
-					noSelection="${['undefined':'TODOS']}" />
+					noSelection="${['':'TODOS']}" />
 
 
 
@@ -63,7 +60,7 @@
 				<g:select id="cicloLectivoFiltro" name="cicloLectivoFiltro"
 					from="${com.deukin.CicloLectivo.list()}" optionKey="id" required=""
 					value="${cicloLectivo?.id}" class="many-to-one"
-					onchange="filtros()" noSelection="${['undefined':'TODOS']}" />
+					onchange="filtros()" noSelection="${['':'TODOS']}" />
 			</div>
 		</div>
 
@@ -161,11 +158,11 @@
 				</g:each>
 			</tbody>
 		</table>
-<g:if test="${!params.planEstudio || (params?.planEstudio?.id=='undefined'&&params?.cicloLectivo?.id=='undefined')}">
+
 		<div class="pagination">
-			<g:paginate total="${configuracionCursoDiaInstanceTotal}" />
+			<g:paginate total="${configuracionCursoDiaInstanceTotal}" params="['planEstudio.id': params?.planEstudio?.id,'cicloLectivo.id': params?.cicloLectivo?.id]"/>
 		</div>
-		</g:if>
+		
 	</div>
 </body>
 </html>

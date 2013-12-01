@@ -43,14 +43,14 @@ class CursosController {
 		def planEstudioId = null
 		def cicloLectivoId = null
 
-		if(params.planEstudioId){
-			if(params.planEstudioId!="undefined"){
-				planEstudioId = new Long(params.planEstudioId)
+		if(params.planEstudio){
+			if(params.planEstudio.id!=""){
+				planEstudioId = new Long(params.planEstudio.id)
 			}
 		}
-		if(params.cicloLectivoId){
-			if(params.cicloLectivoId!="undefined"){
-				cicloLectivoId = new Long(params.cicloLectivoId)
+		if(params.cicloLectivo){
+			if(params.cicloLectivo.id!=""){
+				cicloLectivoId = new Long(params.cicloLectivo.id)
 			}			
 		}
 		if(planEstudioId || cicloLectivoId){

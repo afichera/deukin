@@ -20,9 +20,11 @@
 
 	<div id="show-docente" class="content scaffold-show" role="main">
 		<h1>
-			<g:message code="docente.label" default= "Docente"/>: <g:fieldValue
-											bean="${docenteInstance}" field="apellido" />, <g:fieldValue
-											bean="${docenteInstance}" field="nombre" />
+			<g:message code="docente.label" default="Docente" />
+			:
+			<g:fieldValue bean="${docenteInstance}" field="apellido" />
+			,
+			<g:fieldValue bean="${docenteInstance}" field="nombre" />
 		</h1>
 		<g:if test="${flash.message}">
 			<div class="message  alert alert-info" role="status">
@@ -92,11 +94,12 @@
 							</div>
 
 
-						
+
 
 							<div class="fieldcontain row">
 								<label id="domicilio-label" class="property-label col-lg-2"><g:message
-										code="docente.documentodomicilio.label" default="Domicilio" />: </label>
+										code="docente.documentodomicilio.label" default="Domicilio" />:
+								</label>
 								<div class="property-value col-lg-10"
 									aria-labelledby="domicilio-label">
 									<g:if test="${docenteInstance?.contacto}">
@@ -106,34 +109,18 @@
 
 
 							</div>
-							
-														<div class="fieldcontain row">
+
+							<div class="fieldcontain row">
 								<label id="telefonos-label" class="property-label col-lg-2"><g:message
 										code="docente.telefonos.label" default="Teléfonos" />: </label>
 								<g:if test="${docenteInstance?.contacto?.telefonos}">
 									<g:each in="${docenteInstance.contacto.telefonos}" var="t">
 										<span class="property-value col-lg-10"
-											aria-labelledby="telefonos-label">
-												${t?.encodeAsHTML()}<br/>
-											</span>
+											aria-labelledby="telefonos-label"> ${t?.encodeAsHTML()}<br />
+										</span>
 									</g:each>
 								</g:if>
 							</div>
-							
-							<div class="fieldcontain row">
-								<label id="curriculums-label" class="property-label col-lg-2"><g:message
-										code="docente.curriculums.label" default="Curriculums" />: </label>
-								<g:if test="${docenteInstance?.curriculums}">
-									<g:each in="${docenteInstance.curriculums}" var="c">
-										<span class="property-value col-lg-10"
-											aria-labelledby="curriculums-label"><g:link
-												controller="curriculum" action="show" id="${c.id}">
-												${c?.encodeAsHTML()}
-											</g:link></span>
-									</g:each>
-								</g:if>
-							</div>
-
 
 							<div class="fieldcontain row">
 								<label id="curriculumsAdjuntos-label"
@@ -176,9 +163,12 @@
 
 											<th><g:message code="asignacionDocenteCurso.dia.label" /></th>
 
+											<th><g:message code="asignacionDocenteCurso.turno.label" /></th>
+
 											<th><g:message
 													code="asignacionDocenteCurso.horario.label" /></th>
-
+											<th><g:message
+													code="asignacionDocenteCurso.espacioFisico.label" /></th>
 											<th><g:message
 													code="asignacionDocenteCurso.cantidadHoras.label" /></th>
 										</tr>
@@ -211,8 +201,16 @@
 												</td>
 
 												<td>
+													${asignacionDocenteCursoInstance?.configuracionCursoDia?.curso?.turno?.codigo}
+												</td>
+
+												<td>
 													${asignacionDocenteCursoInstance?.configuracionCursoDia?.startTime}
 													- ${asignacionDocenteCursoInstance?.configuracionCursoDia?.endTime}
+												</td>
+
+												<td>
+													${asignacionDocenteCursoInstance?.configuracionCursoDia?.espacioFisico?.numero}
 												</td>
 
 												<td>

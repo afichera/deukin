@@ -9,17 +9,11 @@
 		args="[entityName]" /></title>
 </head>
 <body>
-	<div class="navbar navbar-inverse" role="navigation">
-			<ul class="nav navbar-nav">
-				<li><g:link class="list" action="list">
-					<g:message code="default.list.label" args="[entityName]" />
-				</g:link></li>
-		</ul>
-	</div>
+
 	<div id="create-asignacionDocenteCurso"
 		class="content scaffold-create" role="main">
 		<h1>
-			<g:message code="default.create.label" args="[entityName]" />
+			<g:message code="cursos.crearAsignacionDocente.label" />
 		</h1>
 		<g:if test="${flash.message}">
 			<div class="message alert alert-danger" role="status">${flash.message}</div>
@@ -44,6 +38,8 @@
 						<fieldset class="buttons">
 							<g:submitButton name="create" class="btn btn-primary"
 								value="${message(code: 'default.button.create.label', default: 'Create')}" />
+						<g:link class="btn btn-default" controller="cursos" action="show" id="${asignacionDocenteCursoInstance?.configuracionCursoDia?.curso?.id}">
+					<g:message code="cancelar" default="Cancelar" /></g:link>
 						</fieldset>
 					</g:form>
 				</div>

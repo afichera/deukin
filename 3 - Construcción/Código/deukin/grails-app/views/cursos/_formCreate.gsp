@@ -54,7 +54,7 @@
 	<label for="horaInicio" class="control-label col-lg-1">
 	hh: </label>
 	<div class="col-lg-2">
-	<g:select name="horaInicio" from="${0..23}" class="range form-control" required="" value="${fieldValue(bean: configuracionCursoDiaInstance, field: 'horaInicio')}"/>
+	<g:select name="horaInicio" from="${00..23}" class="range form-control" required="" value="${fieldValue(bean: configuracionCursoDiaInstance, field: 'horaInicio')}"/>
 	</div>
 </div>
 

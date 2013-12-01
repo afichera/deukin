@@ -83,6 +83,7 @@ class AsignacionDocenteCursoController {
 
     def delete(Long id) {
         def asignacionDocenteCursoInstance = AsignacionDocenteCurso.get(id)
+		def idRegreso = asignacionDocenteCursoInstance.configuracionCursoDia.curso.id
         if (!asignacionDocenteCursoInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'asignacionDocenteCurso.label', default: 'AsignacionDocenteCurso'), id])
             redirect(action: "list")
@@ -92,7 +93,7 @@ class AsignacionDocenteCursoController {
         try {
             asignacionDocenteCursoInstance.delete(flush: true)
             flash.message = message(code: 'default.deleted.message', args: [message(code: 'asignacionDocenteCurso.label', default: 'AsignacionDocenteCurso'), id])
-            redirect(action: "list")
+            redirect(controller:"cursos",action: "show", id:idRegreso)
         }
         catch (DataIntegrityViolationException e) {
             flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'asignacionDocenteCurso.label', default: 'AsignacionDocenteCurso'), id])

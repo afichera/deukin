@@ -39,7 +39,7 @@
 	<label for="minutosInicio" class="control-label col-lg-1">
 	mm: </label>
 	<div class="col-lg-2">
-	<g:select name="minutosInicio" from="${0..59}" class="range form-control" required="" value="${fieldValue(bean: configuracionCursoDiaInstance, field: 'minutosInicio')}"/>
+	<g:select name="minutosInicio"  from="${0..59}" class="range form-control" required="" value="${fieldValue(bean: configuracionCursoDiaInstance, field: 'minutosInicio')}"/>
 	</div>
 </div>
 </div>

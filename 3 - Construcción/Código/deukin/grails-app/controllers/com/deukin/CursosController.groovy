@@ -8,6 +8,7 @@ class CursosController {
 	def springSecurityService
 	def configuracionCursoDiaService
 	def subListaService
+	def espacioFisicoService
 	
 	static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 	def index() {
@@ -172,4 +173,21 @@ class CursosController {
 
 		[cursoInstance: cursoInstance]
 	}
+	
+	def searchEspaciosFisicosAJAX = {
+		def queryRegex = "${params.query}"
+		def espaciosFisicos = espacioFisicoService.obtenerEspaciosFisicosLikeQueryRegexInNumeroOrUbicacion(queryRegex)
+		
+		render(contentType: "text/xml") {
+			results() {
+				espaciosFisicos.each { espacioFisico ->
+					result(){
+						name(espacioFisico.numero.toString() + ' - ' +espacioFisico.ubicacion)
+						id(espacioFisico.id)
+					}
+				}
+			}
+		}
+	}
+
 }

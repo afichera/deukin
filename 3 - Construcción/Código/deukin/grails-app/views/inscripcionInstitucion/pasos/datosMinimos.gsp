@@ -130,8 +130,8 @@
 					default="Datos de acceso" />
 			</h3>
 			<div
-				class="fieldcontain ${hasErrors(bean: inscripcion, field: 'username', 'error')} required">
-				<label for="usuarioRegistro.username" class="control-label">
+				class="fieldcontain ${hasErrors(bean: inscripcion?.usuarioRegistro, field: 'username', 'error')} required">
+				<label for="username" class="control-label">
 					<g:message code="inscripcionInstitucion.campos.email"
 						default="Email" /> <span class="required-indicator">*</span>
 				</label>
@@ -139,17 +139,17 @@
 					value="${inscripcion?.usuarioRegistro?.username}" />
 
 				<br />
-				<g:hasErrors bean="${inscripcion}" field="usuarioRegistro.username">
+				<g:hasErrors bean="${inscripcion?.usuarioRegistro}" field="username">
 					<div class="errors">
-						<g:renderErrors bean="${inscripcion}"
-							field="usuarioRegistro.username" />
+						<g:renderErrors bean="${inscripcion?.usuarioRegistro}"
+							field="username" />
 					</div>
 				</g:hasErrors>
 			</div>
 
 			<div
-				class="fieldcontain ${hasErrors(bean: inscripcion, field: 'password', 'error')} required">
-				<label for="usuarioRegistro.password" class="control-label">
+				class="fieldcontain ${hasErrors(bean: inscripcion?.usuarioRegistro, field: 'password', 'error')} required">
+				<label for="password" class="control-label">
 					<g:message code="inscripcionInstitucion.campos.password"
 						default="Password" /> <span class="required-indicator">*</span>
 				</label>
@@ -157,27 +157,27 @@
 					value="${inscripcion?.usuarioRegistro?.password}" />
 
 				<br />
-				<g:hasErrors bean="${inscripcion}" field="usuarioRegistro.password">
+				<g:hasErrors bean="${inscripcion?.usuarioRegistro}" field="password">
 					<div class="errors">
-						<g:renderErrors bean="${inscripcion}"
-							field="usuarioRegistro.password" />
+						<g:renderErrors bean="${inscripcion?.usuarioRegistro}"
+							field="password" />
 					</div>
 				</g:hasErrors>
 			</div>
 
 			<div
-				class="fieldcontain ${hasErrors(bean: inscripcion, field: 'password2', 'error')} required">
-				<label for="usuarioRegistro.password2" class="control-label">
+				class="fieldcontain ${hasErrors(bean: inscripcion?.usuarioRegistro, field: 'password2', 'error')} required">
+				<label for="password2" class="control-label">
 					<g:message code="inscripcionInstitucion.campos.repitaPassword"
 						default="Repita Password" /> <span class="required-indicator">*</span>
 				</label>
 				<g:passwordField name="usuarioRegistro.password2" size="20" required="true"
 					value="${inscripcion?.usuarioRegistro?.password2}" />
 				<br />
-				<g:hasErrors bean="${inscripcion}" field="usuarioRegistro.password2">
+				<g:hasErrors bean="${inscripcion?.usuarioRegistro}" field="password2">
 					<div class="errors">
-						<g:renderErrors bean="${inscripcion}"
-							field="usuarioRegistro.password2" />
+						<g:renderErrors bean="${inscripcion?.usuarioRegistro}"
+							field="password2" />
 					</div>
 				</g:hasErrors>
 

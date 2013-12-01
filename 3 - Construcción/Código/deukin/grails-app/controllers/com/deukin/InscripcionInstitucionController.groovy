@@ -212,6 +212,13 @@ class InscripcionInstitucionController {
 				flow.inscripcion.usuarioRegistro.username = params.usuarioRegistro.username
 				flow.inscripcion.usuarioRegistro.password = params.usuarioRegistro.password
 				flow.inscripcion.usuarioRegistro.password2 = params.usuarioRegistro.password2
+				
+				!flow.inscripcion.usuarioRegistro.validate() ? error() : success()
+				
+				if(!flow.inscripcion.usuarioRegistro.validate()){					
+					error()
+				}
+				
 			}.to "datosContacto"
 		}
 
@@ -225,8 +232,7 @@ class InscripcionInstitucionController {
 				flow.inscripcion.telefonoNumero = params.telefonoNumero
 				flow.inscripcion.tipoTelefono = params.tipoTelefono
 				
-				
-				
+								
 				
 			}.to "inscribir"
 			on("anterior").to "datosMinimos"

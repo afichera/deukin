@@ -215,21 +215,6 @@ class InscripcionInstitucionController {
 			}.to "datosContacto"
 		}
 
-		chequearVacante {
-
-			action {
-
-				if (cursoService.hayVacante(Calendar.instance.get(Calendar.YEAR),flow.alumno.obtenerEdad()))
-					return hayVacante()
-				else
-					return espera()
-			}
-
-			on("hayVacante").to("datosPadres")
-			on("espera").to("inscribir")
-		}
-
-
 		datosContacto {
 			on("siguiente"){
 				flow.inscripcion.calle = params.calle
@@ -239,6 +224,10 @@ class InscripcionInstitucionController {
 				flow.inscripcion.observaciones = params.observaciones
 				flow.inscripcion.telefonoNumero = params.telefonoNumero
 				flow.inscripcion.tipoTelefono = params.tipoTelefono
+				
+				
+				
+				
 			}.to "inscribir"
 			on("anterior").to "datosMinimos"
 		}

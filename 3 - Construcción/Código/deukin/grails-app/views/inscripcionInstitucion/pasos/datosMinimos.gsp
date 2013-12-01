@@ -24,7 +24,7 @@
 						code="inscripcionInstitucion.nombre.label" default="Nombre" /> <span
 					class="required-indicator">*</span>
 				</label>
-				<g:textField name="nombre" value="${inscripcion?.nombre}" maxlength="100"/>
+				<g:textField name="nombre" value="${inscripcion?.nombre}" maxlength="100" required="true"/>
 
 				<br />
 				<g:hasErrors bean="${inscripcion}" field="nombre">
@@ -41,7 +41,7 @@
 						code="inscripcionInstitucion.apellido.label" default="Apellido" />
 					<span class="required-indicator">*</span>
 				</label>
-				<g:textField name="apellido" value="${inscripcion.apellido}" maxlength="50" />
+				<g:textField name="apellido" value="${inscripcion.apellido}" maxlength="50" required="true"/>
 
 				<br />
 				<g:hasErrors bean="${inscripcion}" field="apellido">
@@ -114,7 +114,7 @@
 						default="Numero de Documento" /> <span class="required-indicator">*</span>
 				</label>
 				<g:field name="documentoNumero" type="number"
-					value="${inscripcion.documentoNumero}" required="" />
+					value="${inscripcion.documentoNumero}" required="true" />
 
 				<br />
 				<g:hasErrors bean="${inscripcion}" field="documentoNumero">
@@ -135,7 +135,7 @@
 					<g:message code="inscripcionInstitucion.campos.email"
 						default="Email" /> <span class="required-indicator">*</span>
 				</label>
-				<g:textField name="usuarioRegistro.username" size="50" type="email"
+				<g:textField name="usuarioRegistro.username" size="50" type="email" required="true"
 					value="${inscripcion?.usuarioRegistro?.username}" />
 
 				<br />
@@ -153,7 +153,7 @@
 					<g:message code="inscripcionInstitucion.campos.password"
 						default="Password" /> <span class="required-indicator">*</span>
 				</label>
-				<g:passwordField name="usuarioRegistro.password" size="20" 
+				<g:passwordField name="usuarioRegistro.password" size="20" required="true"
 					value="${inscripcion?.usuarioRegistro?.password}" />
 
 				<br />
@@ -171,7 +171,7 @@
 					<g:message code="inscripcionInstitucion.campos.repitaPassword"
 						default="Repita Password" /> <span class="required-indicator">*</span>
 				</label>
-				<g:passwordField name="usuarioRegistro.password2" size="20"
+				<g:passwordField name="usuarioRegistro.password2" size="20" required="true"
 					value="${inscripcion?.usuarioRegistro?.password2}" />
 				<br />
 				<g:hasErrors bean="${inscripcion}" field="usuarioRegistro.password2">

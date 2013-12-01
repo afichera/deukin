@@ -17,7 +17,7 @@
 						code="inscripcionInstitucion.calle.label" default="Calle" /> <span
 					class="required-indicator">*</span>
 				</label>
-				<g:textField name="calle" value="${inscripcion?.calle}" maxlength="100"/>
+				<g:textField name="calle" value="${inscripcion?.calle}" maxlength="100" required="true"/>
 			</p>
 			<br />
 			<g:hasErrors bean="${inscripcion}" field="calle">
@@ -32,7 +32,7 @@
 					<span class="required-indicator">*</span>
 				</label>
 				<g:textField name="calleNumero" type="number"
-					value="${inscripcion?.calleNumero}" />
+					value="${inscripcion?.calleNumero}" required="true" />
 			</p>
 			<br />
 			<g:hasErrors bean="${inscripcion}" field="calleNumero">
@@ -45,7 +45,7 @@
 						code="inscripcionInstitucion.localidad.label" default="Localidad" />
 					<span class="required-indicator">*</span>
 				</label>
-				<g:textField name="localidad" value="${inscripcion?.localidad}" maxlength="100" />
+				<g:textField name="localidad" value="${inscripcion?.localidad}" maxlength="100" required="true"/>
 			</p>
 			<br />
 			<g:hasErrors bean="${inscripcion}" field="localidad">
@@ -59,7 +59,7 @@
 						code="inscripcionInstitucion.codigoPostal.label"
 						default="Código Postal" /> <span class="required-indicator">*</span>
 				</label>
-				<g:textField name="codigoPostal" type="number"
+				<g:textField name="codigoPostal" type="number" required="true"
 					value="${inscripcion?.codigoPostal}" />
 			</p>
 			<br />
@@ -106,7 +106,7 @@
 						code="inscripcionInstitucion.telefonoNumero.label"
 						default="Teléfono" /> <span class="required-indicator">*</span>
 				</label>
-				<g:textField name="telefonoNumero" maxlength="20"
+				<g:textField name="telefonoNumero" maxlength="20" required="true"
 					value="${inscripcion?.telefonoNumero}" />
 			</p>
 			<br />

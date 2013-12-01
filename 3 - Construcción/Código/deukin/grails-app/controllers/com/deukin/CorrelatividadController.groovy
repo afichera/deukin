@@ -9,6 +9,7 @@ class CorrelatividadController {
 	def springSecurityService
 	def materiaService
 	def correlatividadService
+	def subListaService
 	
 	static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
@@ -20,11 +21,11 @@ class CorrelatividadController {
 		params.max = Math.min(max ?: 10, 100)
 		def authorities =  springSecurityService.principal.authorities
 		def usuario = springSecurityService.principal
-		def materias = materiaService.obtenerMateriasDeCoordinador(authorities, params, max, usuario)
+		def materias = materiaService.obtenerMateriasDeCoordinador(authorities, usuario)
 		def correlatividadesFiltradas = Correlatividad.findAllByMateriaPrincipalInList(materias)
+		def subLista = subListaService.getSubList(correlatividadesFiltradas, params)
 		
-		
-		[correlatividadInstanceList: correlatividadesFiltradas, correlatividadInstanceTotal: correlatividadesFiltradas.size()]
+		[correlatividadInstanceList: subLista, correlatividadInstanceTotal: correlatividadesFiltradas.size()]
 	}
 	
 	def searchMateriasCoordinador =  {

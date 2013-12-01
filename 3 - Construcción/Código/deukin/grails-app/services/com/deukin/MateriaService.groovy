@@ -48,8 +48,7 @@ class MateriaService {
 			def username = usuario?.getUsername()
 			def usuarioDeukin = Usuario.findByUsername(username)
 			def coordinador = Coordinador.findByUsuario(usuarioDeukin)						
-			def planes = coordinador.carrera.planesEstudio// Carrera.findAllByCoordinadorOrCoordinadoresOperativos(persona, persona).planesEstudio
-						
+			def planes = coordinador.carrera.planesEstudio						
 			materias = Materia.findAllByPlanEstudioInList(planes)
 		}else{
 			materias = Materia.list()

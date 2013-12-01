@@ -53,7 +53,7 @@ class CursosController {
 			}			
 		}
 		if(planEstudioId || cicloLectivoId){
-			def configuraciones = configuracionCursoDiaService.obtenerByPlanEstudioIdAndCicloLectivoId(planEstudioId, cicloLectivoId, params)
+			def configuraciones = configuracionCursoDiaService.obtenerByPlanEstudioIdAndCicloLectivoId(planEstudioId, cicloLectivoId)
 			def subList = subListaService.getSubList(configuraciones, params)
 			[configuracionCursoDiaInstanceList: subList, configuracionCursoDiaInstanceTotal: configuraciones.size()]
 		}else{

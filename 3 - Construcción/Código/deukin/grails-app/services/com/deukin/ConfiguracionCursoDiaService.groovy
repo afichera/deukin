@@ -44,7 +44,7 @@ class ConfiguracionCursoDiaService {
 		}
 
 		if(cursos){
-			configuracionesCursoDia = ConfiguracionCursoDia.findAllByCursoInList(cursos, [sort: 'curso.periodoAcademico.fechaInicioPeriodo', order:'asc'])
+			configuracionesCursoDia = ConfiguracionCursoDia.findAllByCursoInList(cursos, [sort: 'curso.materia.periodo.anio', order:'asc'])
 		}
 
 		configuracionesCursoDia

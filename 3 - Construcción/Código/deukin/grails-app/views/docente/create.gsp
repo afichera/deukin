@@ -5,21 +5,21 @@
 <meta name="layout" content="main">
 <g:set var="entityName"
 	value="${message(code: 'docente.label', default: 'Docente')}" />
-<title><g:message code="default.create.label"
-		args="[entityName]" /></title>
+<title><g:message code="docente.create.label"
+		 /></title>
 </head>
 <body>
 	<div class="navbar navbar-inverse" role="navigation">
 			<ul class="nav navbar-nav">
 				<li><g:link class="list" action="list">
-					<g:message code="default.list.label" args="[entityName]" />
+					<g:message code="docente.list.label" />
 				</g:link></li>
 		</ul>
 	</div>
 	<div id="create-docente"
 		class="content scaffold-create" role="main">
 		<h1>
-			<g:message code="default.create.label" args="[entityName]" />
+			<g:message code="docente.create.label"  />
 		</h1>
 		<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>

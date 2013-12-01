@@ -1,15 +1,15 @@
 
 <%@ page import="com.deukin.Docente" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN">
 <html>
 	<head>
-		<meta name="layout" content="main">
+		<meta name="layout" content="main" />
 		<g:set var="entityName" value="${message(code: 'docente.label', default: 'Docente')}" />
-		<title><g:message code="default.list.label" args="[entityName]" /></title>
+		<title><g:message code="docente.list.label"  /></title>
 	</head>
 	<body>
 		<div id="list-docente" class="content scaffold-list" role="main">
-			<h1><g:message code="default.list.label" args="[entityName]" /></h1>
+			<h1><g:message code="docente.list.label" /></h1>
 			<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>

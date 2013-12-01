@@ -16,4 +16,8 @@ class Domicilio {
 		localidad(maxLenght:100)
 		observaciones(nullable:true)
     }
+	
+	String toString() {
+		calle + ' ' + numero + ', ' + localidad + ' (' + observaciones + ') CP: '+codigoPostal 
+	}
 }

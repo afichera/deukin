@@ -13,4 +13,8 @@ class Telefono {
     static constraints = {
 		numero(maxLength:20)
     }
+	
+	String toString() {
+		tipoTelefono+': '+numero
+	}
 }

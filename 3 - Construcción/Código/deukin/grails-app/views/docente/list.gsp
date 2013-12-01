@@ -52,10 +52,9 @@
 								</g:link></td>
 						</g:if>
 					
-						<td><a
-							href="mailto:${fieldValue(bean: docenteInstance, field: "usuario.username")}">
+						<td><g:link action="show" id="${docenteInstance.id}">
 								${fieldValue(bean: docenteInstance, field: "usuario.username")}
-						</a></td>				
+						</g:link></td>				
 												
 						<td>${fieldValue(bean: docenteInstance, field: "apellido")}</td>
 						

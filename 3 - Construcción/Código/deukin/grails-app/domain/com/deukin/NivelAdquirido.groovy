@@ -12,7 +12,7 @@ class NivelAdquirido {
 	String descripcion
 	
     static constraints = {
-		codigo unique: true, maxLength:100
+		codigo unique: true, maxSize:100
 		
     }
 }

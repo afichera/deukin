@@ -15,7 +15,7 @@ class Recurso {
 	static constraints = {
 		tipoRecurso nullable:false
 		estadoRecurso nullable:false 
-		codigo(unique: ['tipoRecurso'])
+		codigo(unique: ['tipoRecurso'], maxSize:50)
 		
     }
 }

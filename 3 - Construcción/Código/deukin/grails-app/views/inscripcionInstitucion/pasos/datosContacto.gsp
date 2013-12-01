@@ -17,7 +17,7 @@
 						code="inscripcionInstitucion.calle.label" default="Calle" /> <span
 					class="required-indicator">*</span>
 				</label>
-				<g:textField name="calle" value="${inscripcion?.calle}" />
+				<g:textField name="calle" value="${inscripcion?.calle}" maxlength="100"/>
 			</p>
 			<br />
 			<g:hasErrors bean="${inscripcion}" field="calle">
@@ -45,7 +45,7 @@
 						code="inscripcionInstitucion.localidad.label" default="Localidad" />
 					<span class="required-indicator">*</span>
 				</label>
-				<g:textField name="localidad" value="${inscripcion?.localidad}" />
+				<g:textField name="localidad" value="${inscripcion?.localidad}" maxlength="100" />
 			</p>
 			<br />
 			<g:hasErrors bean="${inscripcion}" field="localidad">
@@ -72,7 +72,7 @@
 			<p>
 				<label for="observaciones" class="control-label"> <g:message
 						code="inscripcionInstitucion.observaciones.label"
-						default="Observaciones" /> <span class="required-indicator">*</span>
+						default="Observaciones" />
 				</label>
 				<g:textField name="observaciones"
 					value="${inscripcion?.observaciones}" />
@@ -106,7 +106,7 @@
 						code="inscripcionInstitucion.telefonoNumero.label"
 						default="Teléfono" /> <span class="required-indicator">*</span>
 				</label>
-				<g:textField name="telefonoNumero"
+				<g:textField name="telefonoNumero" maxlength="20"
 					value="${inscripcion?.telefonoNumero}" />
 			</p>
 			<br />
@@ -118,7 +118,7 @@
 
 			<p>
 				<g:submitButton name="siguiente" class="btn btn-primary"
-					value="${message(code: 'inscripcionInstitucion.botones.siguiente', default: 'Siguiente')}" />
+					value="${message(code: 'inscripcionInstitucion.botones.FinalizarInscripcion', default: 'Finalizar Inscripcion')}" />
 			</p>
 		</g:form>
 

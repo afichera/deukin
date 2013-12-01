@@ -23,8 +23,8 @@ class Materia {
 	static belongsTo =[planEstudio:PlanEstudio]
 	
 	static constraints = {
-		codigo(unique:true, maxLength:10)
-		nombre maxLength:200
+		codigo(unique:true, maxSize:10)
+		nombre maxSize:200
 		bibliografia nullable:true
 	}
 	

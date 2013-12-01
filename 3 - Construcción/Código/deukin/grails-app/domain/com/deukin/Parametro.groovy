@@ -10,8 +10,8 @@ class Parametro {
 	TipoParametro tipoParametro
 	
 	static constraints = {
-		codigo (unique:true, maxLength:20)
-		valor (maxLength:200)
+		codigo (unique:true, maxSize:20)
+		valor (maxSize:200)
 		
     }
 }

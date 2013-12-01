@@ -12,7 +12,7 @@ class EspacioFisico {
 	
     static constraints = {
 		numero(unique:true)
-		ubicacion(maxLength:200)
+		ubicacion(maxSize:200)
 		observaciones(nullable:true)
     }
 	

@@ -31,12 +31,12 @@ class InscripcionInstitucion implements Serializable {
     static constraints = {
 		documentoNumero(unique:['tipoDocumento'])
 		fechaBaja nullable:true
-		nombre blank:false
-		apellido blank:false
-		calle blank:false
-		localidad blank:false
+		nombre blank:false, maxSize:100
+		apellido blank:false, maxSize:50
+		calle blank:false, maxSize:100
+		localidad blank:false, maxSize:100
 		observaciones nullable:true
-		telefonoNumero blank:false
+		telefonoNumero blank:false, maxSize:20
 		tipoInscripcionInstitucion nullable:true
     }
 }

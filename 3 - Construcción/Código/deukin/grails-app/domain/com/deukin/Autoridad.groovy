@@ -7,6 +7,6 @@ class Autoridad {
 	
     static constraints = {
 		persona(unique:true)
-		cargo(maxLength:100)
+		cargo maxSize:100
     }
 }

@@ -17,7 +17,7 @@ class Departamento {
 	
 	
     static constraints = {
-		nombre(unique:true, maxLength:200)
+		nombre(unique:true, maxSize:200)
 		mision(nullable:true)
 		vision(nullable:true)
 		contacto(nullable:true)

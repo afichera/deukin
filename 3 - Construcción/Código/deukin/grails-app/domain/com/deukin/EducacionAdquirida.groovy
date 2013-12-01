@@ -15,7 +15,7 @@ class EducacionAdquirida {
 	String descripcion
 	
     static constraints = {
-		titulo(maxLength:200)
+		titulo(maxSize:200)
 		descripcion(nullable:true)
     }
 }

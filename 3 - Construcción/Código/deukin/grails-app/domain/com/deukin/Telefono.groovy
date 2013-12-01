@@ -11,7 +11,7 @@ class Telefono {
 	TipoTelefono tipoTelefono
 	static belongsTo = [contacto:Contacto]
     static constraints = {
-		numero(maxLength:20)
+		numero blank:false, maxSize:20
     }
 	
 	String toString() {

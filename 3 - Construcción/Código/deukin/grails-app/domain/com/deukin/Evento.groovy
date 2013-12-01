@@ -27,7 +27,7 @@ class Evento {
 		titulo(unique:[
 			'fechaInicio',
 			'espacioFisico'
-		], maxLength:200)
+		], maxSize:200)
 		descripcion(nullable:true)
 		horaInicio range: 0..23
 		horaFin range: 0..23

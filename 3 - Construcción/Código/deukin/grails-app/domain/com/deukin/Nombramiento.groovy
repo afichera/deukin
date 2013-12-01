@@ -13,6 +13,6 @@ class Nombramiento {
 	//TODO: Ver que otros atributos van.
 	
     static constraints = {
-		cargo maxLength:100
+		cargo maxSize:100
     }
 }

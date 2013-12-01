@@ -12,8 +12,9 @@ class Domicilio {
 	static belongsTo = [contacto:Contacto]
 	
     static constraints = {
-		calle(maxLength:200)
-		localidad(maxLenght:100)
+		calle maxSize:100, blank:false
+		localidad maxSize:100, blank:false
+		codigoPostal min:1000, max:9999 
 		observaciones(nullable:true)
     }
 	

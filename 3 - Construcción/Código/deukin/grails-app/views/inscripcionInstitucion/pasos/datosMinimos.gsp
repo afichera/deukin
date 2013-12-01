@@ -24,7 +24,7 @@
 						code="inscripcionInstitucion.nombre.label" default="Nombre" /> <span
 					class="required-indicator">*</span>
 				</label>
-				<g:textField name="nombre" value="${inscripcion?.nombre}" />
+				<g:textField name="nombre" value="${inscripcion?.nombre}" maxlength="100"/>
 
 				<br />
 				<g:hasErrors bean="${inscripcion}" field="nombre">
@@ -41,7 +41,7 @@
 						code="inscripcionInstitucion.apellido.label" default="Apellido" />
 					<span class="required-indicator">*</span>
 				</label>
-				<g:textField name="apellido" value="${inscripcion.apellido}" />
+				<g:textField name="apellido" value="${inscripcion.apellido}" maxlength="50" />
 
 				<br />
 				<g:hasErrors bean="${inscripcion}" field="apellido">

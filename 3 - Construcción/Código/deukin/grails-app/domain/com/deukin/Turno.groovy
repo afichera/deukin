@@ -15,7 +15,7 @@ class Turno {
 	Integer horaSabadoHasta	
 	
     static constraints = {
-		codigo(unique:true, maxLength:20)
+		codigo(unique:true, maxSize:20)
     }
 	
 	String toString() {

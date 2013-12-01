@@ -8,6 +8,6 @@ class ObjetivoEspecifico {
     }
 	
 	String toString(){
-		descripcion
+		descripcion maxSize:200, blank:false
 	}
 }

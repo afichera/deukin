@@ -16,8 +16,9 @@ class ExperienciaLaboral {
 	String detalle
 
     static constraints = {
-		cargo(maxLength:200)
-		empresa(maxLength:200)
-		detalle(nullable:true)
+		cargo maxSize:200
+		empresa maxSize:200
+		detalle maxSize:5000
+		detalle nullable:true
     }
 }

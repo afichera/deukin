@@ -1,6 +1,5 @@
 package com.deukin
 
-import java.util.Date
 
 /**
  * Representa un ciclo de clases.

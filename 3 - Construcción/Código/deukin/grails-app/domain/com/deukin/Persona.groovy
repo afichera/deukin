@@ -21,6 +21,8 @@ class Persona {
 		documento unique:true
 		// Limita a 2MB la foto
 		fotoPerfil maxSize: 1024 * 1024 * 2, nullable:true
+		nombre maxSize:100, blank:false
+		apellido maxSize:50, blank:false
     }
 	String toString(){
 		apellido + ', ' + nombre

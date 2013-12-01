@@ -5,7 +5,8 @@ import org.springframework.dao.DataIntegrityViolationException
 class AsignacionDocenteCursoController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
-
+	def docenteService
+	
     def index() {
         redirect(action: "list", params: params)
     }
@@ -100,4 +101,21 @@ class AsignacionDocenteCursoController {
             redirect(action: "show", id: id)
         }
     }
+	
+	def searchDocentesAJAX = {		
+		def queryRegex = "${params.query}"
+		def docentes = docenteService.obtenerDocentesLikeQueryRegexInNombreOrApellidoOrDocumentoNumero(queryRegex) 
+		
+		render(contentType: "text/xml") {
+			results() {
+				docentes.each { docente ->
+					result(){
+						name(docente.nombre + ' - ' +docente.apellido + ' - ' +docente.documento.tipoDocumento.name+' - '+docente.documento.numeroAsText())
+						id(docente.id)
+					}
+				}
+			}
+		}
+	}
+
 }

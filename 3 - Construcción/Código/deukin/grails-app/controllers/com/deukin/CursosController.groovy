@@ -57,7 +57,9 @@ class CursosController {
 			def subList = subListaService.getSubList(configuraciones, params)
 			[configuracionCursoDiaInstanceList: subList, configuracionCursoDiaInstanceTotal: configuraciones.size()]
 		}else{
-			[configuracionCursoDiaInstanceList: ConfiguracionCursoDia.list(params), configuracionCursoDiaInstanceTotal: ConfiguracionCursoDia.count()]
+			def configuraciones = ConfiguracionCursoDia.executeQuery("select c from ConfiguracionCursoDia as c order by c.curso.materia.periodo.anio, curso.materia.periodo.cuatrimestre, curso.codigo asc")
+			def subList = subListaService.getSubList(configuraciones, params)
+			[configuracionCursoDiaInstanceList: subList, configuracionCursoDiaInstanceTotal: configuraciones.size()]
 		}
 	}
 

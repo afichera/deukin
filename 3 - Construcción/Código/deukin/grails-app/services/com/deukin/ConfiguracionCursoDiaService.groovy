@@ -1,6 +1,5 @@
 package com.deukin
 
-import com.deukin.exceptions.BusinessException
 
 class ConfiguracionCursoDiaService {
 
@@ -44,7 +43,9 @@ class ConfiguracionCursoDiaService {
 		}
 
 		if(cursos){
-			configuracionesCursoDia = ConfiguracionCursoDia.findAllByCursoInList(cursos, [sort: 'curso.materia.periodo.anio', order:'asc'])
+			configuracionesCursoDia = ConfiguracionCursoDia.executeQuery("select c from ConfiguracionCursoDia as c where c.curso in (:list) order by c.curso.materia.periodo.anio, curso.materia.periodo.cuatrimestre, curso.codigo asc",
+				[list: cursos])
+			
 		}
 
 		configuracionesCursoDia

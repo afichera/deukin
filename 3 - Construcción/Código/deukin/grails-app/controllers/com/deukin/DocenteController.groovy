@@ -11,8 +11,10 @@ class DocenteController {
 	def subListaService
 	def docenteService
 	def asignacionDocenteCursoService
+	def okContentTypesPhoto = ['image/png', 'image/jpeg', 'image/jpg']
 	
-    def index() {
+    
+	def index() {
         redirect(action: "list", params: params)
     }
 

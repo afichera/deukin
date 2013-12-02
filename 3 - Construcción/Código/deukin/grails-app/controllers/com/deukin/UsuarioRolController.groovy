@@ -21,6 +21,13 @@ class UsuarioRolController {
     def create() {
         [usuarioRolInstance: new UsuarioRol(params)]
     }
+	
+	def createFromUser(Long id) {
+		def usuario = Usuario.get(id)
+		def usuarioRol = new UsuarioRol(params)
+		usuarioRol.usuario = usuario		
+		[usuarioRolInstance: usuarioRol]
+	}
 
     def save() {
         def usuarioRolInstance = new UsuarioRol(params)

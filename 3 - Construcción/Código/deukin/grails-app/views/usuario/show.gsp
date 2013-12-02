@@ -16,9 +16,6 @@
 				<li><g:link class="list" action="list">
 						<g:message code="default.list.label" args="[entityName]" />
 					</g:link></li>
-				<li><g:link class="create" action="create">
-						<g:message code="default.new.label" args="[entityName]" />
-					</g:link></li>
 			</sec:ifAnyGranted>
 		</ul>
 	</div>
@@ -45,14 +42,6 @@
 										bean="${usuarioInstance}" field="username" /></span></li>
 						</g:if>
 
-						<g:if test="${usuarioInstance?.password}">
-							<li class="fieldcontain"><span id="password-label"
-								class="property-label"><g:message
-										code="usuario.password.label" default="Password" /></span> <span
-								class="property-value" aria-labelledby="password-label"><g:fieldValue
-										bean="${usuarioInstance}" field="password" /></span></li>
-						</g:if>
-
 						<g:if test="${usuarioInstance?.accountExpired}">
 							<li class="fieldcontain"><span id="accountExpired-label"
 								class="property-label"><g:message
@@ -76,7 +65,7 @@
 						<g:if test="${usuarioInstance?.enabled}">
 							<li class="fieldcontain"><span id="enabled-label"
 								class="property-label"><g:message
-										code="usuario.enabled.label" default="Enabled" /></span> <span
+										code="usuario.enabled.label" default="Habilitado" /></span> <span
 								class="property-value" aria-labelledby="enabled-label"><g:formatBoolean
 										boolean="${usuarioInstance?.enabled}" /></span></li>
 						</g:if>
@@ -91,16 +80,40 @@
 						</g:if>
 
 					</ol>
+
+					<g:if test="${rolesInstanceList}">
+						<table class="table table-striped table-bordered table-hover">
+							<thead>
+								<tr>
+									<th><g:message code="usuario.rolAsignado.label" /></th>
+								</tr>
+							</thead>
+							<tbody>
+								<g:each in="${rolesInstanceList}" status="i" var="rolesInstance">
+									<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
+										<td>
+											${rolesInstance?.authority}
+										</td>
+									</tr>
+								</g:each>
+							</tbody>
+						</table>
+					</g:if>
+
 					<g:form>
 						<fieldset class="buttons">
-							<g:hiddenField name="id" value="${usuarioInstance?.id}" />
-							<g:link class="btn btn-info" action="edit"
-								id="${usuarioInstance?.id}">
-								<g:message code="default.button.edit.label" default="Edit" />
-							</g:link>
-							<g:actionSubmit class="btn btn-danger" action="delete"
-								value="${message(code: 'default.button.delete.label', default: 'Delete')}"
-								onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+							<sec:ifAnyGranted roles="ROLE_ADMINISTRADOR_SISTEMA">
+
+								<g:hiddenField name="id" value="${usuarioInstance?.id}" />
+								<g:link class="btn btn-info" action="edit"
+									id="${usuarioInstance?.id}">
+									<g:message code="default.button.edit.label" default="Edit" />
+								</g:link>
+								<g:actionSubmit class="btn btn-danger" action="resetearPassword"
+									value="${message(code: 'default.button.resetPassword.label', default: 'Resetear Password')}"
+									onclick="return confirm('${message(code: 'default.button.resetPassword.label.confirm.message', default: '¿Esta Seguro que desea resetear el password?')}');" />
+							</sec:ifAnyGranted>
+
 						</fieldset>
 					</g:form>
 				</div>

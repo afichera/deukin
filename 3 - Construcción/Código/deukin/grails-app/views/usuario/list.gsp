@@ -9,16 +9,10 @@
 <title><g:message code="default.list.label" args="[entityName]" /></title>
 </head>
 <body>
-	<div class="navbar navbar-inverse" role="navigation">
-		<ul class="nav navbar-nav">
-			<li><g:link class="create" action="create">
-					<g:message code="default.new.label" args="[entityName]" />
-				</g:link></li>
-		</ul>
-	</div>
+
 	<div id="list-usuario" class="content scaffold-list" role="main">
 		<h1>
-			<g:message code="default.list.label" args="[entityName]" />
+			<g:message code="default.list.de.label" args="[entityName]" />
 		</h1>
 		<g:if test="${flash.message}">
 			<div class="message" role="status">

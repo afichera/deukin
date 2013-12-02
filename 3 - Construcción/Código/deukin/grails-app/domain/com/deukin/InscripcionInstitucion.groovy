@@ -39,4 +39,15 @@ class InscripcionInstitucion implements Serializable {
 		telefonoNumero blank:false, maxSize:20
 		tipoInscripcionInstitucion nullable:true
     }
+	
+	def numeroDocumentoAsText(){
+		String texto =''
+		if(TipoDocumento.CUIL.equals(tipoDocumento) || TipoDocumento.CUIT.equals(tipoDocumento)){
+			texto = documentoNumero.toString()
+			texto = texto.substring(0, 2) +'-'+ texto.substring(2, 10)+ '-'+texto.substring(10, 11)
+		}else{
+			texto = documentoNumero.toString()
+		}
+		texto
+	}
 }

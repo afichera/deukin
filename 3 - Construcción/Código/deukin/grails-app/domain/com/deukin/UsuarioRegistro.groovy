@@ -19,4 +19,8 @@ class UsuarioRegistro implements Serializable{
 		password2 blank:false
 		
     }
+	
+	String toString(){
+		username
+	}
 }

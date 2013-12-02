@@ -5,20 +5,20 @@
 <meta name="layout" content="main">
 <g:set var="entityName"
 	value="${message(code: 'inscripcionInstitucion.label', default: 'InscripcionInstitucion')}" />
-<title><g:message code="default.edit.label" args="[entityName]" /></title>
+<title><g:message code="inscripcionInstitucion.list.label" /></title>
 </head>
 <body>
 	<div class="navbar navbar-inverse" role="navigation">
 		<ul class="nav navbar-nav">
 			<li><g:link class="list" action="list">
-					<g:message code="default.list.label" args="[entityName]" />
+					<g:message code="inscripcionInstitucion.list.label"/>
 				</g:link></li>
 		</ul>
 	</div>
 	<div id="edit-inscripcionInstitucion"
 		class="content scaffold-edit" role="main">
 		<h1>
-			<g:message code="default.edit.label" args="[entityName]" />
+			<g:message code="inscripcionInstitucion.edit.label"/>
 		</h1>
 		<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>

@@ -59,7 +59,7 @@
 						code="inscripcionInstitucion.codigoPostal.label"
 						default="Código Postal" /> <span class="required-indicator">*</span>
 				</label>
-				<g:textField name="codigoPostal" type="number" required="true"
+				<g:textField name="codigoPostal" type="number" required="true" maxlength="4"
 					value="${inscripcion?.codigoPostal}" />
 			</p>
 			<br />

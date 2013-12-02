@@ -7,16 +7,16 @@
 <meta name="layout" content="main">
 <g:set var="entityName"
 	value="${message(code: 'inscripcionInstitucion.label', default: 'InscripcionInstitucion')}" />
-<title><g:message code="default.show.label" args="[entityName]" /></title>
+<title><g:message code="inscripcionInstitucion.show.label"/></title>
 </head>
 <body>
 	<div class="navbar navbar-inverse" role="navigation">
 		<ul class="nav navbar-nav">
 			<li><g:link class="list" action="list">
-					<g:message code="default.list.label" args="[entityName]" />
+					<g:message code="inscripcionInstitucion.list.label" args="[entityName]" />
 				</g:link></li>
-			<li><g:link class="create" action="create">
-					<g:message code="default.new.label" args="[entityName]" />
+			<li><g:link class="create" controller="inscripcionInstitucion">
+					<g:message code="inscripcionInstitucion.new.label"/>
 				</g:link></li>
 		</ul>
 	</div>

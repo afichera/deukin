@@ -64,4 +64,16 @@ class UsuarioService {
 		}
 		esElUsuarioLogueado
 	}
+	
+	def obtenerUsuariosLikeQueryRegex(def queryRegex){
+		def usuarios
+		def usuariosResultantes = []
+		usuarios = Usuario.list()
+		for (usuario in usuarios) {
+			if(usuario.username.toUpperCase().contains(queryRegex.toUpperCase())){
+				usuariosResultantes.add(usuario)
+			}
+		}
+		usuariosResultantes
+	}
 }

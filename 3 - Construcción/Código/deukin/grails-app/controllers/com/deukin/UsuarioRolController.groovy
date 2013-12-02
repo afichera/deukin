@@ -8,7 +8,8 @@ import org.springframework.dao.DataIntegrityViolationException
 class UsuarioRolController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
-
+	def usuarioService
+	
     def index() {
         redirect(action: "list", params: params)
     }
@@ -19,7 +20,17 @@ class UsuarioRolController {
     }
 
     def create() {
-        [usuarioRolInstance: new UsuarioRol(params)]
+		//Viene desde Usuario
+		if(params.usuarioId){
+			def usuarioId = new Long(params.usuarioId)
+			def usuario = Usuario.get(usuarioId)
+			def usuarioRol = new UsuarioRol()
+			usuarioRol.usuario = usuario
+			[usuarioRolInstance: usuarioRol, vieneDesdeUsuario:true]
+		}else{
+			[usuarioRolInstance: new UsuarioRol(params)]
+		}
+        
     }
 	
 	def createFromUser(Long id) {
@@ -31,17 +42,40 @@ class UsuarioRolController {
 
     def save() {
         def usuarioRolInstance = new UsuarioRol(params)
-        if (!usuarioRolInstance.save(flush: true)) {
+		def usuarioId
+
+		if (!usuarioRolInstance.save(flush: true)) {
             render(view: "create", model: [usuarioRolInstance: usuarioRolInstance])
             return
         }
 
-        flash.message = message(code: 'default.created.message', args: [message(code: 'usuarioRol.label', default: 'UsuarioRol'), usuarioRolInstance.id])
-        redirect(action: "show", id: usuarioRolInstance.id)
-    }
+        flash.message = 'Asignación de Usuario/Rol creada correctamente'
 
+         redirect(action: "list", params: params)
+    }
+	
     def show(Long id) {
-        def usuarioRolInstance = UsuarioRol.get(id)
+		Long userId
+		Long rolId
+		def usuario		
+		def rol
+		def usuarioRolInstance
+		if(params.userId){
+			userId = new Long(params.userId)
+		}
+        if(params.rolId){
+			rolId = new Long(params.rolId)
+		}
+		if(userId && rolId){
+			usuario = Usuario.get(userId)
+			rol = Rol.get(rolId)
+			usuarioRolInstance = UsuarioRol.findByUsuarioAndRol(usuario, rol)
+		}else{
+			usuarioRolInstance = new UsuarioRol(params)
+		}
+		
+		
+
         if (!usuarioRolInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'usuarioRol.label', default: 'UsuarioRol'), id])
             redirect(action: "list")
@@ -109,4 +143,22 @@ class UsuarioRolController {
             redirect(action: "show", id: id)
         }
     }
+	
+	def searchUsuarios = {
+		def queryRegex = "${params.query}"
+		def usuarios = usuarioService.obtenerUsuariosLikeQueryRegex(queryRegex)
+
+		render(contentType: "text/xml") {
+			results() {
+				usuarios.each { usuario ->
+					result(){
+						name(usuario.username)
+						id(usuario.id)
+					}
+				}
+			}
+		}
+	}
+
+	
 }

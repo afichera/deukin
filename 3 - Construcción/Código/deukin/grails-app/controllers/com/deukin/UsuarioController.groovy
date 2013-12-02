@@ -72,9 +72,7 @@ class UsuarioController {
 				render(view: "/noAutorizado" )
 			}
 		}
-
-		def roles = UsuarioRol.findAllByUsuario(usuarioLogueado).rol
-
+		def roles = UsuarioRol.findAllByUsuario(usuarioInstance).rol
 		[usuarioInstance: usuarioInstance, rolesInstanceList: roles]
 	}
 

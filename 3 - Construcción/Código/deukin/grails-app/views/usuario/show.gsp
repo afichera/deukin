@@ -109,6 +109,10 @@
 									id="${usuarioInstance?.id}">
 									<g:message code="default.button.edit.label" default="Edit" />
 								</g:link>
+								<g:link class="btn btn-info" action="create" params="[usuarioId: usuarioInstance.id]"
+									id="${usuarioInstance?.id}" controller="usuarioRol">
+									<g:message code="usuarioRol.add.label" default="Edit" />
+								</g:link>
 								<g:actionSubmit class="btn btn-danger" action="resetearPassword"
 									value="${message(code: 'default.button.resetPassword.label', default: 'Resetear Password')}"
 									onclick="return confirm('${message(code: 'default.button.resetPassword.label.confirm.message', default: '¿Esta Seguro que desea resetear el password?')}');" />

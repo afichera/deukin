@@ -13,10 +13,10 @@
 	<div class="navbar navbar-inverse" role="navigation">
 		<ul class="nav navbar-nav">
 			<li><g:link class="list" action="list">
-					<g:message code="default.list.label" args="[entityName]" />
+					<g:message code="usuarioRol.list.label" />
 				</g:link></li>
 			<li><g:link class="create" action="create">
-					<g:message code="default.new.label" args="[entityName]" />
+					<g:message code="usuarioRol.new.label" />
 				</g:link></li>
 		</ul>
 	</div>
@@ -38,7 +38,7 @@
 				<li class="fieldcontain">
 					<span id="rol-label" class="property-label"><g:message code="usuarioRol.rol.label" default="Rol" /></span>
 					
-						<span class="property-value" aria-labelledby="rol-label"><g:link controller="rol" action="show" id="${usuarioRolInstance?.rol?.id}">${usuarioRolInstance?.rol?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="rol-label"><g:link controller="rol" action="show" id="${usuarioRolInstance?.rol?.id}">${usuarioRolInstance?.rol?.authority}</g:link></span>
 					
 				</li>
 				</g:if>
@@ -47,7 +47,7 @@
 				<li class="fieldcontain">
 					<span id="usuario-label" class="property-label"><g:message code="usuarioRol.usuario.label" default="Usuario" /></span>
 					
-						<span class="property-value" aria-labelledby="usuario-label"><g:link controller="usuario" action="show" id="${usuarioRolInstance?.usuario?.id}">${usuarioRolInstance?.usuario?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="usuario-label"><g:link controller="usuario" action="show" id="${usuarioRolInstance?.usuario?.id}">${usuarioRolInstance?.usuario?.username}</g:link></span>
 					
 				</li>
 				</g:if>

@@ -37,7 +37,7 @@
 				<g:each in="${usuarioRolInstanceList}" status="i"
 					var="usuarioRolInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-						<td><g:link action="show" id="${usuarioRolInstance.id}">
+						<td><g:link action="show" id="${usuarioRolInstance.id}" params="[userId: usuarioRolInstance.usuario.id, rolId: usuarioRolInstance.rol.id]">
 								${fieldValue(bean: usuarioRolInstance?.usuario, field: "username")}
 							</g:link></td>
 						<td>

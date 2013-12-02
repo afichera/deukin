@@ -2,6 +2,13 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script type="text/javascript">
+    function eligeUsuario(usuarioId){
+      document.getElementById('usuario.id').value = usuarioId;
+    }
+
+</script>
+<resource:autoComplete />
 <meta name="layout" content="main">
 <g:set var="entityName"
 	value="${message(code: 'usuarioRol.label', default: 'UsuarioRol')}" />

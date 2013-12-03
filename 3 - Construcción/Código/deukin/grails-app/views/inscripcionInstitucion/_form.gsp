@@ -1,5 +1,12 @@
 <%@ page import="com.deukin.InscripcionInstitucion"%>
 
+<div>
+	<label class="control-label"> <g:message
+			code="inscripcionInstitucion.datosPersonales.label" />
+	</label>
+
+</div>
+
 <div
 	class="fieldcontain ${hasErrors(bean: inscripcionInstitucionInstance, field: 'usuarioRegistro', 'error')} required">
 	<label for="usuarioRegistro" class="control-label"> <g:message
@@ -8,7 +15,7 @@
 	</label>
 	<g:textField name="usuarioRegistro" required="true" maxlength="50"
 		value="${inscripcionInstitucionInstance?.usuarioRegistro}" />
-	
+
 </div>
 <div
 	class="fieldcontain ${hasErrors(bean: inscripcionInstitucionInstance, field: 'apellido', 'error')} required">
@@ -35,8 +42,9 @@
 			code="inscripcionInstitucion.sexo.label" default="Sexo" />
 
 	</label>
-	<g:select name="sexo" from="['M', 'F']" value="${inscripcionInstitucionInstance.sexo}"
-					valueMessagePrefix="sexos" />
+	<g:select name="sexo" from="['M', 'F']"
+		value="${inscripcionInstitucionInstance.sexo}"
+		valueMessagePrefix="sexos" />
 </div>
 
 <div
@@ -59,8 +67,9 @@
 			default="Documento Numero" /> <span class="required-indicator">*</span>
 	</label>
 	<g:field name="documentoNumero" type="number"
-		value="${inscripcionInstitucionInstance.documentoNumero}" required="true" />
-	
+		value="${inscripcionInstitucionInstance.documentoNumero}"
+		required="true" />
+
 </div>
 
 <div
@@ -73,8 +82,12 @@
 		value="${inscripcionInstitucionInstance?.fechaNacimiento}" />
 </div>
 <br />
-Datos de Contacto
-<br />
+<div>
+	<label class="control-label"> <g:message
+			code="inscripcionInstitucion.titulos.datosContacto" />
+	</label>
+
+</div>
 <div
 	class="fieldcontain ${hasErrors(bean: inscripcionInstitucionInstance, field: 'calle', 'error')} required">
 	<label for="calle" class="control-label"> <g:message
@@ -145,6 +158,14 @@ Datos de Contacto
 	</label>
 	<g:textField name="telefonoNumero" required="true" maxlength="20"
 		value="${inscripcionInstitucionInstance?.telefonoNumero}" />
+</div>
+
+<div>
+	<label class="control-label"> <g:message
+			code="inscripcionInstitucion.datosInscripcion.label"
+			class="control-label" />
+	</label>
+
 </div>
 <div
 	class="fieldcontain ${hasErrors(bean: inscripcionInstitucionInstance, field: 'fechaInscripcion', 'error')} required">

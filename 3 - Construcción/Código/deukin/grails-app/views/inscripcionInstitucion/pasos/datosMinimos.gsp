@@ -11,7 +11,6 @@
 			<g:message code="inscripcionInstitucion.titulos.datosMinimos"
 				default="Datos Mínimos" />
 		</h1>
-
 		<g:form action="pasos">
 			<h3>
 				<g:message code="inscripcionInstitucion.titulos.datosPersonales"

@@ -216,10 +216,11 @@ class InscripcionInstitucionController {
 				!flow.inscripcion.usuarioRegistro.validate() ? error() : success()
 				
 				if(!flow.inscripcion.usuarioRegistro.validate()){					
-					error()
+					return error()
 				}
-				
+			
 			}.to "datosContacto"
+			
 		}
 
 		datosContacto {
@@ -243,8 +244,13 @@ class InscripcionInstitucionController {
 			action {
 
 				def inscripcion = flow.inscripcion
-
-				inscripcion = inscripcionInstitucionService.inscribir(inscripcion)
+				try{
+					inscripcion = inscripcionInstitucionService.inscribir(inscripcion)
+				}catch(Exception e){
+					flash.message = e.getCause().getMessage()
+					return errorInscripcion()
+				}
+				
 
 				if (inscripcion.estadoInscripcionInstitucion.equals(EstadoInscripcionInstitucion.PENDIENTE_CONFIRMACION_PRESENCIAL)){
 					correoElectronicoService.enviarMailBienvenida(inscripcion)

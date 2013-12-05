@@ -2,9 +2,8 @@ package com.deukin
 
 
 
-import grails.test.mixin.*
-
 import org.junit.*
+import grails.test.mixin.*
 
 @TestFor(DepartamentoController)
 @Mock(Departamento)

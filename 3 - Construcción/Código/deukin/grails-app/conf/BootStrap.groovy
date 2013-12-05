@@ -1,5 +1,6 @@
 import com.deukin.Alumno
 import com.deukin.AsignacionDocenteCurso
+import com.deukin.Autoridad
 import com.deukin.Carrera
 import com.deukin.CicloLectivo
 import com.deukin.ConfiguracionCursoDia
@@ -24,6 +25,7 @@ import com.deukin.ModalidadAsistencia
 import com.deukin.ObjetivoCarrera
 import com.deukin.PeriodoAcademico
 import com.deukin.PeriodoDedicacion
+import com.deukin.Persona
 import com.deukin.PlanEstudio
 import com.deukin.Recurso
 import com.deukin.Rol
@@ -264,6 +266,32 @@ class BootStrap {
 		if (!alumnoAdministrativoUser1.authorities.contains(administrativoRol)) {
 			UsuarioRol.create(alumnoAdministrativoUser1, administrativoRol, true)
 		}
+		
+		def usuarioAutoridad1 = Usuario.findByUsername('autoridad1@deukin.com') ?: new Usuario(
+				username: 'autoridad1@deukin.com',
+				password: '123456',
+				enabled: true).save(failOnError: true)
+
+		if (!usuarioAutoridad1.authorities.contains(coordinadorRol)) {
+			UsuarioRol.create(usuarioAutoridad1, coordinadorRol , true)
+		}
+
+		if (!usuarioAutoridad1.authorities.contains(administrativoRol)) {
+			UsuarioRol.create(usuarioAutoridad1, administrativoRol, true)
+		}
+
+		def usuarioAutoridad2 = Usuario.findByUsername('autoridad2@deukin.com') ?: new Usuario(
+				username: 'autoridad2@deukin.com',
+				password: '123456',
+				enabled: true).save(failOnError: true)
+
+		if (!usuarioAutoridad2.authorities.contains(coordinadorRol)) {
+			UsuarioRol.create(usuarioAutoridad2, coordinadorRol , true)
+		}
+
+		if (!usuarioAutoridad2.authorities.contains(administrativoRol)) {
+			UsuarioRol.create(usuarioAutoridad2, administrativoRol, true)
+		}
 
 
 		//Turnos Solo para Test
@@ -315,7 +343,10 @@ class BootStrap {
 		def telefono1Docente10 = Telefono.findByNumero('444499990010')?: new Telefono(numero: '444499990010', tipoTelefono:TipoTelefono.MOVIL)
 		def telefono1Docente11 = Telefono.findByNumero('444499990011')?: new Telefono(numero: '444499990011', tipoTelefono:TipoTelefono.CASA)
 		def telefono1Docente12 = Telefono.findByNumero('444499990012')?: new Telefono(numero: '444499990012', tipoTelefono:TipoTelefono.MOVIL)
-
+		
+		def telefono1Autoridad1 = Telefono.findByNumero('444499990013')?: new Telefono(numero: '444499990013', tipoTelefono:TipoTelefono.MOVIL)
+		def telefono1Autoridad2 = Telefono.findByNumero('444499990014')?: new Telefono(numero: '444499990014', tipoTelefono:TipoTelefono.MOVIL)
+		
 
 
 		def DomicilioAlumno1 = new Domicilio(calle: 'Martin Irigoyen', numero: 556, codigoPostal: 1712,localidad: 'Castelar', observaciones: 'Triplex del Medio.')
@@ -336,6 +367,9 @@ class BootStrap {
 		def domicilioDocente11 = new Domicilio(calle: 'Rivadavia', numero: 5683, codigoPostal: 5400,localidad: 'Capital Federal', observaciones: 'tocar timbre del medio')
 		def domicilioDocente12 = new Domicilio(calle: 'Rivadavia', numero: 5684, codigoPostal: 5400,localidad: 'Capital Federal', observaciones: 'tocar timbre del medio')
 
+		def domicilioAutoridad1 = new Domicilio(calle: 'Rivadavia', numero: 5685, codigoPostal: 5400,localidad: 'Capital Federal', observaciones: 'tocar timbre del medio')
+		def domicilioAutoridad2 = new Domicilio(calle: 'Rivadavia', numero: 5686, codigoPostal: 5400,localidad: 'Capital Federal', observaciones: 'tocar timbre del medio')
+		
 
 
 		def contactoAlumno1 = new Contacto(domicilio: DomicilioAlumno1)
@@ -408,6 +442,13 @@ class BootStrap {
 		contactoDocente12.telefonos = []
 		contactoDocente12.telefonos.add(telefono1Docente12)
 
+		def contactoAutoridad1 = new Contacto(domicilio: domicilioAutoridad1)
+		contactoAutoridad1.telefonos = []
+		contactoAutoridad1.telefonos.add(telefono1Autoridad1)
+		
+		def contactoAutoridad2 = new Contacto(domicilio: domicilioAutoridad2)
+		contactoAutoridad2.telefonos = []
+		contactoAutoridad2.telefonos.add(telefono1Autoridad2)
 
 
 		//documentos solo para test
@@ -436,6 +477,15 @@ class BootStrap {
 		def documentoDNIdocente10= Documento.findByNumeroAndTipoDocumento(29999910, TipoDocumento.DNI)?:new Documento(numero:29999910, tipoDocumento:TipoDocumento.DNI).save(failOnError:true)
 		def documentoDNIdocente11= Documento.findByNumeroAndTipoDocumento(29999911, TipoDocumento.DNI)?:new Documento(numero:29999911, tipoDocumento:TipoDocumento.DNI).save(failOnError:true)
 		def documentoDNIdocente12= Documento.findByNumeroAndTipoDocumento(29999912, TipoDocumento.DNI)?:new Documento(numero:29999912, tipoDocumento:TipoDocumento.DNI).save(failOnError:true)
+
+		def documentoDNIAutoridad1= Documento.findByNumeroAndTipoDocumento(29999913, TipoDocumento.DNI)?:new Documento(numero:29999913, tipoDocumento:TipoDocumento.DNI).save(failOnError:true)
+		def documentoDNIAutoridad2= Documento.findByNumeroAndTipoDocumento(29999914, TipoDocumento.DNI)?:new Documento(numero:29999914, tipoDocumento:TipoDocumento.DNI).save(failOnError:true)
+
+		def personaAutoridad1 = Persona.findByDocumento(documentoDNIAutoridad1)?:new Persona(documento: documentoDNIAutoridad1, nombre:'Daniel', apellido:'Martinez', usuario:usuarioAutoridad1, contacto:contactoAutoridad1).save(failOnError:true)   // findByUsuario(docenteUser12) ?: new Docente(apellido:'Rusti',nombre: 'Ale', usuario: docenteUser12, documento: documentoDNIdocente12, contacto: contactoDocente12, departamento: departamentoIngenieria).save(failOnError:true)
+		def personaAutoridad2 = Persona.findByDocumento(documentoDNIAutoridad2)?:new Persona(documento: documentoDNIAutoridad2, nombre:'Gabriel', apellido:'Gonzalez', usuario:usuarioAutoridad2, contacto:contactoAutoridad2).save(failOnError:true)
+
+		def autoridad1 = Autoridad.findByPersonaAndCargo(personaAutoridad1, "DECANO") ?: new Autoridad(persona: personaAutoridad1, cargo:"DECANO").save(failOnError:true)
+		def autoridad2 = Autoridad.findByPersonaAndCargo(personaAutoridad2, "VICE DECANO") ?: new Autoridad(persona: personaAutoridad2, cargo:"VICE DECANO").save(failOnError:true)
 
 
 		def coordinadoresCarrera1 = []
@@ -654,6 +704,8 @@ class BootStrap {
 		def contactoDepartamentoIngenieria = new Contacto(domicilio: DomicilioDepartamentoIngenieria)
 		contactoDepartamentoIngenieria.telefonos = []
 		contactoDepartamentoIngenieria.telefonos.add(telefonoDepartamentoIngenieria)
+		
+
 
 		def telefonoInstitucion= Telefono.findByNumero('01155555555')?: new Telefono(numero: '01155555555', tipoTelefono:TipoTelefono.TRABAJO)
 		def DomicilioInstitucion = new Domicilio(calle: 'Direccion de la unlam', numero: 556, codigoPostal: 1704,localidad: 'San Justo', observaciones: '')
@@ -662,12 +714,22 @@ class BootStrap {
 		contactoInstitucion.telefonos.add(telefonoInstitucion)
 		contactoInstitucion.save(failOnError:true)
 
-		def departamentoIngenieria = Departamento.findByNombre('Ingenieria')?: new Departamento(nombre: 'Ingenieria', mision: 'La mision de nuestro departamento es...', vision: 'La visión de nuestro departamenteo es...', contacto: contactoInstitucion).save(failOnError:true)
+		def carreras = []
+		carreras.add(carrera1)
+		carreras.add(carrera2)
+		
+		
+		
+		def autoridades = []
+		autoridades.add(autoridad1)
+		autoridades.add(autoridad2)
+		
+		def departamentoIngenieria = Departamento.findByNombre('Ingenieria')?: new Departamento(nombre: 'Ingenieria', mision: 'La mision de nuestro departamento es...', vision: 'La visión de nuestro departamenteo es...', contacto: contactoInstitucion, carreras:carreras, autoridades:autoridades).save(failOnError:true)
 		def institucionEducativaUnica = InstitucionEducativa.findByNombre('UNLAM')?: new InstitucionEducativa(contacto: contactoInstitucion, nombre: 'UNLAM').save(failOnError:true)
 		institucionEducativaUnica.departamentos = []
 		institucionEducativaUnica.departamentos.add(departamentoIngenieria)
 		institucionEducativaUnica = institucionEducativaUnica.save(failOnError:true)
-
+		
 
 		//Docentes only for Test
 		def docente1 = Docente.findByUsuario(docenteUser1) ?: new Docente(apellido:'Fernandez',nombre: 'Juan', usuario: docenteUser1, documento: documentoDNIdocente1, contacto: contactoDocente1, departamento: departamentoIngenieria).save(failOnError:true)

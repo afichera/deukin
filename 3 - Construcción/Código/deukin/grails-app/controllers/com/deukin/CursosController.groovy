@@ -1,5 +1,7 @@
 package com.deukin
 
+import com.sun.org.apache.bcel.internal.generic.NEW;
+
 import grails.plugins.springsecurity.Secured
 @Secured(['ROLE_COORDINADOR','ROLE_ADMINISTRATIVO','ROLE_DOCENTE', 'ROLE_ADMINISTRADOR_SISTEMA'])
 
@@ -66,37 +68,66 @@ class CursosController {
 
 
 	def save() {
+	//	def cursoInstance = new Curso(params)
 
-		def materiaInstance = Materia.findById(params.materia.id)
-		def planEstudioInstance = materiaInstance.planEstudio
-		def cicloLectivoInstance = CicloLectivo.findById(params.cicloLectivo.id)
-
-		def cronogramaCarreraInstance = CronogramaCarrera.findByCicloLectivoAndPlanEstudio(cicloLectivoInstance,planEstudioInstance)
-
-		params.cronogramaCarrera = cronogramaCarreraInstance
-
-
-
-		def cursoInstance = new Curso(params)
+		
+		def materiaInstance= Materia.findById(params.materia?.id)
+	
+		def cicloLectivoInstance = CicloLectivo.get(params.cicloLectivo.id)
+		
+		def cronogramaCarreraInstance = CronogramaCarrera.findByCicloLectivoAndPlanEstudio(cicloLectivoInstance,materiaInstance?.planEstudio)
+		 
+		def cursoInstance = new Curso(materia:materiaInstance,cronogramaCarrera:cronogramaCarreraInstance,turno:Turno.findById(params.turno?.id),estadoCurso:'ABIERTO',periodoAcademico:PeriodoAcademico.findById(params.periodoAcademico?.id),codigo:params.cursoInstance?.codigo)
+		params.curso=cursoInstance
+		def configuracionCursoDiaInstance = new ConfiguracionCursoDia(params)
+		
 		if (!cursoInstance.save(flush: true)) {
-			render(view: "create", model: [cursoInstance: cursoInstance])
+			render(view: "create", model: [cursoInstance: cursoInstance,configuracionCursoDiaInstance: configuracionCursoDiaInstance,cicloLectivo:cicloLectivoInstance,materia:materiaInstance])
 			return
 		}
-
-		params.curso = cursoInstance
-
-		def configuracionCursoDiaInstance = new ConfiguracionCursoDia(params)
+		
 		if (!configuracionCursoDiaInstance.save(flush: true)) {
 			render(view: "create", model: [configuracionCursoDiaInstance: configuracionCursoDiaInstance])
 			return
 		}
+		
 
-
-		flash.message = message(code: 'default.created.message', args: [
-			message(code: 'curso.label', default: 'Curso'),
-			cursoInstance.id
-		])
+		flash.message = message(code: 'default.created.message', args: [message(code: 'curso.label', default: 'Curso'), cursoInstance.id])
 		redirect(action: "show", id: cursoInstance.id)
+
+		
+	
+//
+//		def materiaInstance = Materia.findById(params.materia.id)
+//		def planEstudioInstance = materiaInstance.planEstudio
+//		def cicloLectivoInstance = CicloLectivo.findById(params.cicloLectivo.id)
+//
+//		def cronogramaCarreraInstance = CronogramaCarrera.findByCicloLectivoAndPlanEstudio(cicloLectivoInstance,planEstudioInstance)
+//
+//		params.cronogramaCarrera = cronogramaCarreraInstance
+//
+//
+//
+//		def cursoInstance = new Curso(params)
+//		if (!cursoInstance.save(flush: true)) {
+//			render(view: "create", model: [cursoInstance: cursoInstance])
+//			return
+//		}
+//
+//		params.curso = cursoInstance
+//
+//		def configuracionCursoDiaInstance = new ConfiguracionCursoDia(params)
+//		if (!configuracionCursoDiaInstance.save(flush: true)) {
+//			render(view: "create", model: [configuracionCursoDiaInstance: configuracionCursoDiaInstance])
+//			return
+//		}
+//
+//
+//		flash.message = message(code: 'default.created.message', args: [
+//			message(code: 'curso.label', default: 'Curso'),
+//			cursoInstance.id
+//		])
+//		redirect(action: "show", id: cursoInstance.id)
 	}
 
 

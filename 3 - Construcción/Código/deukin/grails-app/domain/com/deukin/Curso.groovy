@@ -18,6 +18,7 @@ class Curso {
 	
     static constraints = {
 		codigo(unique:['cronogramaCarrera', 'materia', 'turno'], maxSize:20)
+		codigo blank:false,nullable:false 
     }
 	
 }

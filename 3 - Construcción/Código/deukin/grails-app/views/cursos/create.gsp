@@ -13,6 +13,10 @@
       document.getElementById('materia.id').value = materiaId;
     }
 
+    function eligeEspacioFisico(espacioId){
+        document.getElementById('espacioFisico.id').value = espacioId;
+      }
+
 </script>
 <resource:autoComplete />
 </head>

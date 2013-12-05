@@ -17,6 +17,6 @@ class EspacioFisico {
     }
 	
 	String toString(){
-		numero
+		numero + ' - '+ ubicacion
 	}
 }

@@ -8,7 +8,7 @@
 		
 	: </label>
 	<div class="col-lg-10">
-	<g:textField class="form-control" name="codigo" maxlength="20" value="${cursoInstance?.codigo}" autofocus=""/>
+	<g:textField class="form-control" id="cursoInstance.codigo" name="cursoInstance.codigo" maxlength="20" value="${cursoInstance?.codigo}" autofocus=""/>
 	</div>
 </div>
 
@@ -33,7 +33,7 @@
 		<span class="required-indicator">*</span>
 	: </label>
 	<div class="col-lg-10">
-	<g:select id="turno" name="turno.id" from="${com.deukin.Turno.list()}" optionKey="id" required="" value="${cursoInstance?.turno?.id}" class="many-to-one form-control"/>
+	<g:select id="turno" name="turno.id" from="${com.deukin.Turno.list()}" optionKey="id" required="" value="${cursoInstance?.turno?.id}" class="many-to-one"/>
 	</div>
 </div>
 <div class="fieldcontain ${hasErrors(bean: configuracionCursoDiaInstance, field: 'diaSemana', 'error')} required  row">
@@ -93,7 +93,13 @@
 		<span class="required-indicator">*</span>
 	: </label>
 	<div class="col-lg-10">
-	<g:select id="espacioFisico" name="espacioFisico.id" from="${com.deukin.EspacioFisico.list()}" optionKey="id" required="" value="${configuracionCursoDiaInstance?.espacioFisico?.id}" class="many-to-one  form-control"/>
+<%--	<g:select id="espacioFisico" name="espacioFisico.id" from="${com.deukin.EspacioFisico.list()}" optionKey="id" required="" value="${configuracionCursoDiaInstance?.espacioFisico?.id}" class="many-to-one  form-control"/>--%>
+	
+	<g:hiddenField id ="espacioFisico.id" name ="espacioFisico.id" value="${configuracionCursoDiaInstance?.espacioFisico?.id}"/>
+	<richui:autoComplete name="espacioFisicoNombre" minQueryLength="2" onItemSelect="eligeEspacioFisico(id)" value="${configuracionCursoDiaInstance?.espacioFisico}"
+		action="${createLinkTo('dir': 'cursos/searchEspaciosFisicosAJAX')}" forceSelection="false" class="form-control"/>
+	
+	
 	</div>
 </div>
 <div class="fieldcontain required  row">
@@ -120,7 +126,7 @@
 		<span class="required-indicator">*</span>
 	: </label>
 	<div class="col-lg-10">
-	<g:select id="periodoAcademico" name="periodoAcademico.id" from="${com.deukin.PeriodoAcademico.list()}" optionKey="id" required="" value="${cursoInstance?.periodoAcademico?.id}" class="many-to-one form-control"/>
+	<g:select id="periodoAcademico.id" name="periodoAcademico.id" from="${com.deukin.PeriodoAcademico.list()}" optionKey="id" required="" value="${cursoInstance?.periodoAcademico?.id}" class="many-to-one form-control"/>
 	</div>
 </div>
 

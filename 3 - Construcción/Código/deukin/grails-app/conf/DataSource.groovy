@@ -13,8 +13,8 @@
 
 dataSource {
 	pooled = true
-//	dbCreate = "update"
-	dbCreate = "create-drop"
+	dbCreate = "update"
+//	dbCreate = "create-drop"
 	driverClassName = "org.postgresql.Driver"
 	username = "postgres"
 	password = "postgres"
@@ -30,7 +30,7 @@ hibernate {
 environments {
 	development {
 		dataSource {
-			dbCreate = "create-drop" // one of 'create', 'create-drop', 'update', 'validate', ''
+			dbCreate = "update" // one of 'create', 'create-drop', 'update', 'validate', ''
 //			dbCreate = "update" // one of 'create', 'create-drop', 'update', 'validate', ''
 			//            url = "jdbc:h2:mem:devDb;MVCC=TRUE;LOCK_TIMEOUT=10000"
 			url = 'jdbc:postgresql://localhost:5432/deukin_dev'
@@ -39,7 +39,7 @@ environments {
 	}
 	test {
 		dataSource {
-			dbCreate = "create-drop"
+			dbCreate = "update"
 			//            url = "jdbc:h2:mem:testDb;MVCC=TRUE;LOCK_TIMEOUT=10000"
 //			url = "jdbc:mysql://localhost:3306/deukin_test"
 			url = 'jdbc:postgresql://localhost:5432/deukin_test'
@@ -47,10 +47,14 @@ environments {
 	}
 	production {
 		dataSource {
-			dbCreate = "create-drop"
+			dbCreate = "update"
 			//            url = "jdbc:h2:prodDb;MVCC=TRUE;LOCK_TIMEOUT=10000"
-//			url = 'jdbc:postgresql://localhost:5432/deukin_prod'
-			url = "jdbc:mysql://localhost:3306/deukin_prod"
+			url = 'jdbc:postgresql://localhost:5432/deukin_prod'
+//			url = "jdbc:mysql://localhost:3306/deukin_prod"
+			driverClassName = "org.postgresql.Driver"
+			username = "postgres"
+			password = "postgres"
+			charset = "utf8"		
 			pooled = true
 			properties {
 				maxActive = -1

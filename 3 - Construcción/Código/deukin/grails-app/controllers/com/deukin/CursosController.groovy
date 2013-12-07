@@ -1,7 +1,5 @@
 package com.deukin
 
-import com.sun.org.apache.bcel.internal.generic.NEW;
-
 import grails.plugins.springsecurity.Secured
 @Secured(['ROLE_COORDINADOR','ROLE_ADMINISTRATIVO','ROLE_DOCENTE', 'ROLE_ADMINISTRADOR_SISTEMA'])
 

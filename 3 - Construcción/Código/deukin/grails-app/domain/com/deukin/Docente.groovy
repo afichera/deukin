@@ -21,7 +21,7 @@ class Docente extends Persona {
 	
 	def getCantidadHorasCicloActual(){
 		def cantidadHorasActuales
-		cantidadHorasActuales = docenteService.obtenerHorasByDocenteIdInCicloLectivoActual(this.id);
+		cantidadHorasActuales = docenteService.obtenerHorasByDocenteIdInCicloLectivoActual(this.id)
 		cantidadHorasActuales	
 	}
 }

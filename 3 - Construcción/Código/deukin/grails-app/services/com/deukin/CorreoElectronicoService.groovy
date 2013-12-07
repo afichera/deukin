@@ -1,10 +1,10 @@
 package com.deukin
 
+import org.apache.commons.lang.exception.ExceptionUtils
+
 class CorreoElectronicoService {
-
-	def serviceMethod() {
-	}
-
+	
+	
 	def asynchronousMailService
 
 	def enviarMailBienvenida(InscripcionInstitucion inscripcion){
@@ -27,8 +27,9 @@ class CorreoElectronicoService {
 				subject "Bienvenido a Deukin"
 				html cuerpo;
 			}
+			log.info 'Se realizó el envio de mail de Bienvenida al usuario: '+ inscripcion.usuarioRegistro.username
 		}catch(Exception ex){
-			log.error("Falló el envío de mail de Bienvenida. Se intentará reenviar luego. Causa: "+ex.message)
+			log.error'Falló el envío de mail de Bienvenida. Se intentará reenviar luego. Causa: '+ExceptionUtils.getRootCauseStackTrace(ex)
 			retorno = false
 		}
 
@@ -55,8 +56,9 @@ class CorreoElectronicoService {
 				subject "Cuenta Activada "
 				html cuerpo;
 			}
+			log.info 'Se realizó el envio de mail de cuenta activada al usuario: '+ persona.usuario.username
 		}catch(Exception ex){
-			log.error("Falló el envío de mail de Activación de cuenta. Se intentará reenviar luego. Causa: "+ex.message)
+			log.error 'Falló el envío de mail de Activación de cuenta. Se intentará reenviar luego. Causa: '+ExceptionUtils.getRootCauseStackTrace(ex)
 			retorno = false
 		}
 

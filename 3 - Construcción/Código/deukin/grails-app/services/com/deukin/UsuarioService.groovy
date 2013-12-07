@@ -1,5 +1,7 @@
 package com.deukin
 
+import org.apache.commons.lang.exception.ExceptionUtils
+
 import com.deukin.exceptions.BusinessException
 
 class UsuarioService {
@@ -16,7 +18,14 @@ class UsuarioService {
 		}
 		Usuario usuario = new Usuario(username: username, password: password, enabled: true)
 		usuario = usuario.save()
-		UsuarioRol.create(usuario, rol)
+		try{
+			UsuarioRol.create(usuario, rol)
+			log.info "Se creo el usuario: $username"			
+		}catch(Exception e){
+			log.error 'Ocurrió un error al intentar crear el usuario. Detalle: '+ExceptionUtils.getRootCauseStackTrace(e)
+			throw new BusinessException("Ocurrió un error al intentar crear el usuario. Detalle: "+ExceptionUtils.getRootCauseMessage(e))		
+		}
+		
 		usuario
 	}
 	

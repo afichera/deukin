@@ -1,19 +1,16 @@
 package com.deukin
 
+import org.apache.commons.lang.exception.ExceptionUtils
 import org.springframework.transaction.annotation.Transactional
 
 import com.deukin.exceptions.BusinessException
+
 
 class InscripcionInstitucionService {
 
 	def mailService
 	def usuarioService
 	
-	
-	def serviceMethod() {
-	}
-
-
 	@Transactional
 	InscripcionInstitucion inscribir(InscripcionInstitucion inscripcion){
 		Calendar hoy = Calendar.getInstance()
@@ -28,12 +25,17 @@ class InscripcionInstitucionService {
 
 		if(inscripcionExistente == null){
 			if(usuarioRegistroExistente == null){
-				if(usuarioDeukinExistente == null){
-					
+				if(usuarioDeukinExistente == null){					
 					inscripcion.usuarioRegistro = inscripcion.usuarioRegistro.save(failOnError:true)
-					inscripcion = inscripcion.save(failOnError:true)					
-					log.info("Se realizó una nueva inscripción en el sistema. id:"+inscripcion.id)
-					inscripcion
+					try{
+						inscripcion = inscripcion.save(failOnError:true)
+						log.info 'Se realizó una nueva inscripción en el sistema. Id:'+inscripcion.id
+						inscripcion
+					}catch(Exception e){
+						log.error 'Ocurrió un error al intentar guardar la inscripción en el sistema. Detalle: '+ExceptionUtils.getRootCauseStackTrace(e)
+						throw new BusinessException("Ocurriió un error al guardar la inscripción. Detalle: "+ExceptionUtils.getRootCauseMessage(e))
+					}
+
 				}else{
 					throw new BusinessException("El nombre de usuario elegido ya está en uso, por favor indique un nuevo nombre de usuario.")
 				}
@@ -101,12 +103,11 @@ class InscripcionInstitucionService {
 					
 					inscripcion.estadoInscripcionInstitucion = EstadoInscripcionInstitucion.CONFIRMADA
 					inscripcion.save()					
-					log.info("Se realizó la activación del usuario "+persona.apellido+" "+persona.nombre+" id: "+alumno.id)
+					log.info "Se realizó la activación del usuario $persona.apellido $persona.nombre con id: $persona.id"
 					persona
-				}catch(Exception e){
-					log.error("Falló al activar el usuario. Causa: ")
-					log.error(e.stackTrace)
-					throw new BusinessException("No se pudo activar el registro del usuario. "+e.message)
+				}catch(Exception e){					
+					log.error 'Falló al activar el usuario. Causa: '+ExceptionUtils.getRootCauseStackTrace(e)
+					throw new BusinessException("No se pudo activar el registro del usuario. "+ExceptionUtils.getRootCauseMessage(e))
 				}	
 
 			}else{
@@ -123,7 +124,7 @@ class InscripcionInstitucionService {
 			inscripcion.estadoInscripcionInstitucion = EstadoInscripcionInstitucion.RECHAZADA
 			inscripcion.fechaBaja = new Date()
 			inscripcion.save(failOnError:true)			
-			log.info("Se rechazó la inscripción con id: "+inscripcion.id+".")
+			log.info "Se rechazó la inscripción con id: $inscripcion.id ."
 		}else{
 			throw new BusinessException("No se puede rechazar la inscripción porque tiene estado: "+inscripcion.estadoInscripcionInstitucion.toString()+".")
 		}		

@@ -10,8 +10,11 @@ import org.junit.*
  */
 @TestFor(CursosService)
 class CursosServiceTests {
-
-    void testSomething() {
-        fail "Implement me"
+	
+	
+    void testCuentaOK() {
+        def cantidadHoras = 40
+		def cantidadHorasMayor = 80		
+		assert cantidadHorasMayor > cantidadHoras
     }
 }

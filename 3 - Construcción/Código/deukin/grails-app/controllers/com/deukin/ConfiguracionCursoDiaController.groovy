@@ -2,8 +2,6 @@ package com.deukin
 
 import org.springframework.dao.DataIntegrityViolationException
 
-import com.sun.xml.internal.ws.api.streaming.XMLStreamReaderFactory.Default;
-
 class ConfiguracionCursoDiaController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]

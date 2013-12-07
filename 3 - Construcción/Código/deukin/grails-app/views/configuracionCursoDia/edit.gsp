@@ -4,8 +4,25 @@
 <head>
 <meta name="layout" content="main">
 <g:set var="entityName"
-	value="${message(code: 'configuracionCursoDia.label', default: 'ConfiguracionCursoDia')}" />
+	value="${message(code: 'configuracionCursoDia.label', default: 'Día y Horario')}" />
 <title><g:message code="configuracionCursoDia.edit.label" /></title>
+		<script type="text/javascript">
+
+
+    function eligeEspacioFisico(espacioId){
+        document.getElementById('espacioFisico.id').value = espacioId;
+      }
+
+</script>
+<resource:autoComplete />
+<script src="${createLink(uri: '/')}js/jquery.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $('.required').each(function (index) {
+            jQuery(this).attr('required', 'required')
+        });
+    });
+</script>
 </head>
 <body>
 	<div class="navbar navbar-inverse" role="navigation">

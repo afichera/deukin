@@ -19,6 +19,15 @@
 
 </script>
 <resource:autoComplete />
+<script src="${createLink(uri: '/')}js/jquery.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $('.required').each(function (index) {
+            jQuery(this).attr('required', 'required')
+        });
+    });
+</script>
+
 </head>
 <body>
 	<div class="navbar navbar-inverse" role="navigation">
@@ -39,6 +48,33 @@
 		<g:hasErrors bean="${cursoInstance}">
 			<ul class="alert alert-danger" role="alert">
 				<g:eachError bean="${cursoInstance}" var="error">
+					<li
+						<g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message
+							error="${error}" /></li>
+				</g:eachError>
+			</ul>
+		</g:hasErrors>
+				<g:hasErrors bean="${configuracionCursoDiaInstance}">
+			<ul class="alert alert-danger" role="alert">
+				<g:eachError bean="${configuracionCursoDiaInstance}" var="error">
+					<li
+						<g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message
+							error="${error}" /></li>
+				</g:eachError>
+			</ul>
+		</g:hasErrors>
+				<g:hasErrors bean="${cicloLectivoInstance}">
+			<ul class="alert alert-danger" role="alert">
+				<g:eachError bean="${cicloLectivoInstance}" var="error">
+					<li
+						<g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message
+							error="${error}" /></li>
+				</g:eachError>
+			</ul>
+		</g:hasErrors>
+				<g:hasErrors bean="${materiaInstance}">
+			<ul class="alert alert-danger" role="alert">
+				<g:eachError bean="${materiaInstance}" var="error">
 					<li
 						<g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message
 							error="${error}" /></li>

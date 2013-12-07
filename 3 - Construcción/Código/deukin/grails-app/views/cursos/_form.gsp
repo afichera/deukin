@@ -8,7 +8,7 @@
 		
 	*: </label>
 	<div class="col-lg-10">
-	<g:textField class="form-control" name="codigo" maxlength="20" value="${cursoInstance?.codigo}" autofocus=""/>
+	<g:textField class="form-control" name="codigo" maxlength="20" value="${cursoInstance?.codigo}" required="" autofocus=""/>
 	</div>
 </div>
 
@@ -23,7 +23,7 @@
 	
 	<g:hiddenField id ="materia.id" name ="materia.id" value="${cursoInstance?.materia?.id}"/>
 	<richui:autoComplete name="materiaNombre" minQueryLength="2" onItemSelect="eligeMateria(id)" value="${cursoInstance?.materia}"
-		action="${createLinkTo('dir': 'cursos/searchMateriasCoordinador')}" forceSelection="false" class="form-control"/>
+		action="${createLinkTo('dir': 'cursos/searchMateriasCoordinador')}" forceSelection="false" class="form-control required"/>
 	
 	</div>
 </div>
@@ -33,7 +33,7 @@
 		<span class="required-indicator">*</span>
 	: </label>
 	<div class="col-lg-10">
-	<g:select id="turno" name="turno.id" from="${com.deukin.Turno.list()}" optionKey="id" required="" value="${cursoInstance?.turno?.id}" class="many-to-one form-control"/>
+	<g:select id="turno" name="turno.id" from="${com.deukin.Turno.list()}" optionKey="id" required="" value="${cursoInstance?.turno?.id}" class="many-to-one form-control" />
 	</div>
 </div>
 

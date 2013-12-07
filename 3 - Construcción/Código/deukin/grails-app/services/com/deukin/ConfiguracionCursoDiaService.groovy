@@ -43,7 +43,7 @@ class ConfiguracionCursoDiaService {
 		}
 
 		if(cursos){
-			configuracionesCursoDia = ConfiguracionCursoDia.executeQuery("select c from ConfiguracionCursoDia as c where c.curso in (:list) order by c.curso.materia.periodo.anio, curso.materia.periodo.cuatrimestre, curso.codigo asc",
+			configuracionesCursoDia = ConfiguracionCursoDia.executeQuery("select c from ConfiguracionCursoDia as c where c.curso in (:list) order by c.curso.materia.periodo.anio, curso.materia.periodo.cuatrimestre,curso.materia.codigo, curso.codigo asc",
 				[list: cursos])
 			
 		}

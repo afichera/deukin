@@ -13,6 +13,14 @@
 
 </script>
 <resource:autoComplete />
+<script src="${createLink(uri: '/')}js/jquery.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $('.required').each(function (index) {
+            jQuery(this).attr('required', 'required')
+        });
+    });
+</script>
 </head>
 <body>
 	<div class="navbar navbar-inverse" role="navigation">

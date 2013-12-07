@@ -60,7 +60,7 @@ class CursosController {
 			def subList = subListaService.getSubList(configuraciones, params)
 			[configuracionCursoDiaInstanceList: subList, configuracionCursoDiaInstanceTotal: configuraciones.size()]
 		}else{
-			def configuraciones = ConfiguracionCursoDia.executeQuery("select c from ConfiguracionCursoDia as c order by c.curso.materia.periodo.anio, curso.materia.periodo.cuatrimestre, curso.codigo asc")
+			def configuraciones = ConfiguracionCursoDia.executeQuery("select c from ConfiguracionCursoDia as c order by c.curso.materia.periodo.anio, curso.materia.periodo.cuatrimestre,curso.materia.codigo, curso.codigo asc")
 			def subList = subListaService.getSubList(configuraciones, params)
 			[configuracionCursoDiaInstanceList: subList, configuracionCursoDiaInstanceTotal: configuraciones.size()]
 		}
@@ -87,12 +87,12 @@ class CursosController {
 		}
 		
 		if (!configuracionCursoDiaInstance.save(flush: true)) {
-			render(view: "create", model: [configuracionCursoDiaInstance: configuracionCursoDiaInstance])
+			render(view: "create", model: [cursoInstance: cursoInstance,configuracionCursoDiaInstance: configuracionCursoDiaInstance,cicloLectivo:cicloLectivoInstance,materia:materiaInstance])
 			return
 		}
 		
 
-		flash.message = message(code: 'default.created.message', args: [message(code: 'curso.label', default: 'Curso'), cursoInstance.id])
+		flash.message = message(code: 'default.created.message', args: [message(code: 'curso.label', default: 'Curso'), cursoInstance.codigo])
 		redirect(action: "show", id: cursoInstance.id)
 
 		

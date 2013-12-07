@@ -1,5 +1,7 @@
 package com.deukin
 
+import com.sun.xml.internal.ws.api.streaming.XMLStreamReaderFactory.Default;
+
 class ConfiguracionCursoDia {
 
 
@@ -33,7 +35,57 @@ class ConfiguracionCursoDia {
 		horaFin range: 0..23	
 		minutosInicio range: 0..59
 		minutosFin range: 0..59	
-	  }
+		espacioFisico nullable:false, blank:false 
+		
+
+	  horaInicio  validator:{val, obj ->
+		  def desde=0
+		  def hasta=0
+		  
+		  if (obj.properties['diaSemana']!=DiaSemana.SABADO) {
+			   desde = obj.properties['curso'].turno.horaSemanaDesde
+			   hasta = obj.properties['curso'].turno.horaSemanaHasta
+		  }
+		  else {
+			   desde = obj.properties['curso'].turno.horaSabadoDesde
+			   hasta = obj.properties['curso'].turno.horaSabadoHasta
+		  }
+		  
+		  
+				  if (val>=desde&&val<hasta) {
+								  true
+							   }
+				  else {
+					  ['configuracionCursoDia.horarioInicioIncorrecto']
+				  }	 }
+	  
+	  horaFin  validator:{val, obj ->
+		  def desde=0
+		  def hasta=0
+		  def minHasta=obj.properties['minutosFin']
+		  
+		  if (obj.properties['diaSemana']!=DiaSemana.SABADO) {
+			   desde = obj.properties['curso'].turno.horaSemanaDesde
+			   hasta = obj.properties['curso'].turno.horaSemanaHasta
+			   
+		  }
+		  else {
+			   desde = obj.properties['curso'].turno.horaSabadoDesde
+			   hasta = obj.properties['curso'].turno.horaSabadoHasta
+			  
+		  }
+		  
+		  
+				  if ((val>desde&&val<hasta)||(val==hasta&&minHasta==0)) {
+								  true
+							   }
+				  else {
+					  ['configuracionCursoDia.horarioFinIncorrecto']
+				  }	 }
+
+	  
+	  
+	}
 	  
 	 def getSumaHoras(){
 		 def sumaHoras

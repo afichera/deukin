@@ -2,13 +2,13 @@
 
 
 
-<div class="fieldcontain ${hasErrors(bean: cursoInstance, field: 'codigo', 'error')}   row">
+<div class="fieldcontain ${hasErrors(bean: cursoInstance, field: 'codigo', 'error')} required  row">
 	<label for="codigo" class="control-label col-lg-2">
 		<g:message code="curso.codigo.label" default="Codigo" />
 		
 	: </label>
 	<div class="col-lg-10">
-	<g:textField class="form-control" id="cursoInstance.codigo" name="cursoInstance.codigo" maxlength="20" value="${cursoInstance?.codigo}" autofocus=""/>
+	<g:textField class="form-control" id="cursoInstance.codigo" name="cursoInstance.codigo" maxlength="20" value="${cursoInstance?.codigo}" autofocus="" required=""/>
 	</div>
 </div>
 
@@ -21,9 +21,9 @@
 <%--	<g:select id="materia" name="materia.id" from="${com.deukin.Materia.list()}" optionKey="id" required="" value="${cursoInstance?.materia?.id}" class="many-to-one form-control"/>--%>
 	
 	
-	<g:hiddenField id ="materia.id" name ="materia.id" value="${cursoInstance?.materia?.id}"/>
-	<richui:autoComplete name="materiaNombre" minQueryLength="2" onItemSelect="eligeMateria(id)" value="${cursoInstance?.materia}"
-		action="${createLinkTo('dir': 'cursos/searchMateriasCoordinador')}" forceSelection="false" class="form-control"/>
+	<g:hiddenField id ="materia.id" name ="materia.id"  value="${cursoInstance?.materia?.id}"/>
+	<richui:autoComplete  name="materiaNombre" minQueryLength="2" onItemSelect="eligeMateria(id)" value="${cursoInstance?.materia}"
+		action="${createLinkTo('dir': 'cursos/searchMateriasCoordinador')}" forceSelection="false" class="form-control required"/>
 	
 	</div>
 </div>
@@ -97,7 +97,7 @@
 	
 	<g:hiddenField id ="espacioFisico.id" name ="espacioFisico.id" value="${configuracionCursoDiaInstance?.espacioFisico?.id}"/>
 	<richui:autoComplete name="espacioFisicoNombre" minQueryLength="2" onItemSelect="eligeEspacioFisico(id)" value="${configuracionCursoDiaInstance?.espacioFisico}"
-		action="${createLinkTo('dir': 'cursos/searchEspaciosFisicosAJAX')}" forceSelection="false" class="form-control"/>
+		action="${createLinkTo('dir': 'cursos/searchEspaciosFisicosAJAX')}" forceSelection="false" class="form-control required"/>
 	
 	
 	</div>
@@ -129,6 +129,8 @@
 	<g:select id="periodoAcademico.id" name="periodoAcademico.id" from="${com.deukin.PeriodoAcademico.list()}" optionKey="id" required="" value="${cursoInstance?.periodoAcademico?.id}" class="many-to-one form-control"/>
 	</div>
 </div>
+
+
 
 
 

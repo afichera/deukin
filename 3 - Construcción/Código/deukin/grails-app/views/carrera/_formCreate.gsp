@@ -8,7 +8,7 @@
 		
 	</label>
 	<div class="col-lg-9">
-	<g:textField name="titulo" maxlength="200" value="${carreraInstance?.titulo}"/>
+	<g:textField name="titulo" maxlength="200" value="${carreraInstance?.titulo}" required=""/>
 	</div>
 </div>
 
@@ -18,7 +18,7 @@
 		: 
 	</label>
 	<div class="col-lg-9">
-	<g:textField name="nombrePlanDeEstudio" maxlength="200"/>
+	<g:textField name="nombrePlanDeEstudio" required="" maxlength="200"/>
 	</div>
 </div>
 

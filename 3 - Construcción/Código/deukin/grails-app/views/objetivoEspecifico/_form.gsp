@@ -10,7 +10,7 @@
 	</label>
 	<div class="col-lg-10">
 	<g:textField name="descripcion"
-		value="${objetivoEspecificoInstance?.descripcion}" />
+		value="${objetivoEspecificoInstance?.descripcion}" required="" />
 		</div>
 </div>
 
@@ -24,7 +24,7 @@
 		${objetivoEspecificoInstance?.materia?.toString()}
 		<g:hiddenField id="materia" name="materia.id" optionKey="id"
 			required="" value="${objetivoEspecificoInstance?.materia?.id}"
-			class="many-to-one" />
+			class="many-to-one" required="" />
 	</div>
 </div>
 

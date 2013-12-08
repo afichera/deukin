@@ -29,7 +29,7 @@ class CarreraController {
 				return
 			}
 	
-			flash.message = message(code: 'default.created.message', args: [message(code: 'carrera.label', default: 'Carrera'), carreraInstance.id])
+			flash.message = message(code: 'carrera.created.message', args: [message(code: 'carrera.label', default: 'Carrera'), carreraInstance.titulo])
 			redirect(action: "show", id: carreraInstance.id)
 		}
 		
@@ -43,7 +43,7 @@ class CarreraController {
 				return
 			}
 	
-			flash.message = message(code: 'default.created.message', args: [message(code: 'carrera.label', default: 'Carrera'), carreraInstance.id])
+			flash.message = message(code: 'carrera.created.message', args: [carreraInstance.titulo])
 			redirect(action: "show", id: carreraInstance.id)
 		}
 	
@@ -95,7 +95,7 @@ class CarreraController {
 				return
 			}
 	
-			flash.message = message(code: 'default.updated.message', args: [message(code: 'carrera.label', default: 'Carrera'), carreraInstance.id])
+			flash.message = message(code: 'carrera.updated.message', args: [carreraInstance.titulo])
 			redirect(action: "show", id: carreraInstance.id)
 		}
 	

@@ -42,7 +42,7 @@ class Carrera implements Serializable {
 						if (obj.properties['condicionIngreso']&&obj.properties['planesEstudio']&&obj.properties['fundamentacion']&&obj.properties['perfilDelGraduado']&&obj.properties['descripcion']&&obj.properties['objetivos']&&obj.properties['coordinador'])
 						true
 						else
-					false
+					['carrera.estado.invalid.validator.message']
 					}	 }
 	}
 	

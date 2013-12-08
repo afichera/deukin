@@ -18,12 +18,12 @@
 		<span class="required-indicator">*</span>
 	: </label>
 	<div class="col-lg-10">
-	<g:select name="estado" from="${com.deukin.EstadoDeCreacion?.values()}" keys="${com.deukin.EstadoDeCreacion.values()*.name()}" required="" value="${planEstudioInstance?.estado?.name()}" />
+	<g:select name="estado" required="" from="${com.deukin.EstadoDeCreacion?.values()}" keys="${com.deukin.EstadoDeCreacion.values()*.name()}" required="" value="${planEstudioInstance?.estado?.name()}" />
 	</div>
 </div>
 </g:if>
 <g:else>
-<g:hiddenField id ="estado" name ="estado" value="BORRADOR"/>
+<g:hiddenField id ="estado" required="" name ="estado" value="BORRADOR"/>
 
 </g:else>
 <div class="fieldcontain ${hasErrors(bean: planEstudioInstance, field: 'cantidadPeriodosAcademicos', 'error')}   row">
@@ -32,7 +32,8 @@
 		
 	: </label>
 	<div class="col-lg-10">
-	<g:field name="cantidadPeriodosAcademicos" type="number" value="${planEstudioInstance.cantidadPeriodosAcademicos}"/>
+	<g:field type="number"  name="cantidadPeriodosAcademicos" value="${planEstudioInstance.cantidadPeriodosAcademicos}" class="form-control"/>
+	
 	</div>
 </div>
 
@@ -46,7 +47,7 @@
 	
 	<g:hiddenField id ="carrera.id" name ="carrera.id" value="${planEstudioInstance?.carrera?.id}"/>
 	<richui:autoComplete name="carreraTitulo" minQueryLength="2" onItemSelect="eligeCarrera(id)" value="${planEstudioInstance?.carrera}"
-		action="${createLinkTo('dir': 'planEstudio/searchCarrerasAutocomplete')}" forceSelection="false"  class="form-control" /></div>
+		action="${createLinkTo('dir': 'planEstudio/searchCarrerasAutocomplete')}" forceSelection="false"  class="form-control required" /></div>
 	
 	
 	

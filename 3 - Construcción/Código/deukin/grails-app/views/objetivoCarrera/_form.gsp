@@ -11,7 +11,7 @@
 		
 	</label>
 	<div class="col-lg-10">
-	<g:textArea rows="5" class="form-control" name="descripcion" value="${objetivoCarreraInstance?.descripcion}"/></div>
+	<g:textArea rows="5" class="form-control" name="descripcion" required="" value="${objetivoCarreraInstance?.descripcion}"/></div>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: objetivoCarreraInstance, field: 'carrera', 'error')} required row">

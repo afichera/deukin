@@ -27,7 +27,7 @@ class ObjetivoCarreraController {
             return
         }
 
-        flash.message = message(code: 'default.created.message', args: [message(code: 'objetivoCarrera.label', default: 'ObjetivoCarrera'), objetivoCarreraInstance.id])
+        flash.message = message(code: 'objetivo.created.message')
         redirect(controller:"carrera", action: "show", id: objetivoCarreraInstance.carrera.id)
     }
 
@@ -78,7 +78,7 @@ class ObjetivoCarreraController {
             return
         }
 
-        flash.message = message(code: 'default.updated.message', args: [message(code: 'objetivoCarrera.label', default: 'ObjetivoCarrera'), objetivoCarreraInstance.id])
+        flash.message = message(code: 'objetivo.updated.message')
         redirect(controller:"carrera", action: "show", id: objetivoCarreraInstance.carrera.id)
     }
 

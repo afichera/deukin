@@ -4,10 +4,10 @@
 
 <div class="fieldcontain ${hasErrors(bean: carreraInstance, field: 'titulo', 'error')} row">
 	<label for="titulo" class="col-lg-2 control-label">
-		<g:message code="carrera.titulo.label" default="Titulo" />
+		<g:message code="carrera.titulo.label" default="Título" />
 		: 
 	</label>
-	<div class=" col-lg-10"><g:textField class="form-control"  name="titulo" maxlength="200" value="${carreraInstance?.titulo}"/></div>
+	<div class=" col-lg-10"><g:textField class="form-control"  name="titulo" maxlength="200" value="${carreraInstance?.titulo}" required=""/></div>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: carreraInstance, field: 'estado', 'error')} required row">
@@ -28,7 +28,7 @@
 </div>
 <div class="fieldcontain ${hasErrors(bean: carreraInstance, field: 'condicionIngreso', 'error')} row">
 	<label for="condicionIngreso" class="col-lg-2 control-label">
-		<g:message code="carrera.condicionIngreso.label" default="Condicion Ingreso" />
+		<g:message code="carrera.condicionIngreso.label" default="Condición de Ingreso" />
 		: 
 	</label>
 	<div class="col-lg-10"><g:textField class="form-control" name="condicionIngreso" value="${carreraInstance?.condicionIngreso}"/></div>
@@ -36,7 +36,7 @@
 
 <div class="fieldcontain ${hasErrors(bean: carreraInstance, field: 'fundamentacion', 'error')} row">
 	<label for="fundamentacion" class="col-lg-2 control-label">
-		<g:message code="carrera.fundamentacion.label" default="Fundamentacion" />: 
+		<g:message code="carrera.fundamentacion.label" default="Fundamentación" />: 
 		
 	</label>
 	<div class="col-lg-10">
@@ -76,7 +76,7 @@
 
 <div class="fieldcontain ${hasErrors(bean: carreraInstance, field: 'descripcion', 'error')} row">
 	<label for="descripcion" class="col-lg-2 control-label">
-		<g:message code="carrera.descripcion.label" default="Descripcion" />: 
+		<g:message code="carrera.descripcion.label" default="Descripción" />: 
 		
 	</label>
 	<div class=" col-lg-10"><g:textArea  rows="5" class="form-control" name="descripcion" value="${carreraInstance?.descripcion}"/></div>
@@ -99,7 +99,7 @@
 
 <div class="fieldcontain ${hasErrors(bean: carreraInstance, field: 'planesEstudio', 'error')} row">
 	<label for="planesEstudio" class="col-lg-2 control-label">
-		<g:message code="carrera.planesEstudio.label" default="Planes Estudio" />: 
+		<g:message code="carrera.planesEstudio.label" default="Planes de Estudio" />: 
 		
 	</label>
 	<div class="col-lg-10">

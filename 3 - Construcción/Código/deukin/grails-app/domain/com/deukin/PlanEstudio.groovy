@@ -19,8 +19,10 @@ class PlanEstudio {
 
     static constraints = {
 		 identificacion unique:true, nullable:false, blank:false, maxSize:50
-		 cantidadPeriodosAcademicos nullable:true, min:1, max:20
+		 cantidadPeriodosAcademicos (nullable:true, min:1, max:20,maxSize:2) 
 		 materias nullable:true
+		 
+		
     }
 	
 	String toString(){

@@ -173,7 +173,7 @@ class CursosController {
 
 		flash.message = message(code: 'default.updated.message', args: [
 			message(code: 'cursos.label', default: 'Curso'),
-			cursoInstance.id
+			cursoInstance.codigo
 		])
 		redirect(action: "show", id: cursoInstance.id)
 	}

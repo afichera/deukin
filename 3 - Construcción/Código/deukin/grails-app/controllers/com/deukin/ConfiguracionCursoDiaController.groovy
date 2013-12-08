@@ -27,7 +27,7 @@ class ConfiguracionCursoDiaController {
         }
 
         flash.message = message(code: 'default.created.message', args: [message(code: 'configuracionCursoDia.label', default: 'ConfiguracionCursoDia'), configuracionCursoDiaInstance.id])
-        redirect(controller:"cursos", action: "show", id: configuracionCursoDiaInstance.curso.id)
+        redirect(controller:"cursos", action: "show", id: configuracionCursoDiaInstance.curso.codigo)
     }
 
     def show(Long id) {
@@ -78,7 +78,7 @@ class ConfiguracionCursoDiaController {
         }
 
         flash.message = message(code: 'default.updated.message', args: [message(code: 'configuracionCursoDia.label', default: 'ConfiguracionCursoDia'), configuracionCursoDiaInstance.id])
-        redirect(controller:"cursos", action: "show", id: configuracionCursoDiaInstance.curso.id)
+        redirect(controller:"cursos", action: "show", id: configuracionCursoDiaInstance.curso.codigo)
     }
 
     def delete(Long id) {

@@ -1,7 +1,5 @@
 package com.deukin
 
-import org.apache.commons.lang.exception.ExceptionUtils
-
 import com.deukin.exceptions.BusinessException
 
 class UsuarioService {
@@ -14,16 +12,16 @@ class UsuarioService {
 	Usuario crear (String username, String password, String role){
 		def rol = Rol.findByAuthority(role)
 		if(rol==null){
-			throw new BusinessException("Rol Inexistente")
+			throw new BusinessException('Rol Inexistente')
 		}
 		Usuario usuario = new Usuario(username: username, password: password, enabled: true)
 		usuario = usuario.save()
 		try{
 			UsuarioRol.create(usuario, rol)
-			log.info "Se creo el usuario: $username"			
+			log.info 'Se creo el usuario: '+username			
 		}catch(Exception e){
-			log.error 'Ocurrió un error al intentar crear el usuario. Detalle: '+ExceptionUtils.getRootCauseStackTrace(e)
-			throw new BusinessException("Ocurrió un error al intentar crear el usuario. Detalle: "+ExceptionUtils.getRootCauseMessage(e))		
+			log.error 'Ocurrió un error al intentar crear el usuario. Detalle: '+e.getCause()?.getMessage()
+			throw new BusinessException('Ocurrió un error al intentar crear el usuario. Detalle: '+e.getCause()?.getMessage())		
 		}
 		
 		usuario
@@ -54,7 +52,7 @@ class UsuarioService {
 		def usuarios = []
 		def rol = Rol.findByAuthority(rolBuscado)
 		if(!rol){
-			throw new BusinessException("El rol "+rolBuscado+" no existe en el sistema. Contactese con el administrador.")
+			throw new BusinessException('El rol '+rolBuscado+ 'no existe en el sistema. Contactese con el administrador.')
 		}
 		usuarios = UsuarioRol.findAllByRol(rol).usuario
 		usuarios

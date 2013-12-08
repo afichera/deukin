@@ -1,6 +1,5 @@
 package com.deukin
 
-import org.apache.commons.lang.exception.ExceptionUtils
 import org.springframework.transaction.annotation.Transactional
 
 import com.deukin.exceptions.BusinessException
@@ -32,19 +31,19 @@ class InscripcionInstitucionService {
 						log.info 'Se realizó una nueva inscripción en el sistema. Id:'+inscripcion.id
 						inscripcion
 					}catch(Exception e){
-						log.error 'Ocurrió un error al intentar guardar la inscripción en el sistema. Detalle: '+ExceptionUtils.getRootCauseStackTrace(e)
-						throw new BusinessException("Ocurriió un error al guardar la inscripción. Detalle: "+ExceptionUtils.getRootCauseMessage(e))
+						log.error 'Ocurrió un error al intentar guardar la inscripción en el sistema. Detalle: '+e
+						throw new BusinessException('Ocurrió un error al guardar la inscripción.')
 					}
 
 				}else{
-					throw new BusinessException("El nombre de usuario elegido ya está en uso, por favor indique un nuevo nombre de usuario.")
+					throw new BusinessException('El nombre de usuario elegido ya está en uso, por favor indique un nuevo nombre de usuario.')
 				}
 			}else{
-				throw new BusinessException("El nombre de usuario elegido ya está en uso, por favor indique un nuevo nombre de usuario.")
+				throw new BusinessException('El nombre de usuario elegido ya está en uso, por favor indique un nuevo nombre de usuario.')
 			}
 
 		}else{
-			throw new BusinessException("Ud ya se encuentra inscripto!")
+			throw new BusinessException('Ud ya se encuentra inscripto!')
 		}		
 	}
 
@@ -65,14 +64,14 @@ class InscripcionInstitucionService {
 				if(usuarioDeukinExistente == null){
 	
 				}else{
-					throw new BusinessException("El nombre de usuario elegido ya está en uso, por favor indique un nuevo nombre de usuario.")
+					throw new BusinessException('El nombre de usuario elegido ya está en uso, por favor indique un nuevo nombre de usuario.')
 				}
 			}else{
-				throw new BusinessException("El nombre de usuario elegido ya está en uso, por favor indique un nuevo nombre de usuario.")
+				throw new BusinessException('El nombre de usuario elegido ya está en uso, por favor indique un nuevo nombre de usuario.')
 			}
 
 		}else{
-			throw new BusinessException("Ud ya se encuentra inscripto!")
+			throw new BusinessException('Ud ya se encuentra inscripto!')
 		}
 	}
 
@@ -103,18 +102,18 @@ class InscripcionInstitucionService {
 					
 					inscripcion.estadoInscripcionInstitucion = EstadoInscripcionInstitucion.CONFIRMADA
 					inscripcion.save()					
-					log.info "Se realizó la activación del usuario $persona.apellido $persona.nombre con id: $persona.id"
+					log.info 'Se realizó la activación del usuario' +persona.apellido +' '+ $persona.nombre 'con id: '+persona.id
 					persona
 				}catch(Exception e){					
-					log.error 'Falló al activar el usuario. Causa: '+ExceptionUtils.getRootCauseStackTrace(e)
-					throw new BusinessException("No se pudo activar el registro del usuario. "+ExceptionUtils.getRootCauseMessage(e))
+					log.error 'Falló al activar el usuario. Causa: '+e
+					throw new BusinessException('No se pudo activar el registro del usuario.')
 				}	
 
 			}else{
-				throw new BusinessException("El nombre de usuario: "+inscripcion.usuarioRegistro.username+", utilizado en la inscripción ya existe en nuestro sistema.")
+				throw new BusinessException('El nombre de usuario: '+inscripcion.usuarioRegistro.username+', utilizado en la inscripción ya existe en nuestro sistema.')
 			}			
 		}else{
-			throw new BusinessException("El documento "+documento.tipoDocumento.toString()+" "+documento.numero+" ya se encuentra activo en nuestro sistema.")
+			throw new BusinessException('El documento '+documento.tipoDocumento.toString()+' '+documento.numero+' ya se encuentra activo en nuestro sistema.')
 		}
 		
 	}
@@ -124,9 +123,9 @@ class InscripcionInstitucionService {
 			inscripcion.estadoInscripcionInstitucion = EstadoInscripcionInstitucion.RECHAZADA
 			inscripcion.fechaBaja = new Date()
 			inscripcion.save(failOnError:true)			
-			log.info "Se rechazó la inscripción con id: $inscripcion.id ."
+			log.info 'Se rechazó la inscripción con id:' + inscripcion.id
 		}else{
-			throw new BusinessException("No se puede rechazar la inscripción porque tiene estado: "+inscripcion.estadoInscripcionInstitucion.toString()+".")
+			throw new BusinessException('No se puede rechazar la inscripción porque tiene estado: '+inscripcion.estadoInscripcionInstitucion.toString()+'.')
 		}		
 	}
 	

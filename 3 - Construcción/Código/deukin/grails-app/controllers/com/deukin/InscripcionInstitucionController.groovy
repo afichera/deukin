@@ -66,7 +66,7 @@ class InscripcionInstitucionController {
 			redirect(action: "list")
 			return
 		}catch(Exception ex){
-			flash.message = ex.message			
+			flash.message = ex.getCause()?.getMessage()			
 			redirect(action: "list")
 			return
 		}
@@ -247,7 +247,7 @@ class InscripcionInstitucionController {
 				try{
 					inscripcion = inscripcionInstitucionService.inscribir(inscripcion)
 				}catch(Exception e){
-					flash.message = e.getCause().getMessage()
+					flash.message = e.getCause()?.getMessage()
 					return errorInscripcion()
 				}
 				

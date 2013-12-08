@@ -2,7 +2,6 @@ package com.deukin
 
 import grails.plugins.springsecurity.Secured
 
-import org.apache.commons.lang.exception.ExceptionUtils
 import org.springframework.dao.DataIntegrityViolationException
 @Secured(['ROLE_COORDINADOR'])
 class CorrelatividadController {
@@ -73,7 +72,7 @@ class CorrelatividadController {
 			}
 
 		}catch(Exception ex){
-			String eMessage = ExceptionUtils.getRootCauseMessage(ex)
+			String eMessage = ex.getCause()?.getMessage()
 			flash.message = eMessage
 			render(view: "create", model: [correlatividadInstance: correlatividadInstance])
 			

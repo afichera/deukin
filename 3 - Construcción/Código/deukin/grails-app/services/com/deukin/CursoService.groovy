@@ -40,7 +40,8 @@ class CursoService {
 		String resultado = 'OK'
 		resultado = validaCurso(cursoInstance)
 		if(resultado.equalsIgnoreCase('OK')){
-			cursoInstance.save(failOnError:true)						
+			cursoInstance.save(failOnError:true)
+			log.info 'Se generó el curso con id: '+cursoInstance.id
 		}
 		resultado
 	}

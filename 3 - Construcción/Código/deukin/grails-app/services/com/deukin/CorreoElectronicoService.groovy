@@ -1,6 +1,5 @@
 package com.deukin
 
-import org.apache.commons.lang.exception.ExceptionUtils
 
 class CorreoElectronicoService {
 	
@@ -29,7 +28,7 @@ class CorreoElectronicoService {
 			}
 			log.info 'Se realizó el envio de mail de Bienvenida al usuario: '+ inscripcion.usuarioRegistro.username
 		}catch(Exception ex){
-			log.error'Falló el envío de mail de Bienvenida. Se intentará reenviar luego. Causa: '+ExceptionUtils.getRootCauseStackTrace(ex)
+			log.error'Falló el envío de mail de Bienvenida. Se intentará reenviar luego. Causa: '+ ex.getCause()?.getMessage()
 			retorno = false
 		}
 
@@ -58,7 +57,7 @@ class CorreoElectronicoService {
 			}
 			log.info 'Se realizó el envio de mail de cuenta activada al usuario: '+ persona.usuario.username
 		}catch(Exception ex){
-			log.error 'Falló el envío de mail de Activación de cuenta. Se intentará reenviar luego. Causa: '+ExceptionUtils.getRootCauseStackTrace(ex)
+			log.error 'Falló el envío de mail de Activación de cuenta. Se intentará reenviar luego. Causa: '+ex.getCause()?.getMessage()
 			retorno = false
 		}
 

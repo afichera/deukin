@@ -141,7 +141,7 @@ class AlumnoController {
 			if(documentoAux){
 				alumnosAux = Alumno.findAllByDocumento(documentoAux)
 				if(alumnosAux!=null && alumnosAux.size()>1){
-					throw new BusinessException("El tipo y numero de documento ya existe en nuestro sistema.")
+					throw new BusinessException('El tipo y numero de documento ya existe en nuestro sistema.')
 				}
 				
 			}

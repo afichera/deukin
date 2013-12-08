@@ -31,11 +31,11 @@ class DocenteService {
 		Float resultado = 0
 
 		if(!docente){
-			throw new BusinessException("No se encontró docente con id: "+docenteId)
+			throw new BusinessException('No se encontró docente con id: '+docenteId)
 		}
 
 		if(!cronograma){
-			throw new BusinessException("No se encontró cronograma de carrera con id: "+cronogramaId)
+			throw new BusinessException('No se encontró cronograma de carrera con id: '+cronogramaId)
 		}
 
 		def cursosDelCronograma = Curso.findAllByCronogramaCarrera(cronograma)

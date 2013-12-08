@@ -58,7 +58,7 @@ class CorrelatividadService {
 				throw new BusinessException('No se puede crear correlatividad porque ya son correlativas directas en orden inverso.')
 			}
 		}else{
-			throw new BusinessException("La correlatividad que intenta crear ya existe")
+			throw new BusinessException('La correlatividad que intenta crear ya existe')
 		}
 
 		valida		

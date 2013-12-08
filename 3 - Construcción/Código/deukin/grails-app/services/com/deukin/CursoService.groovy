@@ -1,6 +1,5 @@
 package com.deukin
 
-import org.springframework.transaction.annotation.Transactional
 
 
 
@@ -35,14 +34,4 @@ class CursoService {
 		}
 	}
 
-	@Transactional
-	public String crearCurso(def cursoInstance){
-		String resultado = 'OK'
-		resultado = validaCurso(cursoInstance)
-		if(resultado.equalsIgnoreCase('OK')){
-			cursoInstance.save(failOnError:true)
-			log.info 'Se generó el curso con id: '+cursoInstance.id
-		}
-		resultado
-	}
 }

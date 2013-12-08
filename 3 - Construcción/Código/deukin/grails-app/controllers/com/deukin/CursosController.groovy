@@ -82,9 +82,13 @@ class CursosController {
 		def configuracionCursoDiaInstance = new ConfiguracionCursoDia(params)
 		cursoInstance.configuracionesCursoDia.add(configuracionCursoDiaInstance)
 
-		String validacionCurso = cursoService.crearCurso(cursoInstance)
+		String validacionCurso = cursoService.validaCurso(cursoInstance)
 		
 		if(validacionCurso.equalsIgnoreCase("OK")){
+			if(!cursoInstance.save(flush:true)){
+				render(view: "create", model: [cursoInstance: cursoInstance,configuracionCursoDiaInstance: configuracionCursoDiaInstance,cicloLectivo:cicloLectivoInstance,materia:materiaInstance])
+				return
+			}
 			flash.message = message(code: 'default.created.message', args: [
 				message(code: 'curso.label', default: 'Curso'),
 				cursoInstance.codigo

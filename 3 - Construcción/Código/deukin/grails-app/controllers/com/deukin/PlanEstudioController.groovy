@@ -2,6 +2,8 @@ package com.deukin
 
 import grails.plugins.springsecurity.Secured
 
+import net.sf.jasperreports.compilers.JavaScriptCompilerBase.Errors;
+
 import org.springframework.dao.DataIntegrityViolationException
 
 
@@ -32,6 +34,16 @@ class PlanEstudioController {
 
     def save() {
         def planEstudioInstance = new PlanEstudio(params)
+		
+		if (!params.cantidadPeriodosAcademicos.isInteger())
+		{
+			planEstudioInstance.clearErrors()
+			planEstudioInstance.errors.rejectValue("cantidadPeriodosAcademicos", "planEstudio.cantidadPeriodosAcademicos.invalid.numero")
+			render(view: "create", model: [planEstudioInstance: planEstudioInstance])
+			return
+		}
+		
+		
         if (!planEstudioInstance.save(flush: true)) {
             render(view: "create", model: [planEstudioInstance: planEstudioInstance])
             return

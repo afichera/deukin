@@ -16,13 +16,7 @@
   }
   </script>
   <script src="${createLink(uri: '/')}js/jquery.js"></script>
-<script type="text/javascript">
-    $(function () {
-        $('.required').each(function (index) {
-            jQuery(this).attr('required', 'required')
-        });
-    });
-</script>
+<script src="${createLink(uri: '/')}js/validaciones.js"></script>
 
 </head>
 <body>

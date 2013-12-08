@@ -35,7 +35,7 @@ class PlanEstudioController {
     def save() {
         def planEstudioInstance = new PlanEstudio(params)
 		
-		if (!params.cantidadPeriodosAcademicos.isInteger())
+		if (!params.cantidadPeriodosAcademicos.isInteger()&&params.cantidadPeriodosAcademicos)
 		{
 			planEstudioInstance.clearErrors()
 			planEstudioInstance.errors.rejectValue("cantidadPeriodosAcademicos", "planEstudio.cantidadPeriodosAcademicos.invalid.numero")

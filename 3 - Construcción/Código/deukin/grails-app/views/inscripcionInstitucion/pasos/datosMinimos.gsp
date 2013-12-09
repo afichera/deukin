@@ -4,6 +4,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 <meta name="layout" content="main" />
 <title>Deukin Inscripción - Paso 1</title>
+		<script src="${createLink(uri: '/')}js/jquery.js"></script>
+<script src="${createLink(uri: '/')}js/validaciones.js"></script>
 </head>
 <body>
 	<div class="body">

@@ -7,6 +7,8 @@
 	value="${message(code: 'docente.label', default: 'Docente')}" />
 <title><g:message code="docente.create.label"
 		 /></title>
+		 		<script src="${createLink(uri: '/')}js/jquery.js"></script>
+<script src="${createLink(uri: '/')}js/validaciones.js"></script>
 </head>
 <body>
 	<div class="navbar navbar-inverse" role="navigation">

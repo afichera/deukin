@@ -8,8 +8,8 @@
       document.getElementById('planEstudio.id').value = planId;
   }
 </script>
-
-</script>
+		<script src="${createLink(uri: '/')}js/jquery.js"></script>
+<script src="${createLink(uri: '/')}js/validaciones.js"></script>
 <meta name="layout" content="main">
 <g:set var="entityName"
 	value="${message(code: 'materia.label', default: 'Materia')}" />

@@ -6,6 +6,8 @@
 <g:set var="entityName"
 	value="${message(code: 'docente.label', default: 'Docente')}" />
 <title><g:message code="docente.edit.label" /></title>
+		<script src="${createLink(uri: '/')}js/jquery.js"></script>
+<script src="${createLink(uri: '/')}js/validaciones.js"></script>
 </head>
 <body>
 	<div class="navbar navbar-inverse" role="navigation">

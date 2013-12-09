@@ -118,5 +118,30 @@ class MateriaService {
 		}
 		predecesoras
 	}
+	
+	public String validaNumeros (params)
+	{
+		String erroneas = ''
+		
+		if (!params.codigo.isInteger()&&params.codigo)
+		erroneas = erroneas + '"Código", '
+		
+		if (!params.cantidadDocentesRequeridos.isInteger()&&params.cantidadDocentesRequeridos)
+		erroneas = erroneas + '"Cantidad de Docentes Requeridos", '
+		
+		
+		if (!params.cantidadUnidadesHorarias.isInteger()&&params.cantidadUnidadesHorarias)
+		erroneas = erroneas + '"Cantidad de Unidades Horarias", '
+		
+		
+		if (!params.cupoMaximoAlumnos.isInteger()&&params.cupoMaximoAlumnos)
+		erroneas = erroneas + '"Cupo Máximo de Alumnos", '
+		
+		
+		if (!params.cupoMinimoAlumnos.isInteger()&&params.cupoMinimoAlumnos)
+		erroneas = erroneas + '"Cupo Mínimo de Alumnos", '
+		
+		erroneas
+	}
 
 }

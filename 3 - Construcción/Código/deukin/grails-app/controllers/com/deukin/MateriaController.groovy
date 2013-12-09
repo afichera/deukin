@@ -84,6 +84,15 @@ class MateriaController {
 			
 		def materiaInstance = new Materia(params)
 		
+		String validacionNumeros = materiaService.validaNumeros(params)
+		
+		if (validacionNumeros!="")
+		{
+			materiaInstance.clearErrors()
+			materiaInstance.errors.reject(message(code: 'materia.invalid.numeros', args:[validacionNumeros]))
+			render(view: "create", model: [materiaInstance: materiaInstance])
+			return
+		}
 		
 		if (!materiaInstance.save(flush: true)) {
 			flash.message = message(code: 'xx', default: 'no grabo la materia')

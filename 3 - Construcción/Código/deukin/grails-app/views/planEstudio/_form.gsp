@@ -32,8 +32,8 @@
 		
 	: </label>
 	<div class="col-lg-10">
-	<g:field type="number"  name="cantidadPeriodosAcademicos" value="${planEstudioInstance.cantidadPeriodosAcademicos}" class="form-control"/>
-	
+	<g:textField type="number"  name="cantidadPeriodosAcademicos" value="${planEstudioInstance.cantidadPeriodosAcademicos}" class="form-control" onkeyup="soloNumeros(this,'#validaCantidadPeriodosAcademicos')"/>
+	<span class="alert alert-error" id="validaCantidadPeriodosAcademicos" style="display:none;">		<g:message code="invalid.soloNumeros" /></span>
 	</div>
 </div>
 

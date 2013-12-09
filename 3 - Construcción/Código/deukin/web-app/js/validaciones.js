@@ -1,5 +1,5 @@
-function soloNumeros(value, span) {
-	var valor = value.value;
+function soloNumeros(input, span) {
+	var valor = input.value;
 	if (!$.isNumeric(valor) && valor != "") {
 		$(span).show(500)
 	} else {

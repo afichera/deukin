@@ -66,9 +66,11 @@
 			code="inscripcionInstitucion.documentoNumero.label"
 			default="Documento Numero" /> <span class="required-indicator">*</span>
 	</label>
-	<g:field name="documentoNumero" type="number"
+	<g:textField name="documentoNumero" type="number"
 		value="${inscripcionInstitucionInstance.documentoNumero}"
-		required="true" />
+		required="true" onkeyup="soloNumeros(this,'#validaDocumento')"/>
+	<span class="alert alert-error" id="validaDocumento" style="display:none;">		<g:message code="invalid.soloNumeros" /></span>
+	
 
 </div>
 
@@ -104,8 +106,10 @@
 			code="inscripcionInstitucion.calleNumero.label"
 			default="Calle Numero" /> <span class="required-indicator">*</span>
 	</label>
-	<g:field name="calleNumero" type="number"
-		value="${inscripcionInstitucionInstance.calleNumero}" required="true" />
+	<g:textField name="calleNumero" type="number"
+		value="${inscripcionInstitucionInstance.calleNumero}" required="true"  onkeyup="soloNumeros(this,'#validaNumeroCalle')"/>
+	<span class="alert alert-error" id="validaNumeroCalle" style="display:none;">		<g:message code="invalid.soloNumeros" /></span>
+	
 </div>
 
 
@@ -125,8 +129,9 @@
 			code="inscripcionInstitucion.codigoPostal.label"
 			default="Codigo Postal" /> <span class="required-indicator">*</span>
 	</label>
-	<g:field name="codigoPostal" type="number"
-		value="${inscripcionInstitucionInstance.codigoPostal}" required="true" />
+	<g:textField name="codigoPostal" type="number"
+		value="${inscripcionInstitucionInstance.codigoPostal}" required="true"  onkeyup="soloNumeros(this,'#validaCodigo')"/>
+	<span class="alert alert-error" id="validaCodigo" style="display:none;">		<g:message code="invalid.soloNumeros" /></span>
 </div>
 
 <div

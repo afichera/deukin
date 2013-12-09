@@ -7,7 +7,9 @@
 		<g:message code="materia.codigo.label" default="Codigo" />
 		*: 
 	</label>
-	<div class=" col-lg-9 "><g:field  class="form-control" name="codigo" type="number" value="${materiaInstance.codigo}" required=""/></div>
+	<div class=" col-lg-9 "><g:textField  class="form-control" name="codigo" type="number" value="${materiaInstance.codigo}" required="" onkeyup="soloNumeros(this,'#validaCodigo')"/>
+	<span class="alert alert-error" id="validaCodigo" style="display:none;">		<g:message code="invalid.soloNumeros" /></span>
+	</div>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: materiaInstance, field: 'nombre', 'error')} row">
@@ -31,7 +33,8 @@
 		<g:message code="materia.cantidadDocentesRequeridos.label" default="Cantidad Docentes Requeridos" />
 		*: 
 	</label>
-<div class=" col-lg-9 ">	<g:field  class="form-control" name="cantidadDocentesRequeridos" type="number" value="${materiaInstance.cantidadDocentesRequeridos}" required=""/></div>
+<div class=" col-lg-9 ">	<g:textField  class="form-control" name="cantidadDocentesRequeridos" type="number" value="${materiaInstance.cantidadDocentesRequeridos}" required="" onkeyup="soloNumeros(this,'#validaDocentes')"/>
+	<span class="alert alert-error" id="validaDocentes" style="display:none;">		<g:message code="invalid.soloNumeros" /></span></div>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: materiaInstance, field: 'cantidadUnidadesHorarias', 'error')} required row">
@@ -39,7 +42,8 @@
 		<g:message code="materia.cantidadUnidadesHorarias.label" default="Cantidad Unidades Horarias" />
 		*: 
 	</label>
-	<div class=" col-lg-9 "><g:field  class="form-control" name="cantidadUnidadesHorarias" type="number" value="${materiaInstance.cantidadUnidadesHorarias}" required=""/></div>
+	<div class=" col-lg-9 "><g:textField  class="form-control" name="cantidadUnidadesHorarias" type="number" value="${materiaInstance.cantidadUnidadesHorarias}" required="" onkeyup="soloNumeros(this,'#validaUH')"/>
+	<span class="alert alert-error" id="validaUH" style="display:none;">		<g:message code="invalid.soloNumeros" /></span></div>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: materiaInstance, field: 'planEstudio', 'error')} required row">
@@ -77,7 +81,8 @@
 		<g:message code="materia.cupoMaximoAlumnos.label" default="Cupo Maximo Alumnos" />
 		*: 
 	</label>
-<div class=" col-lg-9 ">	<g:field  class="form-control"  name="cupoMaximoAlumnos" type="number" value="${materiaInstance.cupoMaximoAlumnos}" required=""/></div>
+<div class=" col-lg-9 ">	<g:textField  class="form-control"  name="cupoMaximoAlumnos" type="number" value="${materiaInstance.cupoMaximoAlumnos}" required="" onkeyup="soloNumeros(this,'#validaAlumnos')"/>
+	<span class="alert alert-error" id="validaAlumnos" style="display:none;">		<g:message code="invalid.soloNumeros" /></span></div>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: materiaInstance, field: 'cupoMinimoAlumnos', 'error')} required row">
@@ -85,7 +90,8 @@
 		<g:message code="materia.cupoMinimoAlumnos.label" default="Cupo Minimo Alumnos" />
 		*: 
 	</label>
-<div class=" col-lg-9 ">	<g:field  class="form-control" name="cupoMinimoAlumnos" type="number" value="${materiaInstance.cupoMinimoAlumnos}" required=""/></div>
+<div class=" col-lg-9 ">	<g:textField  class="form-control" name="cupoMinimoAlumnos" type="number" value="${materiaInstance.cupoMinimoAlumnos}" required="" onkeyup="soloNumeros(this,'#validaMinAlumnos')"/>
+	<span class="alert alert-error" id="validaMinAlumnos" style="display:none;">		<g:message code="invalid.soloNumeros" /></span></div>
 </div>
 <g:if test="${materiaInstance?.id}">
 

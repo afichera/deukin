@@ -60,13 +60,16 @@
 		class="required-indicator">*</span>
 	</label>
 	<sec:ifAnyGranted roles="ROLE_ADMINISTRADOR_SISTEMA">
-	<g:field name="documento.numero" type="number"
-		value="${alumnoInstance?.documento?.numero}" required="true" />
+	<g:textField name="documento.numero" type="number"
+		value="${alumnoInstance?.documento?.numero}" required="true"  onkeyup="soloNumeros(this,'#validaDocumento')"/>
+	<span class="alert alert-error" id="validaDocumento" style="display:none;">		<g:message code="invalid.soloNumeros" /></span>
 	
 	</sec:ifAnyGranted>
 	<sec:ifAnyGranted roles="ROLE_ALUMNO">
-	<g:field name="documento.numero" type="number" disabled="true"
-		value="${alumnoInstance?.documento?.numero}" required="true" />
+	<g:textField name="documento.numero" type="number" disabled="true"
+		value="${alumnoInstance?.documento?.numero}" required="true" onkeyup="soloNumeros(this,'#validaDocumento')"/>
+	<span class="alert alert-error" id="validaDocumento" style="display:none;">		<g:message code="invalid.soloNumeros" /></span>
+	
 	
 	</sec:ifAnyGranted>
 

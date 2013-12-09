@@ -114,8 +114,10 @@
 						code="inscripcionInstitucion.documentoNumero.label"
 						default="Numero de Documento" /> <span class="required-indicator">*</span>
 				</label>
-				<g:field name="documentoNumero" type="number"
-					value="${inscripcion.documentoNumero}" required="true" />
+				<g:textField name="documentoNumero" type="number"
+					value="${inscripcion.documentoNumero}" required="true" onkeyup="soloNumeros(this,'#validaDocumento')"/>
+	<span class="alert alert-error" id="validaDocumento" style="display:none;">		<g:message code="invalid.soloNumeros" /></span>
+	
 
 				<br />
 				<g:hasErrors bean="${inscripcion}" field="documentoNumero">

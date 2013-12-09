@@ -8,7 +8,9 @@
 		<span class="required-indicator">*</span>
 	: </label>
 	<div class="col-lg-10">
-	<g:field name="numero" type="number" value="${espacioFisicoInstance.numero}" required=""/>
+	<g:textField name="numero" type="number" value="${espacioFisicoInstance.numero}" required="" onkeyup="soloNumeros(this,'#validaNumeroAula')"/>
+	<span class="alert alert-error" id="validaNumeroAula" style="display:none;">		<g:message code="invalid.soloNumeros" /></span>
+	
 	</div>
 </div>
 

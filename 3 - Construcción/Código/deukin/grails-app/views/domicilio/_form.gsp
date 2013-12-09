@@ -31,7 +31,9 @@
 		<g:message code="domicilio.codigoPostal.label" default="Codigo Postal" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:field name="codigoPostal" type="number" value="${domicilioInstance.codigoPostal}" required=""/>
+	<g:textField name="codigoPostal" type="number" value="${domicilioInstance.codigoPostal}" required="" onkeyup="soloNumeros(this,'#validaCodigo')"/>
+	<span class="alert alert-error" id="validaCodigo" style="display:none;">		<g:message code="invalid.soloNumeros" /></span>
+	
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: domicilioInstance, field: 'numero', 'error')} required">
@@ -39,6 +41,8 @@
 		<g:message code="domicilio.numero.label" default="Numero" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:field name="numero" type="number" value="${domicilioInstance.numero}" required=""/>
+	<g:textField name="numero" type="number" value="${domicilioInstance.numero}" required="" onkeyup="soloNumeros(this,'#validaNumeroCalle')"/>
+	<span class="alert alert-error" id="validaNumeroCalle" style="display:none;">		<g:message code="invalid.soloNumeros" /></span>
+	
 </div>
 

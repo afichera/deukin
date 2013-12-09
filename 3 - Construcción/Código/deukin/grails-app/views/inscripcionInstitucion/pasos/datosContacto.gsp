@@ -34,7 +34,9 @@
 					<span class="required-indicator">*</span>
 				</label>
 				<g:textField name="calleNumero" type="number"
-					value="${inscripcion?.calleNumero}" required="true" />
+					value="${inscripcion?.calleNumero}" required="true"  onkeyup="soloNumeros(this,'#validaNumeroCalle')"/>
+	<span class="alert alert-error" id="validaNumeroCalle" style="display:none;">		<g:message code="invalid.soloNumeros" /></span>
+	
 			</p>
 			<br />
 			<g:hasErrors bean="${inscripcion}" field="calleNumero">
@@ -62,7 +64,8 @@
 						default="Código Postal" /> <span class="required-indicator">*</span>
 				</label>
 				<g:textField name="codigoPostal" type="number" required="true" maxlength="4"
-					value="${inscripcion?.codigoPostal}" />
+					value="${inscripcion?.codigoPostal}" onkeyup="soloNumeros(this,'#validaCodigo')"/>
+					<span class="alert alert-error" id="validaCodigo" style="display:none;">		<g:message code="invalid.soloNumeros" /></span>
 			</p>
 			<br />
 			<g:hasErrors bean="${inscripcion}" field="codigoPostal">

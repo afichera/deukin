@@ -18,8 +18,10 @@
 			code="domicilio.numero.label" default="Numero" /> <span
 		class="required-indicator">*</span>
 	</label>
-	<g:field name="domicilioNumero" type="number"
-		value="${contactoInstance?.domicilio?.numero}" required="" />
+	<g:textField name="domicilioNumero" type="number"
+		value="${contactoInstance?.domicilio?.numero}" required="" onkeyup="soloNumeros(this,'#validaDomicilio')"/>
+	<span class="alert alert-error" id="validaDomicilio" style="display:none;">		<g:message code="invalid.soloNumeros" /></span>
+	
 </div>
 
 <div
@@ -38,8 +40,10 @@
 			code="domicilio.codigoPostal.label" default="Codigo Postal" /> <span
 		class="required-indicator">*</span>
 	</label>
-	<g:field name="domicilioCodigoPostal" type="number"
-		value="${contactoInstance?.domicilio?.codigoPostal}" required="" />
+	<g:textField name="domicilioCodigoPostal" type="number"
+		value="${contactoInstance?.domicilio?.codigoPostal}" required="" onkeyup="soloNumeros(this,'#validaCodigo')"/>
+	<span class="alert alert-error" id="validaCodigo" style="display:none;">		<g:message code="invalid.soloNumeros" /></span>
+	
 </div>
 
 

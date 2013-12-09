@@ -2,7 +2,7 @@ package com.deukin
 
 import grails.plugins.springsecurity.Secured
 
-import net.sf.jasperreports.compilers.JavaScriptCompilerBase.Errors;
+import net.sf.jasperreports.compilers.JavaScriptCompilerBase.Errors
 
 import org.springframework.dao.DataIntegrityViolationException
 

@@ -22,8 +22,8 @@
 	
 	
 	<g:hiddenField id ="materia.id" name ="materia.id" value="${cursoInstance?.materia?.id}"/>
-	<richui:autoComplete name="materiaNombre" minQueryLength="2" onItemSelect="eligeMateria(id)" value="${cursoInstance?.materia}"
-		action="${createLinkTo('dir': 'cursos/searchMateriasCoordinador')}" forceSelection="false" class="form-control required"/>
+	<richui:autoComplete name="materiaNombre" minQueryLength="2" onItemSelect="eligeMateria(id)" value="${cursoInstance?.materia?.toString()}"
+		action="${createLinkTo('dir': 'cursos/searchMateriasCoordinador')}" forceSelection="true" class="form-control required"/>
 	
 	</div>
 </div>

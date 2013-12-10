@@ -32,18 +32,18 @@ class CorrelatividadController {
 		def authorities =  springSecurityService.principal.authorities
 		def usuario = springSecurityService.principal
 		def materias = materiaService.obtenerMateriasDeCoordinadorLikeQueryRegex(authorities, usuario, queryRegex)
-		
+				
 		render(contentType: "text/xml") {
 			results() {
 				materias.each { materia ->
 					result(){
-						name(materia.codigo.toString() + ' - '+ materia.nombre)
+						name(materia.toString())
 						id(materia.id)
 					}
 				}
 			}
 		}
-
+		
 	}
 
     def create() {

@@ -123,7 +123,7 @@ class EquivalenciaController {
 			results() {
 				materias.each { materia ->
 					result(){
-						name(materia.codigo.toString() + ' - '+ materia.nombre)
+						name(materia?.toString())
 						id(materia.id)
 					}
 				}

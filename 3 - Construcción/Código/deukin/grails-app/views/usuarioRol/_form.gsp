@@ -17,8 +17,8 @@
 	</label>
 	
 	<g:hiddenField id ="usuario.id" name ="usuario.id" value="${usuarioRolInstance?.usuario?.id}"/>
-	<richui:autoComplete name="usuarioUsername" minQueryLength="2" onItemSelect="eligeUsuario(id)" value="${usuarioRolInstance?.usuario}"
-		action="${createLinkTo('dir': 'usuarioRol/searchUsuarios')}" forceSelection="false"/>
+	<richui:autoComplete name="usuarioUsername" minQueryLength="2" onItemSelect="eligeUsuario(id)" value="${usuarioRolInstance?.usuario?.toString()}"
+		action="${createLinkTo('dir': 'usuarioRol/searchUsuarios')}" forceSelection="true"/>
 
 </div>
 

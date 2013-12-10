@@ -79,8 +79,8 @@
 <%--	<g:select id="espacioFisico" name="espacioFisico.id" from="${com.deukin.EspacioFisico.list()}" optionKey="id" required="" value="${configuracionCursoDiaInstance?.espacioFisico?.id}" class="many-to-one"/>--%>
 
 <g:hiddenField id ="espacioFisico.id" name ="espacioFisico.id" value="${configuracionCursoDiaInstance?.espacioFisico?.id}"/>
-	<richui:autoComplete name="espacioFisicoNombre" minQueryLength="2" onItemSelect="eligeEspacioFisico(id)" value="${configuracionCursoDiaInstance?.espacioFisico}"
-		action="${createLinkTo('dir': 'cursos/searchEspaciosFisicosAJAX')}" forceSelection="false" class="form-control required"/>
+	<richui:autoComplete name="espacioFisicoNombre" minQueryLength="2" onItemSelect="eligeEspacioFisico(id)" value="${configuracionCursoDiaInstance?.espacioFisico?.toString()}"
+		action="${createLinkTo('dir': 'cursos/searchEspaciosFisicosAJAX')}" forceSelection="true" class="form-control required"/>
 	
 	
 	</div>

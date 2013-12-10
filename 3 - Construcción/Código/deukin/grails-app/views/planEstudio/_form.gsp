@@ -46,8 +46,8 @@
 	<div class="col-lg-10">
 	
 	<g:hiddenField id ="carrera.id" name ="carrera.id" value="${planEstudioInstance?.carrera?.id}"/>
-	<richui:autoComplete name="carreraTitulo" minQueryLength="2" onItemSelect="eligeCarrera(id)" value="${planEstudioInstance?.carrera}"
-		action="${createLinkTo('dir': 'planEstudio/searchCarrerasAutocomplete')}" forceSelection="false"  class="form-control required" /></div>
+	<richui:autoComplete name="carreraTitulo" minQueryLength="2" onItemSelect="eligeCarrera(id)" value="${planEstudioInstance?.carrera?.toString()}"
+		action="${createLinkTo('dir': 'planEstudio/searchCarrerasAutocomplete')}" forceSelection="true"  class="form-control required" /></div>
 	
 	
 	

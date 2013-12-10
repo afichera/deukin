@@ -7,8 +7,8 @@
 	</label>
 	<div class="col-lg-10">
 	<g:hiddenField id ="materiaPrincipal.id" name ="materiaPrincipal.id" value="${equivalenciaInstance?.materiaPrincipal?.id}"/>
-	<richui:autoComplete name="materiaPrincipalNombre" minQueryLength="2" onItemSelect="eligeMateriaPrincipal(id)" value="${equivalenciaInstance?.materiaPrincipal}"
-		action="${createLinkTo('dir': 'equivalencia/searchMateriasCoordinador')}" forceSelection="false"/>
+	<richui:autoComplete name="materiaPrincipalNombre" minQueryLength="2" onItemSelect="eligeMateriaPrincipal(id)" value="${equivalenciaInstance?.materiaPrincipal?.toString()}"
+		action="${createLinkTo('dir': 'equivalencia/searchMateriasCoordinador')}" forceSelection="true"/>
 </div>
 </div>
 
@@ -19,8 +19,8 @@
 	</label>
 	<div class="col-lg-10">
 	<g:hiddenField id ="materiaEquivalente.id" name ="materiaEquivalente.id" value="${equivalenciaInstance?.materiaEquivalente?.id}"/>
-	<richui:autoComplete name="materiaEquivalenteNombre" minQueryLength="2" onItemSelect="eligeMateriaEquivalente(id)" value="${equivalenciaInstance?.materiaEquivalente}"
-		action="${createLinkTo('dir': 'equivalencia/searchMaterias')}" forceSelection="false"/>	
+	<richui:autoComplete name="materiaEquivalenteNombre" minQueryLength="2" onItemSelect="eligeMateriaEquivalente(id)" value="${equivalenciaInstance?.materiaEquivalente?.toString()}"
+		action="${createLinkTo('dir': 'equivalencia/searchMaterias')}" forceSelection="true"/>	
 </div>
 </div>
 

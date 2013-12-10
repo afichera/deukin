@@ -29,7 +29,9 @@ class Materia {
 	}
 	
 	String toString(){
-		codigo + ' - '+ nombre
+		String texto = ''
+		texto = codigo + ' - '+ nombre
+		texto
 	}
 	
 

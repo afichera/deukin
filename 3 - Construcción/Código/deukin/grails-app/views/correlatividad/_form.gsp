@@ -8,8 +8,9 @@
 	</label>
 <div class="col-lg-10">
 	<g:hiddenField id ="materiaPrincipal.id" name ="materiaPrincipal.id" value="${correlatividadInstance?.materiaPrincipal?.id}"/>
-	<richui:autoComplete name="materiaPrincipalNombre" minQueryLength="2" onItemSelect="eligeMateriaPrincipal(id)" value="${correlatividadInstance?.materiaPrincipal}"
-		action="${createLinkTo('dir': 'correlatividad/searchMateriasCoordinador')}" forceSelection="false"/>
+	<richui:autoComplete name="materiaPrincipalNombre" onItemSelect="eligeMateriaPrincipal(id)" 
+		value="${correlatividadInstance?.materiaPrincipal?.toString()}" required="true"
+		action="${createLinkTo('dir': 'correlatividad/searchMateriasCoordinador')}" forceSelection="true"/>
 
 </div></div>
 
@@ -19,8 +20,8 @@
 	</label>
 	<div class="col-lg-10">
 	<g:hiddenField id ="materiaPredecesora.id" name ="materiaPredecesora.id" value="${correlatividadInstance?.materiaPredecesora?.id}"/>
-	<richui:autoComplete name="materiaPredecesoraNombre" minQueryLength="2" onItemSelect="eligeMateriaPredecesora(id)" value="${correlatividadInstance?.materiaPredecesora}"
-		action="${createLinkTo('dir': 'correlatividad/searchMateriasCoordinador')}" forceSelection="false"/>
+	<richui:autoComplete name="materiaPredecesoraNombre" minQueryLength="2" onItemSelect="eligeMateriaPredecesora(id)" value="${correlatividadInstance?.materiaPredecesora?.toString()}"
+		action="${createLinkTo('dir': 'correlatividad/searchMateriasCoordinador')}" forceSelection="true" required="true"/>
 
 </div></div>
 

@@ -134,7 +134,7 @@ class PlanEstudioController {
 			results() {
 				carreras.each { carrera ->
 					result(){
-						name(carrera.titulo)
+						name(carrera.toString())
 						id(carrera.id)
 					}
 				}

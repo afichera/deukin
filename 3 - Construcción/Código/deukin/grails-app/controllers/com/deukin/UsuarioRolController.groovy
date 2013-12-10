@@ -152,7 +152,7 @@ class UsuarioRolController {
 			results() {
 				usuarios.each { usuario ->
 					result(){
-						name(usuario.username)
+						name(usuario?.toString())
 						id(usuario.id)
 					}
 				}

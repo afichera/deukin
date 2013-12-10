@@ -27,7 +27,7 @@ class CursosController {
 			results() {
 				materias.each { materia ->
 					result(){
-						name(materia.codigo.toString() + ' - '+ materia.nombre)
+						name(materia.toString())
 						id(materia.id)
 					}
 				}
@@ -220,7 +220,7 @@ class CursosController {
 			results() {
 				espaciosFisicos.each { espacioFisico ->
 					result(){
-						name(espacioFisico.numero.toString() + ' - ' +espacioFisico.ubicacion)
+						name(espacioFisico?.toString())
 						id(espacioFisico.id)
 					}
 				}

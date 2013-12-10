@@ -29,4 +29,8 @@ class PlanEstudio {
 		identificacion  + '- '+ carrera
 	}
 	
+	String toStringAutocomplete(){
+		identificacion  + ' - '+ carrera?.titulo
+	}
+	
 }

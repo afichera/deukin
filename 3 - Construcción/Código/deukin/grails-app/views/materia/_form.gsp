@@ -52,8 +52,8 @@
 		*: 
 	</label>
 	<g:hiddenField id ="planEstudio.id" name ="planEstudio.id" value="${materiaInstance?.planEstudio?.id}"/>
-<div class=" col-lg-9 ">	<richui:autoComplete name="planEstudioIdentificacion" minQueryLength="2" onItemSelect="eligePlanEstudio(id)" value="${materiaInstance?.planEstudio}"
-		action="${createLinkTo('dir': 'materia/searchPlanesEstudioAJAX')}" forceSelection="false"  class="form-control" /></div>
+<div class=" col-lg-9 ">	<richui:autoComplete name="planEstudioIdentificacion" minQueryLength="2" onItemSelect="eligePlanEstudio(id)" value="${materiaInstance?.planEstudio?.toStringAutocomplete()}"
+		action="${createLinkTo('dir': 'materia/searchPlanesEstudioAJAX')}" forceSelection="true"  class="form-control" /></div>
 <%--	<g:select id="carrera" name="carrera.id" from="${com.deukin.Carrera.list()}" optionKey="id" required="" value="${materiaInstance?.carrera?.id}" class="many-to-one"/>--%>
 </div>
 

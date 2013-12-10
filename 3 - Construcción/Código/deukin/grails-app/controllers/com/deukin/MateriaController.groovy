@@ -44,7 +44,7 @@ class MateriaController {
 			results() {
 				planesEstudio.each { plan ->
 					result(){
-						name(plan.identificacion + '-' +plan.carrera.titulo)
+						name(plan?.toStringAutocomplete())
 						id(plan.id)
 					}
 				}

@@ -31,7 +31,7 @@
 	<label for="horaInicio" class="control-label col-lg-1">
 	hh: </label>
 	<div class="col-lg-2">
-	<g:select name="horaInicio" from="${0..23}" class="range form-control" required="" value="${fieldValue(bean: configuracionCursoDiaInstance, field: 'horaInicio')}"/>
+	<g:select name="horaInicio" from="${0..23}" class="range form-control" required="" value="${configuracionCursoDiaInstance?.horaInicio}"/>
 	</div>
 </div>
 
@@ -39,7 +39,7 @@
 	<label for="minutosInicio" class="control-label col-lg-1">
 	mm: </label>
 	<div class="col-lg-2">
-	<g:select name="minutosInicio"  from="${0..59}" class="range form-control" required="" value="${fieldValue(bean: configuracionCursoDiaInstance, field: 'minutosInicio')}"/>
+	<g:select name="minutosInicio"  from="${0..59}" class="range form-control" required="" value="${configuracionCursoDiaInstance?.minutosInicio}"/>
 	</div>
 </div>
 </div>
@@ -49,7 +49,7 @@
 	<label for="horaFin" class="control-label col-lg-1">
 		hh: </label>
 	<div class="col-lg-2">
-	<g:select name="horaFin" from="${0..23}" class="range form-control" required="" value="${fieldValue(bean: configuracionCursoDiaInstance, field: 'horaFin')}"/>
+	<g:select name="horaFin" from="${0..23}" class="range form-control" required="" value="${configuracionCursoDiaInstance?.horaFin}"/>
 	</div>
 </div>
 
@@ -59,7 +59,7 @@
 	<label for="minutosFin" class="control-label col-lg-1 ">
 		mm: </label>
 	<div class="col-lg-2">
-	<g:select name="minutosFin" from="${0..59}" class="range form-control" required="" value="${fieldValue(bean: configuracionCursoDiaInstance, field: 'minutosFin')}"/>
+	<g:select name="minutosFin" from="${0..59}" class="range form-control" required="" value="${configuracionCursoDiaInstance?.minutosFin}"/>
 	</div>
 </div>
 </div>

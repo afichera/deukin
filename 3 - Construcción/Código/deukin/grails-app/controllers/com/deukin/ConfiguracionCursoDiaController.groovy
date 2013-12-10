@@ -26,8 +26,8 @@ class ConfiguracionCursoDiaController {
             return
         }
 
-        flash.message = message(code: 'default.created.message', args: [message(code: 'configuracionCursoDia.label', default: 'ConfiguracionCursoDia'), configuracionCursoDiaInstance.id])
-        redirect(controller:"cursos", action: "show", id: configuracionCursoDiaInstance.curso.codigo)
+        flash.message = message(code: 'default.created.message', args: [message(code: 'configuracionCursoDia.label', default: 'ConfiguracionCursoDia'), configuracionCursoDiaInstance.curso.codigo])
+        redirect(controller:"cursos", action: "show", id: configuracionCursoDiaInstance.curso.id)
     }
 
     def show(Long id) {

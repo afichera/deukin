@@ -22,7 +22,11 @@ class CursoService {
 					horasCurso += configuracionCurso.getSumaHoras()
 				}
 			}
-			Float horasMateria = curso?.materia?.cantidadUnidadesHorarias.multiply(2) / curso?.periodoAcademico?.cantidadSemanas
+			Float horasMateria = 0F
+			if(curso?.materia && curso?.periodoAcademico){
+				horasMateria = curso?.materia?.cantidadUnidadesHorarias?.multiply(2) / curso?.periodoAcademico?.cantidadSemanas
+			}
+			
 			
 			if(horasCurso<horasMateria.intValue()){
 				retorno = 'OK'

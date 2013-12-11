@@ -113,7 +113,7 @@ class CarreraController {
 				redirect(action: "list")
 			}
 			catch (DataIntegrityViolationException e) {
-				flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'carrera.label', default: 'Carrera'), id])
+				flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'carrera.label', default: 'Carrera'), carreraInstance.toString()])
 				redirect(action: "show", id: id)
 			}
 

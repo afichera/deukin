@@ -98,7 +98,7 @@ class EspacioFisicoController {
             redirect(action: "list")
         }
         catch (DataIntegrityViolationException e) {
-            flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'espacioFisico.label', default: 'EspacioFisico'), id])
+            flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'espacioFisico.label', default: 'EspacioFisico'), espacioFisicoInstance.toString()])
             redirect(action: "show", id: id)
         }
     }

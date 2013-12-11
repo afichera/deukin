@@ -98,7 +98,7 @@ class AreaCarreraController {
             redirect(action: "list")
         }
         catch (DataIntegrityViolationException e) {
-            flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'areaCarrera.label', default: 'AreaCarrera'), id])
+            flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'areaCarrera.label', default: 'AreaCarrera'), areaCarreraInstance.nombre])
             redirect(action: "show", id: id)
         }
     }

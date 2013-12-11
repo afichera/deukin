@@ -165,7 +165,7 @@ class UsuarioController {
 		catch (DataIntegrityViolationException e) {
 			flash.message = message(code: 'default.not.deleted.message', args: [
 				message(code: 'usuario.label', default: 'Usuario'),
-				id
+				usuarioInstance?.username
 			])
 			redirect(action: "show", id: id)
 		}

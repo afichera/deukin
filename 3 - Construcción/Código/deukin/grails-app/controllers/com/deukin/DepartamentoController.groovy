@@ -97,7 +97,7 @@ class DepartamentoController {
             redirect(action: "list")
         }
         catch (DataIntegrityViolationException e) {
-            flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'departamento.label', default: 'Departamento'), id])
+            flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'departamento.label', default: 'Departamento'), departamentoInstance.toString()])
             redirect(action: "show", id: id)
         }
     }

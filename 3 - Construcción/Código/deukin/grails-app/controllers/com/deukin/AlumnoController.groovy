@@ -201,7 +201,7 @@ class AlumnoController {
 		catch (DataIntegrityViolationException e) {
 			flash.message = message(code: 'default.not.deleted.message', args: [
 				message(code: 'alumno.label', default: 'Alumno'),
-				id
+				alumnoInstance.toString()
 			])
 			redirect(action: "show", id: id)
 		}

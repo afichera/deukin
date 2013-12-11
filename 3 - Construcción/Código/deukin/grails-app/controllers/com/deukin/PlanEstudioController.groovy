@@ -119,7 +119,7 @@ class PlanEstudioController {
             redirect(action: "list")
         }
         catch (DataIntegrityViolationException e) {
-            flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'planEstudio.label', default: 'PlanEstudio'), id])
+            flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'planEstudio.label', default: 'PlanEstudio'), planEstudioInstance?.toString()])
             redirect(action: "show", id: id)
         }
     }

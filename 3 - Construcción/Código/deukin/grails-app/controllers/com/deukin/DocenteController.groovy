@@ -112,7 +112,7 @@ class DocenteController {
             redirect(action: "list")
         }
         catch (DataIntegrityViolationException e) {
-            flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'docente.label', default: 'Docente'), id])
+            flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'docente.label', default: 'Docente'), docenteInstance.toString()])
             redirect(action: "show", id: id)
         }
     }

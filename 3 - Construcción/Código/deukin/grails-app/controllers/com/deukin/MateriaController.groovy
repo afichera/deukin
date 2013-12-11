@@ -208,7 +208,7 @@ class MateriaController {
 		catch (DataIntegrityViolationException e) {
 			flash.message = message(code: 'default.not.deleted.message', args: [
 				message(code: 'materia.label', default: 'Materia'),
-				id
+				materiaInstance.toString()
 			])
 			redirect(action: "show", id: id)
 		}

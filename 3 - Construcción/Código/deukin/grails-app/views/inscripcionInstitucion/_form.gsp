@@ -8,13 +8,13 @@
 </div>
 
 <div
-	class="fieldcontain ${hasErrors(bean: inscripcionInstitucionInstance, field: 'usuarioRegistro', 'error')} required">
+	class="fieldcontain ${hasErrors(bean: inscripcionInstitucionInstance?.usuarioRegistro, field: 'username', 'error')} required">
 	<label for="usuarioRegistro" class="control-label"> <g:message
 			code="inscripcionInstitucion.usuarioRegistro.label"
 			default="Usuario Registro" /> <span class="required-indicator">*</span>
 	</label>
-	<g:textField name="usuarioRegistro" required="true" maxlength="50"
-		value="${inscripcionInstitucionInstance?.usuarioRegistro}" />
+	<g:textField name="username" required="true" maxlength="50"
+		value="${inscripcionInstitucionInstance?.usuarioRegistro?.username}" />
 
 </div>
 <div

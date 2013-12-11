@@ -210,7 +210,7 @@ Si usted lo solicit&oacute;, haga clic <a href="$url">aqu&iacute;</a> para reset
 
 	protected String generateLink(String action, linkParams) {
 		createLink(base: "$request.scheme://$request.serverName:$request.serverPort$request.contextPath",
-		controller: 'register', action: action,
+		controller: 'login', action: action,
 		params: linkParams)
 	}
 

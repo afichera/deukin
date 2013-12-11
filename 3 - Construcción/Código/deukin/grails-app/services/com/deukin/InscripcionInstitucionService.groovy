@@ -102,7 +102,7 @@ class InscripcionInstitucionService {
 					
 					inscripcion.estadoInscripcionInstitucion = EstadoInscripcionInstitucion.CONFIRMADA
 					inscripcion.save()					
-					log.info 'Se realizó la activación del usuario' +persona.apellido +' '+ persona.nombre 'con id: '+persona.id
+					log.info 'Se realizó la activación del usuario ' +persona.apellido +' '+ persona.nombre + '.'
 					persona
 				}catch(Exception e){					
 					log.error 'Falló al activar el usuario. Causa: '+e

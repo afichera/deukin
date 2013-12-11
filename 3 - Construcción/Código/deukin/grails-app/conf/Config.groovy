@@ -141,7 +141,9 @@ grails.mail.default.from="deukin.contacto@gmail.com"
 grails.plugins.springsecurity.userLookup.userDomainClassName = 'com.deukin.Usuario'
 grails.plugins.springsecurity.userLookup.authorityJoinClassName = 'com.deukin.UsuarioRol'
 grails.plugins.springsecurity.authority.className = 'com.deukin.Rol'
-
+grails.plugin.springsecurity.ui.password.validationRegex='^([a-zA-Z0-9])$'
+grails.plugin.springsecurity.ui.password.minLength=6
+grails.plugin.springsecurity.ui.password.maxLength=64
 
 
 //Configuración de Registro de Auditoria

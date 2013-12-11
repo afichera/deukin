@@ -37,6 +37,7 @@
 							<td><g:textField name="username" size="50" /></td>
 						</tr>
 					</table>
+					Resetear Password
 					<s2ui:submitButton elementId='reset' controller='login'
 						form="forgotPasswordForm"
 						messageCode='spring.security.ui.forgotPassword.submit' />

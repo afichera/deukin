@@ -72,7 +72,7 @@ class CursosController {
 
 		def materiaInstance= Materia.findById(params.materia?.id)
 
-		def cicloLectivoInstance = CicloLectivo.get(params.cicloLectivo.id)
+		def cicloLectivoInstance = CicloLectivo.get(params.cicloLectivo?.id)
 
 		def cronogramaCarreraInstance = CronogramaCarrera.findByCicloLectivoAndPlanEstudio(cicloLectivoInstance,materiaInstance?.planEstudio)
 

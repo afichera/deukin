@@ -36,10 +36,10 @@ class InscripcionInstitucionService {
 					}
 
 				}else{
-					throw new BusinessException('El nombre de usuario elegido ya está en uso, por favor indique un nuevo nombre de usuario.')
+					throw new BusinessException('La dirección de email ingresada ya está en uso, por favor indique una nueva dirección de email.')
 				}
 			}else{
-				throw new BusinessException('El nombre de usuario elegido ya está en uso, por favor indique un nuevo nombre de usuario.')
+				throw new BusinessException('La dirección de email ingresada ya está en uso, por favor indique una nueva dirección de email.')
 			}
 
 		}else{

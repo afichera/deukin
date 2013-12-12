@@ -205,19 +205,28 @@ class InscripcionInstitucionController {
 				flow.inscripcion.apellido = params.apellido
 				flow.inscripcion.fechaNacimiento = params.fechaNacimiento
 				flow.inscripcion.sexo = params.sexo
-				flow.inscripcion.documentoNumero = new Long(params.documentoNumero)
+				
 				flow.inscripcion.tipoDocumento = params.tipoDocumento
-
-
 				flow.inscripcion.usuarioRegistro.username = params.usuarioRegistro.username
 				flow.inscripcion.usuarioRegistro.password = params.usuarioRegistro.password
 				flow.inscripcion.usuarioRegistro.password2 = params.usuarioRegistro.password2
+
+				if (!params.documentoNumero.isInteger())
+				{
+					flow.inscripcion.clearErrors()
+					flow.inscripcion.errors.rejectValue("documentoNumero", "inscripcionInstitucion.documentoNumero.invalid.numero")
+					return error()
+				}
 				
+				flow.inscripcion.documentoNumero = new Long(params.documentoNumero)
+
+								
 				!flow.inscripcion.usuarioRegistro.validate() ? error() : success()
 				
 				if(!flow.inscripcion.usuarioRegistro.validate()){					
 					return error()
 				}
+
 			
 			}.to "datosContacto"
 			
@@ -225,15 +234,27 @@ class InscripcionInstitucionController {
 
 		datosContacto {
 			on("siguiente"){
-				flow.inscripcion.calle = params.calle
-				flow.inscripcion.calleNumero = new Integer(params.calleNumero)
-				flow.inscripcion.localidad = params.localidad
-				flow.inscripcion.codigoPostal = new Integer(params.codigoPostal)
-				flow.inscripcion.observaciones = params.observaciones
-				flow.inscripcion.telefonoNumero = params.telefonoNumero
+				flow.inscripcion.calle = params.calle				
+				flow.inscripcion.localidad = params.localidad				
+				flow.inscripcion.observaciones = params.observaciones				
 				flow.inscripcion.tipoTelefono = params.tipoTelefono
+				flow.inscripcion.telefonoNumero = params.telefonoNumero
 				
-								
+				if (!params.calleNumero.isInteger())
+				{
+					flow.inscripcion.clearErrors()
+					flow.inscripcion.errors.rejectValue("calleNumero", "inscripcionInstitucion.calleNumero.invalid.numero")
+					return error()
+				}
+				flow.inscripcion.calleNumero = new Integer(params.calleNumero)
+				if (!params.codigoPostal.isInteger())
+				{
+					flow.inscripcion.clearErrors()
+					flow.inscripcion.errors.rejectValue("codigoPostal", "inscripcionInstitucion.codigoPostal.invalid.numero")
+					return error()
+				}
+				flow.inscripcion.codigoPostal = new Integer(params.codigoPostal)
+				
 				
 			}.to "inscribir"
 			on("anterior").to "datosMinimos"

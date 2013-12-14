@@ -11,7 +11,7 @@ class Contacto {
 	static hasMany = [telefonos:Telefono]
 	static belongsTo = [Persona, Departamento]
     static constraints = {
-
+		telefonos nullable:true
     }
 	
 }

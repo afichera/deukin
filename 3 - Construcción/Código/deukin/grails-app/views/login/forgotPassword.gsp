@@ -36,7 +36,7 @@
 										default="Usuario" /></label></td>
 							<td><g:textField name="username" size="50" /></td>
 						</tr>
-					</table>
+					</table></div>
 					Resetear Password
 					<s2ui:submitButton elementId='reset' controller='login'
 						form="forgotPasswordForm"

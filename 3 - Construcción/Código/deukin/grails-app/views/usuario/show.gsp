@@ -82,7 +82,7 @@
 					</ol>
 
 					<g:if test="${rolesInstanceList}">
-						<table class="table table-striped table-bordered table-hover">
+						<div class="table-responsive"><table class="table table-responsive table-striped table-bordered table-hover">
 							<thead>
 								<tr>
 									<th><g:message code="usuario.rolAsignado.label" /></th>
@@ -97,7 +97,7 @@
 									</tr>
 								</g:each>
 							</tbody>
-						</table>
+						</table></div>
 					</g:if>
 
 					<g:form>

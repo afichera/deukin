@@ -312,7 +312,7 @@
 						</label>
 						<div class="col-lg-9">
 							<g:if test="${equivalencias}">
-								<table class="table table-striped table-bordered table-hover">
+								<div class="table-responsive"><table class="table table-responsive table-striped table-bordered table-hover">
 									<thead>
 										<tr>
 
@@ -352,7 +352,7 @@
 											</tr>
 										</g:each>
 									</tbody>
-								</table>
+								</table></div>
 							</g:if>
 
 						</div>

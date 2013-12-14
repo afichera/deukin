@@ -69,7 +69,7 @@
 				${flash.message}
 			</div>
 		</g:if>
-		<table class="table table-striped table-bordered table-hover">
+		<div class="table-responsive"><table class="table table-responsive table-striped table-bordered table-hover">
 			<thead>
 				<tr>
 
@@ -157,7 +157,7 @@
 					</tr>
 				</g:each>
 			</tbody>
-		</table>
+		</table></div>
 
 		<div class="pagination">
 			<g:paginate total="${configuracionCursoDiaInstanceTotal}" params="['planEstudio.id': params?.planEstudio?.id,'cicloLectivo.id': params?.cicloLectivo?.id]"/>

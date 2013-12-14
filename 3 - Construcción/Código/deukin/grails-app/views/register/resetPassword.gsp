@@ -25,7 +25,7 @@
 
 		<s2ui:passwordFieldRow name='password2' labelCode='resetPasswordCommand.password2.label' bean="${command}" required="true"
                              labelCodeDefault='Repita Password ' value="${command?.password2}"/>
-	</table>
+	</table></div>
 	
 	<s2ui:submitButton elementId='reset' controller='login' form='resetPasswordForm' messageCode='spring.security.ui.resetPassword.submit'/>
 

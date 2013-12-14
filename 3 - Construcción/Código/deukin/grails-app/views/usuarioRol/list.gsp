@@ -25,7 +25,7 @@
 				${flash.message}
 			</div>
 		</g:if>
-		<table class="table table-striped table-bordered table-hover">
+		<div class="table-responsive"><table class="table table-responsive table-striped table-bordered table-hover">
 			<thead>
 				<tr>
 					<th><g:message code="usuarioRol.usuario.label"
@@ -46,7 +46,7 @@
 					</tr>
 				</g:each>
 			</tbody>
-		</table>
+		</table></div>
 		<div class="pagination">
 			<g:paginate total="${usuarioRolInstanceTotal}" />
 		</div>

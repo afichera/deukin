@@ -141,7 +141,7 @@
 						<div class="col-lg-12">
 
 							<g:if test="${asignacionDocenteCursoInstanceList}">
-								<table class="table table-striped table-bordered table-hover">
+								<div class="table-responsive"><table class="table table-responsive table-striped table-bordered table-hover">
 									<thead>
 										<tr>
 											<th><g:message
@@ -215,7 +215,7 @@
 											</tr>
 										</g:each>
 									</tbody>
-								</table>
+								</table></div>
 							</g:if>
 
 						</div>

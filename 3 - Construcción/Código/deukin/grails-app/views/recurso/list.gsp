@@ -45,7 +45,7 @@
 					</tr>
 				</g:each>
 				</tbody>
-			</table>
+			</table></div>
 			<div class="pagination">
 				<g:paginate total="${recursoInstanceTotal}" />
 			</div>

@@ -13,7 +13,7 @@
 			<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
-			<table class="table table-striped table-bordered table-hover">
+			<div class="table-responsive"><table class="table table-responsive table-striped table-bordered table-hover">
 				<thead>
 					<tr>
 						<th><g:message code="docente.fotoPerfil.label" default="Foto" /></th>
@@ -67,7 +67,7 @@
 					</tr>
 				</g:each>
 				</tbody>
-			</table>
+			</table></div>
 			<div class="pagination">
 				<g:paginate total="${docenteInstanceTotal}" />
 			</div>

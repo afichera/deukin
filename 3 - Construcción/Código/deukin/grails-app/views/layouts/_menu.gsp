@@ -39,11 +39,7 @@
 				</sec:ifAnyGranted>
 
 
-				<sec:ifAnyGranted roles="ROLE_COORDINADOR,ROLE_ADMINISTRATIVO">
-					<li><g:link controller='cronogramaCarrera'>
-							<g:message code="secciones.academicas.cronogramasDeCursos" />
-						</g:link></li>
-				</sec:ifAnyGranted>
+				
 				<sec:ifAnyGranted
 					roles="ROLE_DOCENTE,ROLE_COORDINADOR,ROLE_ADMINISTRATIVO">
 					<li><g:link controller='proximamente'>

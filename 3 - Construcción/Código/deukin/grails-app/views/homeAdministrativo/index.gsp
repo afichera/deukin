@@ -28,9 +28,6 @@
 						<li><g:link controller='planEstudio'>
 								<g:message code="secciones.academicas.planesDeEstudio" />
 							</g:link></li>
-						<li><g:link controller='cronogramaCarrera'>
-								<g:message code="secciones.academicas.cronogramasDeCursos" />
-							</g:link></li>
 						<li><g:link class="disabled" controller='proximamente'>
 								<g:message code="secciones.academicas.finales" />
 							</g:link></li>

@@ -6,20 +6,20 @@
 <meta name="layout" content="main">
 <g:set var="entityName"
 	value="${message(code: 'usuario.label', default: 'Usuario')}" />
-<title><g:message code="default.list.label" args="[entityName]" /></title>
+<title><g:message code="usuario.list.label" /></title>
 </head>
 <body>
 
 	<div id="list-usuario" class="content scaffold-list" role="main">
 		<h1>
-			<g:message code="default.list.de.label" args="[entityName]" />
+			<g:message code="usuario.list.label" />
 		</h1>
 		<g:if test="${flash.message}">
-			<div class="message" role="status">
+			<div class="message alert alert-info" role="status">
 				${flash.message}
 			</div>
 		</g:if>
-		<table class="table table-striped table-bordered table-hover">
+		<table class="table table-striped table-responsive table-bordered table-hover">
 			<thead>
 				<tr>
 					<g:sortableColumn property="username"
@@ -48,7 +48,7 @@
 					</tr>
 				</g:each>
 			</tbody>
-		</table>
+		</table></div>
 		<div class="pagination">
 			<g:paginate total="${usuarioInstanceTotal}" />
 		</div>

@@ -106,7 +106,7 @@
             </div>
 				</g:each>
 			</tbody>
-		</table>
+		</table></div>
 				
 		
 				

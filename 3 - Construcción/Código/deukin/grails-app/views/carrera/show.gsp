@@ -193,7 +193,7 @@
 												--%>
 
 
-											<table class="table table-striped table-bordered table-hover">
+											<div class="table-responsive"><table class="table table-responsive table-striped table-bordered table-hover">
 												<thead>
 													<tr>
 
@@ -280,7 +280,7 @@
 														</tr>
 													</g:each>
 												</tbody>
-											</table>
+											</table></div>
 											<g:link controller="planEstudio" action="show" id="${pl.id}">
 														Ir al plan
 													</g:link>

@@ -38,6 +38,8 @@ class InscripcionInstitucion implements Serializable {
 		observaciones nullable:true
 		telefonoNumero blank:false, maxSize:20
 		tipoInscripcionInstitucion nullable:true
+		codigoPostal min:1000, max:9999
+		
     }
 	
 	def numeroDocumentoAsText(){

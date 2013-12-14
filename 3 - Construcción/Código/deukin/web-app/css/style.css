@@ -159,6 +159,7 @@ dl.accordion-menu dd.a-m-d .bd{
 	margin-bottom:15px;
 }
 
+@media only screen and (max-width:768px) {
 .table-responsive {
 width: 100%;
 margin-bottom: 15px;
@@ -167,4 +168,4 @@ overflow-y: hidden;
 border: 1px solid #ddd;
 -ms-overflow-style: -ms-autohiding-scrollbar;
 -webkit-overflow-scrolling: touch;
-}
+}}

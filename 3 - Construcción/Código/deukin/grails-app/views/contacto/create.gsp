@@ -7,8 +7,6 @@
 	value="${message(code: 'contacto.label', default: 'Contacto')}" />
 <title><g:message code="default.create.label"
 		args="[entityName]" /></title>
-				<script src="${createLink(uri: '/')}js/jquery.js"></script>
-<script src="${createLink(uri: '/')}js/validaciones.js"></script>
 </head>
 <body>
 	<div class="navbar navbar-inverse" role="navigation">
@@ -24,7 +22,7 @@
 			<g:message code="default.create.label" args="[entityName]" />
 		</h1>
 		<g:if test="${flash.message}">
-			<div class="message" role="status">${flash.message}</div>
+			<div class="message alert alert-danger" role="status">${flash.message}</div>
 		</g:if>
 		<g:hasErrors bean="${contactoInstance}">
 			<ul class="alert alert-danger" role="alert">
@@ -36,7 +34,7 @@
 			</ul>
 		</g:hasErrors>
 		<div class="row">
-			<div class="col-lg-6">
+			<div class="col-lg-12 col-md-12 col-sx-12 lista-propiedades">
 				<div class="well">
 					<g:form action="save"
 						>

@@ -1,5 +1,7 @@
 package com.deukin
 
+
+
 /**
  * 
  * @author Ale Mobile
@@ -15,6 +17,8 @@ class Telefono {
     }
 	
 	String toString() {
-		tipoTelefono+': '+numero
+		String texto = ''
+		texto = tipoTelefono.toString() + ': ' + numero
+		texto
 	}
 }

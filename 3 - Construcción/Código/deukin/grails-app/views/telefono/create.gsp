@@ -44,6 +44,22 @@
 						<fieldset class="buttons">
 							<g:submitButton name="create" class="btn btn-primary"
 								value="${message(code: 'default.button.create.label', default: 'Create')}" />
+						
+						
+																		<g:if test="${params.origen=='alumno'}">
+						
+						<g:link class="btn btn-default" controller="alumno" action="show" id="${params.alumno?.id}">
+					<g:message code="cancelar" default="Cancelar" />
+				</g:link>
+						</g:if>
+						<g:elseif test="${params.origen=='docente'}">
+						
+						<g:link class="btn btn-default" controller="docente" action="show" id="${params.docente?.id}">
+					<g:message code="cancelar" default="Cancelar" />
+				</g:link>
+						</g:elseif>
+						
+						
 						</fieldset>
 					</g:form>
 				</div>

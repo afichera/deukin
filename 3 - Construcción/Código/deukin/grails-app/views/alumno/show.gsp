@@ -8,14 +8,14 @@
 <meta name="layout" content="main">
 <g:set var="entityName"
 	value="${message(code: 'alumno.label', default: 'Alumno')}" />
-<title><g:message code="default.datosDe.label" args="[entityName]" /></title>
+<title><g:message code="alumno.title" /></title>
 </head>
 <body>
 <div class="navbar navbar-inverse" role="navigation">
 <ul class="nav navbar-nav">
-<sec:ifAnyGranted roles="ROLE_ADMINISTRADOR_SISTEMA,ROLE_COORDINADOR,ROLE_DOCENTE">
+<sec:ifAnyGranted roles="ROLE_ADMINISTRADOR_SISTEMA,ROLE_COORDINADOR,ROLE_alumno,ROLE_ADMINISTRATIVO">
 <li><g:link class="list" action="list">
-	<g:message code="default.list.de.label" args="[entityName]" />
+	<g:message code="alumno.list.label" />
 </g:link></li>
 </sec:ifAnyGranted>
 </ul>
@@ -23,124 +23,113 @@
 
 <div id="show-alumno" class="content scaffold-show" role="main">
 <h1>
-<g:message code="default.datosDe.label" args="[entityName]" />
+<g:message code="alumno.show.label" args="${[alumnoInstance?.encodeAsHTML()]}" />
 </h1>
 <g:if test="${flash.message}">
-	<div class="message" role="status">
+	<div class="message alert alert-info" role="status">
 	${flash.message}
 	</div>
 </g:if>
 <div class="row">
-<div class="col-lg-6">
+<div class="col-lg-12 col-md-12 col-sx-12 lista-propiedades">
+			
 <div class="well">
-<ol class="property-list alumno">
+<div class="row">
+						<div class="col-lg-2 foto">
 
 <g:if test="${alumnoInstance?.fotoPerfil}">
-	<li class="fieldcontain"> <rendering:inlinePng
-		bytes="${alumnoInstance.fotoPerfil}" height="200" />
-	</li>
+	<div class="fieldcontain"> <rendering:inlinePng
+		bytes="${alumnoInstance.fotoPerfil}" height="165" />
+	</div>
 </g:if>
 
 <g:if test="${alumnoInstance?.fotoPerfil == null}">
-	<li class="fieldcontain"> <span id="fotoPerfil-label"
-		class="property-label"><g:message
-		code="alumno.fotoPerfil.label" default="Foto Perfil" /></span> <img
-		height="200" src="${resource(dir: 'images', file: 'buddyicon.jpg')}"
-		alt="Grails" />
-	</li>
+	<div class="fieldcontain"> <img
+		height="165" src="${resource(dir: 'images', file: 'buddyicon.jpg')}"
+		alt="foto de perfil" />
+	</div>
 </g:if>
+</div>
+<div class="col-lg-10">
 
-<g:if test="${alumnoInstance?.usuario}">
-	<li class="fieldcontain"> <span id="usuario-label"
-		class="property-label"><g:message code="alumno.usuario.label"
-		default="Usuario" /></span> <span class="property-value"
-		aria-labelledby="usuario-label"><g:link controller="usuario"
-		action="show" id="${alumnoInstance?.usuario?.id}">
-		${alumnoInstance?.usuario?.username}
-	</g:link></span>
-
-	</li>
+	<div class="fieldcontain row"> <label id="usuario-label"
+		class="property-label col-lg-2"><g:message code="alumno.mail.label"
+		default="Mail" />: </label> 
+		
+		<g:if test="${alumnoInstance?.usuario}">
+		<div class="property-value col-lg-10""
+		aria-labelledby="usuario-label"><a
+											href="mailto:${fieldValue(bean: alumnoInstance, field: "usuario.username")}"><g:fieldValue
+												bean="${alumnoInstance}" field="usuario.username" ></g:fieldValue>
+		
+	</a></div>
 </g:if>
+	</div>
 
 
-<g:if test="${alumnoInstance?.apellido}">
-	<li class="fieldcontain"> <span id="apellido-label"
-		class="property-label"><g:message code="alumno.apellido.label"
-		default="Apellido" /></span> <span class="property-value"
-		aria-labelledby="apellido-label"><g:fieldValue
-		bean="${alumnoInstance}" field="apellido" /></span>
 
-	</li>
-</g:if>
 
-<g:if test="${alumnoInstance?.nombre}">
-	<li class="fieldcontain"> <span id="nombre-label"
-		class="property-label"><g:message code="alumno.nombre.label"
-		default="Nombres" /></span> <span class="property-value"
-		aria-labelledby="nombre-label"><g:fieldValue
-		bean="${alumnoInstance}" field="nombre" /></span>
+	
 
-	</li>
-</g:if>
 
-<g:if test="${alumnoInstance?.documento}">
-	<li class="fieldcontain"> <span id="documento-label"
-		class="property-label"><g:message code="alumno.documento.label"
-		default="Documento" /></span> <span class="property-value"
-		aria-labelledby="documento-label"><g:link
-		controller="documento" action="show"
-		id="${alumnoInstance?.documento?.id}">
+
+
+
+	<div class="fieldcontain row"> <label id="documento-label"
+		class="property-label col-lg-2"><g:message code="alumno.documento.label"
+		default="Documento" />: </label> 
+		<g:if test="${alumnoInstance?.documento}">
+		<div class="property-value col-lg-10""
+		aria-labelledby="documento-label">
 		${alumnoInstance?.documento?.tipoDocumento} - ${alumnoInstance?.documento?.numeroAsText()}
-	</g:link></span>
-
-	</li>
+	</div>
 </g:if>
 
-<g:if test="${alumnoInstance?.contacto}">
-	<span class="property-value" aria-labelledby="contacto-label"><g:link
-		controller="contacto" action="show"
-		id="${alumnoInstance?.contacto?.id}">Datos de Contacto
-	</g:link></span>
-
-</g:if>
+	</div>
 
 
 
+	<div class="fieldcontain row">
+								<label id="domicilio-label" class="property-label col-lg-2"><g:message
+										code="alumno.documentodomicilio.label" default="Domicilio" />:
+								</label>
+								<div class="property-value col-lg-10"
+									aria-labelledby="domicilio-label">
+									<g:if test="${alumnoInstance?.contacto}">
+										${alumnoInstance?.contacto?.domicilio.encodeAsHTML()}
+									</g:if>
+								</div>
 
 
-<g:if test="${alumnoInstance?.curriculums}">
-	<li class="fieldcontain"> <span id="curriculums-label"
-		class="property-label"><g:message
-		code="alumno.curriculums.label" default="Curriculums" /></span> <g:each
-		in="${alumnoInstance.curriculums}" var="c">
-		<span class="property-value" aria-labelledby="curriculums-label"><g:link
-			controller="curriculum" action="show" id="${c.id}">
-			${c?.nombreArchivo}
-		</g:link></span>
-	</g:each>
+							</div>
 
-	</li>
-</g:if>
-
-<g:if test="${alumnoInstance?.curriculumsAdjuntos}">
-	<li class="fieldcontain"> <span id="curriculumsAdjuntos-label"
-		class="property-label"><g:message
-		code="alumno.curriculumsAdjuntos.label" default="Curriculums Adjuntos" /></span>
-
-	<g:each in="${alumnoInstance.curriculumsAdjuntos}" var="c">
-		<span class="property-value"
-			aria-labelledby="curriculumsAdjuntos-label"><g:link
-			controller="curriculumAdjunto" action="show" id="${c.id}">
-			${c?.nombreArchivo}
-		</g:link></span>
-	</g:each>
-
-	</li>
-</g:if>
+							<div class="fieldcontain row">
+								<label id="telefonos-label" class="property-label col-lg-2"><g:message
+										code="alumno.telefonos.label" default="Teléfonos" />: 
+										<g:link controller="telefono"
+								action="create" params="['contacto.id': alumnoInstance?.contacto?.id,'origen':'alumno','alumno.id':alumnoInstance?.id]">
+								<span class="glyphicon glyphicon-plus"
+									title="${message(code: 'default.add.label', args: [message(code: 'telefono.label', default: 'Teléfono')])}"></span>
+							</g:link>
+										
+										</label>
+										<div class="property-value col-lg-10"
+									aria-labelledby="telefono-label">
+								<g:if test="${alumnoInstance?.contacto}">
+									<g:each in="${alumnoInstance?.contacto?.telefonos}" var="t">
+										 ${t?.encodeAsHTML()}<br />
+										
+									</g:each>
+								</g:if>
+								</div>
+							</div>
 
 
 
-</ol>
+
+</div>
+</div>
+
 <g:form>
 	<fieldset class="buttons">
 	<g:hiddenField name="id" value="${alumnoInstance?.id}" />
@@ -155,6 +144,7 @@
 	</fieldset>
 </g:form>
 </div>
+
 </div>
 </div>
 </div>

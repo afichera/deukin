@@ -1,6 +1,6 @@
 <%@ page import="com.deukin.Telefono" %>
 
-
+<g:hiddenField id ="origen" name ="origen" value="${params?.origen}"/>
 
 <div class="fieldcontain ${hasErrors(bean: telefonoInstance, field: 'numero', 'error')} ">
 	<label for="numero" class="control-label">

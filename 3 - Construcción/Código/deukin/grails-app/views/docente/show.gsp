@@ -112,32 +112,25 @@
 
 							<div class="fieldcontain row">
 								<label id="telefonos-label" class="property-label col-lg-2"><g:message
-										code="docente.telefonos.label" default="Teléfonos" />: </label>
+										code="docente.telefonos.label" default="Teléfonos" />: 
+										<g:link controller="telefono"
+								action="create" params="['contacto.id': docenteInstance?.contacto?.id,'origen':'docente','docente.id':docenteInstance?.id]">
+								<span class="glyphicon glyphicon-plus"
+									title="${message(code: 'default.add.label', args: [message(code: 'telefono.label', default: 'Teléfono')])}"></span>
+							</g:link>
+										</label>
+										<div class="property-value col-lg-10"
+									aria-labelledby="telefono-label">
 								<g:if test="${docenteInstance?.contacto?.telefonos}">
 									<g:each in="${docenteInstance.contacto.telefonos}" var="t">
-										<span class="property-value col-lg-10"
-											aria-labelledby="telefonos-label"> ${t?.encodeAsHTML()}<br />
-										</span>
+										 ${t?.encodeAsHTML()}<br />
+										
 									</g:each>
 								</g:if>
+								</div>
 							</div>
 
-							<div class="fieldcontain row">
-								<label id="curriculumsAdjuntos-label"
-									class="property-label col-lg-2"><g:message
-										code="docente.curriculumsAdjuntos.label"
-										default="Curriculums Adjuntos" />: </label>
-								<g:if test="${docenteInstance?.curriculumsAdjuntos}">
-
-									<g:each in="${docenteInstance.curriculumsAdjuntos}" var="c">
-										<span class="property-value col-lg-10"
-											aria-labelledby="curriculumsAdjuntos-label"><g:link
-												controller="curriculumAdjunto" action="show" id="${c.id}">
-												${c?.nombreArchivo}
-											</g:link></span>
-									</g:each>
-								</g:if>
-							</div>
+							
 
 						</div>
 					</div>

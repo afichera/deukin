@@ -2,6 +2,8 @@ package com.deukin
 
 import org.springframework.dao.DataIntegrityViolationException
 
+import com.sun.xml.internal.ws.api.streaming.XMLStreamReaderFactory.Default;
+
 class TelefonoController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
@@ -26,8 +28,25 @@ class TelefonoController {
             return
         }
 
+		if(params.origen=='alumno') {
+			def alumnoInstance = Alumno.findByContacto(telefonoInstance.contacto)
+			
+			flash.message = message(code: 'telefono.created.message')
+			redirect(controller: "alumno", action: "show", id: alumnoInstance.id)
+			
+		}
+		else 
+		if(params.origen=='docente') {
+			def docenteInstance = Docente.findByContacto(telefonoInstance.contacto)
+			
+			flash.message = message(code: 'telefono.created.message')
+			redirect(controller: "docente", action: "show", id: docenteInstance.id)
+			
+		}
+		else {
         flash.message = message(code: 'default.created.message', args: [message(code: 'telefono.label', default: 'Telefono'), telefonoInstance.id])
         redirect(action: "show", id: telefonoInstance.id)
+		}
     }
 
     def show(Long id) {

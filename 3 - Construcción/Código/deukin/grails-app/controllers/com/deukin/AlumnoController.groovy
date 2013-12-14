@@ -40,11 +40,9 @@ class AlumnoController {
 		}else if(usuarioService.poseeElRol(authorities, 'ROLE_ADMINISTRATIVO')){
 			listaAlumnos = Alumno.list(params)
 		}else if(usuarioService.poseeElRol(authorities, 'ROLE_COORDINADOR')){
-			def coordinador = personaService.findByUser(springSecurityService.principal)
-			listaAlumnos = alumnoService.findAllAlumnosByCoordinadorACargo(coordinador)
+			listaAlumnos = Alumno.list(params)			
 		}else if(usuarioService.poseeElRol(authorities, 'ROLE_DOCENTE')){
-			def docente = personaService.findByUser(springSecurityService.principal)
-			listaAlumnos = alumnoService.findAllAlumnosByDocente(docente)
+			listaAlumnos = Alumno.list(params)
 		}
 
 		if(listaAlumnos !=null && !listaAlumnos.isEmpty()){

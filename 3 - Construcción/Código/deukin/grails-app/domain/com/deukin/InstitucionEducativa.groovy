@@ -13,5 +13,6 @@ class InstitucionEducativa {
 	//TODO: Ver que atributos faltarían
     static constraints = {
 		nombre(unique:true, maxSize:200)
+		departamentos nullable:true
     }
 }

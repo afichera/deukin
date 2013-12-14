@@ -376,80 +376,92 @@ class BootStrap {
 		contactoAlumno1.telefonos = []
 		contactoAlumno1.telefonos.add(telefono1Alumno1)
 		contactoAlumno1.telefonos.add(telefono2Alumno1)
+		telefono1Alumno1.contacto =contactoAlumno1
+		telefono2Alumno1.contacto =contactoAlumno1
 
 		def contactoAlumno2 = new Contacto(domicilio: DomicilioAlumno2)
 		contactoAlumno2.telefonos = []
 		contactoAlumno2.telefonos.add(telefono1Alumno2)
 		contactoAlumno2.telefonos.add(telefono2Alumno2)
-
+		telefono1Alumno2.contacto=contactoAlumno2
+		telefono2Alumno2.contacto=contactoAlumno2
+		
 		def contactoCoordinador1 = new Contacto(domicilio: DomicilioCoordinador1)
 		contactoCoordinador1.telefonos = []
 		contactoCoordinador1.telefonos.add(telefono1Coordinador1)
+		telefono1Coordinador1.contacto = contactoCoordinador1
 
 		def contactoCoordinador2 = new Contacto(domicilio: DomicilioCoordinador2)
 		contactoCoordinador2.telefonos = []
 		contactoCoordinador2.telefonos.add(telefono1Coordinador2)
+		telefono1Coordinador2.contacto = contactoCoordinador2
 
 		def contactoCoordinador3 = new Contacto(domicilio: DomicilioCoordinador3)
 		contactoCoordinador3.telefonos = []
 		contactoCoordinador3.telefonos.add(telefono1Coordinador3)
-
+		telefono1Coordinador3.contacto = contactoCoordinador3
+		
 		def contactoDocente1 = new Contacto(domicilio: domicilioDocente1)
 		contactoDocente1.telefonos = []
 		contactoDocente1.telefonos.add(telefono1Docente1)
-
+		telefono1Docente1.contacto = contactoDocente1
+		
 		def contactoDocente2 = new Contacto(domicilio: domicilioDocente2)
 		contactoDocente2.telefonos = []
 		contactoDocente2.telefonos.add(telefono1Docente2)
-
+		telefono1Docente2.contacto = contactoDocente2
+		
 		def contactoDocente3 = new Contacto(domicilio: domicilioDocente3)
 		contactoDocente3.telefonos = []
 		contactoDocente3.telefonos.add(telefono1Docente3)
-
+		telefono1Docente3.contacto = contactoDocente3
+		
 		def contactoDocente4 = new Contacto(domicilio: domicilioDocente4)
 		contactoDocente4.telefonos = []
 		contactoDocente4.telefonos.add(telefono1Docente4)
-
+		telefono1Docente4.contacto = contactoDocente4
+		
 		def contactoDocente5 = new Contacto(domicilio: domicilioDocente5)
 		contactoDocente5.telefonos = []
 		contactoDocente5.telefonos.add(telefono1Docente5)
-
+		telefono1Docente5.contacto = contactoDocente5
+		
 		def contactoDocente6 = new Contacto(domicilio: domicilioDocente6)
 		contactoDocente6.telefonos = []
 		contactoDocente6.telefonos.add(telefono1Docente6)
-
+		telefono1Docente6.contacto = contactoDocente6
 		def contactoDocente7 = new Contacto(domicilio: domicilioDocente7)
 		contactoDocente7.telefonos = []
 		contactoDocente7.telefonos.add(telefono1Docente7)
-
+		telefono1Docente7.contacto = contactoDocente7
 		def contactoDocente8 = new Contacto(domicilio: domicilioDocente8)
 		contactoDocente8.telefonos = []
 		contactoDocente8.telefonos.add(telefono1Docente8)
-
+		telefono1Docente8.contacto = contactoDocente8
 		def contactoDocente9 = new Contacto(domicilio: domicilioDocente9)
 		contactoDocente9.telefonos = []
 		contactoDocente9.telefonos.add(telefono1Docente9)
-
+		telefono1Docente9.contacto = contactoDocente9
 		def contactoDocente10 = new Contacto(domicilio: domicilioDocente10)
 		contactoDocente10.telefonos = []
 		contactoDocente10.telefonos.add(telefono1Docente10)
-
+		telefono1Docente10.contacto = contactoDocente10
 		def contactoDocente11 = new Contacto(domicilio: domicilioDocente11)
 		contactoDocente11.telefonos = []
 		contactoDocente11.telefonos.add(telefono1Docente11)
-
+		telefono1Docente11.contacto = contactoDocente11
 		def contactoDocente12 = new Contacto(domicilio: domicilioDocente12)
 		contactoDocente12.telefonos = []
 		contactoDocente12.telefonos.add(telefono1Docente12)
-
+		telefono1Docente11.contacto = contactoDocente11
 		def contactoAutoridad1 = new Contacto(domicilio: domicilioAutoridad1)
 		contactoAutoridad1.telefonos = []
 		contactoAutoridad1.telefonos.add(telefono1Autoridad1)
-		
+		telefono1Autoridad1.contacto = contactoAutoridad1
 		def contactoAutoridad2 = new Contacto(domicilio: domicilioAutoridad2)
 		contactoAutoridad2.telefonos = []
 		contactoAutoridad2.telefonos.add(telefono1Autoridad2)
-
+		telefono1Autoridad2.contacto = contactoAutoridad2
 
 		//documentos solo para test
 		def documentoDNIAlumno1 = Documento.findByNumeroAndTipoDocumento(28230014, TipoDocumento.DNI)?:new Documento(numero:28230014, tipoDocumento:TipoDocumento.DNI).save(failOnError:true)
@@ -724,13 +736,10 @@ class BootStrap {
 		autoridades.add(autoridad1)
 		autoridades.add(autoridad2)
 		
-		def departamentoIngenieria = Departamento.findByNombre('Ingenieria')?: new Departamento(nombre: 'Ingenieria', mision: 'La mision de nuestro departamento es...', vision: 'La visión de nuestro departamenteo es...', contacto: contactoInstitucion, carreras:carreras, autoridades:autoridades).save(failOnError:true)
+				
 		def institucionEducativaUnica = InstitucionEducativa.findByNombre('UNLAM')?: new InstitucionEducativa(contacto: contactoInstitucion, nombre: 'UNLAM').save(failOnError:true)
-		institucionEducativaUnica.departamentos = []
-		institucionEducativaUnica.departamentos.add(departamentoIngenieria)
-		institucionEducativaUnica = institucionEducativaUnica.save(failOnError:true)
+		def departamentoIngenieria = Departamento.findByNombre('Ingenieria')?: new Departamento(nombre: 'Ingenieria', mision: 'La mision de nuestro departamento es...', vision: 'La visión de nuestro departamenteo es...', contacto: contactoDepartamentoIngenieria, carreras:carreras, autoridades:autoridades, institucionEducativa:institucionEducativaUnica).save(failOnError:true)
 		
-
 		//Docentes only for Test
 		def docente1 = Docente.findByUsuario(docenteUser1) ?: new Docente(apellido:'Fernandez',nombre: 'Juan', usuario: docenteUser1, documento: documentoDNIdocente1, contacto: contactoDocente1, departamento: departamentoIngenieria).save(failOnError:true)
 		def docente2 = Docente.findByUsuario(docenteUser2) ?: new Docente(apellido:'Gonzalez',nombre: 'Matias', usuario: docenteUser2, documento: documentoDNIdocente2, contacto: contactoDocente2, departamento: departamentoIngenieria).save(failOnError:true)

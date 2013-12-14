@@ -178,7 +178,7 @@
 				<li><g:link controller='proximamente'>
 						<g:message code="secciones.institucion.datos" />
 					</g:link></li>
-				<li><g:link controller='departamento'>
+				<li><g:link controller='proximamente'>
 						<g:message code="secciones.institucion.departamentos" />
 					</g:link></li>
 			</ul></li>

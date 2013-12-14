@@ -90,6 +90,7 @@ class InscripcionInstitucionService {
 					Contacto  contacto = new Contacto(domicilio: domicilio)
 					contacto.telefonos = []
 					contacto.telefonos.add(telefono)
+					telefono.contacto = contacto
 					if(inscripcion.tipoInscripcionInstitucion.equals(TipoInscripcionInstitucion.ALUMNO)){
 						usuario = usuarioService.crear(inscripcion.usuarioRegistro.username, inscripcion.usuarioRegistro.password, "ROLE_ALUMNO")						
 						persona = new Alumno(usuario:usuario, documento:documento, contacto:contacto, nombre:inscripcion.nombre, apellido: inscripcion.apellido).save(failOnError:true)

@@ -10,15 +10,16 @@
 <title><g:message code="docente.show.label" /></title>
 </head>
 <body>
-<sec:ifAnyGranted roles="ROLE_ADMINISTRADOR_SISTEMA,ROLE_COORDINADOR,ROLE_ADMINISTRATIVO">
-	<div class="navbar navbar-inverse" role="navigation">
-		<ul class="nav navbar-nav">
-			<li><g:link class="list" action="list">
-					<g:message code="docente.list.label" />
-				</g:link></li>
-		</ul>
-	</div>
-</sec:ifAnyGranted>
+	<sec:ifAnyGranted
+		roles="ROLE_ADMINISTRADOR_SISTEMA,ROLE_COORDINADOR,ROLE_ADMINISTRATIVO">
+		<div class="navbar navbar-inverse" role="navigation">
+			<ul class="nav navbar-nav">
+				<li><g:link class="list" action="list">
+						<g:message code="docente.list.label" />
+					</g:link></li>
+			</ul>
+		</div>
+	</sec:ifAnyGranted>
 	<div id="show-docente" class="content scaffold-show" role="main">
 		<h1>
 			<g:message code="docente.label" default="Docente" />
@@ -227,11 +228,14 @@
 						<div class="col-lg-12">
 							<g:form>
 								<fieldset class="buttons">
-									<g:hiddenField name="id" value="${docenteInstance?.id}" />
-									<g:link class="btn btn-info" action="edit"
-										id="${docenteInstance?.id}">
-										<g:message code="default.button.edit.label" default="Edit" />
-									</g:link>
+									<sec:ifAnyGranted
+										roles="ROLE_ADMINISTRADOR_SISTEMA,ROLE_DOCENTE,ROLE_ADMINISTRATIVO">
+										<g:hiddenField name="id" value="${docenteInstance?.id}" />
+										<g:link class="btn btn-info" action="edit"
+											id="${docenteInstance?.id}">
+											<g:message code="default.button.edit.label" default="Edit" />
+										</g:link>
+									</sec:ifAnyGranted>
 								</fieldset>
 							</g:form>
 						</div>

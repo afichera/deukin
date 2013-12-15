@@ -133,9 +133,11 @@
 <g:form>
 	<fieldset class="buttons">
 	<g:hiddenField name="id" value="${alumnoInstance?.id}" />
+	<sec:ifAnyGranted roles="ROLE_ADMINISTRADOR_SISTEMA,ROLE_ALUMNO,ROLE_ADMINISTRATIVO">
 	<g:link class="btn btn-info" action="edit" id="${alumnoInstance?.id}">
 		<g:message code="default.button.edit.label" default="Edit" />
 	</g:link>
+	</sec:ifAnyGranted>
 	<sec:ifAnyGranted roles="ROLE_ADMINISTRADOR_SISTEMA">
 	<g:actionSubmit class="btn btn-danger" action="delete"
 		value="${message(code: 'default.button.delete.label', default: 'Delete')}"

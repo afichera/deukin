@@ -9,9 +9,9 @@ class Contacto {
 	
 	Domicilio domicilio
 	static hasMany = [telefonos:Telefono]
-	static belongsTo = [Persona, Departamento]
+	static belongsTo = [Persona, Departamento, InstitucionEducativa]
     static constraints = {
-		telefonos (nullable:true, cascade: "all-delete-orphan")
+		telefonos (nullable:true)
     }
 	
 }

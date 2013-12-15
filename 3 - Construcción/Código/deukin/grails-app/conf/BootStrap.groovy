@@ -323,29 +323,29 @@ class BootStrap {
 		def recurso6 = Recurso.findByCodigo('VISUAL02')?: new Recurso(codigo:'VISUAL02', tipoRecurso: tipoRecurso3, estadoRecurso: EstadoRecurso.REGULAR).save(failOnError: true)
 
 		//Telefonos Solo para Test
-		def telefono1Alumno1 = Telefono.findByNumero('1566960007')?: new Telefono(numero: '1166960007', tipoTelefono:TipoTelefono.MOVIL)
-		def telefono2Alumno1 = Telefono.findByNumero('54311816')?: new Telefono(numero: '54311816', tipoTelefono:TipoTelefono.CASA)
-		def telefono1Alumno2 = Telefono.findByNumero('1500000000')?: new Telefono(numero: '1500000000', tipoTelefono:TipoTelefono.MOVIL)
-		def telefono2Alumno2 = Telefono.findByNumero('44444444')?: new Telefono(numero: '44444444', tipoTelefono:TipoTelefono.CASA)
-		def telefono1Coordinador1 = Telefono.findByNumero('1555555555')?: new Telefono(numero: '1555555555', tipoTelefono:TipoTelefono.MOVIL)
-		def telefono1Coordinador2 = Telefono.findByNumero('1555555551')?: new Telefono(numero: '1555555551', tipoTelefono:TipoTelefono.MOVIL)
-		def telefono1Coordinador3 = Telefono.findByNumero('1555555552')?: new Telefono(numero: '1555555552', tipoTelefono:TipoTelefono.MOVIL)
-		def telefono1Docente1 = Telefono.findByNumero('444499990000')?: new Telefono(numero: '444499990000', tipoTelefono:TipoTelefono.MOVIL)
+		def telefono1Alumno1 = new Telefono(numero: '1166960007', tipoTelefono:TipoTelefono.MOVIL)
+		def telefono2Alumno1 = new Telefono(numero: '54311816', tipoTelefono:TipoTelefono.CASA)
+		def telefono1Alumno2 = new Telefono(numero: '1500000000', tipoTelefono:TipoTelefono.MOVIL)
+		def telefono2Alumno2 = new Telefono(numero: '44444444', tipoTelefono:TipoTelefono.CASA)
+		def telefono1Coordinador1 = new Telefono(numero: '1555555555', tipoTelefono:TipoTelefono.MOVIL)
+		def telefono1Coordinador2 = new Telefono(numero: '1555555551', tipoTelefono:TipoTelefono.MOVIL)
+		def telefono1Coordinador3 = new Telefono(numero: '1555555552', tipoTelefono:TipoTelefono.MOVIL)
+		def telefono1Docente1 = new Telefono(numero: '444499990000', tipoTelefono:TipoTelefono.MOVIL)
 
-		def telefono1Docente2 = Telefono.findByNumero('444499990002')?: new Telefono(numero: '444499990002', tipoTelefono:TipoTelefono.MOVIL)
-		def telefono1Docente3 = Telefono.findByNumero('444499990003')?: new Telefono(numero: '444499990003', tipoTelefono:TipoTelefono.CASA)
-		def telefono1Docente4 = Telefono.findByNumero('444499990004')?: new Telefono(numero: '444499990004', tipoTelefono:TipoTelefono.MOVIL)
-		def telefono1Docente5 = Telefono.findByNumero('444499990005')?: new Telefono(numero: '444499990005', tipoTelefono:TipoTelefono.TRABAJO)
-		def telefono1Docente6 = Telefono.findByNumero('444499990006')?: new Telefono(numero: '444499990006', tipoTelefono:TipoTelefono.MOVIL)
-		def telefono1Docente7 = Telefono.findByNumero('444499990007')?: new Telefono(numero: '444499990007', tipoTelefono:TipoTelefono.CASA)
-		def telefono1Docente8 = Telefono.findByNumero('444499990008')?: new Telefono(numero: '444499990008', tipoTelefono:TipoTelefono.MOVIL)
-		def telefono1Docente9 = Telefono.findByNumero('444499990009')?: new Telefono(numero: '444499990009', tipoTelefono:TipoTelefono.TRABAJO)
-		def telefono1Docente10 = Telefono.findByNumero('444499990010')?: new Telefono(numero: '444499990010', tipoTelefono:TipoTelefono.MOVIL)
-		def telefono1Docente11 = Telefono.findByNumero('444499990011')?: new Telefono(numero: '444499990011', tipoTelefono:TipoTelefono.CASA)
-		def telefono1Docente12 = Telefono.findByNumero('444499990012')?: new Telefono(numero: '444499990012', tipoTelefono:TipoTelefono.MOVIL)
+		def telefono1Docente2 = new Telefono(numero: '444499990002', tipoTelefono:TipoTelefono.MOVIL)
+		def telefono1Docente3 = new Telefono(numero: '444499990003', tipoTelefono:TipoTelefono.CASA)
+		def telefono1Docente4 = new Telefono(numero: '444499990004', tipoTelefono:TipoTelefono.MOVIL)
+		def telefono1Docente5 = new Telefono(numero: '444499990005', tipoTelefono:TipoTelefono.TRABAJO)
+		def telefono1Docente6 = new Telefono(numero: '444499990006', tipoTelefono:TipoTelefono.MOVIL)
+		def telefono1Docente7 = new Telefono(numero: '444499990007', tipoTelefono:TipoTelefono.CASA)
+		def telefono1Docente8 = new Telefono(numero: '444499990008', tipoTelefono:TipoTelefono.MOVIL)
+		def telefono1Docente9 = new Telefono(numero: '444499990009', tipoTelefono:TipoTelefono.TRABAJO)
+		def telefono1Docente10 = new Telefono(numero: '444499990010', tipoTelefono:TipoTelefono.MOVIL)
+		def telefono1Docente11 = new Telefono(numero: '444499990011', tipoTelefono:TipoTelefono.CASA)
+		def telefono1Docente12 = new Telefono(numero: '444499990012', tipoTelefono:TipoTelefono.MOVIL)
 		
-		def telefono1Autoridad1 = Telefono.findByNumero('444499990013')?: new Telefono(numero: '444499990013', tipoTelefono:TipoTelefono.MOVIL)
-		def telefono1Autoridad2 = Telefono.findByNumero('444499990014')?: new Telefono(numero: '444499990014', tipoTelefono:TipoTelefono.MOVIL)
+		def telefono1Autoridad1 = new Telefono(numero: '444499990013', tipoTelefono:TipoTelefono.MOVIL)
+		def telefono1Autoridad2 = new Telefono(numero: '444499990014', tipoTelefono:TipoTelefono.MOVIL)
 		
 
 
@@ -442,22 +442,27 @@ class BootStrap {
 		contactoDocente9.telefonos = []
 		contactoDocente9.telefonos.add(telefono1Docente9)
 		telefono1Docente9.contacto = contactoDocente9
+		
 		def contactoDocente10 = new Contacto(domicilio: domicilioDocente10)
 		contactoDocente10.telefonos = []
 		contactoDocente10.telefonos.add(telefono1Docente10)
 		telefono1Docente10.contacto = contactoDocente10
+		
 		def contactoDocente11 = new Contacto(domicilio: domicilioDocente11)
 		contactoDocente11.telefonos = []
 		contactoDocente11.telefonos.add(telefono1Docente11)
 		telefono1Docente11.contacto = contactoDocente11
+		
 		def contactoDocente12 = new Contacto(domicilio: domicilioDocente12)
 		contactoDocente12.telefonos = []
 		contactoDocente12.telefonos.add(telefono1Docente12)
-		telefono1Docente11.contacto = contactoDocente11
+		telefono1Docente12.contacto = contactoDocente12
+		
 		def contactoAutoridad1 = new Contacto(domicilio: domicilioAutoridad1)
 		contactoAutoridad1.telefonos = []
 		contactoAutoridad1.telefonos.add(telefono1Autoridad1)
 		telefono1Autoridad1.contacto = contactoAutoridad1
+		
 		def contactoAutoridad2 = new Contacto(domicilio: domicilioAutoridad2)
 		contactoAutoridad2.telefonos = []
 		contactoAutoridad2.telefonos.add(telefono1Autoridad2)
@@ -711,21 +716,21 @@ class BootStrap {
 
 		//Departamentos solo para Test
 
-		def telefonoDepartamentoIngenieria= Telefono.findByNumero('01144444444')?: new Telefono(numero: '01144444444', tipoTelefono:TipoTelefono.TRABAJO)
+		def telefonoDepartamentoIngenieria= new Telefono(numero: '01144444444', tipoTelefono:TipoTelefono.TRABAJO)
 		def DomicilioDepartamentoIngenieria = new Domicilio(calle: 'Direccion de la unlam', numero: 556, codigoPostal: 1704,localidad: 'San Justo', observaciones: 'De la entrada principal a la izquierda.')
 		def contactoDepartamentoIngenieria = new Contacto(domicilio: DomicilioDepartamentoIngenieria)
 		contactoDepartamentoIngenieria.telefonos = []
 		contactoDepartamentoIngenieria.telefonos.add(telefonoDepartamentoIngenieria)
-		
+		telefonoDepartamentoIngenieria.contacto = contactoDepartamentoIngenieria
 
 
-		def telefonoInstitucion= Telefono.findByNumero('01155555555')?: new Telefono(numero: '01155555555', tipoTelefono:TipoTelefono.TRABAJO)
+		def telefonoInstitucion= new Telefono(numero: '01155555555', tipoTelefono:TipoTelefono.TRABAJO)
 		def DomicilioInstitucion = new Domicilio(calle: 'Direccion de la unlam', numero: 556, codigoPostal: 1704,localidad: 'San Justo', observaciones: '')
 		def contactoInstitucion= new Contacto(domicilio: DomicilioInstitucion)
 		contactoInstitucion.telefonos = []
 		contactoInstitucion.telefonos.add(telefonoInstitucion)
-		contactoInstitucion.save(failOnError:true)
-
+		telefonoInstitucion.contacto = contactoInstitucion		
+		
 		def carreras = []
 		carreras.add(carrera1)
 		carreras.add(carrera2)
@@ -736,9 +741,15 @@ class BootStrap {
 		autoridades.add(autoridad1)
 		autoridades.add(autoridad2)
 		
-				
+		def departamentoIngenieria = Departamento.findByNombre('Ingenieria')?: new Departamento(nombre: 'Ingenieria', mision: 'La mision de nuestro departamento es...', vision: 'La visión de nuestro departamenteo es...', contacto: contactoDepartamentoIngenieria, carreras:carreras).save(failOnError:true)
+		
+		
 		def institucionEducativaUnica = InstitucionEducativa.findByNombre('UNLAM')?: new InstitucionEducativa(contacto: contactoInstitucion, nombre: 'UNLAM').save(failOnError:true)
-		def departamentoIngenieria = Departamento.findByNombre('Ingenieria')?: new Departamento(nombre: 'Ingenieria', mision: 'La mision de nuestro departamento es...', vision: 'La visión de nuestro departamenteo es...', contacto: contactoDepartamentoIngenieria, carreras:carreras, autoridades:autoridades, institucionEducativa:institucionEducativaUnica).save(failOnError:true)
+		
+		institucionEducativaUnica?.departamentos = []
+		institucionEducativaUnica.departamentos.add(departamentoIngenieria)
+		institucionEducativaUnica.save()
+		
 		
 		//Docentes only for Test
 		def docente1 = Docente.findByUsuario(docenteUser1) ?: new Docente(apellido:'Fernandez',nombre: 'Juan', usuario: docenteUser1, documento: documentoDNIdocente1, contacto: contactoDocente1, departamento: departamentoIngenieria).save(failOnError:true)

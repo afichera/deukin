@@ -17,8 +17,6 @@ class Carrera implements Serializable {
 	EstadoDeCreacion estado
 	//Los objetivos pueden ser varios. Los planes tambien, solo que uno será el Vigente
 	static hasMany = [objetivos:ObjetivoCarrera, planesEstudio:PlanEstudio, coordinadores:Coordinador]
-	
-	
 		
     static constraints = {
 		titulo unique:true, maxSize:200, blank:false

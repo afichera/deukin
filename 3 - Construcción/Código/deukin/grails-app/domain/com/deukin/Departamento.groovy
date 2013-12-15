@@ -12,19 +12,16 @@ class Departamento {
 	String vision
 	String mision
 	Contacto contacto
+	InstitucionEducativa institucionEducativa
 
 	static hasMany = [carreras:Carrera, autoridades:Autoridad, docentes:Docente]
-	static belongsTo = [institucionEducativa: InstitucionEducativa]
-	
+		
     static constraints = {
 		nombre(unique:true, maxSize:200)
 		mision(nullable:true, maxSize:5000)
 		vision(nullable:true, maxSize:5000)
 		contacto(nullable:true)
     }
-	static mapping = {
-		autoridades cascade: "save-update"
-	}
 	
 	String toString(){
 		nombre

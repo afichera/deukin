@@ -25,8 +25,8 @@ class UsuarioController {
 	@Secured(['ROLE_ADMINISTRADOR_SISTEMA'])
 	def list(Integer max) {
 		params.max = Math.min(max ?: 10, 100)
-		
-		[usuarioInstanceList: Usuario.list(params), usuarioInstanceTotal: Usuario.count(),roles : UsuarioRol.list()]
+		def roles = UsuarioRol.list()
+		[usuarioInstanceList: Usuario.list(params), usuarioInstanceTotal: Usuario.count(),roles : roles]
 	}
 
 	@Secured(['ROLE_ADMINISTRADOR_SISTEMA'])

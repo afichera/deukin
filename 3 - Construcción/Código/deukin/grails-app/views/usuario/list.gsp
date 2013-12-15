@@ -55,9 +55,10 @@
 
 
 														<g:each in="${roles}" status="y" var="r">
+														
 															<g:if test="${r?.usuario?.id==usuarioInstance?.id}">
 																
-																	${r?.rol?.authority}<br />
+																	${r?.rol.encodeAsHTML()}<br />
 																
 															</g:if>
 														</g:each>

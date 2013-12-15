@@ -10,7 +10,7 @@ class UsuarioRegistro implements Serializable{
 	
     static constraints = {
 		username blank: false, email:true, maxSize:50	
-		password blank: false, validator:{password,obj ->
+		password blank: false, maxSize:64, minSize:6,matches: "[0-9a-zA-Z]+", validator:{password,obj ->
 			def password2=obj.properties['password2']
 			if (password2==null) return true
 			password2==password ? true:['invalid.matchingPasswords']

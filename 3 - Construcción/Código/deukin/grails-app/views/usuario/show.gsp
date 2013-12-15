@@ -79,7 +79,7 @@
 												
 											
 									<g:link controller="usuarioRol" action="delete" id="${rolesInstance?.id}" params="[userId: usuarioInstance?.id, rolId: rolesInstance?.id]"><span class="glyphicon glyphicon-trash"
-									title="${message(code: 'default.add.label', args: [message(code: 'rol.label', default: 'Rol')])}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');"></span></g:link>
+									title="${message(code: 'default.delete.label', args: [message(code: 'rol.label', default: 'Rol')])}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');"></span></g:link>
 												</li>
 											
 										</g:each>

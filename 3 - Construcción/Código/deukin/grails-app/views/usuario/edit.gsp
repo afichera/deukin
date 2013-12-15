@@ -5,14 +5,14 @@
 <meta name="layout" content="main">
 <g:set var="entityName"
 	value="${message(code: 'usuario.label', default: 'Usuario')}" />
-<title><g:message code="default.edit.label" args="[entityName]" /></title>
+<title><g:message code="usuario.edit.label" /></title>
 </head>
 <body>
 	<div class="navbar navbar-inverse" role="navigation">
 		<ul class="nav navbar-nav">
 			<sec:ifAnyGranted roles="ROLE_ADMINISTRADOR_SISTEMA">
 				<li><g:link class="list" action="list">
-						<g:message code="default.list.label" args="[entityName]" />
+						<g:message code="usuario.list.label" />
 					</g:link></li>
 			</sec:ifAnyGranted>
 
@@ -20,10 +20,10 @@
 	</div>
 	<div id="edit-usuario" class="content scaffold-edit" role="main">
 		<h1>
-			<g:message code="default.edit.label" args="[entityName]" />
+			<g:message code="usuario.edit.label" />
 		</h1>
 		<g:if test="${flash.message}">
-			<div class="message" role="status">
+			<div class="message alert alert-danger" role="status">
 				${flash.message}
 			</div>
 		</g:if>
@@ -37,7 +37,7 @@
 			</ul>
 		</g:hasErrors>
 		<div class="row">
-			<div class="col-lg-6">
+			<div class="col-lg-12 col-md-12 col-sx-12 lista-propiedades">
 				<div class="well">
 					<g:form method="post">
 						<g:hiddenField name="id" value="${usuarioInstance?.id}" />
@@ -49,6 +49,9 @@
 							<g:actionSubmit class="save" action="update"
 								class="btn btn-success"
 								value="${message(code: 'default.button.update.label', default: 'Update')}" />
+						<g:link class="btn btn-default" controller="usuario" action="show" id="${usuarioInstance?.id}">
+					<g:message code="cancelar" default="Cancelar" />
+				</g:link>
 						</fieldset>
 					</g:form>
 				</div>

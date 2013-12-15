@@ -19,15 +19,17 @@
 				${flash.message}
 			</div>
 		</g:if>
+		<div class="table-responsive">
 		<table class="table table-striped table-responsive table-bordered table-hover">
 			<thead>
 				<tr>
 					<g:sortableColumn property="username"
-						title="${message(code: 'usuario.username.label', default: 'Username <span class="glyphicon glyphicon-sort"></span>')}" />
+						title="${message(code: 'usuario.username.label', default: 'Username')}" />
 					<g:sortableColumn property="accountLocked"
-						title="${message(code: 'usuario.accountLocked.label', default: 'Cuenta Bloqueada <span class="glyphicon glyphicon-sort"></span>')}" />
+						title="${message(code: 'usuario.accountLocked.label', default: 'Bloqueado')}" />
 					<g:sortableColumn property="enabled"
-						title="${message(code: 'usuario.enabled.label', default: 'Activo <span class="glyphicon glyphicon-sort"></span>')}" />
+						title="${message(code: 'usuario.enabled.label', default: 'Activo')}" />
+						<th><g:message code="usuario.rolAsignado.label" default= "Roles" /></th>
 
 
 				</tr>
@@ -40,12 +42,31 @@
 								${fieldValue(bean: usuarioInstance, field: "username")}
 							</g:link></td>
 
-						<td><g:formatBoolean
-								boolean="${usuarioInstance.accountLocked}" /></td>
+						<td>
+						<g:if test="${usuarioInstance.accountLocked}">
+						X
+						</g:if>
 
-						<td><g:formatBoolean boolean="${usuarioInstance.enabled}" /></td>
+								</td>
 
+						<td><g:if test="${usuarioInstance.enabled}">X</g:if></td>
+
+					<td><g:if test="${roles}">
+
+
+														<g:each in="${roles}" status="y" var="r">
+															<g:if test="${r?.usuario?.id==usuarioInstance?.id}">
+																
+																	${r?.rol?.authority}<br />
+																
+															</g:if>
+														</g:each>
+
+													</g:if></td>
 					</tr>
+					
+					
+					
 				</g:each>
 			</tbody>
 		</table></div>

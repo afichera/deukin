@@ -36,9 +36,7 @@
 						<li><g:link controller='usuario'>
 								<g:message code="secciones.usuarios.usuarios" />
 							</g:link></li>
-						<li><g:link controller='usuarioRol'>
-						<g:message code="usuarioRol.list.label" />
-					</g:link></li>	
+							
 					</ul>
 				</div>
 			</div>

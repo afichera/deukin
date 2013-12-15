@@ -1,5 +1,7 @@
 package com.deukin
 
+
+
 import grails.plugins.springsecurity.Secured
 import groovy.text.SimpleTemplateEngine
 
@@ -23,7 +25,8 @@ class UsuarioController {
 	@Secured(['ROLE_ADMINISTRADOR_SISTEMA'])
 	def list(Integer max) {
 		params.max = Math.min(max ?: 10, 100)
-		[usuarioInstanceList: Usuario.list(params), usuarioInstanceTotal: Usuario.count()]
+		
+		[usuarioInstanceList: Usuario.list(params), usuarioInstanceTotal: Usuario.count(),roles : UsuarioRol.list()]
 	}
 
 	@Secured(['ROLE_ADMINISTRADOR_SISTEMA'])
@@ -135,9 +138,9 @@ class UsuarioController {
 			return
 		}
 
-		flash.message = message(code: 'default.updated.message', args: [
+		flash.message = message(code: 'usuario.updated.message', args: [
 			message(code: 'usuario.label', default: 'Usuario'),
-			usuarioInstance.id
+			usuarioInstance.username
 		])
 		redirect(action: "show", id: usuarioInstance.id)
 	}

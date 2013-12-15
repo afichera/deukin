@@ -21,17 +21,19 @@
 			<g:message code="usuarioRol.list.label" />
 		</h1>
 		<g:if test="${flash.message}">
-			<div class="message" role="status">
+			<div class="message alert alert-info" role="status">
 				${flash.message}
 			</div>
 		</g:if>
 		<div class="table-responsive"><table class="table table-responsive table-striped table-bordered table-hover">
 			<thead>
 				<tr>
-					<th><g:message code="usuarioRol.usuario.label"
-							default="Usuario" /></th>
-					<th><g:message code="usuarioRol.rol.label" default="Rol" /></th>
-				</tr>
+					<g:sortableColumn property="usuario"
+						title="${message(code: 'usuarioRol.usuario.label', default: 'Usuario')}" />
+					<g:sortableColumn property="rol"
+						title="${message(code: 'usuarioRol.rol.label', default: 'Rol')}" />
+					
+					</tr>
 			</thead>
 			<tbody>
 				<g:each in="${usuarioRolInstanceList}" status="i"

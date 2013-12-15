@@ -7,7 +7,7 @@ import org.springframework.dao.DataIntegrityViolationException
 @Secured(['ROLE_ADMINISTRADOR_SISTEMA'])
 class UsuarioRolController {
 
-    static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
+    static allowedMethods = [save: "POST", update: "POST", delete: "GET"]
 	def usuarioService
 	
     def index() {
@@ -51,7 +51,7 @@ class UsuarioRolController {
 
         flash.message = 'Asignación de Usuario/Rol creada correctamente'
 
-         redirect(action: "list", params: params)
+         redirect(controller:"usuario", action: "show", id: usuarioRolInstance.usuario.id)
     }
 	
     def show(Long id) {
@@ -126,7 +126,24 @@ class UsuarioRolController {
     }
 
     def delete(Long id) {
-        def usuarioRolInstance = UsuarioRol.get(id)
+		Long userId
+		Long rolId
+		def usuario
+		def rol
+		def usuarioRolInstance
+		if(params.userId){
+			userId = new Long(params.userId)
+		}
+		if(params.rolId){
+			rolId = new Long(params.rolId)
+		}
+		if(userId && rolId){
+			usuario = Usuario.get(userId)
+			rol = Rol.get(rolId)
+			usuarioRolInstance = UsuarioRol.findByUsuarioAndRol(usuario, rol)
+		}else{
+			usuarioRolInstance = new UsuarioRol(params)
+		}
         if (!usuarioRolInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'usuarioRol.label', default: 'UsuarioRol'), id])
             redirect(action: "list")
@@ -134,9 +151,9 @@ class UsuarioRolController {
         }
 
         try {
-            usuarioRolInstance.delete(flush: true)
-            flash.message = message(code: 'default.deleted.message', args: [message(code: 'usuarioRol.label', default: 'UsuarioRol'), id])
-            redirect(action: "list")
+            usuarioRolInstance.remove(usuario,rol)
+            flash.message = message(code: 'usuarioRol.deleted.message')
+            redirect(controller:"usuario", action: "show", id:userId)
         }
         catch (DataIntegrityViolationException e) {
             flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'usuarioRol.label', default: 'UsuarioRol'), id])

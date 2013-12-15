@@ -12,7 +12,6 @@ class Departamento {
 	String vision
 	String mision
 	Contacto contacto
-	InstitucionEducativa institucionEducativa
 
 	static hasMany = [carreras:Carrera, autoridades:Autoridad, docentes:Docente]
 		
@@ -21,7 +20,6 @@ class Departamento {
 		mision(nullable:true, maxSize:5000)
 		vision(nullable:true, maxSize:5000)
 		contacto(nullable:true)
-		institucionEducativa(nullable:true)
     }
 	
 	String toString(){

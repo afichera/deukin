@@ -18,6 +18,11 @@ class DocenteController {
         redirect(action: "list", params: params)
     }
 
+	@Secured([
+		'ROLE_ADMINISTRADOR_SISTEMA',
+		'ROLE_ADMINISTRATIVO',
+		'ROLE_COORDINADOR'
+	])
     def list(Integer max) {
         params.max = Math.min(max ?: 10, 100)
 		def docentes = Docente.all

@@ -11,16 +11,16 @@
 <title><g:message code="alumno.title" /></title>
 </head>
 <body>
+<sec:ifAnyGranted roles="ROLE_ADMINISTRADOR_SISTEMA,ROLE_COORDINADOR,ROLE_ADMINISTRATIVO">
 <div class="navbar navbar-inverse" role="navigation">
 <ul class="nav navbar-nav">
-<sec:ifAnyGranted roles="ROLE_ADMINISTRADOR_SISTEMA,ROLE_COORDINADOR,ROLE_alumno,ROLE_ADMINISTRATIVO">
 <li><g:link class="list" action="list">
 	<g:message code="alumno.list.label" />
 </g:link></li>
-</sec:ifAnyGranted>
+
 </ul>
 </div>
-
+</sec:ifAnyGranted>
 <div id="show-alumno" class="content scaffold-show" role="main">
 <h1>
 <g:message code="alumno.show.label" args="${[alumnoInstance?.encodeAsHTML()]}" />

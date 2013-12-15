@@ -10,6 +10,7 @@
 <title><g:message code="docente.show.label" /></title>
 </head>
 <body>
+<sec:ifAnyGranted roles="ROLE_ADMINISTRADOR_SISTEMA,ROLE_COORDINADOR,ROLE_ADMINISTRATIVO">
 	<div class="navbar navbar-inverse" role="navigation">
 		<ul class="nav navbar-nav">
 			<li><g:link class="list" action="list">
@@ -17,7 +18,7 @@
 				</g:link></li>
 		</ul>
 	</div>
-
+</sec:ifAnyGranted>
 	<div id="show-docente" class="content scaffold-show" role="main">
 		<h1>
 			<g:message code="docente.label" default="Docente" />
@@ -112,25 +113,24 @@
 
 							<div class="fieldcontain row">
 								<label id="telefonos-label" class="property-label col-lg-2"><g:message
-										code="docente.telefonos.label" default="Teléfonos" />: 
-										<g:link controller="telefono"
-								action="create" params="['contacto.id': docenteInstance?.contacto?.id,'origen':'docente','docente.id':docenteInstance?.id]">
-								<span class="glyphicon glyphicon-plus"
-									title="${message(code: 'default.add.label', args: [message(code: 'telefono.label', default: 'Teléfono')])}"></span>
-							</g:link>
-										</label>
-										<div class="property-value col-lg-10"
+										code="docente.telefonos.label" default="Teléfonos" />: <g:link
+										controller="telefono" action="create"
+										params="['contacto.id': docenteInstance?.contacto?.id,'origen':'docente','docente.id':docenteInstance?.id]">
+										<span class="glyphicon glyphicon-plus"
+											title="${message(code: 'default.add.label', args: [message(code: 'telefono.label', default: 'Teléfono')])}"></span>
+									</g:link> </label>
+								<div class="property-value col-lg-10"
 									aria-labelledby="telefono-label">
-								<g:if test="${docenteInstance?.contacto?.telefonos}">
-									<g:each in="${docenteInstance.contacto.telefonos}" var="t">
-										 ${t?.encodeAsHTML()}<br />
-										
-									</g:each>
-								</g:if>
+									<g:if test="${docenteInstance?.contacto?.telefonos}">
+										<g:each in="${docenteInstance.contacto.telefonos}" var="t">
+											${t?.encodeAsHTML()}<br />
+
+										</g:each>
+									</g:if>
 								</div>
 							</div>
 
-							
+
 
 						</div>
 					</div>
@@ -141,93 +141,100 @@
 						<div class="col-lg-12">
 
 							<g:if test="${asignacionDocenteCursoInstanceList}">
-								<div class="table-responsive"><table class="table table-responsive table-striped table-bordered table-hover">
-									<thead>
-										<tr>
-											<th><g:message
-													code="asignacionDocenteCurso.cicloLectivo.label" /></th>
-											<th><g:message
-													code="asignacionDocenteCurso.periodoAcademico.label" /></th>
+								<div class="table-responsive">
+									<table
+										class="table table-responsive table-striped table-bordered table-hover">
+										<thead>
+											<tr>
+												<th><g:message
+														code="asignacionDocenteCurso.cicloLectivo.label" /></th>
+												<th><g:message
+														code="asignacionDocenteCurso.periodoAcademico.label" /></th>
 
-											<th><g:message code="asignacionDocenteCurso.curso.label" /></th>
+												<th><g:message
+														code="asignacionDocenteCurso.curso.label" /></th>
 
-											<th><g:message
-													code="asignacionDocenteCurso.materia.label" /></th>
+												<th><g:message
+														code="asignacionDocenteCurso.materia.label" /></th>
 
-											<th><g:message code="asignacionDocenteCurso.dia.label" /></th>
+												<th><g:message code="asignacionDocenteCurso.dia.label" /></th>
 
-											<th><g:message code="asignacionDocenteCurso.turno.label" /></th>
+												<th><g:message
+														code="asignacionDocenteCurso.turno.label" /></th>
 
-											<th><g:message
-													code="asignacionDocenteCurso.horario.label" /></th>
-											<th><g:message
-													code="asignacionDocenteCurso.espacioFisico.label" /></th>
-											<th><g:message
-													code="asignacionDocenteCurso.cantidadHoras.label" /></th>
-										</tr>
-									</thead>
-
-
-									<tbody>
-										<g:each in="${asignacionDocenteCursoInstanceList}" status="i"
-											var="asignacionDocenteCursoInstance">
-											<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-												<td>
-													${asignacionDocenteCursoInstance?.configuracionCursoDia?.curso?.cronogramaCarrera?.cicloLectivo?.codigo}
-
-												</td>
-
-												<td>
-													${asignacionDocenteCursoInstance?.configuracionCursoDia?.curso?.periodoAcademico?.toString()}
-												</td>
-
-												<td>
-													${asignacionDocenteCursoInstance?.configuracionCursoDia?.curso?.codigo}
-												</td>
-
-												<td>
-													${asignacionDocenteCursoInstance?.configuracionCursoDia?.curso?.materia?.toString()}
-												</td>
-
-												<td>
-													${asignacionDocenteCursoInstance?.configuracionCursoDia?.diaSemana?.name}
-												</td>
-
-												<td>
-													${asignacionDocenteCursoInstance?.configuracionCursoDia?.curso?.turno?.codigo}
-												</td>
-
-												<td>
-													${asignacionDocenteCursoInstance?.configuracionCursoDia?.startTime}
-													- ${asignacionDocenteCursoInstance?.configuracionCursoDia?.endTime}
-												</td>
-
-												<td>
-													${asignacionDocenteCursoInstance?.configuracionCursoDia?.espacioFisico?.numero}
-												</td>
-
-												<td>
-													${asignacionDocenteCursoInstance?.cantidadHorasAsignacion}
-												</td>
-
-
-
+												<th><g:message
+														code="asignacionDocenteCurso.horario.label" /></th>
+												<th><g:message
+														code="asignacionDocenteCurso.espacioFisico.label" /></th>
+												<th><g:message
+														code="asignacionDocenteCurso.cantidadHoras.label" /></th>
 											</tr>
-										</g:each>
-									</tbody>
-								</table></div>
+										</thead>
+
+
+										<tbody>
+											<g:each in="${asignacionDocenteCursoInstanceList}" status="i"
+												var="asignacionDocenteCursoInstance">
+												<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
+													<td>
+														${asignacionDocenteCursoInstance?.configuracionCursoDia?.curso?.cronogramaCarrera?.cicloLectivo?.codigo}
+
+													</td>
+
+													<td>
+														${asignacionDocenteCursoInstance?.configuracionCursoDia?.curso?.periodoAcademico?.toString()}
+													</td>
+
+													<td>
+														${asignacionDocenteCursoInstance?.configuracionCursoDia?.curso?.codigo}
+													</td>
+
+													<td>
+														${asignacionDocenteCursoInstance?.configuracionCursoDia?.curso?.materia?.toString()}
+													</td>
+
+													<td>
+														${asignacionDocenteCursoInstance?.configuracionCursoDia?.diaSemana?.name}
+													</td>
+
+													<td>
+														${asignacionDocenteCursoInstance?.configuracionCursoDia?.curso?.turno?.codigo}
+													</td>
+
+													<td>
+														${asignacionDocenteCursoInstance?.configuracionCursoDia?.startTime}
+														- ${asignacionDocenteCursoInstance?.configuracionCursoDia?.endTime}
+													</td>
+
+													<td>
+														${asignacionDocenteCursoInstance?.configuracionCursoDia?.espacioFisico?.numero}
+													</td>
+
+													<td>
+														${asignacionDocenteCursoInstance?.cantidadHorasAsignacion}
+													</td>
+
+
+
+												</tr>
+											</g:each>
+										</tbody>
+									</table>
+								</div>
 							</g:if>
 
 						</div>
-						<g:form>
-							<fieldset class="buttons">
-								<g:hiddenField name="id" value="${docenteInstance?.id}" />
-								<g:link class="btn btn-info" action="edit"
-									id="${docenteInstance?.id}">
-									<g:message code="default.button.edit.label" default="Edit" />
-								</g:link>
-							</fieldset>
-						</g:form>
+						<div class="col-lg-12">
+							<g:form>
+								<fieldset class="buttons">
+									<g:hiddenField name="id" value="${docenteInstance?.id}" />
+									<g:link class="btn btn-info" action="edit"
+										id="${docenteInstance?.id}">
+										<g:message code="default.button.edit.label" default="Edit" />
+									</g:link>
+								</fieldset>
+							</g:form>
+						</div>
 					</div>
 				</div>
 			</div>

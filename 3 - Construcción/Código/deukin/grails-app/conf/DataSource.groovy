@@ -13,8 +13,8 @@
 
 dataSource {
 	pooled = true
-	dbCreate = "update"
-//	dbCreate = "create-drop"
+//	dbCreate = "update"
+	dbCreate = "create-drop"
 	driverClassName = "org.postgresql.Driver"
 	username = "postgres"
 	password = "postgres"
@@ -47,8 +47,8 @@ environments {
 	}
 	production {
 		dataSource {
-						dbCreate = "update"
-			//			dbCreate = "create-drop"
+//						dbCreate = "update"
+						dbCreate = "create-drop"
 			//            url = "jdbc:h2:prodDb;MVCC=TRUE;LOCK_TIMEOUT=10000"
 			url = 'jdbc:postgresql://localhost:5432/deukin_prod'
 //			url = "jdbc:mysql://localhost:3306/deukin_prod"

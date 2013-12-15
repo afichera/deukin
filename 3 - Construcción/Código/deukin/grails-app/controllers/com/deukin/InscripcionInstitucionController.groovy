@@ -257,7 +257,19 @@ class InscripcionInstitucionController {
 				
 				
 			}.to "inscribir"
-			on("anterior").to "datosMinimos"
+			on("anterior"){
+				flow.inscripcion.calle = params.calle
+				flow.inscripcion.localidad = params.localidad
+				flow.inscripcion.observaciones = params.observaciones
+				flow.inscripcion.tipoTelefono = params.tipoTelefono
+				flow.inscripcion.telefonoNumero = params.telefonoNumero
+				
+				if (params.calleNumero.isInteger())
+				flow.inscripcion.calleNumero = new Integer(params.calleNumero)
+				if (params.codigoPostal.isInteger())
+				flow.inscripcion.codigoPostal = new Integer(params.codigoPostal)
+				
+			}.to "datosMinimos"
 		}
 
 		inscribir {
@@ -285,7 +297,10 @@ class InscripcionInstitucionController {
 			on("errorInscripcion").to("errorInscripcion")
 		}
 
-		errorInscripcion()
+		errorInscripcion(){
+			on("volver").to("datosMinimos")
+			
+		}
 		finInscripcion()
 	}
 }

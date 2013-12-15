@@ -32,7 +32,7 @@ class InscripcionInstitucionService {
 						inscripcion
 					}catch(Exception e){
 						log.error 'Ocurrió un error al intentar guardar la inscripción en el sistema. Detalle: '+e
-						throw new BusinessException('Ocurrió un error al guardar la inscripción.')
+						throw new BusinessException('Ocurrió un error al guardar la inscripción. Haga clic en volver, los campos erróneos se resaltarán')
 					}
 
 				}else{

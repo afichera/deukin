@@ -169,3 +169,8 @@ border: 1px solid #ddd;
 -ms-overflow-style: -ms-autohiding-scrollbar;
 -webkit-overflow-scrolling: touch;
 }}
+
+.selectChico select{
+	width:auto;
+	display:inline;
+}

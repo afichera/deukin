@@ -7,10 +7,15 @@
 
 </head>
 <body>
-  <div class="body">
+  <div class="body row">
+ 
+			<div class="col-lg-12 col-md-12 col-sx-12 lista-propiedades">
+				<div class="alert alert-success">
   <g:message code="inscripcionInstitución.finInscripcion" default="Inscripción a la institución realizada correctamente."/>
-  <br>
+</div>
+<div class="alert alert-info">
   <g:message code="inscripcionInstitución.finInscripcion.verificarMail" default="Ud Recibirá un mail con la información necesaria para completar el registro."/>
   </div>
+  </div></div>
 </body>
 </html>

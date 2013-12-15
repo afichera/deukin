@@ -19,6 +19,11 @@ class Domicilio {
     }
 	
 	String toString() {
-		calle + ' ' + numero + ', ' + localidad + ' (' + observaciones + ') CP: '+codigoPostal 
+		String muestraObservaciones = ''
+		if (observaciones != null)
+		{
+			muestraObservaciones = ' (' + observaciones + ')'
+		}
+		calle + ' ' + numero + ', ' + localidad + muestraObservaciones + ' CP: '+codigoPostal 
 	}
 }

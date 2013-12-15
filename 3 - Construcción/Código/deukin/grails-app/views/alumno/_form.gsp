@@ -1,47 +1,39 @@
 <%@ page import="com.deukin.Alumno"%>
 
 <div
-	class="fieldcontain ${hasErrors(bean: alumnoInstance, field: 'usuario', 'error')} row">
+	class="row">
 	<label for="usuario" class="control-label col-lg-2"> <g:message
-			code="alumno.usuario.label" default="Usuario" /><span
-		class="required-indicator">*</span>
+			code="alumno.usuario.label" default="Usuario" />
 	: </label>
-	<div class="col-lg-10"><g:textField name="usuarioUsername"
-		value="${alumnoInstance?.usuario?.username}" disabled="true" /></div>
+	<div class="col-lg-10">${alumnoInstance?.usuario?.username}</div>
 </div>
 
 <div
-	class="fieldcontain ${hasErrors(bean: alumnoInstance, field: 'apellido', 'error')}  row">
+	class="row">
 	<label for="apellido" class="control-label col-lg-2"> <g:message
-			code="alumno.apellido.label" default="Apellido" /><span
-		class="required-indicator">*</span>
+			code="alumno.apellido.label" default="Apellido" />
 
 	: </label>
-	<div class="col-lg-10"><g:textField name="apellido" value="${alumnoInstance?.apellido}" /></div>
+	<div class="col-lg-10">${alumnoInstance?.apellido}</div>
 </div>
 
 <div
-	class="fieldcontain ${hasErrors(bean: alumnoInstance, field: 'nombre', 'error')}  row">
+	class="row">
 	<label for="nombre" class="control-label col-lg-2"> <g:message
-			code="alumno.nombre.label" default="Nombre" /><span
-		class="required-indicator">*</span>
+			code="alumno.nombre.label" default="Nombre" />
 
 	: </label>
-	<div class="col-lg-10"><g:textField name="nombre" value="${alumnoInstance?.nombre}" /></div>
+	<div class="col-lg-10">${alumnoInstance?.nombre}</div>
 </div>
 
 
 <div
-	class="fieldcontain ${hasErrors(bean: alumnoInstance, field: 'documento.tipoDocumento', 'error')} required row">
+	class="row">
 	<label for="documento.tipoDocumento" class="control-label col-lg-2"> <g:message
-			code="documento.tipoDocumento.label" default="Tipo Documento" /> <span
-		class="required-indicator">*</span>
+			code="documento.tipoDocumento.label" default="Tipo Documento" />
 	: </label>
 
-		<div class="col-lg-10"><g:select name="documento.tipoDocumento"
-			from="${com.deukin.TipoDocumento?.values()}"
-			keys="${com.deukin.TipoDocumento.values()*.name()}" required="true"
-			value="${alumnoInstance?.documento?.tipoDocumento?.name()}" /></div>
+		<div class="col-lg-10">${alumnoInstance?.documento?.tipoDocumento?.name()}</div>
 
 
 
@@ -50,15 +42,12 @@
 
 
 <div
-	class="fieldcontain ${hasErrors(bean: alumnoInstance, field: 'documento.numero', 'error')} required row">
+	class="row">
 	<label for="documento.numero" class="control-label col-lg-2"> <g:message
-			code="documento.numero.label" default="Numero" /> <span
-		class="required-indicator">*</span>
+			code="documento.numero.label" default="Numero" />
 	: </label>
 
-	<div class="col-lg-10"><g:textField name="documento.numero" type="number"
-		value="${alumnoInstance?.documento?.numero}" required="true"  onkeyup="soloNumeros(this,'#validaDocumento')"/>
-	<span class="alert alert-error" id="validaDocumento" style="display:none;">		<g:message code="invalid.soloNumeros" /></span>
+	<div class="col-lg-10">${alumnoInstance?.documento?.numero}
 	</div>
 
 
@@ -71,9 +60,10 @@
 	<label for="fotoPerfil" class="control-label col-lg-2"> <g:message
 			code="alumno.fotoPerfil.label" default="Foto Perfil" />
 	: </label>
+	<div class="col-lg-2 foto">
 	<g:if test="${alumnoInstance?.fotoPerfil}">
 		<div class="fieldcontain col-lg-10"><rendering:inlinePng
-				bytes="${alumnoInstance.fotoPerfil}" height="200" /></div>
+				bytes="${alumnoInstance.fotoPerfil}" width="165" /></div>
 		<g:link controller="alumno" action="eliminarFotoPerfil"
 			id="${alumnoInstance?.id}">Quitar
 		</g:link>
@@ -83,10 +73,11 @@
 
 	<g:if test="${alumnoInstance?.fotoPerfil == null}">
 		<div class="fieldcontain col-lg-10"><span id="fotoPerfil-label"
-			class="property-label"></span> <img height="200"
-			src="${resource(dir: 'images', file: 'buddyicon.jpg')}" alt="Grails" /></div>
+			class="property-label"></span> <img width="165"
+			src="${resource(dir: 'images', file: 'buddyicon.jpg')}" alt="Foto de Perfil" /></div>
 	</g:if>
-	<input type="file" id="fotoPerfil" name="fotoPerfil" />
+	</div><div class="col-lg-8">
+	<input type="file" id="fotoPerfil" name="fotoPerfil" /></div>
 </div>
 
 

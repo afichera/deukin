@@ -21,6 +21,7 @@ class Departamento {
 		mision(nullable:true, maxSize:5000)
 		vision(nullable:true, maxSize:5000)
 		contacto(nullable:true)
+		institucionEducativa(nullable:true)
     }
 	
 	String toString(){

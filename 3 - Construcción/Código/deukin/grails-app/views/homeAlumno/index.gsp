@@ -49,6 +49,22 @@
 				</div>
 			</div>
 		</div>
+		<div class="col-lg-4">
+			<div class="panel panel-info">
+				<div class="panel-heading">
+					<h3 class="panel-title">
+						<g:message code="secciones.misDatos" />
+					</h3>
+				</div>
+				<ul>
+					<li><g:link controller='homeAlumno' action="misDatos">
+							<g:message code="secciones.misDatos" />
+						</g:link></li>
+				</ul>
+			</div>
+		</div>
+	
   </div>
+  
 </body>
 </html>

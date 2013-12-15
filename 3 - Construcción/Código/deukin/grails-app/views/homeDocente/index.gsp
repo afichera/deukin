@@ -16,9 +16,15 @@
 						</h3>
 					</div>
 					<ul>
-						<li><g:link controller='materia'><g:message code="secciones.academicas.materias" /></g:link></li>
-						<li><g:link controller='cursos'><g:message code="secciones.academicas.cursos" /></g:link></li>
-						<li><g:link controller='proximamente'><g:message code="secciones.academicas.finales" /></g:link></li>
+						<li><g:link controller='materia'>
+								<g:message code="secciones.academicas.materias" />
+							</g:link></li>
+						<li><g:link controller='cursos'>
+								<g:message code="secciones.academicas.cursos" />
+							</g:link></li>
+						<li><g:link controller='proximamente'>
+								<g:message code="secciones.academicas.finales" />
+							</g:link></li>
 					</ul>
 				</div>
 			</div>
@@ -30,13 +36,19 @@
 						</h3>
 					</div>
 					<ul>
-						<li><g:link controller='proximamente'><g:message code="secciones.solicitudes.equivalencias" /></g:link></li>
-						<li><g:link controller='proximamente'><g:message code="secciones.solicitudes.recursos" /></g:link></li>
-						<li><g:link controller='proximamente'><g:message code="secciones.solicitudes.espaciosFisicos" /></g:link></li>
+						<li><g:link controller='proximamente'>
+								<g:message code="secciones.solicitudes.equivalencias" />
+							</g:link></li>
+						<li><g:link controller='proximamente'>
+								<g:message code="secciones.solicitudes.recursos" />
+							</g:link></li>
+						<li><g:link controller='proximamente'>
+								<g:message code="secciones.solicitudes.espaciosFisicos" />
+							</g:link></li>
 					</ul>
 				</div>
 			</div>
-<div class="col-lg-4">
+			<div class="col-lg-4">
 				<div class="panel panel-info">
 					<div class="panel-heading">
 						<h3 class="panel-title">
@@ -44,13 +56,33 @@
 						</h3>
 					</div>
 					<ul>
-						<li><g:link controller='proximamente'><g:message code="secciones.estadisticas.x" /></g:link></li>
-						<li><g:link controller='proximamente'><g:message code="secciones.estadisticas.x" /></g:link></li>
+						<li><g:link controller='proximamente'>
+								<g:message code="secciones.estadisticas.x" />
+							</g:link></li>
+						<li><g:link controller='proximamente'>
+								<g:message code="secciones.estadisticas.x" />
+							</g:link></li>
 					</ul>
 				</div>
 			</div>
 		</div>
+		<div class="col-lg-4">
+			<div class="panel panel-info">
+				<div class="panel-heading">
+					<h3 class="panel-title">
+						<g:message code="secciones.misDatos" />
+					</h3>
+				</div>
+				<ul>
+					<li><g:link controller='homeDocente' action="misDatos">
+							<g:message code="secciones.misDatos" />
+						</g:link></li>
+				</ul>
+			</div>
+		</div>
 
-		
+	</div>
+
+
 </body>
 </html>

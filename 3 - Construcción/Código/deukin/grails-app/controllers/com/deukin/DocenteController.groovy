@@ -7,6 +7,7 @@ import org.springframework.dao.DataIntegrityViolationException
 class DocenteController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
+	def springSecurityService
 	def usuarioService
 	def subListaService
 	def docenteService
@@ -56,6 +57,11 @@ class DocenteController {
         [docenteInstance: docenteInstance, asignacionDocenteCursoInstanceList:asignaciones]
     }
 
+	@Secured([
+		'ROLE_ADMINISTRADOR_SISTEMA',
+		'ROLE_ADMINISTRATIVO',
+		'ROLE_DOCENTE'
+	])
     def edit(Long id) {
         def docenteInstance = Docente.get(id)
         if (!docenteInstance) {
@@ -64,12 +70,17 @@ class DocenteController {
             return
         }
 		
-		def tienePersmisoEdicion = usuarioService.esElUsuarioLogueado(id)
+		def tienePersmisoEdicion = true
+		
+		if(usuarioService.poseeElRol(springSecurityService.principal.authorities, 'ROLE_DOCENTE')){
+			tienePersmisoEdicion = usuarioService.esElUsuarioLogueado(id)
+		}		
+		
 		if(!tienePersmisoEdicion){
 			flash.message = message(code: 'permisoEdicion.denegado', args: [message(code: 'docente.label', default: 'Docente'), id])
 			redirect(action: "show", id: docenteInstance.id)
 			return
-		}
+		}		
 		
 		[docenteInstance: docenteInstance]
     }

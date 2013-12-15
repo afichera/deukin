@@ -81,10 +81,26 @@ class AlumnoController {
 			redirect(action: "list")
 			return
 		}
+		
+		def authorities =  springSecurityService.principal.authorities				
+		def permiteVisualizar = true
+		if(usuarioService.poseeElRol(authorities, 'ROLE_ALUMNO')){
+			permiteVisualizar = usuarioService.esElUsuarioLogueado(id)		
+		}
+		
+		if(!permiteVisualizar){
+			render(view: "/noAutorizado" )
+			return
+		}		
 
 		[alumnoInstance: alumnoInstance]
 	}
-
+	
+	@Secured([
+		'ROLE_ADMINISTRADOR_SISTEMA',
+		'ROLE_ADMINISTRATIVO',
+		'ROLE_ALUMNO',
+	])
 	def edit(Long id) {
 		def alumnoInstance = Alumno.get(id)
 		if (!alumnoInstance) {
@@ -93,6 +109,18 @@ class AlumnoController {
 				id
 			])
 			redirect(action: "list")
+			return
+		}
+		
+		def authorities =  springSecurityService.principal.authorities
+		def permiteEditar = true
+		if(usuarioService.poseeElRol(authorities, 'ROLE_ALUMNO')){
+			permiteEditar = usuarioService.esElUsuarioLogueado(id)
+		}
+		
+		if(!permiteEditar){
+			flash.message = message(code: 'permisoEdicion.denegado', args: [message(code: 'alumno.label', default: 'Alumno'), id])
+			redirect(action: "show", id: alumnoInstance.id)
 			return
 		}
 

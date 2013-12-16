@@ -39,7 +39,7 @@
 
 <g:if test="${alumnoInstance?.fotoPerfil}">
 	<div class="fieldcontain"> <rendering:inlinePng
-		bytes="${alumnoInstance.fotoPerfil}" height="165" />
+		bytes="${alumnoInstance.fotoPerfil}" width="160" />
 	</div>
 </g:if>
 

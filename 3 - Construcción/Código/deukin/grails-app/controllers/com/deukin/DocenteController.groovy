@@ -102,8 +102,18 @@ class DocenteController {
                 return
             }
         }
+		
+		def fileInstance = docenteInstance.fotoPerfil
+		def uploadedFile = request.getFile('fotoPerfil')
+		
+		if (uploadedFile.empty){
+			docenteInstance.properties = params
+			docenteInstance.fotoPerfil = fileInstance
+		}else{
+			docenteInstance.properties = params
+		}
 
-        docenteInstance.properties = params
+        
 
         if (!docenteInstance.save(flush: true)) {
             render(view: "edit", model: [docenteInstance: docenteInstance])

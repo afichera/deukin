@@ -48,20 +48,21 @@
 				<tbody>
 					<g:each in="${alumnoInstanceList}" status="i" var="alumnoInstance">
 						<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-							<g:if test="${alumnoInstance?.fotoPerfil}">
-								<td><g:link action="show" id="${alumnoInstance.id}">
+							<td><g:if test="${alumnoInstance?.fotoPerfil}">
+								<g:link action="show" id="${alumnoInstance.id}">
 										<rendering:inlinePng bytes="${alumnoInstance.fotoPerfil}"
 											width="50" />
 
-									</g:link></td>
+									</g:link>
 							</g:if>
-							<td><g:if test="${alumnoInstance?.fotoPerfil == null}">
+							<g:if test="${alumnoInstance?.fotoPerfil == null}">
 									<g:link action="show" id="${alumnoInstance.id}">
 										<img height="50" width="50"
 											src="${resource(dir: 'images', file: 'buddyicon.jpg')}"
 											alt="Grails" />
 									</g:link>
-								</g:if></td>
+								</g:if>
+							</td>
 							<td><g:link action="show" id="${alumnoInstance.id}">
 									${fieldValue(bean: alumnoInstance, field: "usuario.username")}
 								</g:link></td>

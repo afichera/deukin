@@ -151,14 +151,7 @@ class AlumnoController {
 			}
 		}
 
-//		def fotoPerfilAnterior = alumnoInstance.fotoPerfil
-//
-//		alumnoInstance.properties = params
-//
-//		//esto evita que se nulee la foto de perfil al actualizar si ya tenia.
-//		if(alumnoInstance.fotoPerfil == null){
-//			alumnoInstance.fotoPerfil = fotoPerfilAnterior
-//		}
+
 		
 		def esAdministrador = usuarioService.poseeElRol(springSecurityService.principal.authorities,'ROLE_ADMINISTRADOR_SISTEMA')
 		if(esAdministrador){
@@ -174,6 +167,16 @@ class AlumnoController {
 		
 		}
 
+		def fileInstance = alumnoInstance.fotoPerfil
+		def uploadedFile = request.getFile('fotoPerfil')
+		
+		if (uploadedFile.empty){
+			alumnoInstance.properties = params
+			alumnoInstance.fotoPerfil = fileInstance
+		}else{
+			alumnoInstance.properties = params
+		}
+				
 		if (!alumnoInstance.save(flush: true)) {
 			render(view: "edit", model: [alumnoInstance: alumnoInstance])
 			return

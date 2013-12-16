@@ -103,7 +103,10 @@ class DocenteController {
             }
         }
 
+		
         docenteInstance.properties = params
+		
+		
 
         if (!docenteInstance.save(flush: true)) {
             render(view: "edit", model: [docenteInstance: docenteInstance])

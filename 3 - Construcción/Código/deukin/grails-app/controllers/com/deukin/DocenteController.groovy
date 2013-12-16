@@ -102,7 +102,7 @@ class DocenteController {
                 return
             }
         }
-		
+	
 		def fileInstance = docenteInstance.fotoPerfil
 		def uploadedFile = request.getFile('fotoPerfil')
 		
@@ -114,7 +114,8 @@ class DocenteController {
 		}
 
         
-
+		
+		
         if (!docenteInstance.save(flush: true)) {
             render(view: "edit", model: [docenteInstance: docenteInstance])
             return

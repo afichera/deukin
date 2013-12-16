@@ -35,7 +35,7 @@
 			</ul>
 		</g:hasErrors>
 		<div class="row">
-			<div class="col-lg-6">
+			<div class="col-lg-12 col-md-12 col-sx-12 lista-propiedades">
 				<div class="well">
 					<g:form method="post"
 						>
@@ -47,10 +47,8 @@
 						<fieldset class="buttons">
 							<g:actionSubmit class="save" action="update" class="btn btn-success"
 								value="${message(code: 'default.button.update.label', default: 'Update')}" />
-							<g:actionSubmit class="btn btn-danger" action="delete"
-								value="${message(code: 'default.button.delete.label', default: 'Delete')}"
-								formnovalidate=""
-								onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+							<g:link class="btn btn-default" action="show" id="${inscripcionInstitucionInstance?.id}">		
+					<g:message code="cancelar" default="Cancelar" /></g:link>
 						</fieldset>
 					</g:form>
 				</div>

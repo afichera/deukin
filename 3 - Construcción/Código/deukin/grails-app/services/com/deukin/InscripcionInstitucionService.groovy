@@ -143,6 +143,23 @@ class InscripcionInstitucionService {
 		inscripcion.save()
 		inscripcion
 	}
-
+	public String validaNumeros (params)
+	{
+		String erroneas = ''
+		
+		if (!params.documentoNumero.isInteger()&&params.documentoNumero)
+		erroneas = erroneas + '"Número de Documento", '
+		
+		if (!params.calleNumero.isInteger()&&params.calleNumero)
+		erroneas = erroneas + '"Número", '
+		
+		if (!params.codigoPostal.isInteger()&&params.codigoPostal)
+		erroneas = erroneas + '"Código Postal", '
+		
+		
+	
+		
+		erroneas
+	}
 
 }

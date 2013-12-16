@@ -54,7 +54,95 @@
 
 </div>
 
+<div class="row">
+<label for="calle" class="control-label col-lg-2"> <g:message
+									code="domicilio.calle.label" default="Calle" /> <span
+								class="required-indicator">*</span> :
+							</label>
+							<div class="col-lg-10">
+								<g:textField class="form-control" name="contacto.domicilio.calle"
+									value="${alumnoInstance?.contacto?.domicilio?.calle}" maxlength="100" required="true" />
 
+
+								
+							</div>
+						</div>
+
+
+						<div class="row">
+							<label for="numero" class="control-label col-lg-2">
+								<g:message code="domicilio.numero.label"
+									default="Número" /> <span class="required-indicator">*</span>
+								:
+							</label>
+							<div class="col-lg-10">
+								<g:textField class="form-control" name="contacto.domicilio.numero"
+									type="number" value="${alumnoInstance?.contacto?.domicilio?.numero}"
+									required="true"
+									onkeyup="soloNumeros(this,'#validaNumeroCalle')" />
+								<span class="alert alert-error" id="validaNumeroCalle"
+									style="display: none;"> <g:message
+										code="invalid.soloNumeros" /></span>
+
+
+
+							
+							</div>
+						</div>
+
+						<div class="row">
+							<label for="localidad" class="control-label col-lg-2"> <g:message
+									code="domicilio.localidad.label"
+									default="Localidad" /> <span class="required-indicator">*</span>
+								:
+							</label>
+							<div class="col-lg-10">
+								<g:textField class="form-control" name="contacto.domicilio.localidad"
+									value="${alumnoInstance?.contacto?.domicilio?.localidad}" maxlength="100"
+									required="true" />
+
+
+							</div>
+						</div>
+
+
+						<div class="row">
+							<label for="codigoPostal" class="control-label col-lg-2">
+								<g:message code="domicilio.codigoPostal.label"
+									default="Código Postal" /> <span class="required-indicator">*</span>
+								:
+							</label>
+							<div class="col-lg-10">
+								<g:textField name="contacto.domicilio.codigoPostal" type="number" required="true"
+									maxlength="4" value="${alumnoInstance?.contacto?.domicilio?.codigoPostal}"
+									onkeyup="soloNumeros(this,'#validaCodigo')" />
+								<span class="alert alert-error" id="validaCodigo"
+									style="display: none;"> <g:message
+										code="invalid.soloNumeros" /></span>
+
+
+								
+							</div>
+						</div>
+
+
+						<div class="row">
+							<label for="observaciones" class="control-label col-lg-2">
+								<g:message code="domicilio.observaciones.label"
+									default="Observaciones" /> :
+							</label>
+							<div class="col-lg-10">
+								<g:textField class="form-control" name="contacto.domicilio.observaciones"
+									value="${alumnoInstance?.contacto?.domicilio?.observaciones}" />
+
+
+								
+							</div>
+						</div>
+<div class="row"><div class="col-lg-12">
+<em><g:message code="aclaracionTelefonos.label" default="" /></em>
+
+</div></div>
 <div
 	class="fieldcontain ${hasErrors(bean: alumnoInstance, field: 'fotoPerfil', 'error')}  row">
 	<label for="fotoPerfil" class="control-label col-lg-2"> <g:message

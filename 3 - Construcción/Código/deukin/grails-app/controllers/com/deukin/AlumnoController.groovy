@@ -167,6 +167,16 @@ class AlumnoController {
 		
 		}
 
+		String validacionNumeros = alumnoService.validaNumeros(params)
+		if (validacionNumeros!="")
+		
+		{
+			alumnoInstance.clearErrors()
+			alumnoInstance.errors.reject(message(code: 'materia.invalid.numeros', args:[validacionNumeros]))
+			render(view: "edit", model: [alumnoInstance: alumnoInstance])
+			return
+		}
+		
 		def fileInstance = alumnoInstance.fotoPerfil
 		def uploadedFile = request.getFile('fotoPerfil')
 		

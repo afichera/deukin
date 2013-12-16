@@ -48,4 +48,18 @@ class AlumnoService {
 		alumnos
 
 	}
+	
+	public String validaNumeros (params)
+	{
+		String erroneas = ''
+		
+		if (!params.contacto.domicilio.numero.isInteger()&&params.contacto.domicilio.numero)
+		erroneas = erroneas + '"Número", '
+		
+		if (!params.contacto.domicilio.codigoPostal.isInteger()&&params.contacto.domicilio.codigoPostal)
+		erroneas = erroneas + '"Código Postal", '
+	
+		
+		erroneas
+	}
 }

@@ -102,6 +102,15 @@ class DocenteController {
                 return
             }
         }
+		String validacionNumeros = docenteService.validaNumeros(params)
+		if (validacionNumeros!="")
+		
+		{
+			docenteInstance.clearErrors()
+			docenteInstance.errors.reject(message(code: 'materia.invalid.numeros', args:[validacionNumeros]))
+			render(view: "edit", model: [docenteInstance: docenteInstance])
+			return
+		}
 	
 		def fileInstance = docenteInstance.fotoPerfil
 		def uploadedFile = request.getFile('fotoPerfil')

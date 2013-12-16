@@ -5,24 +5,18 @@
 <meta name="layout" content="main">
 <g:set var="entityName"
 	value="${message(code: 'telefono.label', default: 'Telefono')}" />
-<title><g:message code="default.create.label"
-		args="[entityName]" /></title>
+<title><g:message code="telefono.create.label"
+		 /></title>
 </head>
 <body>
-	<div class="navbar navbar-inverse" role="navigation">
-			<ul class="nav navbar-nav">
-				<li><g:link class="list" action="list">
-					<g:message code="default.list.label" args="[entityName]" />
-				</g:link></li>
-		</ul>
-	</div>
+
 	<div id="create-telefono"
 		class="content scaffold-create" role="main">
 		<h1>
-			<g:message code="default.create.label" args="[entityName]" />
+			<g:message code="telefono.create.label"/>
 		</h1>
 		<g:if test="${flash.message}">
-			<div class="message" role="status">${flash.message}</div>
+			<div class="message alert alert-danger" role="status">${flash.message}</div>
 		</g:if>
 		<g:hasErrors bean="${telefonoInstance}">
 			<ul class="alert alert-danger" role="alert">
@@ -34,7 +28,7 @@
 			</ul>
 		</g:hasErrors>
 		<div class="row">
-			<div class="col-lg-6">
+			<div class="col-lg-12 col-md-12 col-sx-12 lista-propiedades">
 				<div class="well">
 					<g:form action="save"
 						>

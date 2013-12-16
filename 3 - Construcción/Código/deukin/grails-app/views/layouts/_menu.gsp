@@ -204,4 +204,25 @@
 					</g:link></li>
 			</ul></li>
 	</sec:ifAnyGranted>
+		<sec:ifAnyGranted roles="ROLE_DOCENTE">
+		<li class="dropdown"><a href="#" class="dropdown-toggle"
+			data-toggle="dropdown"><g:message code="secciones.misDatos" /><b
+				class="caret"></b></a>
+			<ul class="dropdown-menu">
+				<li><g:link controller='homeDocente' action="misDatos">
+						<g:message code="secciones.misDatos" />
+					</g:link></li>
+			</ul></li>
+	</sec:ifAnyGranted>
+	
+			<sec:ifAnyGranted roles="ROLE_ALUMNO">
+		<li class="dropdown"><a href="#" class="dropdown-toggle"
+			data-toggle="dropdown"><g:message code="secciones.misDatos" /><b
+				class="caret"></b></a>
+			<ul class="dropdown-menu">
+				<li><g:link controller='homeAlumno' action="misDatos">
+						<g:message code="secciones.misDatos" />
+					</g:link></li>
+			</ul></li>
+	</sec:ifAnyGranted>
 </ul>

@@ -157,7 +157,10 @@
 						</div>
 
 
+<div class="row"><div class="col-lg-12">
+<em><g:message code="aclaracionTelefonos.label" default="" /></em>
 
+</div></div>
 <div class="fieldcontain ${hasErrors(bean: docenteInstance, field: 'fotoPerfil', 'error')} row">
 	<label for="fotoPerfil" class="control-label col-lg-2"> <g:message
 			code="alumno.fotoPerfil.label" default="Foto Perfil" />

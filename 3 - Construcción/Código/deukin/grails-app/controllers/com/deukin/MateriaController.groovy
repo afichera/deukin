@@ -95,7 +95,7 @@ class MateriaController {
 		}
 		
 		if (!materiaInstance.save(flush: true)) {
-			flash.message = message(code: 'xx', default: 'no grabo la materia')
+			flash.message = message(code: 'xx', default: 'No se pudo grabar la materia')
 			render(view: "create", model: [materiaInstance: materiaInstance])
 			return
 		}

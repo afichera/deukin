@@ -33,7 +33,7 @@ class EquivalenciaController {
 				return
 			}
 		}catch(Exception e){
-			String eMessage = ex.getCause()?.getMessage()
+			String eMessage = e.getCause()?.getMessage()
 			flash.message = eMessage
 			render(view: "create", model: [correlatividadInstance: correlatividadInstance])
 		}
@@ -100,7 +100,7 @@ class EquivalenciaController {
             	return
         	}
 		}catch(Exception e){
-			String eMessage = ex.getCause()?.getMessage()
+			String eMessage = e.getCause()?.getMessage()
 			flash.message = eMessage
 			render(view: "edit", model: [correlatividadInstance: correlatividadInstance])
 		}

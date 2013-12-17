@@ -4,10 +4,7 @@ import com.deukin.exceptions.BusinessException
 
 class CorrelatividadService {
 
-    def serviceMethod() {
 
-    }
-	
 
 	def validarCorrelatividad(def futuraCorrelatividad){
 		

@@ -35,7 +35,8 @@ class EquivalenciaController {
 		}catch(Exception e){
 			String eMessage = e.getCause()?.getMessage()
 			flash.message = eMessage
-			render(view: "create", model: [equivalenciaInstance: equivalenciaInstance])
+			render(view: "create", model: [equivalenciaInstance: equivalenciaInstance])	
+			return		
 		}
 		
         flash.message = message(code: 'equivalencia.created.message', args: [message(code: 'equivalencia.label', default: 'Equivalencia'), equivalenciaInstance.id])

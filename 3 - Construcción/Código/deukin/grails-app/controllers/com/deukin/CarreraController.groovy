@@ -109,7 +109,7 @@ class CarreraController {
 	
 			try {
 				carreraInstance.delete(flush: true)
-				flash.message = message(code: 'default.deleted.message', args: [message(code: 'carrera.label', default: 'Carrera'), id])
+				flash.message = message(code: 'carrera.deleted.message', args: [message(code: 'carrera.label', default: 'Carrera'), id])
 				redirect(action: "list")
 			}
 			catch (DataIntegrityViolationException e) {

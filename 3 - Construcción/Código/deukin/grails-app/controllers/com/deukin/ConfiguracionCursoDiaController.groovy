@@ -26,7 +26,7 @@ class ConfiguracionCursoDiaController {
             return
         }
 
-        flash.message = message(code: 'default.created.message', args: [message(code: 'configuracionCursoDia.label', default: 'ConfiguracionCursoDia'), configuracionCursoDiaInstance.curso.codigo])
+        flash.message = message(code: 'configuracionCursoDia.created.message', args: [message(code: 'configuracionCursoDia.label', default: 'ConfiguracionCursoDia'), configuracionCursoDiaInstance.curso.codigo])
         redirect(controller:"cursos", action: "show", id: configuracionCursoDiaInstance.curso.id)
     }
 
@@ -77,7 +77,7 @@ class ConfiguracionCursoDiaController {
             return
         }
 
-        flash.message = message(code: 'default.updated.message', args: [message(code: 'configuracionCursoDia.label', default: 'ConfiguracionCursoDia'), configuracionCursoDiaInstance.id])
+        flash.message = message(code: 'configuracionCursoDia.updated.message', args: [message(code: 'configuracionCursoDia.label', default: 'ConfiguracionCursoDia'), configuracionCursoDiaInstance.id])
         redirect(controller:"cursos", action: "show", id: configuracionCursoDiaInstance.curso.codigo)
     }
 
@@ -92,7 +92,7 @@ class ConfiguracionCursoDiaController {
 
         try {
             configuracionCursoDiaInstance.delete(flush: true)
-            flash.message = message(code: 'default.deleted.message', args: [message(code: 'configuracionCursoDia.label', default: 'ConfiguracionCursoDia'), id])
+            flash.message = message(code: 'configuracionCursoDia.deleted.message', args: [message(code: 'configuracionCursoDia.label', default: 'ConfiguracionCursoDia'), id])
             redirect(controller:"cursos",action: "show", id:idRegreso)
         }
         catch (DataIntegrityViolationException e) {

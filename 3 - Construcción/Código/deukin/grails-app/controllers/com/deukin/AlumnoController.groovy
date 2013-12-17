@@ -64,7 +64,7 @@ class AlumnoController {
 			return
 		}
 
-		flash.message = message(code: 'default.created.message', args: [
+		flash.message = message(code: 'alumno.created.message', args: [
 			message(code: 'alumno.label', default: 'Alumno'),
 			alumnoInstance.id
 		])
@@ -192,9 +192,9 @@ class AlumnoController {
 			return
 		}
 
-		flash.message = message(code: 'default.updated.message', args: [
-			message(code: 'alumno.label', default: 'Alumno'),
-			alumnoInstance.id
+		flash.message = message(code: 'alumno.updated.message', args: [
+			
+			alumnoInstance.toString()
 		])
 		redirect(action: "show", id: alumnoInstance.id)
 	}
@@ -231,7 +231,7 @@ class AlumnoController {
 
 		try {
 			alumnoInstance.delete(flush: true)
-			flash.message = message(code: 'default.deleted.message', args: [
+			flash.message = message(code: 'alumno.deleted.message', args: [
 				message(code: 'alumno.label', default: 'Alumno'),
 				id
 			])

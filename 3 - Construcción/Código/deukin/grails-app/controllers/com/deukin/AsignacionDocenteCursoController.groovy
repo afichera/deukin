@@ -27,7 +27,7 @@ class AsignacionDocenteCursoController {
             return
         }
 
-        flash.message = message(code: 'default.created.message', args: [message(code: 'asignacionDocenteCurso.label', default: 'AsignacionDocenteCurso'), asignacionDocenteCursoInstance.id])
+        flash.message = message(code: 'asignacionDocenteCurso.created.message', args: [message(code: 'asignacionDocenteCurso.label', default: 'AsignacionDocenteCurso'), asignacionDocenteCursoInstance.id])
         redirect(controller:"cursos",action: "show", id: asignacionDocenteCursoInstance.configuracionCursoDia.curso.id)
     }
 
@@ -78,7 +78,7 @@ class AsignacionDocenteCursoController {
             return
         }
 
-        flash.message = message(code: 'default.updated.message', args: [message(code: 'asignacionDocenteCurso.label', default: 'AsignacionDocenteCurso'), asignacionDocenteCursoInstance.id])
+        flash.message = message(code: 'asignacionDocenteCurso.updated.message', args: [message(code: 'asignacionDocenteCurso.label', default: 'AsignacionDocenteCurso'), asignacionDocenteCursoInstance.id])
         redirect(controller:"cursos",action: "show", id: asignacionDocenteCursoInstance.configuracionCursoDia.curso.id)
     }
 
@@ -93,7 +93,7 @@ class AsignacionDocenteCursoController {
 
         try {
             asignacionDocenteCursoInstance.delete(flush: true)
-            flash.message = message(code: 'default.deleted.message', args: [message(code: 'asignacionDocenteCurso.label', default: 'AsignacionDocenteCurso'), id])
+            flash.message = message(code: 'asignacionDocenteCurso.deleted.message', args: [message(code: 'asignacionDocenteCurso.label', default: 'AsignacionDocenteCurso'), id])
             redirect(controller:"cursos",action: "show", id:idRegreso)
         }
         catch (DataIntegrityViolationException e) {

@@ -42,7 +42,7 @@ class DocenteController {
             return
         }
 
-        flash.message = message(code: 'default.created.message', args: [message(code: 'docente.label', default: 'Docente'), docenteInstance.id])
+        flash.message = message(code: 'default.created.message', args: [message(code: 'docente.label', default: 'Docente'), docenteInstance.toString()])
         redirect(action: "show", id: docenteInstance.id)
     }
 
@@ -130,7 +130,7 @@ class DocenteController {
             return
         }
 
-        flash.message = message(code: 'default.updated.message', args: [message(code: 'docente.label', default: 'Docente'), docenteInstance.id])
+        flash.message = message(code: 'docente.updated.message', args: [docenteInstance.toString()])
         redirect(action: "show", id: docenteInstance.id)
     }
 

@@ -7,6 +7,7 @@ import org.springframework.dao.DataIntegrityViolationException
 @Secured(['ROLE_COORDINADOR'])
 class EquivalenciaController {
 	def springSecurityService
+	def equivalenciaService
 	def materiaService
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
@@ -25,11 +26,18 @@ class EquivalenciaController {
 
     def save() {
         def equivalenciaInstance = new Equivalencia(params)
-        if (!equivalenciaInstance.save(flush: true)) {
-            render(view: "create", model: [equivalenciaInstance: equivalenciaInstance])
-            return
-        }
-
+		try{
+			equivalenciaService.validar(equivalenciaInstance)
+			if (!equivalenciaInstance.save(flush: true)) {
+				render(view: "create", model: [equivalenciaInstance: equivalenciaInstance])
+				return
+			}
+		}catch(Exception e){
+			String eMessage = ex.getCause()?.getMessage()
+			flash.message = eMessage
+			render(view: "create", model: [correlatividadInstance: correlatividadInstance])
+		}
+		
         flash.message = message(code: 'default.created.message', args: [message(code: 'equivalencia.label', default: 'Equivalencia'), equivalenciaInstance.id])
         
 		if (params.vieneDeMateria=="true") {
@@ -85,11 +93,18 @@ class EquivalenciaController {
 
         equivalenciaInstance.properties = params
 
-        if (!equivalenciaInstance.save(flush: true)) {
-            render(view: "edit", model: [equivalenciaInstance: equivalenciaInstance])
-            return
-        }
-
+		try{
+			equivalenciaService.validar(equivalenciaInstance)
+			if (!equivalenciaInstance.save(flush: true)) {
+            	render(view: "edit", model: [equivalenciaInstance: equivalenciaInstance])
+            	return
+        	}
+		}catch(Exception e){
+			String eMessage = ex.getCause()?.getMessage()
+			flash.message = eMessage
+			render(view: "edit", model: [correlatividadInstance: correlatividadInstance])
+		}
+		
         flash.message = message(code: 'default.updated.message', args: [message(code: 'equivalencia.label', default: 'Equivalencia'), equivalenciaInstance.id])
         redirect(action: "show", id: equivalenciaInstance.id)
     }

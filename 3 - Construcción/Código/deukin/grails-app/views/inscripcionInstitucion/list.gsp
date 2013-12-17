@@ -23,7 +23,7 @@
 			<g:message code="inscripcionInstitucion.list.label" />
 		</h1>
 		<g:if test="${flash.message}">
-			<div class="message" role="status">
+			<div class="message alert alert-info" role="status">
 				${flash.message}
 			</div>
 		</g:if>

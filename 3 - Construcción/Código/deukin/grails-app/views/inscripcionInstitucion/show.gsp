@@ -13,8 +13,7 @@
 	<div class="navbar navbar-inverse" role="navigation">
 		<ul class="nav navbar-nav">
 			<li><g:link class="list" action="list">
-					<g:message code="inscripcionInstitucion.list.label"
-						args="[entityName]" />
+					<g:message code="inscripcionInstitucion.list.label" />
 				</g:link></li>
 			<li><g:link class="create" controller="inscripcionInstitucion">
 					<g:message code="inscripcionInstitucion.new.label" />
@@ -25,234 +24,313 @@
 	<div id="show-inscripcionInstitucion" class="content scaffold-show"
 		role="main">
 		<h1>
-			<g:message code="default.show.label" args="[entityName]" />
+			<g:message code="inscripcionInstitucion.show.label" />
 		</h1>
 		<g:if test="${flash.message}">
-			<div class="message" role="status">
+			<div class="message alert alert-info" role="status">
 				${flash.message}
 			</div>
 		</g:if>
 		<div class="row">
-			<div class="col-lg-6">
+			<div class="col-lg-12 col-md-12 col-sx-12 lista-propiedades">
 				<div class="well">
-					<ol class="property-list inscripcionInstitucion">
-						<div>
-							<label class="control-label"> <g:message
-									code="inscripcionInstitucion.datosPersonales.label" />
-							</label>
+
+
+
+					<div class="fieldcontain row">
+						<div class="control-label col-lg-12">
+							<h3>
+								<g:message code="inscripcionInstitucion.datosInscripcion.label"
+									class="control-label col-lg-2" />
+								:
+							</h3>
 
 						</div>
-						<g:if test="${inscripcionInstitucionInstance?.usuarioRegistro}">
-							<li class="fieldcontain"><span id="usuarioRegistro-label"
-								class="property-label"><g:message
-										code="inscripcionInstitucion.usuarioRegistro.label"
-										default="Usuario Registro" /></span> <span class="property-value"
-								aria-labelledby="usuarioRegistro-label"><g:fieldValue
-										bean="${inscripcionInstitucionInstance}"
-										field="usuarioRegistro.username"></g:fieldValue> </span></li>
-						</g:if>
-
-						<g:if test="${inscripcionInstitucionInstance?.apellido}">
-							<li class="fieldcontain"><span id="apellido-label"
-								class="property-label"><g:message
-										code="inscripcionInstitucion.apellido.label"
-										default="Apellido" /></span> <span class="property-value"
-								aria-labelledby="apellido-label"><g:fieldValue
-										bean="${inscripcionInstitucionInstance}" field="apellido" /></span></li>
-						</g:if>
-
-						<g:if test="${inscripcionInstitucionInstance?.nombre}">
-							<li class="fieldcontain"><span id="nombre-label"
-								class="property-label"><g:message
-										code="inscripcionInstitucion.nombre.label" default="Nombre" /></span>
-
-								<span class="property-value" aria-labelledby="nombre-label"><g:fieldValue
-										bean="${inscripcionInstitucionInstance}" field="nombre" /></span></li>
-						</g:if>
-						<g:if test="${inscripcionInstitucionInstance?.fechaNacimiento}">
-							<li class="fieldcontain"><span id="fechaNacimiento-label"
-								class="property-label"><g:message
-										code="inscripcionInstitucion.fechaNacimiento.label"
-										default="Fecha Nacimiento" /></span> <span class="property-value"
-								aria-labelledby="fechaNacimiento-label"><g:formatDate
-										date="${inscripcionInstitucionInstance?.fechaNacimiento}" /></span>
-
-							</li>
-						</g:if>
-
-						<g:if test="${inscripcionInstitucionInstance?.sexo}">
-							<li class="fieldcontain"><span id="sexo-label"
-								class="property-label"><g:message
-										code="inscripcionInstitucion.sexo.label" default="Sexo" /></span> <span
-								class="property-value" aria-labelledby="sexo-label"><g:fieldValue
-										bean="${inscripcionInstitucionInstance}" field="sexo" /></span></li>
-						</g:if>
-
-						<g:if test="${inscripcionInstitucionInstance?.tipoDocumento}">
-							<li class="fieldcontain"><span id="tipoDocumento-label"
-								class="property-label"><g:message
-										code="inscripcionInstitucion.tipoDocumento.label"
-										default="Tipo Documento" /></span> <span class="property-value"
-								aria-labelledby="tipoDocumento-label"><g:fieldValue
-										bean="${inscripcionInstitucionInstance}" field="tipoDocumento" /></span>
-
-							</li>
-						</g:if>
-
-						<g:if test="${inscripcionInstitucionInstance?.documentoNumero}">
-							<li class="fieldcontain"><span id="documentoNumero-label"
-								class="property-label"><g:message
-										code="inscripcionInstitucion.documentoNumero.label"
-										default="Documento Numero" /></span> <span class="property-value"
-								aria-labelledby="documentoNumero-label"> ${inscripcionInstitucionInstance?.numeroDocumentoAsText()}
-							</span></li>
-						</g:if>
-
-						<br />
-						<div>
-							<label class="control-label"> <g:message
-									code="inscripcionInstitucion.titulos.datosContacto" />
-							</label>
-
-						</div>
-						<g:if test="${inscripcionInstitucionInstance?.calle}">
-							<li class="fieldcontain"><span id="calle-label"
-								class="property-label"><g:message
-										code="inscripcionInstitucion.calle.label" default="Calle" /></span>
-
-								<span class="property-value" aria-labelledby="calle-label"><g:fieldValue
-										bean="${inscripcionInstitucionInstance}" field="calle" /></span></li>
-						</g:if>
-						<g:if test="${inscripcionInstitucionInstance?.calleNumero}">
-							<li class="fieldcontain"><span id="calleNumero-label"
-								class="property-label"><g:message
-										code="inscripcionInstitucion.calleNumero.label"
-										default="Calle Numero" /></span> <span class="property-value"
-								aria-labelledby="calleNumero-label"><g:fieldValue
-										bean="${inscripcionInstitucionInstance}" field="calleNumero" /></span>
-
-							</li>
-						</g:if>
-
-						<g:if test="${inscripcionInstitucionInstance?.localidad}">
-							<li class="fieldcontain"><span id="localidad-label"
-								class="property-label"><g:message
-										code="inscripcionInstitucion.localidad.label"
-										default="Localidad" /></span> <span class="property-value"
-								aria-labelledby="localidad-label"><g:fieldValue
-										bean="${inscripcionInstitucionInstance}" field="localidad" /></span>
-
-							</li>
-						</g:if>
-						<g:if test="${inscripcionInstitucionInstance?.codigoPostal}">
-							<li class="fieldcontain"><span id="codigoPostal-label"
-								class="property-label"><g:message
-										code="inscripcionInstitucion.codigoPostal.label"
-										default="Codigo Postal" /></span> <span class="property-value"
-								aria-labelledby="codigoPostal-label"><g:fieldValue
-										bean="${inscripcionInstitucionInstance}" field="codigoPostal" /></span>
-
-							</li>
-						</g:if>
-
-						<g:if test="${inscripcionInstitucionInstance?.observaciones}">
-							<li class="fieldcontain"><span id="observaciones-label"
-								class="property-label"><g:message
-										code="inscripcionInstitucion.observaciones.label"
-										default="Observaciones" /></span> <span class="property-value"
-								aria-labelledby="observaciones-label"><g:fieldValue
-										bean="${inscripcionInstitucionInstance}" field="observaciones" /></span>
-
-							</li>
-						</g:if>
-						<g:if test="${inscripcionInstitucionInstance?.tipoTelefono}">
-							<li class="fieldcontain"><span id="tipoTelefono-label"
-								class="property-label"><g:message
-										code="inscripcionInstitucion.tipoTelefono.label"
-										default="Tipo Telefono" /></span> <span class="property-value"
-								aria-labelledby="tipoTelefono-label"><g:fieldValue
-										bean="${inscripcionInstitucionInstance}" field="tipoTelefono" /></span>
-
-							</li>
-						</g:if>
-
-
-						<g:if test="${inscripcionInstitucionInstance?.telefonoNumero}">
-							<li class="fieldcontain"><span id="telefonoNumero-label"
-								class="property-label"><g:message
-										code="inscripcionInstitucion.telefonoNumero.label"
-										default="Telefono Numero" /></span> <span class="property-value"
-								aria-labelledby="telefonoNumero-label"><g:fieldValue
-										bean="${inscripcionInstitucionInstance}"
-										field="telefonoNumero" /></span></li>
-						</g:if>
-
-
-
-						<br />
-						<div>
-							<label class="control-label"> <g:message
-									code="inscripcionInstitucion.datosInscripcion.label"
-									class="control-label" />
-							</label>
-
+						<label id="fechaInscripcion-label" class="property-label col-lg-2"><g:message
+								code="inscripcionInstitucion.fechaInscripcion.label"
+								default="Fecha Inscripcion" />: </label>
+						<div class="property-value col-lg-10"
+							aria-labelledby="fechaInscripcion-label">
+							<g:if test="${inscripcionInstitucionInstance?.fechaInscripcion}">
+								<g:formatDate
+									date="${inscripcionInstitucionInstance?.fechaInscripcion}" />
+							</g:if>
 						</div>
 
-						<g:if test="${inscripcionInstitucionInstance?.fechaInscripcion}">
-							<li class="fieldcontain"><span id="fechaInscripcion-label"
-								class="property-label"><g:message
-										code="inscripcionInstitucion.fechaInscripcion.label"
-										default="Fecha Inscripcion" /></span> <span class="property-value"
-								aria-labelledby="fechaInscripcion-label"><g:formatDate
-										date="${inscripcionInstitucionInstance?.fechaInscripcion}" /></span>
-
-							</li>
-						</g:if>
-
-						<g:if
-							test="${inscripcionInstitucionInstance?.estadoInscripcionInstitucion}">
-							<li class="fieldcontain"><span
-								id="estadoInscripcionInstitucion-label" class="property-label"><g:message
-										code="inscripcionInstitucion.estadoInscripcionInstitucion.label"
-										default="Estado Inscripcion Institucion" /></span> <span
-								class="property-value"
-								aria-labelledby="estadoInscripcionInstitucion-label"><g:fieldValue
-										bean="${inscripcionInstitucionInstance}"
-										field="estadoInscripcionInstitucion" /></span></li>
-						</g:if>
+					</div>
 
 
 
-						<g:if test="${inscripcionInstitucionInstance?.fechaBaja}">
-							<li class="fieldcontain"><span id="fechaBaja-label"
-								class="property-label"><g:message
-										code="inscripcionInstitucion.fechaBaja.label"
-										default="Fecha Baja" /></span> <span class="property-value"
-								aria-labelledby="fechaBaja-label"><g:formatDate
-										date="${inscripcionInstitucionInstance?.fechaBaja}" /></span></li>
-						</g:if>
+					<div class="fieldcontain row">
+						<label id="estadoInscripcionInstitucion-label"
+							class="property-label col-lg-2"><g:message
+								code="inscripcionInstitucion.estadoInscripcionInstitucion.label"
+								default="Estado Inscripcion Institucion" />: </label>
+						<div class="property-value col-lg-10"
+							aria-labelledby="estadoInscripcionInstitucion-label">
+							<g:if
+								test="${inscripcionInstitucionInstance?.estadoInscripcionInstitucion}">
+								<g:fieldValue bean="${inscripcionInstitucionInstance}"
+									field="estadoInscripcionInstitucion" />
+							</g:if>
+						</div>
+					</div>
 
-						<g:if test="${inscripcionInstitucionInstance}">
-							<sec:ifAnyGranted roles="ROLE_ADMINISTRADOR_SISTEMA">
-								<div
-									class="fieldcontain ${hasErrors(bean: inscripcionInstitucionInstance, field: 'tipoInscripcionInstitucion', 'error')} required">
-									<label for="tipoInscripcionInstitucion" class="control-label">
-										<g:message
-											code="inscripcionInstitucion.tipoInscripcionInstitucion.label"
-											default="Tipo de Inscripcion" /> <span
-										class="required-indicator">*</span>
-									</label>
-									<g:select name="tipoInscripcionInstitucion" disabled="true"
-										from="${com.deukin.TipoInscripcionInstitucion?.values()}"
-										keys="${com.deukin.TipoInscripcionInstitucion.values()*.name()}"
-										required="true"
-										value="${inscripcionInstitucionInstance?.tipoInscripcionInstitucion?.name()}" />
 
-								</div>
-							</sec:ifAnyGranted>
 
-						</g:if>
-					</ol>
+
+					<g:if test="${inscripcionInstitucionInstance?.fechaBaja}">
+						<div class="fieldcontain row">
+							<label id="fechaBaja-label" class="property-label col-lg-2"><g:message
+									code="inscripcionInstitucion.fechaBaja.label"
+									default="Fecha Baja" />: </label>
+							<div class="property-value col-lg-10"
+								aria-labelledby="fechaBaja-label">
+								<g:formatDate
+									date="${inscripcionInstitucionInstance?.fechaBaja}" />
+							</div>
+						</div>
+
+					</g:if>
+					<div class="fieldcontain row">
+						<label for="tipoInscripcionInstitucion"
+							class="control-label col-lg-2"> <g:message
+								code="inscripcionInstitucion.tipoInscripcionInstitucion.label"
+								default="Tipo de Inscripcion" /> :
+						</label>
+						<div class="property-value col-lg-10">
+							<g:if test="${inscripcionInstitucionInstance}">
+								${inscripcionInstitucionInstance?.tipoInscripcionInstitucion?.name()}
+							</g:if>
+						</div>
+
+					</div>
+
+
+
+
+
+					<div class="fieldcontain row">
+						<div class="control-label col-lg-12">
+							<h3>
+								<g:message code="inscripcionInstitucion.datosPersonales.label" />
+								:
+							</h3>
+
+						</div>
+						<label id="usuarioRegistro-label" class="property-label col-lg-2"><g:message
+								code="inscripcionInstitucion.usuarioRegistro.label"
+								default="Usuario Registro" />: </label>
+						<div class="property-value col-lg-10"
+							aria-labelledby="usuarioRegistro-label">
+							<g:if test="${inscripcionInstitucionInstance?.usuarioRegistro}">
+								<g:fieldValue bean="${inscripcionInstitucionInstance}"
+									field="usuarioRegistro.username"></g:fieldValue>
+							</g:if>
+						</div>
+					</div>
+
+
+
+					<div class="fieldcontain row">
+						<label id="apellido-label" class="property-label col-lg-2"><g:message
+								code="inscripcionInstitucion.apellido.label" default="Apellido" />:
+						</label>
+						<div class="property-value col-lg-10"
+							aria-labelledby="apellido-label">
+							<g:if test="${inscripcionInstitucionInstance?.apellido}">
+								<g:fieldValue bean="${inscripcionInstitucionInstance}"
+									field="apellido" />
+							</g:if>
+						</div>
+					</div>
+
+
+
+					<div class="fieldcontain row">
+						<label id="nombre-label" class="property-label col-lg-2"><g:message
+								code="inscripcionInstitucion.nombre.label" default="Nombre" />:
+						</label>
+
+						<div class="property-value col-lg-10"
+							aria-labelledby="nombre-label">
+							<g:if test="${inscripcionInstitucionInstance?.nombre}">
+								<g:fieldValue bean="${inscripcionInstitucionInstance}"
+									field="nombre" />
+							</g:if>
+						</div>
+					</div>
+
+
+					<div class="fieldcontain row">
+						<label id="fechaNacimiento-label" class="property-label col-lg-2"><g:message
+								code="inscripcionInstitucion.fechaNacimiento.label"
+								default="Fecha Nacimiento" />: </label>
+						<div class="property-value col-lg-10"
+							aria-labelledby="fechaNacimiento-label">
+							<g:if test="${inscripcionInstitucionInstance?.fechaNacimiento}">
+								<g:formatDate
+									date="${inscripcionInstitucionInstance?.fechaNacimiento}" />
+							</g:if>
+						</div>
+
+					</div>
+
+
+
+					<div class="fieldcontain row">
+						<label id="sexo-label" class="property-label col-lg-2"><g:message
+								code="inscripcionInstitucion.sexo.label" default="Sexo" />: </label>
+						<div class="property-value col-lg-10" aria-labelledby="sexo-label">
+							<g:if test="${inscripcionInstitucionInstance?.sexo}">
+								<g:fieldValue bean="${inscripcionInstitucionInstance}"
+									field="sexo" />
+							</g:if>
+						</div>
+					</div>
+
+
+
+					<div class="fieldcontain row">
+						<label id="tipoYNroDocumento-label"
+							class="property-label col-lg-2"><g:message
+								code="inscripcionInstitucion.tipoYNroDocumento.label"
+								default="Tipo y Nro. de Documento" />: </label>
+						<div class="property-value col-lg-10"
+							aria-labelledby="tipoDocumento-label">
+							<g:if test="${inscripcionInstitucionInstance?.tipoDocumento}">
+								<g:fieldValue bean="${inscripcionInstitucionInstance}"
+									field="tipoDocumento" />
+
+							</g:if>
+
+							<g:if test="${inscripcionInstitucionInstance?.documentoNumero}">
+
+
+								${inscripcionInstitucionInstance?.numeroDocumentoAsText()}
+							</g:if>
+						</div>
+					</div>
+
+
+					<br />
+
+
+					<div class="fieldcontain row">
+						<div class="control-label col-lg-12">
+							<h3>
+								<g:message code="inscripcionInstitucion.titulos.datosContacto" />
+								:
+							</h3>
+
+						</div>
+						<label id="calle-label" class="property-label col-lg-2"><g:message
+								code="inscripcionInstitucion.calle.label" default="Calle" />: </label>
+
+						<div class="property-value col-lg-10"
+							aria-labelledby="calle-label">
+							<g:if test="${inscripcionInstitucionInstance?.calle}">
+								<g:fieldValue bean="${inscripcionInstitucionInstance}"
+									field="calle" />
+							</g:if>
+						</div>
+					</div>
+
+
+					<div class="fieldcontain row">
+						<label id="calleNumero-label" class="property-label col-lg-2"><g:message
+								code="inscripcionInstitucion.calleNumero.label"
+								default="Calle Numero" />: </label>
+						<div class="property-value col-lg-10"
+							aria-labelledby="calleNumero-label">
+							<g:if test="${inscripcionInstitucionInstance?.calleNumero}">
+								<g:fieldValue bean="${inscripcionInstitucionInstance}"
+									field="calleNumero" />
+							</g:if>
+						</div>
+
+					</div>
+
+
+
+					<div class="fieldcontain row">
+						<label id="localidad-label" class="property-label col-lg-2"><g:message
+								code="inscripcionInstitucion.localidad.label"
+								default="Localidad" />: </label>
+						<div class="property-value col-lg-10"
+							aria-labelledby="localidad-label">
+							<g:if test="${inscripcionInstitucionInstance?.localidad}">
+								<g:fieldValue bean="${inscripcionInstitucionInstance}"
+									field="localidad" />
+							</g:if>
+						</div>
+
+					</div>
+
+
+					<div class="fieldcontain row">
+						<label id="codigoPostal-label" class="property-label col-lg-2"><g:message
+								code="inscripcionInstitucion.codigoPostal.label"
+								default="Codigo Postal" />: </label>
+						<div class="property-value col-lg-10"
+							aria-labelledby="codigoPostal-label">
+							<g:if test="${inscripcionInstitucionInstance?.codigoPostal}">
+								<g:fieldValue bean="${inscripcionInstitucionInstance}"
+									field="codigoPostal" />
+							</g:if>
+						</div>
+
+					</div>
+
+
+
+					<div class="fieldcontain row">
+						<label id="observaciones-label" class="property-label col-lg-2"><g:message
+								code="inscripcionInstitucion.observaciones.label"
+								default="Observaciones" />: </label>
+						<div class="property-value col-lg-10"
+							aria-labelledby="observaciones-label">
+							<g:if test="${inscripcionInstitucionInstance?.observaciones}">
+								<g:fieldValue bean="${inscripcionInstitucionInstance}"
+									field="observaciones" />
+							</g:if>
+						</div>
+
+					</div>
+
+
+					<div class="fieldcontain row">
+						<label id="tipoYNroTelefono-label" class="property-label col-lg-2"><g:message
+								code="inscripcionInstitucion.tipoYNroTelefono.label"
+								default="Tipo y Nro. de Teléfono" />: </label>
+						<div class="col-lg-10">
+							<g:if test="${inscripcionInstitucionInstance?.tipoTelefono}">
+								<g:fieldValue bean="${inscripcionInstitucionInstance}"
+									field="tipoTelefono" />
+							</g:if>
+
+
+
+
+
+
+
+
+
+							<g:if test="${inscripcionInstitucionInstance?.telefonoNumero}">
+								<g:fieldValue bean="${inscripcionInstitucionInstance}"
+									field="telefonoNumero" />
+							</g:if>
+						</div>
+
+
+					</div>
+
+
+					<br />
+
+
+
 					<g:form>
 						<fieldset class="buttons">
 							<g:hiddenField name="id"

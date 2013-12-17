@@ -117,7 +117,11 @@
 									aria-labelledby="telefono-label">
 								<g:if test="${alumnoInstance?.contacto}">
 									<g:each in="${alumnoInstance?.contacto?.telefonos}" var="t">
-										 ${t?.encodeAsHTML()}<br />
+										 ${t?.encodeAsHTML()}
+										 <g:link controller="telefono" action="delete" id="${t?.id}" params="[origen:'alumno']"><span class="glyphicon glyphicon-trash"
+									title="${message(code: 'default.delete.label', args: [message(code: 'telefono.label', default: 'Teléfono')])}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');"></span></g:link>
+										 
+										 <br />
 										
 									</g:each>
 								</g:if>

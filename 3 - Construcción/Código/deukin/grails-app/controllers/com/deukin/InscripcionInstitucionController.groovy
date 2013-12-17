@@ -63,6 +63,10 @@ class InscripcionInstitucionController {
 		try{
 			persona = inscripcionInstitucionService.confirmarInscripcion(inscripcionInstitucionInstance)
 			correoElectronicoService.enviarMailActivacionPersona(persona)
+			flash.message = message(code: 'inscripcionInstitucion.approved.message', args: [
+				message(code: 'inscripcionInstitucion.label', default: 'InscripcionInstitucion'),
+				inscripcionInstitucionInstance.id
+			])
 			redirect(action: "list")
 			return
 		}catch(Exception ex){
@@ -103,6 +107,9 @@ class InscripcionInstitucionController {
 			redirect(action: "list")
 			return
 		}
+		if(!inscripcionInstitucionInstance.tipoInscripcionInstitucion){
+			inscripcionInstitucionInstance.tipoInscripcionInstitucion = TipoInscripcionInstitucion.ALUMNO
+		}
 
 		[inscripcionInstitucionInstance: inscripcionInstitucionInstance]
 	}
@@ -142,7 +149,15 @@ class InscripcionInstitucionController {
 				return
 			}
 		}
-
+		String validacionNumeros = inscripcionInstitucionService.validaNumeros(params)
+		if (validacionNumeros!="")
+		
+		{
+			inscripcionInstitucionInstance.clearErrors()
+			inscripcionInstitucionInstance.errors.reject(message(code: 'materia.invalid.numeros', args:[validacionNumeros]))
+			render(view: "edit", model: [inscripcionInstitucionInstance: inscripcionInstitucionInstance])
+			return
+		}
 		inscripcionInstitucionInstance.properties = params
 
 		if (!inscripcionInstitucionInstance.save(flush: true)) {
@@ -251,6 +266,12 @@ class InscripcionInstitucionController {
 				{
 					flow.inscripcion.clearErrors()
 					flow.inscripcion.errors.rejectValue("codigoPostal", "inscripcionInstitucion.codigoPostal.invalid.numero")
+					return error()
+				}
+				if (params.codigoPostal.toInteger()>9999||params.codigoPostal.toInteger()<1000)
+				{
+					flow.inscripcion.clearErrors()
+					flow.inscripcion.errors.rejectValue("codigoPostal", "inscripcionInstitucion.codigoPostal.invalid.rango")
 					return error()
 				}
 				flow.inscripcion.codigoPostal = new Integer(params.codigoPostal)

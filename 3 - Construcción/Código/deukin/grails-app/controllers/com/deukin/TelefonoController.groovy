@@ -6,7 +6,7 @@ import com.sun.xml.internal.ws.api.streaming.XMLStreamReaderFactory.Default
 
 class TelefonoController {
 
-    static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
+    static allowedMethods = [save: "POST", update: "POST", delete: "GET"]
 
     def index() {
         redirect(action: "list", params: params)
@@ -107,11 +107,38 @@ class TelefonoController {
             redirect(action: "list")
             return
         }
+		
+		String origen =''
+		
+		if(params.origen) {
+			origen = params.origen
+		}
+		
+	def personaInstance = Persona.findByContacto(telefonoInstance.contacto)
+		
+
 
         try {
+			
             telefonoInstance.delete(flush: true)
-            flash.message = message(code: 'default.deleted.message', args: [message(code: 'telefono.label', default: 'Telefono'), id])
+			if(origen!='') {
+				
+				
+				flash.message = message(code: 'telefono.deleted.message')
+				redirect(controller: origen, action: "show", id: personaInstance.id)
+				
+			}
+		
+			else {
+			flash.message = message(code: 'default.deleted.message', args: [message(code: 'telefono.label', default: 'Telefono'), id])
             redirect(action: "list")
+			}
+			
+            
+			
+			
+			
+			
         }
         catch (DataIntegrityViolationException e) {
             flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'telefono.label', default: 'Telefono'), id])

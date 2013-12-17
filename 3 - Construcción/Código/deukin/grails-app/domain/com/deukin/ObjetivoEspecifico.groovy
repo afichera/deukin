@@ -4,10 +4,10 @@ class ObjetivoEspecifico {
 	String descripcion
 	static belongsTo = [materia:Materia]
     static constraints = {
-		descripcion  blank:false
+		descripcion maxSize:200, blank:false
     }
 	
 	String toString(){
-		descripcion maxSize:200, blank:false
+		descripcion 
 	}
 }

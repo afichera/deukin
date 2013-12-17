@@ -47,16 +47,17 @@ class CorrelatividadService {
 			
 			//Luego en Predecesoras si existen con la principal que viene por parametro
 			//Verifico en la primer linea si existe la materia que vino como predecesora y sino recursivamente c/u de ellas.
+			valida = busquedaCorrelatividadInversa(materiaPrincipal, materiaPredecesora)
+			if(!valida){
+				throw new BusinessException('No se puede crear correlatividad porque ya son correlativas directas en orden inverso.')
+			}
+			
 			valida = busquedaCorrelatividadRecursiva(materiaPrincipal, futuraCorrelatividad)
 	
 			if(!valida){
 				throw new BusinessException('No se puede crear Correlatividad por transitividad de correlativas.')
 			}
-			
-			valida = busquedaCorrelatividadInversa(materiaPrincipal, materiaPredecesora)
-			if(!valida){
-				throw new BusinessException('No se puede crear correlatividad porque ya son correlativas directas en orden inverso.')
-			}
+
 		}else{
 			throw new BusinessException('La correlatividad que intenta crear ya existe')
 		}

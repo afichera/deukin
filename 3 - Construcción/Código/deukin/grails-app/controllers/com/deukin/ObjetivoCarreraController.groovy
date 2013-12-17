@@ -92,7 +92,7 @@ class ObjetivoCarreraController {
 
         try {
             objetivoCarreraInstance.delete(flush: true)
-            flash.message = message(code: 'default.deleted.message', args: [message(code: 'objetivoCarrera.label', default: 'ObjetivoCarrera'), id])
+            flash.message = message(code: 'objetivo.deleted.message', args: [message(code: 'objetivoCarrera.label', default: 'ObjetivoCarrera'), id])
             redirect(controller:"carrera", action: "show", id: objetivoCarreraInstance.carrera.id)
         }
         catch (DataIntegrityViolationException e) {

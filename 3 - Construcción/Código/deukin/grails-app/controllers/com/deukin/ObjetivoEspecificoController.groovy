@@ -91,7 +91,7 @@ class ObjetivoEspecificoController {
 
         try {
             objetivoEspecificoInstance.delete(flush: true)
-            flash.message = message(code: 'default.deleted.message', args: [message(code: 'objetivoEspecifico.label', default: 'ObjetivoEspecifico'), id])
+            flash.message = message(code: 'objetivo.deleted.message', args: [message(code: 'objetivoEspecifico.label', default: 'ObjetivoEspecifico'), id])
             redirect(controller:"materia", action: "show", id: objetivoEspecificoInstance.materia.id)
         }
         catch (DataIntegrityViolationException e) {

@@ -90,7 +90,7 @@ class InscripcionInstitucionController {
 			return
 		}
 
-		flash.message = message(code: 'default.created.message', args: [
+		flash.message = message(code: 'inscripcion.created.message', args: [
 			message(code: 'inscripcionInstitucion.label', default: 'InscripcionInstitucion'),
 			inscripcionInstitucionInstance.id
 		])
@@ -165,7 +165,7 @@ class InscripcionInstitucionController {
 			return
 		}
 
-		flash.message = message(code: 'default.updated.message', args: [
+		flash.message = message(code: 'inscripcion.updated.message', args: [
 			message(code: 'inscripcionInstitucion.label', default: 'InscripcionInstitucion'),
 			inscripcionInstitucionInstance.id
 		])
@@ -185,7 +185,7 @@ class InscripcionInstitucionController {
 
 		try {
 			inscripcionInstitucionInstance.delete(flush: true)
-			flash.message = message(code: 'default.deleted.message', args: [
+			flash.message = message(code: 'inscripcion.deleted.message', args: [
 				message(code: 'inscripcionInstitucion.label', default: 'InscripcionInstitucion'),
 				id
 			])

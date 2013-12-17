@@ -121,7 +121,7 @@ class UsuarioRolController {
             return
         }
 
-        flash.message = message(code: 'default.updated.message', args: [message(code: 'usuarioRol.label', default: 'UsuarioRol'), usuarioRolInstance.id])
+        flash.message = message(code: 'usuario.updated.message', args: [usuarioRolInstance.rol])
         redirect(action: "show", id: usuarioRolInstance.id)
     }
 

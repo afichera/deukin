@@ -59,7 +59,7 @@ class CorrelatividadController {
 					render(view: "create", model: [correlatividadInstance: correlatividadInstance])
 					return
 				}
-				flash.message = message(code: 'default.created.message', args: [
+				flash.message = message(code: 'correlatividad.created.message', args: [
 					message(code: 'correlatividad.label', default: 'Correlatividad'),
 					correlatividadInstance.id
 				])
@@ -147,7 +147,7 @@ class CorrelatividadController {
 		}
 
 
-		flash.message = message(code: 'default.updated.message', args: [
+		flash.message = message(code: 'correlatividad.updated.message', args: [
 			message(code: 'correlatividad.label', default: 'Correlatividad'),
 			correlatividadInstance.id
 		])
@@ -167,7 +167,7 @@ class CorrelatividadController {
 
 		try {
 			correlatividadInstance.delete(flush: true)
-			flash.message = message(code: 'default.deleted.message', args: [
+			flash.message = message(code: 'correlatividad.deleted.message', args: [
 				message(code: 'correlatividad.label', default: 'Correlatividad'),
 				id
 			])

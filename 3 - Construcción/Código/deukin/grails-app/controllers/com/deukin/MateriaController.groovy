@@ -101,9 +101,9 @@ class MateriaController {
 		}
 		
 		
-		flash.message = message(code: 'default.created.message', args: [
-			message(code: 'materia.label', default: 'Materia'),
-			materiaInstance.id
+		flash.message = message(code: 'materia.created.message', args: [
+			
+			materiaInstance.nombre
 		])
 		if (params.vieneDePlanEstudio=="true") {
 			
@@ -179,9 +179,9 @@ class MateriaController {
 		
 	
 
-		flash.message = message(code: 'default.updated.message', args: [
-			message(code: 'materia.label', default: 'Materia'),
-			materiaInstance.id
+		flash.message = message(code: 'materia.updated.message', args: [
+			
+			materiaInstance.nombre
 		])
 		redirect(action: "show", id: materiaInstance.id)
 	}
@@ -199,7 +199,7 @@ class MateriaController {
 
 		try {
 			materiaInstance.delete(flush: true)
-			flash.message = message(code: 'default.deleted.message', args: [
+			flash.message = message(code: 'materia.deleted.message', args: [
 				message(code: 'materia.label', default: 'Materia'),
 				id
 			])

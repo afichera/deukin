@@ -49,7 +49,7 @@ class PlanEstudioController {
             return
         }
 
-        flash.message = message(code: 'default.created.message', args: [message(code: 'planEstudio.label', default: 'PlanEstudio'), planEstudioInstance.id])
+        flash.message = message(code: 'planEstudio.created.message', args: [ planEstudioInstance.identificacion])
         redirect(action: "show", id: planEstudioInstance.id)
     }
 
@@ -101,7 +101,7 @@ class PlanEstudioController {
             return
         }
 
-        flash.message = message(code: 'default.updated.message', args: [message(code: 'planEstudio.label', default: 'PlanEstudio'), planEstudioInstance.id])
+        flash.message = message(code: 'planEstudio.updated.message', args: [planEstudioInstance.identificacion])
         redirect(action: "show", id: planEstudioInstance.id)
     }
 
@@ -115,7 +115,7 @@ class PlanEstudioController {
 
         try {
             planEstudioInstance.delete(flush: true)
-            flash.message = message(code: 'default.deleted.message', args: [message(code: 'planEstudio.label', default: 'PlanEstudio'), id])
+            flash.message = message(code: 'planEstudio.deleted.message', args: [message(code: 'planEstudio.label', default: 'PlanEstudio'), id])
             redirect(action: "list")
         }
         catch (DataIntegrityViolationException e) {

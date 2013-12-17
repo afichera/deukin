@@ -42,9 +42,9 @@ class UsuarioController {
 			return
 		}
 
-		flash.message = message(code: 'default.created.message', args: [
-			message(code: 'usuario.label', default: 'Usuario'),
-			usuarioInstance.id
+		flash.message = message(code: 'usuario.created.message', args: [
+			
+			usuarioInstance.username
 		])
 		redirect(action: "show", id: usuarioInstance.id)
 	}
@@ -139,8 +139,7 @@ class UsuarioController {
 		}
 
 		flash.message = message(code: 'usuario.updated.message', args: [
-			message(code: 'usuario.label', default: 'Usuario'),
-			usuarioInstance.username
+				usuarioInstance.username
 		])
 		redirect(action: "show", id: usuarioInstance.id)
 	}
@@ -159,7 +158,7 @@ class UsuarioController {
 
 		try {
 			usuarioInstance.delete(flush: true)
-			flash.message = message(code: 'default.deleted.message', args: [
+			flash.message = message(code: 'usuario.deleted.message', args: [
 				message(code: 'usuario.label', default: 'Usuario'),
 				id
 			])

@@ -38,7 +38,7 @@ class EquivalenciaController {
 			render(view: "create", model: [equivalenciaInstance: equivalenciaInstance])
 		}
 		
-        flash.message = message(code: 'default.created.message', args: [message(code: 'equivalencia.label', default: 'Equivalencia'), equivalenciaInstance.id])
+        flash.message = message(code: 'equivalencia.created.message', args: [message(code: 'equivalencia.label', default: 'Equivalencia'), equivalenciaInstance.id])
         
 		if (params.vieneDeMateria=="true") {
 			
@@ -105,7 +105,7 @@ class EquivalenciaController {
 			render(view: "edit", model: [equivalenciaInstance: equivalenciaInstance])
 		}
 		
-        flash.message = message(code: 'default.updated.message', args: [message(code: 'equivalencia.label', default: 'Equivalencia'), equivalenciaInstance.id])
+        flash.message = message(code: 'equivalencia.updated.message', args: [message(code: 'equivalencia.label', default: 'Equivalencia'), equivalenciaInstance.id])
         redirect(action: "show", id: equivalenciaInstance.id)
     }
 
@@ -119,7 +119,7 @@ class EquivalenciaController {
 
         try {
             equivalenciaInstance.delete(flush: true)
-            flash.message = message(code: 'default.deleted.message', args: [message(code: 'equivalencia.label', default: 'Equivalencia'), id])
+            flash.message = message(code: 'equivalencia.deleted.message', args: [message(code: 'equivalencia.label', default: 'Equivalencia'), id])
             redirect(action: "list")
         }
         catch (DataIntegrityViolationException e) {

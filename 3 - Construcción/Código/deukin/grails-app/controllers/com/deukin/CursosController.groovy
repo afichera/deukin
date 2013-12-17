@@ -89,8 +89,8 @@ class CursosController {
 				render(view: "create", model: [cursoInstance: cursoInstance,configuracionCursoDiaInstance: configuracionCursoDiaInstance,cicloLectivo:cicloLectivoInstance,materia:materiaInstance])
 				return
 			}
-			flash.message = message(code: 'default.created.message', args: [
-				message(code: 'curso.label', default: 'Curso'),
+			flash.message = message(code: 'cursos.created.message', args: [
+				
 				cursoInstance.codigo
 			])
 			redirect(action: "show", id: cursoInstance.id)
@@ -175,9 +175,8 @@ class CursosController {
 			return
 		}
 
-		flash.message = message(code: 'default.updated.message', args: [
-			message(code: 'cursos.label', default: 'Curso'),
-			cursoInstance.codigo
+		flash.message = message(code: 'cursos.updated.message', args: [
+				cursoInstance.codigo
 		])
 		redirect(action: "show", id: cursoInstance.id)
 	}

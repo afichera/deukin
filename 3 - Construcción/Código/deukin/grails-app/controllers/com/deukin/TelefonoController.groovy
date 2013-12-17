@@ -44,7 +44,7 @@ class TelefonoController {
 			
 		}
 		else {
-        flash.message = message(code: 'default.created.message', args: [message(code: 'telefono.label', default: 'Telefono'), telefonoInstance.id])
+        flash.message = message(code: 'telefono.created.message', args: [message(code: 'telefono.label', default: 'Telefono'), telefonoInstance.id])
         redirect(action: "show", id: telefonoInstance.id)
 		}
     }
@@ -96,7 +96,7 @@ class TelefonoController {
             return
         }
 
-        flash.message = message(code: 'default.updated.message', args: [message(code: 'telefono.label', default: 'Telefono'), telefonoInstance.id])
+        flash.message = message(code: 'telefono.updated.message', args: [message(code: 'telefono.label', default: 'Telefono'), telefonoInstance.id])
         redirect(action: "show", id: telefonoInstance.id)
     }
 
@@ -130,7 +130,7 @@ class TelefonoController {
 			}
 		
 			else {
-			flash.message = message(code: 'default.deleted.message', args: [message(code: 'telefono.label', default: 'Telefono'), id])
+			flash.message = message(code: 'telefono.deleted.message', args: [message(code: 'telefono.label', default: 'Telefono'), id])
             redirect(action: "list")
 			}
 			

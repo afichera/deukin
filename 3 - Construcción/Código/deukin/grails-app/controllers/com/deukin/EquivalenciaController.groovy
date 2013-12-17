@@ -35,7 +35,7 @@ class EquivalenciaController {
 		}catch(Exception e){
 			String eMessage = e.getCause()?.getMessage()
 			flash.message = eMessage
-			render(view: "create", model: [correlatividadInstance: correlatividadInstance])
+			render(view: "create", model: [equivalenciaInstance: equivalenciaInstance])
 		}
 		
         flash.message = message(code: 'default.created.message', args: [message(code: 'equivalencia.label', default: 'Equivalencia'), equivalenciaInstance.id])
@@ -102,7 +102,7 @@ class EquivalenciaController {
 		}catch(Exception e){
 			String eMessage = e.getCause()?.getMessage()
 			flash.message = eMessage
-			render(view: "edit", model: [correlatividadInstance: correlatividadInstance])
+			render(view: "edit", model: [equivalenciaInstance: equivalenciaInstance])
 		}
 		
         flash.message = message(code: 'default.updated.message', args: [message(code: 'equivalencia.label', default: 'Equivalencia'), equivalenciaInstance.id])

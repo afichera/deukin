@@ -5,8 +5,8 @@
 <meta name="layout" content="main">
 <g:set var="entityName"
 	value="${message(code: 'espacioFisico.label', default: 'EspacioFisico')}" />
-<title><g:message code="default.create.label"
-		args="[entityName]" /></title>
+<title><g:message code="espaciosFisicos.nuevo"
+		 /></title>
 				<script src="${createLink(uri: '/')}js/jquery.js"></script>
 <script src="${createLink(uri: '/')}js/validaciones.js"></script>
 </head>
@@ -14,14 +14,14 @@
 	<div class="navbar navbar-inverse" role="navigation">
 			<ul class="nav navbar-nav">
 				<li><g:link class="list" action="list">
-					<g:message code="default.list.label" args="[entityName]" />
+					<g:message code="espaciosFisicos.lista" />
 				</g:link></li>
 		</ul>
 	</div>
 	<div id="create-espacioFisico"
 		class="content scaffold-create" role="main">
 		<h1>
-			<g:message code="default.create.label" args="[entityName]" />
+			<g:message code="espaciosFisicos.nuevo"  />
 		</h1>
 		<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>

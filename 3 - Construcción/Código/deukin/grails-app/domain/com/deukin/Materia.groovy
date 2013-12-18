@@ -24,7 +24,7 @@ class Materia {
 	
 	static constraints = {
 		codigo(unique:true, maxSize:10)
-		nombre maxSize:200
+		nombre maxSize:200,blank:false
 		bibliografia nullable:true
 	}
 	

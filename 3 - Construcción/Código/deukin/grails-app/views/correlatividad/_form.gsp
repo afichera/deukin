@@ -21,7 +21,7 @@
 	<div class="col-lg-10">
 	<g:hiddenField id ="materiaPredecesora.id" name ="materiaPredecesora.id" value="${correlatividadInstance?.materiaPredecesora?.id}"/>
 	<richui:autoComplete name="materiaPredecesoraNombre" minQueryLength="2" onItemSelect="eligeMateriaPredecesora(id)" value="${correlatividadInstance?.materiaPredecesora?.toString()}"
-		action="${createLinkTo('dir': 'correlatividad/searchMateriasCoordinador')}" forceSelection="true" required="true"/>
+		action="${createLinkTo('dir': 'correlatividad/searchMateriasCoordinador')}" class="form-control required" forceSelection="true" required="true"/>
 
 </div></div>
 

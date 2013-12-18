@@ -8,7 +8,7 @@
 	<div class="col-lg-10">
 	<g:hiddenField id ="materiaPrincipal.id" name ="materiaPrincipal.id" value="${equivalenciaInstance?.materiaPrincipal?.id}"/>
 	<richui:autoComplete name="materiaPrincipalNombre" minQueryLength="2" onItemSelect="eligeMateriaPrincipal(id)" value="${equivalenciaInstance?.materiaPrincipal?.toString()}"
-		action="${createLinkTo('dir': 'equivalencia/searchMateriasCoordinador')}" forceSelection="true"/>
+		action="${createLinkTo('dir': 'equivalencia/searchMateriasCoordinador')}" forceSelection="true" class="form-control required"/>
 </div>
 </div>
 
@@ -20,7 +20,7 @@
 	<div class="col-lg-10">
 	<g:hiddenField id ="materiaEquivalente.id" name ="materiaEquivalente.id" value="${equivalenciaInstance?.materiaEquivalente?.id}"/>
 	<richui:autoComplete name="materiaEquivalenteNombre" minQueryLength="2" onItemSelect="eligeMateriaEquivalente(id)" value="${equivalenciaInstance?.materiaEquivalente?.toString()}"
-		action="${createLinkTo('dir': 'equivalencia/searchMaterias')}" forceSelection="true"/>	
+		action="${createLinkTo('dir': 'equivalencia/searchMaterias')}" class="form-control required" forceSelection="true"/>	
 </div>
 </div>
 

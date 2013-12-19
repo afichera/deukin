@@ -106,11 +106,11 @@
 							<div class="fieldcontain row">
 								<label id="telefonos-label" class="property-label col-lg-2"><g:message
 										code="alumno.telefonos.label" default="Teléfonos" />: 
-										<g:link controller="telefono"
+										<sec:ifAnyGranted roles="ROLE_ADMINISTRADOR_SISTEMA,ROLE_ALUMNO,ROLE_ADMINISTRATIVO"><g:link controller="telefono"
 								action="create" params="['contacto.id': alumnoInstance?.contacto?.id,'origen':'alumno','alumno.id':alumnoInstance?.id]">
 								<span class="glyphicon glyphicon-plus"
 									title="${message(code: 'default.add.label', args: [message(code: 'telefono.label', default: 'Teléfono')])}"></span>
-							</g:link>
+							</g:link></sec:ifAnyGranted>
 										
 										</label>
 										<div class="property-value col-lg-10"
@@ -118,8 +118,8 @@
 								<g:if test="${alumnoInstance?.contacto}">
 									<g:each in="${alumnoInstance?.contacto?.telefonos}" var="t">
 										 ${t?.encodeAsHTML()}
-										 <g:link controller="telefono" action="delete" id="${t?.id}" params="[origen:'alumno']"><span class="glyphicon glyphicon-trash"
-									title="${message(code: 'default.delete.label', args: [message(code: 'telefono.label', default: 'Teléfono')])}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');"></span></g:link>
+										 <sec:ifAnyGranted roles="ROLE_ADMINISTRADOR_SISTEMA,ROLE_ALUMNO,ROLE_ADMINISTRATIVO"><g:link controller="telefono" action="delete" id="${t?.id}" params="[origen:'alumno']"><span class="glyphicon glyphicon-trash"
+									title="${message(code: 'default.delete.label', args: [message(code: 'telefono.label', default: 'Teléfono')])}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');"></span></g:link></sec:ifAnyGranted>
 										 
 										 <br />
 										

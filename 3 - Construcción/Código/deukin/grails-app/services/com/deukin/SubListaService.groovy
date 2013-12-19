@@ -1,7 +1,17 @@
 package com.deukin
-
+/**
+ * Servicio Auxiliar para paginar las vistas
+ * @author Ale Mobile
+ * @since 19/12/2013
+ */
 class SubListaService {
 
+	/**
+	 * Devuelve una sublista de objetos segun los params.
+	 * @param objectList
+	 * @param params
+	 * @return
+	 */
    	def getSubList(List objectList, Map params) {
 		//verify params
 		try {

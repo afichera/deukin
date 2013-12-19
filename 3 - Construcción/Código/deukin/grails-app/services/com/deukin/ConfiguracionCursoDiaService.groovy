@@ -1,14 +1,27 @@
 package com.deukin
 
-
+/**
+ * 
+ * Representa los servicios de una {@link ConfiguracionCursoDia}
+ * @since 19/12/2013
+ */
 class ConfiguracionCursoDiaService {
 
-
+	/**
+	 * Obtiene la suma de Horas de una {@link ConfiguracionCursoDia}
+	 * @param configuracionCursoDia
+	 * @return
+	 */
 	def obtenerHorasCursoDia(ConfiguracionCursoDia configuracionCursoDia){
 		configuracionCursoDia.getSumaHoras()
 	}
 
-
+	/**
+	 * Obtiene el {@link PlanEstudio} segun los parametros recibidos.
+	 * @param planEstudioId
+	 * @param cicloLectivoId
+	 * @return
+	 */
 	def obtenerByPlanEstudioIdAndCicloLectivoId(Long planEstudioId, Long cicloLectivoId){
 		def configuracionesCursoDia = []
 		def planEstudio = null

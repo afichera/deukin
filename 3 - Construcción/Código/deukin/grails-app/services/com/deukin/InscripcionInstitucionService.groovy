@@ -4,12 +4,22 @@ import org.springframework.transaction.annotation.Transactional
 
 import com.deukin.exceptions.BusinessException
 
-
+/**
+ * Representa los servicios expuestos para una {@link InscripcionInstitucion}
+ * @author Ale Mobile
+ * @since 19/12/2013
+ */
 class InscripcionInstitucionService {
 
 	def mailService
 	def usuarioService
 	
+	/**
+	 * Realiza una {@link InscripcionInstitucion} luego de validar si cumple con los requisitos
+	 * de lógica de negocio. El servicio es transaccional, si algo falla, nada es persistido.
+	 * @param inscripcion
+	 * @return
+	 */
 	@Transactional
 	InscripcionInstitucion inscribir(InscripcionInstitucion inscripcion){
 		Calendar hoy = Calendar.getInstance()
@@ -47,6 +57,12 @@ class InscripcionInstitucionService {
 		}		
 	}
 
+	/**
+	 * Realiza la validación previo a una {@link InscripcionInstitucion}.
+	 * El servicio es transaccional, si algo falla nada es persistido.
+	 * @param inscripcion
+	 * @return
+	 */
 	@Transactional
 	InscripcionInstitucion validarInscripcion(InscripcionInstitucion inscripcion){
 		Calendar hoy = Calendar.getInstance()
@@ -75,7 +91,12 @@ class InscripcionInstitucionService {
 		}
 	}
 
-		
+	/**
+	 * Realiza la confirmación de la {@link InscripcionInstitucion}, activando y generando el {@link Usuario} en el sistema.
+	 * El servicio es transaccional, si algo falla nada es persistido.	
+	 * @param inscripcion
+	 * @return
+	 */
 	@Transactional
 	def confirmarInscripcion(InscripcionInstitucion inscripcion){
 		Documento documento = Documento.findByNumeroAndTipoDocumento(inscripcion.documentoNumero, inscripcion.tipoDocumento)
@@ -119,6 +140,11 @@ class InscripcionInstitucionService {
 		
 	}
 	
+	/**
+	 * Rechaza una inscripción a la institución
+	 * @param inscripcion
+	 * @return
+	 */
 	def rechazarInscripcion(InscripcionInstitucion inscripcion){
 		if(inscripcion.estadoInscripcionInstitucion == EstadoInscripcionInstitucion.PENDIENTE_CONFIRMACION_PRESENCIAL){
 			inscripcion.estadoInscripcionInstitucion = EstadoInscripcionInstitucion.RECHAZADA
@@ -131,18 +157,34 @@ class InscripcionInstitucionService {
 	}
 	
 
+	/**
+	 * Activa una {@link InscripcionInstitucion}
+	 * @param inscripcion
+	 * @return
+	 */
 	InscripcionInstitucion activar(InscripcionInstitucion inscripcion){
 		inscripcion.estadoInscripcionInstitucion = EstadoInscripcionInstitucion.CONFIRMADA
 		inscripcion.save()
 		inscripcion
 	}
 
+	/**
+	 * Setea la fecha de baja a una {@link InscripcionInstitucion} con la fecha actual del servidor.
+	 * @param inscripcion
+	 * @return
+	 */
 	InscripcionInstitucion quitar(InscripcionInstitucion inscripcion){
 		Calendar hoy = Calendar.getInstance()
 		inscripcion.fechaBaja = hoy.getTime()
 		inscripcion.save()
 		inscripcion
 	}
+	
+	/**
+	 * Servicio que valida campos numéricos de la {@link InscripcionInstitucion}
+	 * @param params
+	 * @return
+	 */
 	public String validaNumeros (params)
 	{
 		String erroneas = ''

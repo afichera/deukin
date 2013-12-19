@@ -1,9 +1,14 @@
 package com.deukin
 
+/**
+ * Representa los servicios expuestos para un {@link EspacioFisico}
+ * @author Ale Mobile
+ * @since 19/12/2013
+ */
 class EspacioFisicoService {
 
 	/**
-	 * Obtiene los espacios fisicos por Numero o Ubicacion segun Query
+	 * Obtiene una lista de {@link EspacioFisico} por Numero o Ubicacion segun texto recibido.
 	 * @param queryRegex
 	 * @return
 	 */

@@ -2,17 +2,20 @@ package com.deukin
 
 
 /**
- * Representa los Servicios para Planes de Estudio.
+ * Representa los Servicios para {@link PlanEstudio}
  * @author Ale Mobile
- *
+ * @since 19/12/2013
  */
 class PlanEstudioService {
 
 	def usuarioService
 
-	def serviceMethod() {
-	}
-
+	/**
+	 * Obtiene una lista de {@link PlanEstudio} segun usuario coordinador logueado y texto recibido.
+	 * @param texto
+	 * @param userLogued
+	 * @return
+	 */
 	def getPlanesEstudioLikeParamsAndCoordinadorUser(String texto, def userLogued){
 		def authorities =  userLogued.authorities
 		def usuarioDeukin = usuarioService.obtenerUsuario(userLogued)
@@ -48,6 +51,11 @@ class PlanEstudioService {
 		
 	}
 	
+	/**
+	 * Obtiene la lista de {@link Correlatividad} para un {@link PlanEstudio} recibido.
+	 * @param planEstudio
+	 * @return
+	 */
 	def obtenerCorrelatividades(PlanEstudio planEstudio) {
 		def correlatividadesTodas = Correlatividad.findAll()
 		def correlatividades = []

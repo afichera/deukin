@@ -2,16 +2,19 @@ package com.deukin
 
 
 
-
+/**
+ * Representa los servicios expuestos para un {@link Curso}
+ * @author Ale Mobile
+ * @since 19/12/2013
+ */
 class CursoService {
 
 	/**
-	 * Valida si el curso puede darse de alta 
+	 * Valida si el {@link Curso} puede darse de alta 
 	 * En caso contrario lanza una BusinessException
 	 * @param curso
 	 * @return
 	 */
-
 	public String validaCurso(Curso curso){
 		String retorno = 'OK'
 		def cursoPrevio = Curso.findByCodigo(curso.codigo)

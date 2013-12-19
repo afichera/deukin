@@ -2,15 +2,21 @@
 
 package com.deukin
 
-
+/**
+ * Representa los Servicios expuestos de Carrera
+ * @author Ale Mobile
+ *
+ */
 class CarreraService {
 
 	def usuarioService
 	
-    def serviceMethod() {
-
-    }
-	
+	/**
+	 * Devuelve la lista de carreras a mostrar basandose en el usuario y rol logueado
+	 * @param authorities
+	 * @param usuario
+	 * @return
+	 */
 	def listaCarrerasMostrar(String authorities, usuario){
 		def filtrarCarrera = false
 		def materias
@@ -30,6 +36,12 @@ class CarreraService {
 		}
 	}
 	
+	/**
+	 * Servicio que busca las carreras del Coordinador y que contengan el texto recibido
+	 * @param queryRegex
+	 * @param usuarioLogueado
+	 * @return
+	 */
 	def findCarrerasLikeParamasAndCoordinadorUser(queryRegex, usuarioLogueado){		
 		def authorities =  usuarioLogueado.authorities
 		def usuarioDeukin = usuarioService.obtenerUsuario(usuarioLogueado)
@@ -45,7 +57,11 @@ class CarreraService {
 		carreras
 	}
 	
-	
+	/**
+	 * Servicio que devuelve la lista de carreras que contengan el parámetro recibido
+	 * @param queryRegex
+	 * @return
+	 */
 	def obtenerCoordinadoresLikeQueryRegex(def queryRegex){
 		def coordinadores
 		def coordinadoresFiltro = []
@@ -61,6 +77,11 @@ class CarreraService {
 		
 	}
 
+	/**
+	 * Servicio que devuelve las Correlatividades según la carrera
+	 * @param carrera
+	 * @return
+	 */
 	def obtenerCorrelatividades(Carrera carrera) {
 		def correlatividadesTodas = Correlatividad.findAll()
 		def correlatividades = []

@@ -2,9 +2,21 @@ package com.deukin
 
 import com.deukin.exceptions.BusinessException
 
-
+/**
+ * Representa los servicios para validar la carga de archivos en el sistema.
+ * @author Ale Mobile
+ * @since 19/12/2013
+ */
 class UploadService {
 
+	/**
+	 * Valida que el archivo tenga formato de texto.
+	 * Lo hace validando su extesión y no su contenido.
+	 * Si el formato es TXT, ODT, RTF, DOC, DOCX, PDF pasa la validación.
+	 * En caso contrario lanzara una excepcion de negocio.
+	 * @param fileName
+	 * @return 
+	 */
 	def validateTextFileFormat(String fileName){
 		int a = fileName.lastIndexOf(".");
 		String extName = fileName.substring(a).toUpperCase();
@@ -20,6 +32,14 @@ class UploadService {
 		}
 	}
 
+	/**
+	 * Valida que el archivo tenga formato de imagen.
+	 * Lo hace validando su extesión y no su contenido.
+	 * Si el formato es JPG, JPEG, PNG pasa la validación.
+	 * En caso contrario lanzara una excepcion de negocio.
+	 * @param fileName
+	 * @return
+	 */
 	def validateImageFileFormat(String fileName){
 		int a = fileName.lastIndexOf(".");
 		String extName = fileName.substring(a).toUpperCase();

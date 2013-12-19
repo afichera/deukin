@@ -1,11 +1,21 @@
 package com.deukin
 
-
+/**
+ * Representa los servicios de envio de Email del sistema
+ * 
+ * @author Ale Mobile
+ * @since 19/12/2013
+ */
 class CorreoElectronicoService {
 	
 	
 	def asynchronousMailService
-
+	
+	/**
+	 * Realiza el envío del email de Bienvenida al sistema 
+	 * @param inscripcion
+	 * @return
+	 */
 	def enviarMailBienvenida(InscripcionInstitucion inscripcion){
 		def retorno = true
 		def institucionEducativaUnica = InstitucionEducativa.findByNombre('UNLAM')
@@ -35,6 +45,11 @@ class CorreoElectronicoService {
 		retorno
 	}
 
+	/**
+	 * Realiza el envío de email de activación de la cuenta
+	 * @param persona
+	 * @return
+	 */
 	def enviarMailActivacionPersona(Persona persona){
 		def retorno = true
 		def institucionEducativaUnica = InstitucionEducativa.findByNombre('UNLAM')

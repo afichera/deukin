@@ -2,8 +2,18 @@ package com.deukin
 
 import com.deukin.exceptions.BusinessException
 
+/**
+ * Representa los servicios expuestos para {@link Equivalencia}
+ * @author Ale Mobile
+ * @since 19/12/2013
+ */
 class EquivalenciaService {
 	
+	/**
+	 * Valida si una {@link Equivalencia} puede ser dada de alta
+	 * @param futuraEquivalencia
+	 * @return
+	 */
 	def validar(Equivalencia futuraEquivalencia){
 		if(futuraEquivalencia?.materiaPrincipal && futuraEquivalencia?.materiaEquivalente){
 			if(futuraEquivalencia?.materiaPrincipal?.planEstudio.equals(futuraEquivalencia?.materiaEquivalente?.planEstudio)){

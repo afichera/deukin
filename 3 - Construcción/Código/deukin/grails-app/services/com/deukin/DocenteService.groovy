@@ -2,11 +2,19 @@ package com.deukin
 
 import com.deukin.exceptions.BusinessException
 
+
+
+/**
+ * Representa los servicios Expuestos para {@link Docente}
+ * @author Ale Mobile
+ * @since 19/12/2013
+ */
 class DocenteService {
 
 	def configuracionCursoDiaService
 	/**
-	 * Obtiene los docentes tales que cumplan en nombre, apellido o nro de documento con el query
+	 * Obtiene una lista de {@link Docente} tales que cumplan en nombre, apellido o nro de documento con el
+	 * query recibido por parámetro
 	 * @param queryRegex
 	 * @return
 	 */
@@ -23,7 +31,13 @@ class DocenteService {
 		}
 		docentesResultantes
 	}
-
+	
+	/**
+	 * Obtiene la cantidad de Horas que tiene ocupadas un {@link Docente} para un {@link CronogramaCarrera}
+	 * @param docenteId
+	 * @param cronogramaId
+	 * @return
+	 */
 	public Float obtenerHorasByDocenteIdAndCronogramaCarreraId(def docenteId, def cronogramaId){
 		def docente = Docente.get(docenteId)
 		def cronograma = CronogramaCarrera.get(cronogramaId)
@@ -56,6 +70,11 @@ class DocenteService {
 		resultado
 	}
 
+	/**
+	 * Obtiene la cantidad de horas que tiene un {@link Docente} para un {@link CicloLectivo}
+	 * @param docenteId
+	 * @return
+	 */
 	public Float obtenerHorasByDocenteIdInCicloLectivoActual(def docenteId){
 		def fechaActual = new Date()
 		Calendar calendario = new GregorianCalendar()
@@ -76,6 +95,11 @@ class DocenteService {
 		resultado
 	}
 	
+	/**
+	 * Servicio que valida campos numericos del {@link Domicilio} de un {@link Docente}
+	 * @param params
+	 * @return
+	 */
 	public String validaNumeros (params)
 	{
 		String erroneas = ''

@@ -2,10 +2,20 @@ package com.deukin
 
 import com.deukin.exceptions.BusinessException
 
+/**
+ * Representa los servicios expuestos para {@link Correlatividad}
+ * @author Ale Mobile
+ * @since 19/12/2013
+ */
 class CorrelatividadService {
 
 
-
+	/**
+	 * Valida si una {@link Correlatividad} puede ser creada.
+	 * 
+	 * @param futuraCorrelatividad
+	 * @return
+	 */
 	def validarCorrelatividad(def futuraCorrelatividad){
 		
 		def materiaPrincipal = Materia.get(futuraCorrelatividad.materiaPrincipal.id)
@@ -26,21 +36,6 @@ class CorrelatividadService {
 			if(!materiaPrincipal.planEstudio.equals(materiaPredecesora.planEstudio)){
 				throw new BusinessException('Las materias seleccionadas son de diferentes planes de estudio.')
 			}
-	
-			
-		//Esto hay que validar una vez que la materia este asignada a un Periodo			
-//			if(asignacionPeriodoMateriaPrincipal == null){
-//				throw new BusinessException('La materia principal no se encuentra asignada a un plan de estudio.')
-//			}
-//			
-//			if(asignacionPeriodoMateriaPredecesora == null){
-//				throw new BusinessException('La materia predecesora no se encuentra asignada a un plan de estudio.')
-//			}
-//			
-//			if(!asignacionPeriodoMateriaPrincipal.planEstudio.equals(asignacionPeriodoMateriaPredecesora.planEstudio)){
-//				throw new BusinessException('Las materias deben pertenecer al mismo Plan de Estudio.')
-//			}
-			
 			
 			//Luego en Predecesoras si existen con la principal que viene por parametro
 			//Verifico en la primer linea si existe la materia que vino como predecesora y sino recursivamente c/u de ellas.
@@ -61,7 +56,13 @@ class CorrelatividadService {
 
 		valida		
 	}
-		
+	
+	/**
+	 * Realiza una busqueda de {@link Correlatividad} existente de forma recursiva por transitividad.	
+	 * @param materiaPrincipal
+	 * @param correlatividadOriginal
+	 * @return
+	 */
 	Boolean busquedaCorrelatividadRecursiva(def materiaPrincipal, def correlatividadOriginal){
 		def correlatividades = Correlatividad.findAllByMateriaPredecesora(materiaPrincipal)
 		def flag = true
@@ -83,6 +84,12 @@ class CorrelatividadService {
 		flag
 	}
 	
+	/**
+	 * Busca y devuelve un Booleano que indica si existe {@link Correlatividad} a la inversa
+	 * @param materiaPrincipal
+	 * @param materiaPredecesora
+	 * @return true si no existe, false si existe.
+	 */
 	def busquedaCorrelatividadInversa(def materiaPrincipal,def materiaPredecesora){
 		def correlatividad = Correlatividad.findByMateriaPredecesoraAndMateriaPrincipal(materiaPrincipal, materiaPredecesora)
 		if(correlatividad == null || correlatividad.id == null){

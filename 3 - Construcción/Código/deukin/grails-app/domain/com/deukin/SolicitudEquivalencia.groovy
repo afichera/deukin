@@ -2,9 +2,9 @@ package com.deukin
 
 
 /**
- * 
+ * Representa una Solicitud de {@link Equivalencia} no implicita de la carrera.
  * @author Ale Mobile
- *
+ * @since 19/12/2013
  */
 class SolicitudEquivalencia {
 	

@@ -1,6 +1,10 @@
 package com.deukin
 
-
+/**
+ * Representa la configuración de un curso por día. Esto permite dar un curso en 2 dias diferentes.
+ * @author Ale Mobile
+ * @since 19/12/2013
+ */
 class ConfiguracionCursoDia {
 
 

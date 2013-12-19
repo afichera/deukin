@@ -3,9 +3,9 @@ package com.deukin
 import java.util.Date
 
 /**
- * 
+ * Representa una experiencia laboral
  * @author Ale Mobile
- *
+ * @since 19/12/2013
  */
 class ExperienciaLaboral {
 	

@@ -1,6 +1,10 @@
 package com.deukin
 
-
+/**
+ * Representa un documento de una {@link Persona}
+ * @author Ale Mobile
+ * @since 19/12/2013
+ */
 class Documento {
 	
 	Long numero

@@ -1,5 +1,10 @@
 package com.deukin
 
+/**
+ * Representa un estado de solicitud de equivalencias.
+ * @author Ale Mobile
+ * @since 19/12/2013
+ */
 enum EstadoSolicitudEquivalencia {
 	SOLICITADO ('SOLICITADO'),
 	VERIFICADO_ADMIN ('VERIFICADO_ADMIN'),

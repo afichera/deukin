@@ -1,5 +1,10 @@
 package com.deukin
 
+/**
+ * Representa la asignación de un docente a un curso, esto permite asignarlo total o parcialmente
+ * @author Ale Mobile
+ * @since 19/12/2013
+ */
 class AsignacionDocenteCurso {
 
 	Docente docente

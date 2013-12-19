@@ -1,6 +1,10 @@
 package com.deukin
 
-
+/**
+ * Representa el domicilio de {@link Contacto} de una {@link Persona}
+ * @author Ale Mobile
+ * @since 19/12/2013
+ */
 class Domicilio {
 	
 	String calle

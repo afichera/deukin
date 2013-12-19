@@ -1,5 +1,9 @@
 package com.deukin
-
+/**
+ * Representa el estado de un Curso
+ * @author Ale Mobile
+ * @since 19/12/2013
+ */
 enum EstadoCurso {
 	
 	ABIERTO ('ABIERTO'),

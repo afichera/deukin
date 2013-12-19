@@ -1,5 +1,10 @@
 package com.deukin
 
+/**
+ * Representa una enumeración de días de la semana.
+ * @author Ale Mobile
+ * @since 19/12/2013
+ */
 enum DiaSemana implements Serializable{
 	LUNES ('LUNES'),
 	MARTES ('MARTES'),

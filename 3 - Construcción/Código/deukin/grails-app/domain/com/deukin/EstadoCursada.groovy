@@ -1,5 +1,10 @@
 package com.deukin
 
+/**
+ * Representa los diferentes estados que puede tener una Cursada
+ * @author Ale Mobile
+ * @since 19/12/2013
+ */
 enum EstadoCursada {
 
 	CURSANDO ('CURSANDO'),

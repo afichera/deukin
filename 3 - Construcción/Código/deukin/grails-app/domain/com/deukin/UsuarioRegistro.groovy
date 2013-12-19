@@ -1,5 +1,11 @@
 package com.deukin
 
+/**
+ * Representa un usuario temporal del registro al sistema.
+ * Surge de la necesidad de no ensuciar la tabla de Usuario principal del sistema.
+ * @author Ale Mobile
+ * @since 19/12/2013
+ */
 class UsuarioRegistro implements Serializable{
 	String username
 	String password

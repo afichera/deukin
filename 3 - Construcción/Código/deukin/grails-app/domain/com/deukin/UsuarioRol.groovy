@@ -2,9 +2,9 @@ package com.deukin
 
 import org.apache.commons.lang.builder.HashCodeBuilder
 /**
- * 
+ * Representa una asociación de {@link Usuario} y {@link Rol} del sistema.
  * @author Ale Mobile
- *
+ * @since 19/12/2013
  */
 class UsuarioRol implements Serializable {
 

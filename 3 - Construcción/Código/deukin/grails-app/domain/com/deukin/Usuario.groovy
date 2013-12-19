@@ -3,9 +3,9 @@ package com.deukin
 import java.util.Set
 
 /**
- * 
+ * Representa un Usuario propio del sistema
  * @author Ale Mobile
- *
+ * @since 19/12/2013
  */
 class Usuario {
 

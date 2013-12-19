@@ -1,5 +1,9 @@
 package com.deukin
-
+/**
+ * Representa el area a la cual corresponde una carrera.
+ * @author Ale Mobile
+ * @since 19/12/2013
+ */
 class AreaCarrera {
 
 	def nombre	

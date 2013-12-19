@@ -27,41 +27,41 @@
 			<g:message code="espaciosFisicos.show.label" />
 		</h1>
 		<g:if test="${flash.message}">
-			<div class="message" role="status">${flash.message}</div>
+			<div class="message alert alert-info" role="status">${flash.message}</div>
 		</g:if>
 		<div class="row">
 			<div class="col-lg-12 col-md-12 col-sx-12 lista-propiedades">
 				<div class="well">
-					<ol class="property-list espacioFisico">
+					
 						
-				<g:if test="${espacioFisicoInstance?.numero}">
-				<li class="fieldcontain">
-					<span id="numero-label" class="property-label"><g:message code="espacioFisico.numero.label" default="Numero" /></span>
+				
+				<div class="fieldcontain row">
+					<label id="numero-label" class="property-label col-lg-2"><g:message code="espacioFisico.numero.label" default="Numero" />:</label>
 					
-						<span class="property-value" aria-labelledby="numero-label"><g:fieldValue bean="${espacioFisicoInstance}" field="numero"/></span>
+						<div class="property-value col-lg-10" aria-labelledby="numero-label"><g:if test="${espacioFisicoInstance?.numero}"><g:fieldValue bean="${espacioFisicoInstance}" field="numero"/></g:if></div>
 					
-				</li>
-				</g:if>
+				</div>
+				
 			
-				<g:if test="${espacioFisicoInstance?.ubicacion}">
-				<li class="fieldcontain">
-					<span id="ubicacion-label" class="property-label"><g:message code="espacioFisico.ubicacion.label" default="Ubicacion" /></span>
+				
+				<div class="fieldcontain row">
+					<label id="ubicacion-label" class="property-label col-lg-2"><g:message code="espacioFisico.ubicacion.label" default="Ubicacion" />:</label>
 					
-						<span class="property-value" aria-labelledby="ubicacion-label"><g:fieldValue bean="${espacioFisicoInstance}" field="ubicacion"/></span>
+						<div class="property-value col-lg-10" aria-labelledby="ubicacion-label"><g:if test="${espacioFisicoInstance?.ubicacion}"><g:fieldValue bean="${espacioFisicoInstance}" field="ubicacion"/></g:if></div>
 					
-				</li>
-				</g:if>
+				</div>
+				
+			<div class="fieldcontain row">
+				
+				
+					<label id="observaciones-label" class="property-label col-lg-2"><g:message code="espacioFisico.observaciones.label" default="Observaciones" />:</label>
+					
+						<div class="property-value col-lg-10" aria-labelledby="observaciones-label"><g:if test="${espacioFisicoInstance?.observaciones}"><g:fieldValue bean="${espacioFisicoInstance}" field="observaciones"/></g:if></div>
+					
+				</div>
+				
 			
-				<g:if test="${espacioFisicoInstance?.observaciones}">
-				<li class="fieldcontain">
-					<span id="observaciones-label" class="property-label"><g:message code="espacioFisico.observaciones.label" default="Observaciones" /></span>
 					
-						<span class="property-value" aria-labelledby="observaciones-label"><g:fieldValue bean="${espacioFisicoInstance}" field="observaciones"/></span>
-					
-				</li>
-				</g:if>
-			
-					</ol>
 					<g:form>
 						<fieldset class="buttons">
 							<g:hiddenField name="id" value="${espacioFisicoInstance?.id}" />

@@ -11,14 +11,26 @@
 						</g:link></li>
 				</sec:ifAnyGranted>
 				<sec:ifAnyGranted
-					roles="ROLE_DOCENTE,ROLE_COORDINADOR,ROLE_ADMINISTRATIVO">
+					roles="ROLE_COORDINADOR,ROLE_ADMINISTRATIVO">
 					<li><g:link controller='materia'>
 							<g:message code="secciones.academicas.materias" />
 						</g:link></li>
 				</sec:ifAnyGranted>
+								<sec:ifAnyGranted
+					roles="ROLE_DOCENTE">
+					<li><g:link controller='proximamente'>
+							<g:message code="secciones.academicas.materias" />
+						</g:link></li>
+				</sec:ifAnyGranted>
 				<sec:ifAnyGranted
-					roles="ROLE_DOCENTE,ROLE_COORDINADOR,ROLE_ADMINISTRATIVO">
+					roles="ROLE_COORDINADOR,ROLE_ADMINISTRATIVO">
 					<li><g:link controller='cursos'>
+							<g:message code="secciones.academicas.cursos" />
+						</g:link></li>
+				</sec:ifAnyGranted>
+								<sec:ifAnyGranted
+					roles="ROLE_DOCENTE">
+					<li><g:link controller='proximamente'>
 							<g:message code="secciones.academicas.cursos" />
 						</g:link></li>
 				</sec:ifAnyGranted>

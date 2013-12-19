@@ -8,7 +8,7 @@
 		<span class="required-indicator">*</span>
 	: </label>
 	<div class="col-lg-10">
-	<g:textField name="numero" type="number" value="${espacioFisicoInstance.numero}" required="" onkeyup="soloNumeros(this,'#validaNumeroAula')"/>
+	<g:textField name="numero" class="form-control" type="number" value="${espacioFisicoInstance.numero}" required="" onkeyup="soloNumeros(this,'#validaNumeroAula')"/>
 	<span class="alert alert-error" id="validaNumeroAula" style="display:none;">		<g:message code="invalid.soloNumeros" /></span>
 	
 	</div>
@@ -20,7 +20,7 @@
 		
 	: </label>
 	<div class="col-lg-10">
-	<g:textField name="ubicacion" value="${espacioFisicoInstance?.ubicacion}"/>
+	<g:textField name="ubicacion"  class="form-control" value="${espacioFisicoInstance?.ubicacion}"/>
 	</div>
 </div>
 
@@ -30,7 +30,7 @@
 		
 	: </label>
 	<div class="col-lg-10">
-	<g:textField name="observaciones" value="${espacioFisicoInstance?.observaciones}"/>
+	<g:textField name="observaciones"  class="form-control" value="${espacioFisicoInstance?.observaciones}"/>
 	</div>
 </div>
 

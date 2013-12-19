@@ -1,9 +1,9 @@
 package com.deukin
 
+import grails.plugins.springsecurity.Secured
+
 import org.springframework.dao.DataIntegrityViolationException
-
-import com.sun.xml.internal.ws.api.streaming.XMLStreamReaderFactory.Default
-
+@Secured(['ROLE_COORDINADOR','ROLE_ADMINISTRATIVO','ROLE_DOCENTE','ROLE_ALUMNO','ROLE_ADMINISTRADOR_SISTEMA' ])
 class TelefonoController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "GET"]

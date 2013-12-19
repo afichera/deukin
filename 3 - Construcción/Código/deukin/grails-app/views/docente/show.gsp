@@ -125,19 +125,51 @@
 									<g:if test="${docenteInstance?.contacto?.telefonos}">
 										<g:each in="${docenteInstance.contacto.telefonos}" var="t">
 											${t?.encodeAsHTML()}
-											<g:link controller="telefono" action="delete" id="${t?.id}" params="[origen:'docente']"><span class="glyphicon glyphicon-trash"
-									title="${message(code: 'default.delete.label', args: [message(code: 'telefono.label', default: 'Teléfono')])}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');"></span></g:link>
-												
-											
+											<g:link controller="telefono" action="delete" id="${t?.id}"
+												params="[origen:'docente']">
+												<span class="glyphicon glyphicon-trash"
+													title="${message(code: 'default.delete.label', args: [message(code: 'telefono.label', default: 'Teléfono')])}"
+													onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');"></span>
+											</g:link>
+
+
 											<br />
 
 										</g:each>
 									</g:if>
 								</div>
 							</div>
+							<div class="fieldcontain row">
+								<label id="curriculumsAdjutntos-label"
+									class="property-label col-lg-2"><g:message
+										code="curriculumAdjunto.list.label"
+										default="Curriculums Adjuntos" />: <g:link
+										controller="curriculumAdjunto" action="create"
+										params="['persona.id': docenteInstance?.id]">
+										<span class="glyphicon glyphicon-plus"
+											title="${message(code: 'curriculumAdjunto.New.label')}"></span>
+									</g:link> </label>
+								<div class="property-value col-lg-10"
+									aria-labelledby="curriculumsAdjuntos-label">
+									<g:if test="${docenteInstance?.curriculumsAdjuntos}">
+										<g:each
+												in="${docenteInstance.curriculumsAdjuntos}" var="c">
+												<span class="property-value"
+													aria-labelledby="curriculumsAdjuntos-label">
+													<g:link  class="curriculumAdjunto" controller="curriculumAdjunto" action="showArchivo" id="${c?.id}">${c?.nombreArchivo}</g:link>
+												</span>
+												<g:link controller="curriculumAdjunto" action="delete"
+													id="${c?.id}" params="['persona.id': docenteInstance?.id]">
+													<span class="glyphicon glyphicon-trash"
+														title="${message(code: 'default.delete.label', args: [message(code: 'curriculumAdjunto.label', default: 'Curriculum')])}"
+														onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');"></span>
+												</g:link>
 
+											</g:each>
+									</g:if>
 
-
+								</div>
+							</div>
 						</div>
 					</div>
 					<div class="row">

@@ -155,8 +155,7 @@
 									<g:each in="${carreraInstance.coordinadores}" var="co">
 
 										<li><span class="" aria-labelledby="coordinadores-label">
-												<g:link controller="coordinadores" action="show"
-													id="${co.id}">
+												<g:link controller="proximamente">
 													${co?.encodeAsHTML()}<g:if test="${co.coordinadorGeneral}"> (Coordinador General)</g:if>
 												</g:link>
 										</span></li>

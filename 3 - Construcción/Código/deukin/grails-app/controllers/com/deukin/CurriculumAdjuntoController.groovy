@@ -7,6 +7,7 @@ import org.springframework.dao.DataIntegrityViolationException
 class CurriculumAdjuntoController {
 
 	static allowedMethods = [save: "POST", update: "POST", delete: "GET"]
+	def uploadService
 
 	def index() {
 		redirect(action: "list", params: params)
@@ -32,7 +33,18 @@ class CurriculumAdjuntoController {
 		curriculumAdjuntoInstance.archivo = file.getBytes()
 		curriculumAdjuntoInstance.nombreArchivo = file.originalFilename
 		curriculumAdjuntoInstance.tipoArchivo = file.contentType
+		
+		try{
+			if(curriculumAdjuntoInstance?.nombreArchivo){
+				uploadService.validateTextFileFormat(curriculumAdjuntoInstance.nombreArchivo)
+			}
+		}catch(Exception e){
+			flash.message = e.getCause()?.getMessage()
+			render(view: "create", model: [curriculumAdjuntoInstance: curriculumAdjuntoInstance])
+			return		
+		}
 
+				
 		if (!curriculumAdjuntoInstance.save(flush: true)) {
 			render(view: "create", model: [curriculumAdjuntoInstance: curriculumAdjuntoInstance])
 			return

@@ -14,6 +14,7 @@ class AlumnoController {
 	def alumnoService
 	def personaService
 	def subListaService
+	def uploadService
 
 	static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
@@ -40,7 +41,7 @@ class AlumnoController {
 		}else if(usuarioService.poseeElRol(authorities, 'ROLE_ADMINISTRATIVO')){
 			listaAlumnos = Alumno.list(params)
 		}else if(usuarioService.poseeElRol(authorities, 'ROLE_COORDINADOR')){
-			listaAlumnos = Alumno.list(params)			
+			listaAlumnos = Alumno.list(params)
 		}else if(usuarioService.poseeElRol(authorities, 'ROLE_DOCENTE')){
 			listaAlumnos = Alumno.list(params)
 		}
@@ -81,21 +82,21 @@ class AlumnoController {
 			redirect(action: "list")
 			return
 		}
-		
-		def authorities =  springSecurityService.principal.authorities				
+
+		def authorities =  springSecurityService.principal.authorities
 		def permiteVisualizar = true
 		if(usuarioService.poseeElRol(authorities, 'ROLE_ALUMNO')){
-			permiteVisualizar = usuarioService.esElUsuarioLogueado(id)		
+			permiteVisualizar = usuarioService.esElUsuarioLogueado(id)
 		}
-		
+
 		if(!permiteVisualizar){
 			render(view: "/noAutorizado" )
 			return
-		}		
+		}
 
 		[alumnoInstance: alumnoInstance]
 	}
-	
+
 	@Secured([
 		'ROLE_ADMINISTRADOR_SISTEMA',
 		'ROLE_ADMINISTRATIVO',
@@ -111,15 +112,18 @@ class AlumnoController {
 			redirect(action: "list")
 			return
 		}
-		
+
 		def authorities =  springSecurityService.principal.authorities
 		def permiteEditar = true
 		if(usuarioService.poseeElRol(authorities, 'ROLE_ALUMNO')){
 			permiteEditar = usuarioService.esElUsuarioLogueado(id)
 		}
-		
+
 		if(!permiteEditar){
-			flash.message = message(code: 'permisoEdicion.denegado', args: [message(code: 'alumno.label', default: 'Alumno'), id])
+			flash.message = message(code: 'permisoEdicion.denegado', args: [
+				message(code: 'alumno.label', default: 'Alumno'),
+				id
+			])
 			redirect(action: "show", id: alumnoInstance.id)
 			return
 		}
@@ -152,7 +156,7 @@ class AlumnoController {
 		}
 
 
-		
+
 		def esAdministrador = usuarioService.poseeElRol(springSecurityService.principal.authorities,'ROLE_ADMINISTRADOR_SISTEMA')
 		if(esAdministrador){
 			//Tengo que buscar que no exista otro alumno con el mismo Doc y tipo
@@ -162,38 +166,45 @@ class AlumnoController {
 				if(alumnosAux!=null && alumnosAux.size()>1){
 					throw new BusinessException('El tipo y numero de documento ya existe en nuestro sistema.')
 				}
-				
+
 			}
-		
+
 		}
 
 		String validacionNumeros = alumnoService.validaNumeros(params)
 		if (validacionNumeros!="")
-		
+
 		{
 			alumnoInstance.clearErrors()
 			alumnoInstance.errors.reject(message(code: 'materia.invalid.numeros', args:[validacionNumeros]))
 			render(view: "edit", model: [alumnoInstance: alumnoInstance])
 			return
 		}
-		
+
 		def fileInstance = alumnoInstance.fotoPerfil
 		def uploadedFile = request.getFile('fotoPerfil')
-		
+
 		if (uploadedFile.empty){
 			alumnoInstance.properties = params
 			alumnoInstance.fotoPerfil = fileInstance
 		}else{
+			try{
+				uploadService.validateImageFileFormat(uploadedFile.originalFilename)
+			}catch(Exception e){
+				flash.message = e.getCause()?.getMessage()
+				render(view: "edit", model: [alumnoInstance: alumnoInstance])
+				return
+			}
+
 			alumnoInstance.properties = params
 		}
-				
+
 		if (!alumnoInstance.save(flush: true)) {
 			render(view: "edit", model: [alumnoInstance: alumnoInstance])
 			return
 		}
 
 		flash.message = message(code: 'alumno.updated.message', args: [
-			
 			alumnoInstance.toString()
 		])
 		redirect(action: "show", id: alumnoInstance.id)

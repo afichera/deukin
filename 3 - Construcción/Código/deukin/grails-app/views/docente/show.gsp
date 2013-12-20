@@ -114,23 +114,25 @@
 
 							<div class="fieldcontain row">
 								<label id="telefonos-label" class="property-label col-lg-2"><g:message
-										code="docente.telefonos.label" default="Teléfonos" />: <g:link
+										code="docente.telefonos.label" default="Teléfonos" />: <sec:ifAnyGranted
+										roles="ROLE_ADMINISTRADOR_SISTEMA,ROLE_DOCENTE,ROLE_ADMINISTRATIVO"><g:link
 										controller="telefono" action="create"
 										params="['contacto.id': docenteInstance?.contacto?.id,'origen':'docente','docente.id':docenteInstance?.id]">
 										<span class="glyphicon glyphicon-plus"
 											title="${message(code: 'default.add.label', args: [message(code: 'telefono.label', default: 'Teléfono')])}"></span>
-									</g:link> </label>
+									</g:link></sec:ifAnyGranted> </label>
 								<div class="property-value col-lg-10"
 									aria-labelledby="telefono-label">
 									<g:if test="${docenteInstance?.contacto?.telefonos}">
 										<g:each in="${docenteInstance.contacto.telefonos}" var="t">
 											${t?.encodeAsHTML()}
-											<g:link controller="telefono" action="delete" id="${t?.id}"
+											<sec:ifAnyGranted
+										roles="ROLE_ADMINISTRADOR_SISTEMA,ROLE_DOCENTE,ROLE_ADMINISTRATIVO"><g:link controller="telefono" action="delete" id="${t?.id}"
 												params="[origen:'docente']">
 												<span class="glyphicon glyphicon-trash"
 													title="${message(code: 'default.delete.label', args: [message(code: 'telefono.label', default: 'Teléfono')])}"
 													onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');"></span>
-											</g:link>
+											</g:link></sec:ifAnyGranted>
 
 
 											<br />
@@ -143,12 +145,13 @@
 								<label id="curriculumsAdjutntos-label"
 									class="property-label col-lg-2"><g:message
 										code="curriculumAdjunto.list.label"
-										default="Curriculums Adjuntos" />: <g:link
+										default="Curriculums Adjuntos" />:<sec:ifAnyGranted
+										roles="ROLE_ADMINISTRADOR_SISTEMA,ROLE_DOCENTE,ROLE_ADMINISTRATIVO"> <g:link
 										controller="curriculumAdjunto" action="create"
 										params="['persona.id': docenteInstance?.id]">
 										<span class="glyphicon glyphicon-plus"
 											title="${message(code: 'curriculumAdjunto.New.label')}"></span>
-									</g:link> </label>
+									</g:link></sec:ifAnyGranted> </label>
 								<div class="property-value col-lg-10"
 									aria-labelledby="curriculumsAdjuntos-label">
 									<g:if test="${docenteInstance?.curriculumsAdjuntos}">
@@ -158,12 +161,13 @@
 													aria-labelledby="curriculumsAdjuntos-label">
 													<g:link  class="curriculumAdjunto" controller="curriculumAdjunto" action="showArchivo" id="${c?.id}">${c?.nombreArchivo}</g:link>
 												</span>
-												<g:link controller="curriculumAdjunto" action="delete"
+												<sec:ifAnyGranted
+										roles="ROLE_ADMINISTRADOR_SISTEMA,ROLE_DOCENTE,ROLE_ADMINISTRATIVO"><g:link controller="curriculumAdjunto" action="delete"
 													id="${c?.id}" params="['persona.id': docenteInstance?.id]">
 													<span class="glyphicon glyphicon-trash"
 														title="${message(code: 'default.delete.label', args: [message(code: 'curriculumAdjunto.label', default: 'Curriculum')])}"
 														onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');"></span>
-												</g:link>
+												</g:link></sec:ifAnyGranted>
 
 											</g:each>
 									</g:if>

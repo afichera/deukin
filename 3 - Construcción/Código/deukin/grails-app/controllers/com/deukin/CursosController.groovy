@@ -2,6 +2,8 @@ package com.deukin
 
 import grails.plugins.springsecurity.Secured
 
+import org.springframework.dao.DataIntegrityViolationException
+
 @Secured(['ROLE_COORDINADOR','ROLE_ADMINISTRATIVO','ROLE_DOCENTE', 'ROLE_ADMINISTRADOR_SISTEMA'])
 class CursosController {
 	def materiaService
@@ -209,6 +211,28 @@ class CursosController {
 		}
 
 		[cursoInstance: cursoInstance]
+	}
+	
+	def delete(Long id) {
+		def cursoInstance = Curso.get(id)
+		def cursoCodigo
+		if (!cursoInstance) {
+			flash.message = message(code: 'default.not.found.message', args: [message(code: 'curso.label', default: 'Curso'), id])
+			redirect(action: "list")
+			return
+		}
+
+		cursoCodigo = cursoInstance.codigo
+		
+		try {
+			cursoInstance.delete(flush: true)
+			flash.message = message(code: 'default.deleted.message', args: [message(code: 'curso.label', default: 'Curso'), cursoCodigo])
+			redirect(action: "list")
+		}
+		catch (DataIntegrityViolationException e) {
+			flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'curso.label', default: 'Curso'), cursoInstance?.codigo])
+			redirect(action: "show", id: id)
+		}
 	}
 
 	def searchEspaciosFisicosAJAX = {
